@@ -4,7 +4,7 @@ Navicat MySQL Data Transfer
 Source Server         : local
 Source Server Version : 50615
 Source Host           : localhost:3306
-Source Database       : wxtest
+Source Database       : myhuai
 
 Target Server Type    : MYSQL
 Target Server Version : 50615
