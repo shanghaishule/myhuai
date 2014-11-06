@@ -120,11 +120,9 @@ class BaseAction extends Action
                 	M('item_cate')->where($itemcatedata1)->save($itemcatedata0);
                 }
                 
-               // $this->success('操作成功', U(MODULE_NAME . $back));
-				$this->success('操作成功', $back);
+                $this->success('操作成功', U(MODULE_NAME . $back));
             } else {
-                //$this->error('操作失败', U(MODULE_NAME . $back));
-				$this->error('操作失败', $back);
+                $this->error('操作失败', U(MODULE_NAME . $back));
             }
         }
     }

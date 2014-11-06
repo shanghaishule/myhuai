@@ -2,8 +2,8 @@
 class FunctionMasterAction extends UserAction{
 	public function _initialize() {
 		parent::_initialize();
-		$this->_mod = D('function_master');
-		
+		//$this->_mod = D('function_master');
+		$this->_mod = D('category');
 		
 	}
 	
@@ -11,9 +11,10 @@ class FunctionMasterAction extends UserAction{
 	public function index(){
 		$tokenTall = $this->getTokenTall();
 		$map = array();
-		$map['class'] = array('neq','0');
+		$map['parentid'] = 0; //父类id是0为一级分类
 		$mod = $this->_mod;
-		!empty($mod) && $this->_list($mod, $map,'isshow desc, class, orderno','asc');
+		//!empty($mod) && $this->_list($mod, $map,'isshow desc, class, orderno','asc');
+		!empty($mod) && $this->_list($mod, $map,'level','asc');
 		$this->display();
 	}
 

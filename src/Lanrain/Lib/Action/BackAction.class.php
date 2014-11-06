@@ -91,7 +91,6 @@ class BackAction extends BaseAction{
 			$this->assign("page", $page);
 		}
 		$list = $select->select();
-		
 		$this->assign('list', $list);
 		$this->assign('list_table', true);
 	}
