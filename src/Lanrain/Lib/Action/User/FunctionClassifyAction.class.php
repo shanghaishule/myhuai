@@ -2,8 +2,8 @@
 class FunctionClassifyAction extends UserAction{
 	public function _initialize() {
 		parent::_initialize();
-		$this->_mod = D('Function');
-		
+		//$this->_mod = D('Function');
+		$this->_mod = D('category');
 		$funtypelist= D('function_master')->order('isshow desc, class, orderno')->select();
 		foreach ($funtypelist as $val){
 			$funtype_list[$val['id']]=$val['name'];
@@ -15,13 +15,25 @@ class FunctionClassifyAction extends UserAction{
 	
 	public function index(){
 		$tokenTall = $this->getTokenTall();
-		$map = array();
+		/*$map = array();
 		$map['funname'] = 'MyClassify';
 		$mod = $this->_mod;
-		!empty($mod) && $this->_list($mod, $map, 'gid', 'asc');
+		!empty($mod) && $this->_list($mod, $map, 'gid', 'asc');*/
+		$where['parentid'] = 0;
+		$secondArr = $this->getChildren($this->_mod->field('id,catname')->where($where)->order('level asc')->select());
+		//dump($secondArr);die;
+		$this->assign("list",$secondArr);
 		$this->display();
 	}
-
+	//获取子类
+    public function getChildren($parentArr){
+       	foreach ($parentArr as $key => $val){
+       		$childrenArr = $this->_mod->where("parentid='%d'",array($val['id']))->order('level asc')->select();
+       		$parentArr[$key]['children'] = $childrenArr;
+       	}
+       	return $parentArr;
+    }
+    
 	public function edit() {
 		$id = $this->_get('id');
 		$tokenTall = $this->getTokenTall();

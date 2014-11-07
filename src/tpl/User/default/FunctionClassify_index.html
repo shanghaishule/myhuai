@@ -9,26 +9,32 @@
 <table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
 <thead>
 <tr>
+<th>id</th>
 <th>名称</th>
-<th>上级</th>
-<th>外链URL地址</th>
-<th>特殊显示</th>
+<th>上级分类</th>
+<th>图片</th>
+<th>链接</th>
+<th>外链</th>
 <th>排序</th>
 <th style="width:100px;" class="norightborder">操作</th>
 </tr>
 </thead>
 <volist name="list" id="val">
+<volist name="val['children']" id="va">
 <tr>
-<td align="center">{lanrain:$val.name}</td>
-<td align="center">{lanrain:$val.funtype}</td>
-<td align="center" style="width:400px;">{lanrain:$val.info}</td>
-<td align="center">{lanrain:$val.havenext}</td>
-<td align="center">{lanrain:$val.gid}</td>
+<td align="center">{lanrain:$va.id}</td>
+<td align="center">{lanrain:$va.catname}</td>
+<td align="center">{lanrain:$val.catname}</td>
+<td align="center"><img src="{lanrain:$val.picurl}" class="cateimg_small"  width="100" height="50"/></td>
+<td align="center">{lanrain:$va.linkurl}</td>
+<td align="center">{lanrain:$va.outlinkurl}</td>
+<td align="center">{lanrain:$va.level}</td>
 <td align="center" >
 	<a href="{lanrain::U('FunctionClassify/edit',array('id'=>$val['id']))}">编辑</a>
 	<a href="javascript:drop_confirm('你确定要本项目删除吗？', '{lanrain::U('FunctionClassify/del',array('id'=>$val['id']))}');">删除</a>
 </td>
 </tr>
+</volist>
 </volist>
 </table>
 </div>

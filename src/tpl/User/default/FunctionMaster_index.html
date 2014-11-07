@@ -18,9 +18,9 @@
 <th>操作</th>
 </tr>
 </thead>
-<volist name="list" id="val">
+<volist name="list" id="val" key="k">
 <tr>
-<td align="center">{lanrain:$val.id}</td>
+<td align="center">{lanrain:$k}</td>
 <td align="center">{lanrain:$val.catname}</td>
 <td align="center"><div class="cateimg"><img src="{lanrain:$val.picurl}" class="cateimg_small"  width="100" height="50"/></div></td>
 <td align="center">{lanrain:$val.linkurl}</td>
