@@ -9,18 +9,15 @@
 
 var editor;
 KindEditor.ready(function(K) {
-editor = K.create('#info', {
-resizeType : 1,
-allowPreviewEmoticons : false,
-allowImageUpload : true,
-items : [
-'source','undo','clearhtml','hr','fontsize','forecolor','hilitecolor',
-'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
-});
-
-
-
+	editor = K.create('#info', {
+	resizeType : 1,
+	allowPreviewEmoticons : false,
+	allowImageUpload : true,
+	items : [
+	'source','undo','clearhtml','hr','fontsize','forecolor','hilitecolor',
+	'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+	'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+	});
 });
 </script>
 <script>

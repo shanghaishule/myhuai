@@ -57,10 +57,9 @@ class ImgAction extends UserAction{
 		$where['uid']=session('uid');
 		if(D(MODULE_NAME)->where($where)->delete()){
 			M('Keyword')->where(array('pid'=>$this->_get('id','intval'),'token'=>session('token'),'module'=>'Img'))->delete();
-			//$this->success('操作成功',U(MODULE_NAME.'/index'));
-			$this->success('操作成功',U('MyClassify/index',array('classid'=>session('classid'),'token'=>session('token'),'classify'=>$_SESSION['classname'])));
+			$this->success('操作成功',U(MODULE_NAME.'/index'));
 		}else{
-			$this->error('操作失败',U('MyClassify/index',array('classid'=>session('classid'),'token'=>session('token'),'classify'=>$_SESSION['classname'])));
+			$this->error('操作失败',U(MODULE_NAME.'/index'));
 		}
 	}
 	public function insert(){
@@ -68,10 +67,10 @@ class ImgAction extends UserAction{
 		$_POST['info'] = preg_replace($pat,"",$_POST['info']);
 		//$_POST['info']=strip_tags($this->_post('info'),'<a> <p> <br>');  
 		//dump($_POST['info']);
-		$this->all_insert('',U('MyClassify/index',array('classid'=>session('classid'),'token'=>session('token'),'classify'=>$_SESSION['classname'])));
+		$this->all_insert();
 	}
 	public function upsave(){
-		$this->all_save('',U('MyClassify/index',array('classid'=>session('classid'),'token'=>session('token'),'classify'=>$_SESSION['classname'])));
+		$this->all_save();
 	}
 }
 ?>

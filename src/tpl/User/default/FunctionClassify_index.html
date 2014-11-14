@@ -1,7 +1,7 @@
 <include file="Public:head"/>
 <div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
 <div class="cLineC" style="line-height: 32px;">
-	<a target="ddd" href="{lanrain::U('FunctionClassify/edit')}" class="btnGrayS vm bigbtn" >添加</a>
+	<a href="{lanrain::U('FunctionClassify/edit')}" class="btnGrayS vm bigbtn" >添加</a>
 </div>
 <div class="msgWrap form">
 <div class="bdrcontent">
@@ -25,13 +25,13 @@
 <td align="center">{lanrain:$va.id}</td>
 <td align="center">{lanrain:$va.catname}</td>
 <td align="center">{lanrain:$val.catname}</td>
-<td align="center"><img src="{lanrain:$val.picurl}" class="cateimg_small"  width="100" height="50"/></td>
+<td align="center"><img src="{lanrain:$va.picurl}" class="cateimg_small"  width="100" height="50"/></td>
 <td align="center">{lanrain:$va.linkurl}</td>
 <td align="center">{lanrain:$va.outlinkurl}</td>
 <td align="center">{lanrain:$va.level}</td>
 <td align="center" >
-	<a href="{lanrain::U('FunctionClassify/edit',array('id'=>$val['id']))}">编辑</a>
-	<a href="javascript:drop_confirm('你确定要本项目删除吗？', '{lanrain::U('FunctionClassify/del',array('id'=>$val['id']))}');">删除</a>
+	<a href="{lanrain::U('FunctionClassify/edit',array('id'=>$va['id']))}">编辑</a>
+	<a href="javascript:drop_confirm('你确定要本项目删除吗？', '{lanrain::U('FunctionClassify/del',array('id'=>$va['id']))}');">删除</a>
 </td>
 </tr>
 </volist>

@@ -559,3 +559,13 @@ ul{
 .tou table,tr,td{border:0px solid #ccc}
 .tou table{width:100%;margin-top:5px;}
 .page{text-align: center;}
+
+.fl{float:left;}
+.b-keywords{margin-left:100px;border:1px solid #ccc;width:200px;}
+.b-h{height:30px;}
+.k-select{margin-left:5px;}
+.btn{margin-left:10px;}
+.smallbtn{height:20px;line-height:20px;color:#000000;font-weight:normal;}
+.footactions a:hover{color:#000000}
+.footactions{text-align:center}
+

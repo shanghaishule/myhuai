@@ -1,8 +1,8 @@
 <?php
-class Wetall_itemAction extends UserAction{
+class ServiceAction extends UserAction{
 	public function _initialize() {
 		parent::_initialize();
-		$this->_mod = D('item');
+		$this->_mod = D('Service');
 		$this->_cat = M('category');
 		//所有商家
 		$this->assign("Bus_list",M('business')->select());
@@ -31,7 +31,7 @@ class Wetall_itemAction extends UserAction{
 		
 		//提交，有id则为编辑，无id则为新增
 		if (IS_POST) {
-			//dump($_POST);die();
+			dump($_POST);die();
 			
 			//获取数据
 			if (false === $data = $this->_mod->create()) {
@@ -63,39 +63,11 @@ class Wetall_itemAction extends UserAction{
 				$imgs[] = $_POST['img5'];
 			}
 			
-
-            //加入颜色和尺码
-            $data["size"]=$_POST['sizes_ar'];
-            $data["color"]=$_POST['colors_ar'];
-			
-			//库存细则
-			$detail_stock = $_POST['detail_stock'];//dump($colors);die();
-			if ($detail_stock != "") {
-				$data["detail_stock"] = $detail_stock;
-			}
-			
-			if(isset($_POST['news']))
-			{
-				$data['news']=1;
-			}else {
-				$data['news']=0;
-			}
 			if(isset($_POST['tuijian']))
 			{
 				$data['tuijian']=1;
 			}else {
 				$data['tuijian']=0;
-			}
-
-			if($_POST['free']==1)
-			{
-				$data['free']=1;
-			}else if($_POST['free']==2)
-			{
-				$data['free']=2;
-				$data['pingyou']=$this->_post('pingyou');
-				$data['kuaidi']=$this->_post('kuaidi');
-				$data['ems']=$this->_post('ems');
 			}
 
 			$data['tokenTall'] = $tokenTall;
@@ -117,14 +89,13 @@ class Wetall_itemAction extends UserAction{
 						M('item_img')->add($_img);
 						//从导入表里删除
 						M('item_taobao')->where(array('id'=>$dataid))->delete();
-						$this->success('成功！', U('Wetall_item/index'));
+						$this->success('成功！', U('Service/index'));
 					} else {
 						$this->error('失败！');
 					}
 				}else{
 					//编辑					
 					$data['cate_id'] = $_POST['cate_id_3']?$_POST['cate_id_3']:$_POST['cate_id_2'];
-					
 					$result = $this->_mod->save($data);
 					if ($result !== false) {
 						//相册更新
@@ -137,7 +108,7 @@ class Wetall_itemAction extends UserAction{
 							$_img['url'] = $oneimg;
 							M('item_img')->add($_img);
 						}
-						$this->success('成功！', U('Wetall_item/index'));
+						$this->success('成功！', U('Service/index'));
 					} else {
 						$this->error('失败！');
 					}
@@ -159,7 +130,7 @@ class Wetall_itemAction extends UserAction{
 						$_img['url'] = $oneimg;
 						M('item_img')->add($_img);
 					}
-					$this->success('成功！', U('Wetall_item/index'));
+					$this->success('成功！', U('Service/index'));
 				} else {
 					$this->error('失败！');
 				}
@@ -172,28 +143,10 @@ class Wetall_itemAction extends UserAction{
 				$info = $this->_mod->where(array('id'=>$id))->find();
 				$this->assign('info',$info);
 				
-				$sizestr = $info["size"];
-				$sizearr = explode("|",$sizestr);
-				$this->assign("sizearr",$sizearr);
-				
-				$colorstr = $info["color"];
-				$colorarr = explode("|",$colorstr);
-				$this->assign("colorarr",$colorarr);
-				
 				//商品所属分类
 				$arrCate = $this->getParentid($info['cate_id']);
 				$this->assign("arrCate",$arrCate);
-				// 库存细则
-				$detail_stock_arr = array();
-				$detail_stock1 = $info["detail_stock"];
-				if ($detail_stock1 != null) {
-					$stockarr= explode(",",$detail_stock1);
-					foreach ($stockarr as $varstock){
-						$detail_stock_arr[] = explode("|",$varstock);
-					}
-				}
-				
-				$this->assign("detail_stock_arr",$detail_stock_arr);
+
 			}else{
 				$myaction = "新增";
 			}
@@ -205,7 +158,7 @@ class Wetall_itemAction extends UserAction{
 	}
     /**
      * 获取商品分类树杈结构
-     * return json
+     * @return json
      */
 	public function get_category(){
 	  $where["parentid"]= 0;
@@ -307,8 +260,11 @@ class Wetall_itemAction extends UserAction{
 			case "tuijian":
 				$where['tuijian'] = 1;
 				break;
-			case "title":
-				$where['title'] = array("like","%".$keywords."%");
+			case "status":
+				$where['status'] =0;
+				break;
+			case "name":
+				$where['name'] = array("like","%".$keywords."%");
 				break;				
 			case "":
 				$where = "1=1";
@@ -319,7 +275,63 @@ class Wetall_itemAction extends UserAction{
 		$this->display("index");
 	}
 
-
+	//所选推荐
+	public function tuijianAll(){
+		$ids =  $_REQUEST["sel"];
+		if($ids){
+			if(is_array($ids)){
+				$where = 'id in('.implode(',',$ids).')';
+			}else{
+				$where = 'id='.$ids;
+			}
+			$flag = $this->_mod->where($where)->save(array("tuijian"=>1));
+			if(false !== $flag){
+				$this->success("成功!");
+			}else{
+				$this->error("失败");
+			}
+		}else{
+			$this->error("请先选中要推荐的服务！");
+		}
+	}
+    //所选更改状态
+    public function statusAll(){
+    	$ids =  $_REQUEST["sel"];
+    	if($ids){
+    		if(is_array($ids)){
+    			$where = 'id in('.implode(',',$ids).')';
+    		}else{
+    			$where = 'id='.$ids;
+    		}
+    		$flag = $this->_mod->where($where)->save(array("status"=>0));
+    		if(false !== $flag){
+    			$this->success("成功!");
+    		}else{
+    			$this->error("失败");
+    		}
+    	}else{
+    		$this->error("请先选中要停止的服务！");
+    	}    	
+    }
+	//批量删除
+	public function delAll(){
+		$ids =  $_REQUEST["sel"];
+		if($ids){
+			if(is_array($ids)){
+				$where = 'id in('.implode(',',$ids).')';
+			}else{
+				$where = 'id='.$ids;
+			}
+			$flag = $this->_mod->where($where)->delete();
+			if(false !== $flag){
+				$this->success("删除成功".$flag."条!");
+			}else{
+				$this->error("删除失败");
+			}
+		}else{
+			$this->error("请先选中要删除的服务！");
+		}		
+	}
 
 }
 ?>

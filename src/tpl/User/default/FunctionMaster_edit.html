@@ -36,31 +36,26 @@
 	<TBODY>
 		<tr>
 			<th>名称 :</th>
-			<td><input type="text" required="" class="px" name="name" value="{lanrain:$info.name}" style="width:500px"></td>
+			<td><input type="text" required="" class="px" name="catname" value="{lanrain:$info.catname}" style="width:500px" /></td>
 		</tr>
 		<tr>
 			<th>图片 :</th>
 			<td>
-			<input type="text" class="px" id="pic" value="{lanrain:$info.img}" name="img" style="width:500px" readonly="readonly"><span class="ke-button-common" id="upload" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span><br />
+			<input type="text" class="px" id="pic" value="{lanrain:$info.picurl}" name="picurl" style="width:500px" readonly="readonly"><span class="ke-button-common" id="upload" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span><br />
 			</td>
 		</tr>
-		<!--tr>
-			<th>级别:</th>
-			<td><input type="text" required="" class="px" name="class" value="{lanrain:$info.class}" style="width:500px"></td>
-		</tr-->
 		<tr>
-			<th>前端显示 :</th>
-			<td>
-			<select name="isshow" class="pt" required="" style="width:250px">
-				<option value="否" <eq name="info.isshow" value="否">selected="selected"</eq> >否</option>
-				<option value="是" <eq name="info.isshow" value="是">selected="selected"</eq> >是</option>
-			</select>
-			
-			</td>
+			<th>链接 :</th>
+			<td><input type="text" required="" class="px" name="linkurl" value="{lanrain:$info.linkurl}" style="width:500px"></td>
 		</tr>
+		
+		<tr>
+			<th>外链 :</th>
+			<td><input type="text" class="px" name="outlinkurl" value="{lanrain:$info.outlinkurl}" style="width:500px"></td>
+		</tr>		 
 		<tr>
 			<th>排序 :</th>
-			<td><input type="text" required="" class="px" name="orderno" value="{lanrain:$info.orderno}" style="width:500px"></td>
+			<td><input type="text" required="" class="px" name="level" value="{lanrain:$info.level}" style="width:500px"></td>
 		</tr>
 		<TR>
 			<TH></TH>

@@ -253,7 +253,7 @@ function sum_stock(){
 		
 		
 		K('#upload1').click(function() {
-			editor.loadPlugin('image', function() {
+			editor.loadPlugin('image', function(){
 				editor.plugin.imageDialog({
 					fileUrl : K('#pic1').val(),
 					clickFn : function(url, title) {
@@ -378,6 +378,7 @@ function sum_stock(){
 	<div class="msgWrap">
 	<form id="info_form" class="form" method="post" action="{lanrain::U('Wetall_item/edit')}" enctype="multipart/form-data">
 	<input type="hidden" name="id" value="{lanrain:$info.id}" />
+	<input type="hidden" name="brand" value="0" />
 	<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
 	<TBODY>
 		<tr>
@@ -389,16 +390,32 @@ function sum_stock(){
 			<td><textarea name="intro" class="px" style="width:500px; height:50px;">{lanrain:$info.intro}</textarea></td>
 		</tr>
 		<tr>
-			<th>所属分类：</th>
-			<td><select name="cate_id" class="pt" required="" style="width:250px">
+			<th>所属商家：</th>
+			<td><select name="isBusiness" class="pt" required="" style="width:250px">
 				<option value="">--请选择--</option>
-				<volist name='cate_list' id='vo' >
-				<option value="{lanrain:$key}" <eq name="key" value="$info['cate_id']">selected="selected"</eq> >{lanrain:$vo}</option>
+				<volist name='Bus_list' id='vo' >
+				<option value="{lanrain:$vo.id}" <eq name="vo.id" value="$info['isBusiness']">selected="selected"</eq> >{lanrain:$vo.b_name}</option>
 				</volist>
 				</select>
 			</td>
-		</tr>
+		</tr>		
 		<tr>
+			<th>所属分类：</th>
+			<td class="all_category">
+			    <select name="cate_id_1" class="pt oneCategory" required="" style="width:150px">
+				<option value="">--请选择--</option>
+				</select>
+				
+			    <select name="cate_id_2" class="pt twoCategory" required="" style="width:150px">
+				<option value="">--请选择--</option>
+				</select>
+				
+			    <select name="cate_id_3" class="pt threeCategory" required="" style="width:150px">
+				<option value="">--请选择--</option>
+				</select>								
+			</td>
+		</tr>
+		<!-- -<tr>
 			<th>所属品牌：</th>
 			<td><select name="brand" class="pt" required="" style="width:250px">
 				<option value="">--请选择--</option>
@@ -407,7 +424,8 @@ function sum_stock(){
 				</volist>
 				</select>
 			</td>
-		</tr>
+		</tr> -->
+		
 		<tr>
 			<th>商品主图：</th>
 			<td>
@@ -531,6 +549,11 @@ function sum_stock(){
 			<th>商品价格：</th>
 			<td><input onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" type="text" id="price" name="price" class="px" value="{lanrain:$info.price}" style="width:250px"> 元</td>
 		</tr>
+
+		<tr>
+			<th>周边价格：</th>
+			<td><input onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" type="text" id="price" name="zb_price" class="px" value="{lanrain:$info.zb_price}" style="width:250px"> 元</td>
+		</tr>
 		
 		<tr>
 			<th>是否推荐：</th>
@@ -572,4 +595,75 @@ function sum_stock(){
 	</form>
 	</div> 
 </div>
+    <script type="text/javascript">
+    $(function(){
+        $(".all_category").each(function(){
+            var url = "{lanrain::U('Wetall_item/get_category')}";
+            var areaJson="";
+            var temp_html="";
+            var oProvince = $(this).find(".oneCategory");
+            var oCity = $(this).find(".twoCategory");
+            var oDistrict = $(this).find(".threeCategory");
+            //初始化一级分类
+            var province = function(){
+            	
+                $.each(areaJson,function(i,province){
+                	var flag='';
+                	if(province.id == "{lanrain:$arrCate[2]}"){
+                		flag = "selected=\"selected\"";
+                	}
+                    temp_html+="<option value='"+province.id+"' "+flag+">"+province.catname+"</option>";
+                });
+                oProvince.html(temp_html);
+                city();
+            };
+            //赋值二级分类
+            var city = function(){
+                temp_html = ""; 
+                var n = oProvince.get(0).selectedIndex;
+                $.each(areaJson[n].c,function(i,city){
+                	var flag='';
+                	if(city.id == {lanrain:$arrCate[1]} || city.id == {lanrain:$arrCate[0]}){
+                		flag = "selected=\"selected\"";
+                	}                	
+                    temp_html+="<option value='"+city.id+"' "+flag+">"+city.catname+"</option>";
+                });
+                oCity.html(temp_html);
+                district();
+            };
+            //赋值三级分类
+            var district = function(){
+                temp_html = ""; 
+                var m = oProvince.get(0).selectedIndex;
+                var n = oCity.get(0).selectedIndex;
+                if(typeof(areaJson[m].c[n].d) == "undefined"){
+                    oDistrict.html('').css("display","none");
+                }else{
+                    oDistrict.css("display","inline");
+                    $.each(areaJson[m].c[n].d,function(i,district){
+                    	var flag='';
+                    	if(district.id == {lanrain:$arrCate[0]}){
+                    		flag = "selected=\"selected\"";
+                    	}                    	
+                        temp_html+="<option value='"+district.id+"' "+flag+">"+district.catname+"</option>";
+                    });
+                    oDistrict.html(temp_html);
+                };
+            };
+            //选择一级分类改变二级分类
+            oProvince.change(function(){
+                city();
+            });
+            //选择二级分类改变三级分类
+            oCity.change(function(){
+                district();
+            });
+            //获取json数据
+            $.getJSON(url,function(data){
+                areaJson = eval(data);
+                province();
+            });
+        });
+    });
+    </script>
 <include file="Public:footer"/>

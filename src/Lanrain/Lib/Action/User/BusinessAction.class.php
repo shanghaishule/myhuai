@@ -1,20 +1,15 @@
 <?php
-class FunctionMasterAction extends UserAction{
+class BusinessAction extends UserAction{
 	public function _initialize() {
 		parent::_initialize();
-		//$this->_mod = D('function_master');
-		$this->_mod = D('category');
+		$this->_mod = D('business');
 		
 	}
-	
-	
 	public function index(){
 		$tokenTall = $this->getTokenTall();
-		$map = array();
-		$map['parentid'] = 0; //父类id是0为一级分类
 		$mod = $this->_mod;
 		//!empty($mod) && $this->_list($mod, $map,'isshow desc, class, orderno','asc');
-		!empty($mod) && $this->_list($mod, $map,'level','asc');
+		!empty($mod) && $this->_list($mod);
 		$this->display();
 	}
 
@@ -30,8 +25,8 @@ class FunctionMasterAction extends UserAction{
 			if (false === $data = $this->_mod->create()) {
 				$this->error($this->_mod->getError());
 			}
-			$data['token'] = $tokenTall;
-			$data['arrparentid'] = '0';
+			$data['tokenTall'] = $tokenTall;
+			
 			if ($_POST['id'] != "") {
 				//编辑
 				$result = $this->_mod->save($data);
@@ -41,7 +36,7 @@ class FunctionMasterAction extends UserAction{
 			}
 
 			if ($result !== false) {
-				$this->success('成功！', U('FunctionMaster/index'));
+				$this->success('成功！', U('Business/index'));
 			} else {
 				$this->error('失败！');
 			}
@@ -67,17 +62,13 @@ class FunctionMasterAction extends UserAction{
 	{
 	
 		$ids = $this->_get('id');
-		if ($ids) {
-			$res = $this->_mod->where(array('parentid'=>$ids))->find();
-			if($res !== false && empty($res)){			
+		if ($ids) {		
 				if (false !== $this->_mod->delete($ids)) {
 					$this->success('删除成功！');
 				} else {
 					$this->error('删除失败！');
 				}
-			}else{
-				$this->error('请先删除该分类下的子类！');
-			}			
+			
 		} else {
 			$this->error('参数错误！');
 		}

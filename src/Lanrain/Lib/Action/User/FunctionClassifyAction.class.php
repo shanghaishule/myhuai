@@ -4,9 +4,10 @@ class FunctionClassifyAction extends UserAction{
 		parent::_initialize();
 		//$this->_mod = D('Function');
 		$this->_mod = D('category');
-		$funtypelist= D('function_master')->order('isshow desc, class, orderno')->select();
-		foreach ($funtypelist as $val){
-			$funtype_list[$val['id']]=$val['name'];
+		$funtypelist= $this->_mod->where(array("parentid"=>0))->order('level')->select();
+		foreach ($funtypelist as $key => $val){
+			$funtype_list[$key]['id']=$val['id'];
+			$funtype_list[$key]['cname']=$val['catname'];
 		}
 		$this->assign('funtype_list',$funtype_list);
 		//dump($funtype_list);exit;
@@ -47,8 +48,9 @@ class FunctionClassifyAction extends UserAction{
 			if (false === $data = $this->_mod->create()) {
 				$this->error($this->_mod->getError());
 			}
-			$data['tokenTall'] = $tokenTall;
-			
+			$data['token'] = $tokenTall;
+			$arr = array(0,$_POST['parentid']);
+			$data['arrparentid'] = implode(',',$arr);
 			if ($_POST['id'] != "") {
 				//编辑
 				$result = $this->_mod->save($data);
@@ -85,11 +87,17 @@ class FunctionClassifyAction extends UserAction{
 	
 		$ids = $this->_get('id');
 		if ($ids) {
-			if (false !== $this->_mod->delete($ids)) {
-				$this->success('删除成功！');
-			} else {
-				$this->error('删除失败！');
+			$res = $this->_mod->where(array('parentid'=>$ids))->find();
+			if($res !== false && empty($res)){
+				if (false !== $this->_mod->delete($ids)) {
+					$this->success('删除成功！');
+				} else {
+					$this->error('删除失败！');
+				}
+			}else{
+				$this->error('请先删除该分类下的子类！');
 			}
+
 		} else {
 			$this->error('参数错误！');
 		}

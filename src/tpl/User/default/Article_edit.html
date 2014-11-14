@@ -1,0 +1,327 @@
+<include file="Public:head"/>
+<link rel="stylesheet" href="{lanrain::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{lanrain::STATICS}/kindeditor/plugins/code/prettify.css" />
+<script src="{lanrain::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{lanrain::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{lanrain::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var editor;
+	KindEditor.ready(function(K){
+        
+		K('#upload').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic').val(url);
+						}else{
+							K('#pic').val('__ROOT__'+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		
+		editor = K.create('#info', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : true,
+			items : [
+			'source','undo','clearhtml','hr','fontsize','forecolor','hilitecolor',
+			'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+			'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+			});
+		
+		
+		K('#upload1').click(function() {
+			editor.loadPlugin('image', function(){
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic1').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic1').val(url);
+						}else{
+							K('#pic1').val('__ROOT__'+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload2').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic2').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic2').val(url);
+						}else{
+							K('#pic2').val('__ROOT__'+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload3').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic3').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic3').val(url);
+						}else{
+							K('#pic3').val('__ROOT__'+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload4').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic4').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic4').val(url);
+						}else{
+							K('#pic4').val('__ROOT__'+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload5').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic5').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic5').val(url);
+						}else{
+							K('#pic5').val('__ROOT__'+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload6').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic6').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic6').val(url);
+						}else{
+							K('#pic6').val('__ROOT__'+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		
+	});
+	function deal_stock(){
+		$("#info_form").submit();
+	}
+
+</script>
+<div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
+	<div class="cLineB"><h4>资讯{lanrain:$myaction}</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
+	<div class="msgWrap">
+	<form id="info_form" class="form" method="post" action="{lanrain::U('Service/edit')}" enctype="multipart/form-data">
+	<input type="hidden" name="id" value="{lanrain:$info.id}" />
+	<input type="hidden" name="brand" value="0" />
+	<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+	<TBODY>
+		<tr>
+			<th>资讯名称：</th>
+			<td><input type="text" required class="px" name="name" value="{lanrain:$info.name}" style="width:500px"></td>
+		</tr>			
+		<tr>
+			<th>所属商家：</th>
+			<td><select name="business_id" class="pt" required style="width:250px">
+				<option value="">--请选择--</option>
+				<volist name='Bus_list' id='vo' >
+				<option value="{lanrain:$vo.id}" <eq name="vo.id" value="$info['business_id']">selected="selected"</eq> >{lanrain:$vo.b_name}</option>
+				</volist>
+				</select>
+			</td>
+		</tr>		
+		<tr>
+			<th>所属分类：</th>
+			<td class="all_category">
+			    <select name="cate_id_1" class="pt oneCategory" required style="width:150px">
+				<option value="">--请选择--</option>
+				</select>
+				
+			    <select name="cate_id_2" class="pt twoCategory" required="" style="width:150px">
+				<option value="">--请选择--</option>
+				</select>
+				
+			    <select name="cate_id_3" class="pt threeCategory" required="" style="width:150px">
+				<option value="">--请选择--</option>
+				</select>								
+			</td>
+		</tr>
+		<!-- -<tr>
+			<th>所属品牌：</th>
+			<td><select name="brand" class="pt" required="" style="width:250px">
+				<option value="">--请选择--</option>
+				<volist name='brand_list' id='vo' >
+				<option value="{lanrain:$key}" <eq name="key" value="$info['brand']">selected="selected"</eq> >{lanrain:$vo}</option>
+				</volist>
+				</select>
+			</td>
+		</tr> -->
+		
+		<tr>
+			<th>资讯主图：</th>
+			<td>
+				<input type='text' class='px' id='pic' value='{lanrain:$info.img}' name='img' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
+				<span class="red">请上传250x350(px)的图片</span>
+			</td>
+		</tr>
+		<tr>
+			<th>服务详情页图片1：</th>
+			<td>
+				<input type='text' class='px' id='pic1' value='{lanrain:$info.imgs.img1}' name='img1' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload1' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
+				请上传250x250(px)的图片
+			</td>
+		</tr>
+		<tr>
+			<th>服务详情页图片2：</th>
+			<td>
+				<input type='text' class='px' id='pic2' value='{lanrain:$info.imgs.img2}' name='img2' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload2' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
+				请上传250x250(px)的图片
+			</td>
+		</tr>
+		<tr>
+			<th>服务详情页图片3：</th>
+			<td>
+				<input type='text' class='px' id='pic3' value='{lanrain:$info.imgs.img3}' name='img3' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload3' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
+				请上传250x250(px)的图片
+			</td>
+		</tr>
+		<tr>
+			<th>服务详情页图片4：</th>
+			<td>
+				<input type='text' class='px' id='pic4' value='{lanrain:$info.imgs.img4}' name='img4' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload4' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
+				请上传250x250(px)的图片
+			</td>
+		</tr>
+		<tr>
+			<th>服务详情页图片5：</th>
+			<td>
+				<input type='text' class='px' id='pic5' value='{lanrain:$info.imgs.img5}' name='img5' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload5' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
+				请上传250x250(px)的图片
+			</td>
+		</tr>
+		<tr>
+			<th>服务详情页图片6：</th>
+			<td>
+				<input type='text' class='px' id='pic6' value='{lanrain:$info.imgs.img6}' name='img6' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload6' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
+				请上传250x250(px)的图片
+			</td>
+		</tr>
+		
+		<tr>
+			<th>是否推荐：</th>
+			<td>
+				<input type="checkbox" name="tuijian" <eq name="info.tuijian" value="1">checked</eq> >推荐
+			</td>
+		</tr>
+
+		<tr>
+			<th>资讯详情：</th>
+			<td><textarea class="px" name="info" id="info" style="width:90%;height:400px;">{lanrain:$info.info}</textarea></td>
+		</tr>
+		<TR>
+			<TH></TH>
+			<TD><button type="button" onclick="deal_stock()"  name="button"  class="btnGreen left" >保存</button>
+	  		<div class="clr"></div>
+	  		</TD>
+		</TR>
+	</TBODY>
+	</TABLE>
+	</form>
+	</div> 
+</div>
+    <script type="text/javascript">
+    $(function(){
+        $(".all_category").each(function(){
+            var url = "{lanrain::U('Service/get_category')}";
+            var areaJson="";
+            var temp_html="";
+            var oProvince = $(this).find(".oneCategory");
+            var oCity = $(this).find(".twoCategory");
+            var oDistrict = $(this).find(".threeCategory");
+            //初始化一级分类
+            var province = function(){
+            	
+                $.each(areaJson,function(i,province){
+                	var flag='';
+                	if(province.id == "{lanrain:$arrCate[2]}"){
+                		flag = "selected=\"selected\"";
+                	}
+                    temp_html+="<option value='"+province.id+"' "+flag+">"+province.catname+"</option>";
+                });
+                oProvince.html(temp_html);
+                city();
+            };
+            //赋值二级分类
+            var city = function(){
+                temp_html = ""; 
+                var n = oProvince.get(0).selectedIndex;
+                $.each(areaJson[n].c,function(i,city){
+                	var flag='';
+                	if(city.id == "{lanrain:$arrCate[1]}" || city.id == "{lanrain:$arrCate[0]}"){
+                		flag = "selected=\"selected\"";
+                	}                	
+                    temp_html+="<option value='"+city.id+"' "+flag+">"+city.catname+"</option>";
+                });
+                oCity.html(temp_html);
+                district();
+            };
+            //赋值三级分类
+            var district = function(){
+                temp_html = ""; 
+                var m = oProvince.get(0).selectedIndex;
+                var n = oCity.get(0).selectedIndex;
+                if(typeof(areaJson[m].c[n].d) == "undefined"){
+                    oDistrict.html('').css("display","none");
+                }else{
+                    oDistrict.css("display","inline");
+                    $.each(areaJson[m].c[n].d,function(i,district){
+                    	var flag='';
+                    	if(district.id == "{lanrain:$arrCate[0]}"){
+                    		flag = "selected=\"selected\"";
+                    	}                    	
+                        temp_html+="<option value='"+district.id+"' "+flag+">"+district.catname+"</option>";
+                    });
+                    oDistrict.html(temp_html);
+                };
+            };
+            //选择一级分类改变二级分类
+            oProvince.change(function(){
+                city();
+            });
+            //选择二级分类改变三级分类
+            oCity.change(function(){
+                district();
+            });
+            //获取json数据
+            $.getJSON(url,function(data){
+                areaJson = eval(data);
+                province();
+            });
+        });
+    });
+    </script>
+<include file="Public:footer"/>

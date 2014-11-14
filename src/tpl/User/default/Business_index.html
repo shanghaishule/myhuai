@@ -1,0 +1,46 @@
+<include file="Public:head"/>
+<div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
+<div class="cLineC" style="line-height: 32px;">
+	<a href="{lanrain::U('Business/edit')}" class="btnGrayS vm bigbtn" >添加</a>
+</div>
+<div class="msgWrap form">
+<div class="bdrcontent">
+<div id="div_ptype">
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+<tr>
+<th>id</th>
+<th>商家名称</th>
+<th>联系人</th>
+<th>手机</th>
+<th>联系地址</th>
+<th>银行卡名称</th>
+<th>银行卡号</th>
+<th style="width:100px;" class="norightborder">操作</th>
+</tr>
+</thead>
+<volist name="list" id="val">
+<tr>
+<td align="center">{lanrain:$val.id}</td>
+<td align="center">{lanrain:$val.b_name}</td>
+<td align="center">{lanrain:$val.b_uname}</td>
+<td align="center">{lanrain:$val.b_phone}</td>
+<td align="center">{lanrain:$val.b_address}</td>
+<td align="center">{lanrain:$val.b_bankName}</td>
+<td align="center">{lanrain:$val.b_bankNum}</td>
+<td align="center" >
+	<a href="{lanrain::U('Business/edit',array('id'=>$val['id']))}">编辑</a>
+	<a href="javascript:drop_confirm('你确定要本项目删除吗？', '{lanrain::U('Business/del',array('id'=>$val['id']))}');">删除</a>
+</td>
+</tr>
+</volist>
+</table>
+</div>
+</div>
+<div class="footactions" style="padding-left:10px">
+	<div class="pages">{lanrain:$page}</div>
+</div>
+</div>
+</div>
+
+<include file="Public:footer"/>
