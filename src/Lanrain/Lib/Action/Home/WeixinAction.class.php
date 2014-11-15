@@ -548,7 +548,7 @@ class WeixinAction extends Action
                     );
 					*/
 					return array(
-                        '欢迎加入江阴临港发布大家庭，我们将为您提供更多的资讯和服务！',
+                        '欢迎加入，我们将为您提供更多的资讯和服务！',
                         'text'
                     );
                     break;

@@ -44,17 +44,6 @@ oWin.style.display = "none"
 <volist name="info" id="vo">
 <li><a href="<if condition="$vo['url'] eq ''">{lanrain::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{lanrain:$vo.url|htmlspecialchars_decode}</if>"><span>{lanrain:$vo.name}</span></a></li>
 </volist>
-<!--li><a href="{lanrain::U('Home/Shop/dh')}"><span>魅力港城</span></a></li>
-<li><a href="{lanrain::U('Home/Shop/news')}"><span>新闻中心</span></a></li>
-<li><a href="{lanrain::U('Home/Shop/plive')}"><span>港城民生</span></a></li>
-<li><a href="{lanrain::U('Home/Shop/interv')}"><span>招商引资</span></a></li>
-<li><a href="{lanrain::U('Home/Shop/server')}"><span>便民服务</span></a></li>
-<li><a href="{lanrain::U('Home/Shop/comstyle')}"><span>企业风采</span></a></li>
-<li><a href="{lanrain::U('Home/Shop/goveropen')}"><span>政务公开</span></a></li>
-<li><a href="{lanrain::U('Home/Shop/exchange')}"><span>互动交流</span></a></li>	
-<li><a href="{lanrain::U('Home/Shop/chanye')}"><span>临港产业城</span></a></li>
-<li><a href="{lanrain::U('Home/Shop/weixing')}"><span>澄西卫星城</span></a></li>
-<li><a href="{lanrain::U('Home/Shop/shengtai')}"><span>生态宜居城</span></a></li-->
 <div class="clr"></div>
 </ul>
 </div>
