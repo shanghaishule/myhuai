@@ -24,6 +24,8 @@ define('HTML_PATH', PIN_DATA_PATH . 'html/');
 /* DEBUG开关*/
 define('APP_DEBUG', true);
 
+/* 去掉slimstat的统计 by zcb 20141115
 @include_once("../slimstat/inc.stats.php");
+*/
 
 require("./_core/setup.php");

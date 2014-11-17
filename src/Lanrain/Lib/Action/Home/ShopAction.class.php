@@ -96,10 +96,10 @@ class ShopAction extends BaseAction{
 	public function server(){//便民服务
 		$this->display();
 	}
-	public function chanye(){//临港产业城
+	public function chanye(){//产业城
 		$this->display();
 	}
-    Public function chanye_detail(){//临港产业城5大模块
+    Public function chanye_detail(){//产业城5大模块
     	$this->display();
     }		
 	public function weixing(){//澄西卫星城
