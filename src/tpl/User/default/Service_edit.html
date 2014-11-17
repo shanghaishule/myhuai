@@ -4,24 +4,15 @@
 <script src="{lanrain::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
 <script src="{lanrain::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
 <script src="{lanrain::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
-<script>
-var editor;
-KindEditor.ready(function(K) {
-	editor = K.create('#info',{
-	resizeType : 1,
-	allowPreviewEmoticons : false,
-	allowImageUpload : true,
-	items : [
-	'source','undo','clearhtml','hr','fontsize','forecolor','hilitecolor',
-	'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-	'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
-	});
-});
-</script>
 <script type="text/javascript">
 		KindEditor.ready(function(K){
 		var editor = K.editor({
 			allowFileManager:true
+		});
+		
+		K.create('#info', {
+			uploadJson : '{lanrain::STATICS}/kindeditor/php/upload_json2.php',
+			afterBlur: function(){this.sync();}
 		});
 		
 		K('#upload').click(function() {
@@ -264,7 +255,7 @@ KindEditor.ready(function(K) {
 		</tr>
 		<TR>
 			<TH></TH>
-			<TD><button type="button" onclick="deal_stock()"  name="button"  class="btnGreen left" >保存</button>
+			<TD><button type="button" onclick="deal_stock()" name="button" class="btnGreen left" >保存</button>
 	  		<div class="clr"></div>
 	  		</TD>
 		</TR>

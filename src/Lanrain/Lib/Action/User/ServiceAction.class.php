@@ -31,8 +31,7 @@ class ServiceAction extends UserAction{
 		
 		//提交，有id则为编辑，无id则为新增
 		if (IS_POST) {
-			dump($_POST);die();
-			
+			//dump($_POST);die;
 			//获取数据
 			if (false === $data = $this->_mod->create()) {
 				$this->error($this->_mod->getError());
@@ -89,7 +88,7 @@ class ServiceAction extends UserAction{
 						M('item_img')->add($_img);
 						//从导入表里删除
 						M('item_taobao')->where(array('id'=>$dataid))->delete();
-						$this->success('成功！', U('Service/index'));
+						$this->success('成功！',U('Service/index'));
 					} else {
 						$this->error('失败！');
 					}
@@ -108,7 +107,7 @@ class ServiceAction extends UserAction{
 							$_img['url'] = $oneimg;
 							M('item_img')->add($_img);
 						}
-						$this->success('成功！', U('Service/index'));
+						$this->success('成功！',U('Service/index'));
 					} else {
 						$this->error('失败！');
 					}
@@ -171,7 +170,6 @@ class ServiceAction extends UserAction{
 	  	  	if(!empty($res2) && $res){
 	  	  		$res[$key]['c'][$keys]['d'] = $res2;
 	  	  	}
-	  	  	
 	  	  }
 	  }
 	  //dump($res);

@@ -5,9 +5,12 @@
 <script src="{lanrain::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
 <script src="{lanrain::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
 <script type="text/javascript">
-	var editor;
 	KindEditor.ready(function(K){
-        
+		
+		var editor = K.editor({
+			allowFileManager:true
+		});
+		
 		K('#upload').click(function() {
 			editor.loadPlugin('image', function() {
 				editor.plugin.imageDialog({
@@ -24,14 +27,9 @@
 			});
 		});
 		
-		editor = K.create('#info', {
-			resizeType : 1,
-			allowPreviewEmoticons : false,
-			allowImageUpload : true,
-			items : [
-			'source','undo','clearhtml','hr','fontsize','forecolor','hilitecolor',
-			'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-			'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+		K.create('#info', {
+				uploadJson : '{lanrain::STATICS}/kindeditor/php/upload_json2.php',
+				afterBlur: function(){this.sync();}
 			});
 		
 		
@@ -135,7 +133,7 @@
 <div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
 	<div class="cLineB"><h4>资讯{lanrain:$myaction}</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
 	<div class="msgWrap">
-	<form id="info_form" class="form" method="post" action="{lanrain::U('Service/edit')}" enctype="multipart/form-data">
+	<form id="info_form" class="form" method="post" action="{lanrain::U('Article/edit')}" enctype="multipart/form-data">
 	<input type="hidden" name="id" value="{lanrain:$info.id}" />
 	<input type="hidden" name="brand" value="0" />
 	<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
@@ -188,48 +186,6 @@
 				<span class="red">请上传250x350(px)的图片</span>
 			</td>
 		</tr>
-		<tr>
-			<th>服务详情页图片1：</th>
-			<td>
-				<input type='text' class='px' id='pic1' value='{lanrain:$info.imgs.img1}' name='img1' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload1' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
-				请上传250x250(px)的图片
-			</td>
-		</tr>
-		<tr>
-			<th>服务详情页图片2：</th>
-			<td>
-				<input type='text' class='px' id='pic2' value='{lanrain:$info.imgs.img2}' name='img2' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload2' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
-				请上传250x250(px)的图片
-			</td>
-		</tr>
-		<tr>
-			<th>服务详情页图片3：</th>
-			<td>
-				<input type='text' class='px' id='pic3' value='{lanrain:$info.imgs.img3}' name='img3' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload3' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
-				请上传250x250(px)的图片
-			</td>
-		</tr>
-		<tr>
-			<th>服务详情页图片4：</th>
-			<td>
-				<input type='text' class='px' id='pic4' value='{lanrain:$info.imgs.img4}' name='img4' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload4' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
-				请上传250x250(px)的图片
-			</td>
-		</tr>
-		<tr>
-			<th>服务详情页图片5：</th>
-			<td>
-				<input type='text' class='px' id='pic5' value='{lanrain:$info.imgs.img5}' name='img5' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload5' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
-				请上传250x250(px)的图片
-			</td>
-		</tr>
-		<tr>
-			<th>服务详情页图片6：</th>
-			<td>
-				<input type='text' class='px' id='pic6' value='{lanrain:$info.imgs.img6}' name='img6' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload6' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
-				请上传250x250(px)的图片
-			</td>
-		</tr>
 		
 		<tr>
 			<th>是否推荐：</th>
@@ -256,7 +212,7 @@
     <script type="text/javascript">
     $(function(){
         $(".all_category").each(function(){
-            var url = "{lanrain::U('Service/get_category')}";
+            var url = "{lanrain::U('Article/get_category')}";
             var areaJson="";
             var temp_html="";
             var oProvince = $(this).find(".oneCategory");

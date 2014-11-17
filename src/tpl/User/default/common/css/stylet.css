@@ -39,7 +39,8 @@ ul{
 	height: 53px;
 	margin:0px auto;
 	padding:0px;
-	background-image:url(../images/Nav_bg.png);
+	/*background-image:url(../images/Nav_bg.png);*/
+	background:#006835;
 	background-repeat:repeat-x;
 }
 #top img{
@@ -59,19 +60,19 @@ ul{
 */	line-height:25px;
 	display:list-item;
 	font-size:16px;
-	background-image:url(../images/Nav_Line.png);
+	/*background-image:url(../images/Nav_Line.png);*/
 	background-repeat:no-repeat;
 	background-position:left;
 }
 #top a:hover{
 	color:#fff;
-	background:#242424;
-	background-image:url(../images/Nav_Line.png);
+	background:#A2EFA6;
+	/*background-image:url(../images/Nav_Line.png);*/
 	background-repeat:no-repeat;
 	background-position:left;
 }
 #top a.line{
-	background-image:url(../images/Nav_Line.png);
+	/*background-image:url(../images/Nav_Line.png);*/
 	background-repeat:no-repeat;
 	width:2px;
 	height:51px;
