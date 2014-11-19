@@ -12,11 +12,12 @@ class Member_userAction extends UserAction{
 		foreach($lists as $key => $val){
 			$res = $this->_itemO ->field('id,add_time,address')->where(array("userId"=>$val['id']))->order('add_time DESC')->find();
 			//总消费金额
-			$CountPrice = $this->_itemO -> where(array("userId"=>$val['id']))->sum('order_sumPrice');			
+			$CountPrice = $this->_itemO -> where(array("userId"=>$val['id']))->sum('order_sumPrice');
+			$lists[$key]['sumPrice'] = $CountPrice;
 			$lists[$key]['add_time'] = $res['add_time'];
 			$lists[$key]['address'] = $res['address'];
+			
 		}
-		$lists[$key]['sumPrice'] = $CountPrice;
 		//dump($lists);die;
 		$this->assign("list",$lists);
 		$this->display();
