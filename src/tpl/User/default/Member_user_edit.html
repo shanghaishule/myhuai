@@ -1,0 +1,58 @@
+<include file="Public:head"/>
+<script>
+var phoneflag=false;
+var pwdflag=false;
+function checkbtn(){	
+	if(phoneflag && pwdflag){
+		$("#info_form").submit();
+	}
+}
+</script>
+<div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
+	<div class="cLineB"><h4>会员{lanrain:$myaction}</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
+	<div class="msgWrap">
+	<form id="info_form" class="form" method="post" action="{lanrain::U('Member_user/edit')}" enctype="multipart/form-data">
+	<input type="hidden" name="id" value="{lanrain:$info.id}" />
+	<input type="hidden" name="brand" value="0" />
+	<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+	<TBODY>
+			
+		<tr>
+			<th>手机号：</th>
+			<td><input type="text" name="phone" maxlength="11" class="px" onkeypress="intOnly()"  onblur="if(/\d{11}/gi.test(this.value)?true:false){phoneflag=true;return true;}else{alert('请输入正确的手机号');}"/></td>
+		</tr>		
+		<tr>
+			<th>密　码：</th>
+			<td><input type="password" name="password" class="px" maxlength="16" onblur="if(this.value.length <6){alert('密码长度至少6位')}else{pwdflag=true;return true;}"/></td>
+		</tr>
+		
+		<tr>
+			<th>是否立即启用生效：</th>
+			<td>
+				<input type="checkbox" name="status" />是
+			</td>
+		</tr>
+		<TR>
+			<TH></TH>
+			<TD><button type="button" onClick="checkbtn()" name="button"  class="btnGreen left" >保存</button>
+	  		<div class="clr"></div>
+	  		</TD>
+		</TR>
+	</TBODY>
+	</TABLE>
+	</form>
+	</div> 
+</div>
+<script>
+//只允许输入数字,左右移动键,删除键,回车键
+//author:larger
+function intOnly(){
+var codeNum=event.keyCode;
+if(codeNum==8||codeNum==37||codeNum==39||(codeNum>=48&&codeNum<=57)){
+  event.returnValue=codeNum;
+}else{
+  event.returnValue=false;
+}
+}
+</script>
+<include file="Public:footer"/>
