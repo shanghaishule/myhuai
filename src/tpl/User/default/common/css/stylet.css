@@ -563,6 +563,7 @@ ul{
 
 .fl{float:left;}
 .b-keywords{margin-left:100px;border:1px solid #ccc;width:200px;}
+.s-keywords{margin-left:10px;border:1px solid #ccc;width:400px;}
 .b-h{height:30px;}
 .k-select{margin-left:5px;}
 .btn{margin-left:10px;}
@@ -570,3 +571,5 @@ ul{
 .footactions a:hover{color:#000000}
 .footactions{text-align:center}
 
+.msgWrap{max-height:600px;over-flow:auto;}
+.s-title{margin-left:150px}

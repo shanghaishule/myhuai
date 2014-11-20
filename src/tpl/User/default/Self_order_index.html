@@ -1,0 +1,37 @@
+<include file="Public:head"/>
+<script>
+function btnDespose(type){
+	this.form2.action = "/index.php?g=User&m=Member_user&a="+type;
+	this.form2.submit();
+}
+</script>
+<div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
+<div class="cLineC" style="line-height: 32px;text-align:center;">
+	<form name="form1" id="form1" action="{lanrain::U('Member_user/search')}" method="post">
+	  <span class="fl s-title">商品/服务搜索:</span>
+	  <input type="text" name="keywords" class="s-keywords fl b-h" placeholder="请输入分类名称，商品名称，服务名称，资讯名称" value="{lanrain:$keyword}"/>
+	  　<input type="submit" name="btn" value="快速寻找" class="btnGrayS vm bigbtn fl btn" />
+	</form>
+</div>
+<div class="msgWrap form contab">
+<div class="bdrcontent">
+    
+</div>
+
+</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$("#selAll").click(function(){
+	   $("input[name='sel[]']").each(function(){
+		   if (this.checked) {
+               this.checked = false;
+           }
+           else {
+               this.checked = true;
+           }
+	   });
+	});
+});
+</script>
+<include file="Public:footer"/>

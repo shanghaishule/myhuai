@@ -18,3 +18,13 @@ INSERT INTO `tp_function` ( `gid`, `usenum`, `name`, `funname`, `actname`, `info
 ALTER TABLE  `tp_user` CHANGE  `phone`  `phone` VARCHAR( 20 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;
 
 ALTER TABLE  `tp_user` CHANGE  `registerTime`  `registerTime` INT( 10 ) UNSIGNED NOT NULL COMMENT  '注册时间';
+
+
+---2014-11-20---
+
+--添加自助下单模块--
+INSERT INTO `myhuai`.`tp_function` (`gid`, `usenum`, `name`, `funname`, `actname`, `info`, `isserve`, `status`, `belonguser`, `funtype`, `funcolor`, `havenext`) VALUES ('2', '0', '自助下单系统', 'Self_order', 'index', '自助下单系统', '1', '1', '1', '自助下单', '', '否');
+
+
+
+

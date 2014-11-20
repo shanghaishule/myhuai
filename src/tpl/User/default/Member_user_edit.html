@@ -16,20 +16,25 @@ function checkbtn(){
 	<input type="hidden" name="brand" value="0" />
 	<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
 	<TBODY>
-			
+		<if condition="$info.id neq ''">
+		<tr>
+			<th>会员名：</th>
+			<td><input type="text" placeholder="真实姓名" name="username" maxlength="25" class="px" value="{lanrain:$info.username}"/></td>
+		</tr>
+		</if>			
 		<tr>
 			<th>手机号：</th>
-			<td><input type="text" name="phone" maxlength="11" class="px" onkeypress="intOnly()"  onblur="if(/\d{11}/gi.test(this.value)?true:false){phoneflag=true;return true;}else{alert('请输入正确的手机号');}"/></td>
+			<td><input type="text" name="phone" placeholder="手机号" maxlength="11" value="{lanrain:$info.phone}" class="px" onkeypress="intOnly()"  onblur="if(/\d{11}/gi.test(this.value)?true:false){phoneflag=true;return true;}else{alert('请输入正确的手机号');}"/></td>
 		</tr>		
 		<tr>
 			<th>密　码：</th>
-			<td><input type="password" name="password" class="px" maxlength="16" onblur="if(this.value.length <6){alert('密码长度至少6位')}else{pwdflag=true;return true;}"/></td>
+			<td><input type="password" placeholder="长度6-16位" name="password" class="px" value="{lanrain:$info.password}" maxlength="16" onblur="if(this.value.length <6){alert('密码长度至少6位')}else{pwdflag=true;return true;}"/></td>
 		</tr>
 		
 		<tr>
 			<th>是否立即启用生效：</th>
 			<td>
-				<input type="checkbox" name="status" />是
+				<input type="checkbox" name="status" <eq name="info['status']" value="1">checked</eq>/>是
 			</td>
 		</tr>
 		<TR>
