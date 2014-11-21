@@ -624,7 +624,7 @@ function sum_stock(){
                 var n = oProvince.get(0).selectedIndex;
                 $.each(areaJson[n].c,function(i,city){
                 	var flag='';
-                	if(city.id == {lanrain:$arrCate[1]} || city.id == {lanrain:$arrCate[0]}){
+                	if(city.id == "{lanrain:$arrCate[1]}" || city.id == "{lanrain:$arrCate[0]}"){
                 		flag = "selected=\"selected\"";
                 	}                	
                     temp_html+="<option value='"+city.id+"' "+flag+">"+city.catname+"</option>";
@@ -643,7 +643,7 @@ function sum_stock(){
                     oDistrict.css("display","inline");
                     $.each(areaJson[m].c[n].d,function(i,district){
                     	var flag='';
-                    	if(district.id == {lanrain:$arrCate[0]}){
+                    	if(district.id == "{lanrain:$arrCate[0]}"){
                     		flag = "selected=\"selected\"";
                     	}                    	
                         temp_html+="<option value='"+district.id+"' "+flag+">"+district.catname+"</option>";

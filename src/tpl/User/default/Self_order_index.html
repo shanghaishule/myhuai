@@ -9,29 +9,111 @@ function btnDespose(type){
 <div class="cLineC" style="line-height: 32px;text-align:center;">
 	<form name="form1" id="form1" action="{lanrain::U('Member_user/search')}" method="post">
 	  <span class="fl s-title">商品/服务搜索:</span>
-	  <input type="text" name="keywords" class="s-keywords fl b-h" placeholder="请输入分类名称，商品名称，服务名称，资讯名称" value="{lanrain:$keyword}"/>
+	  <input type="text" name="keywords" class="s-keywords fl b-h" placeholder="请输入分类名称，服务名称，资讯名称" value="{lanrain:$keyword}"/>
 	  　<input type="submit" name="btn" value="快速寻找" class="btnGrayS vm bigbtn fl btn" />
 	</form>
 </div>
-<div class="msgWrap form contab">
-<div class="bdrcontent">
-    
+<div class="self-content">
+  <div id="cate-cascading">
+	  <ol id="cate-tree">
+	  	<li class="s-first-cat">
+  		   <div class="s-tree">	
+	  			<ul class="list-box s-cat-one"></ul>
+  			</div>
+	  	</li>
+	  	<li class="s-first-cat">
+  		   <div class="s-tree">	
+	  			<ul class="list-box s-cat-two"></ul>
+  			</div>
+	  	</li>
+	  	<li class="s-first-cat">
+  		   <div class="s-tree">	
+	  			<ul class="list-box s-cat-three"></ul>
+  			</div>
+	  	</li>	  		  	
+	  </ol>
+  </div>
+</div>
 </div>
 
-</div>
-</div>
-<script type="text/javascript">
-$(function(){
-	$("#selAll").click(function(){
-	   $("input[name='sel[]']").each(function(){
-		   if (this.checked) {
-               this.checked = false;
-           }
-           else {
-               this.checked = true;
-           }
-	   });
-	});
-});
-</script>
+    <script>
+    $(function(){
+       //$("#cate-tree").each(function(){
+            var url = "{lanrain::U('Service/get_category')}";
+            var areaJson="";
+            var temp_html="";
+            var oProvince = $("#cate-tree").find(".s-cat-one");
+            var oCity = $("#cate-tree").find(".s-cat-two");
+            var oDistrict = $("#cate-tree").find(".s-cat-three");
+            //初始化一级分类
+            var province = function(){
+            	temp_html = "";
+                $.each(areaJson,function(i,province){
+                	var flag='';
+                	i==0?flag='cc-selected':'';
+                    temp_html+="<li class='treeitem "+flag+"'>"+province.catname+"</li>";
+                });
+                oProvince.html(temp_html);
+                city();
+            };
+            //赋值二级分类
+            var city = function(){
+                temp_html = ""; 
+                var n = $('.s-cat-one > li.cc-selected').index();
+                $.each(areaJson[n].c,function(i,city){ 
+                	var flag='';
+                	i==0?flag='cc-selected':'';
+                    temp_html+="<li class='treeitem "+flag+"'>"+city.catname+"</li>";
+                });
+                oCity.html(temp_html);
+                district();
+            };
+            //赋值三级分类
+            var district = function(){
+                temp_html = ""; 
+                var m = $('.s-cat-one > li.cc-selected').index();
+                var n = $('.s-cat-two > li.cc-selected').index();
+                if(typeof(areaJson[m].c[n].d) == "undefined"){
+                    oDistrict.html('').css("display","none");
+                }else{
+                    oDistrict.css("display","block");
+                    $.each(areaJson[m].c[n].d,function(i,district){
+                    	var flag='';
+                    	i==0?flag='cc-selected':'';                   	
+                        temp_html+="<li class='treeitem "+flag+"'>"+district.catname+"</li>";
+                    });
+                    oDistrict.html(temp_html);
+                };
+            };
+            
+            var CateChange = function(){
+            	$('.s-cat-one > li.treeitem').bind('click',function(){
+                	$('.s-cat-one > li.cc-selected').removeClass("cc-selected");
+                	$(this).addClass("cc-selected");
+                	city();
+                	test();
+            	});
+           	           	
+            };
+            var test = function(){
+            	$('.s-cat-two > li.treeitem').bind('click',function(){
+                	$('.s-cat-two > li.cc-selected').removeClass("cc-selected");
+                	$(this).addClass("cc-selected");
+                	district();
+            	}); 
+            };
+
+            //获取json数据
+            $.getJSON(url,function(data){
+                areaJson = eval(data);
+                province();
+                CateChange();
+            });
+
+       // });
+
+    });
+    
+    </script>
+
 <include file="Public:footer"/>

@@ -25,6 +25,13 @@ ALTER TABLE  `tp_user` CHANGE  `registerTime`  `registerTime` INT( 10 ) UNSIGNED
 --添加自助下单模块--
 INSERT INTO `myhuai`.`tp_function` (`gid`, `usenum`, `name`, `funname`, `actname`, `info`, `isserve`, `status`, `belonguser`, `funtype`, `funcolor`, `havenext`) VALUES ('2', '0', '自助下单系统', 'Self_order', 'index', '自助下单系统', '1', '1', '1', '自助下单', '', '否');
 
+---2014-11-21---
+
+--1、删除操作人这个字段--
+ALTER TABLE `tp_item_order` DROP `personnel`;
+
+
+
 
 
 
