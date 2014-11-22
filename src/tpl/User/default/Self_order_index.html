@@ -30,7 +30,12 @@ function btnDespose(type){
   		   <div class="s-tree">	
 	  			<ul class="list-box s-cat-three"></ul>
   			</div>
-	  	</li>	  		  	
+	  	</li>	
+	  	<li class="s-first-cat">
+  		   <div class="s-tree">	
+	  			<ul class="list-box s-cat-four"></ul>
+  			</div>
+	  	</li>	  	  		  	
 	  </ol>
   </div>
 </div>
@@ -38,8 +43,8 @@ function btnDespose(type){
 
     <script>
     $(function(){
-       //$("#cate-tree").each(function(){
-            var url = "{lanrain::U('Service/get_category')}";
+       $("#cate-tree").each(function(){
+            var url = "{lanrain::U('Self_order/get_category')}";
             var areaJson="";
             var temp_html="";
             var oProvince = $("#cate-tree").find(".s-cat-one");
@@ -74,12 +79,12 @@ function btnDespose(type){
                 var m = $('.s-cat-one > li.cc-selected').index();
                 var n = $('.s-cat-two > li.cc-selected').index();
                 if(typeof(areaJson[m].c[n].d) == "undefined"){
-                    oDistrict.html('').css("display","none");
+                    oDistrict.html('').parent().parent().css("display","none");
                 }else{
-                    oDistrict.css("display","block");
+                    oDistrict.parent().parent().css("display","block");
                     $.each(areaJson[m].c[n].d,function(i,district){
                     	var flag='';
-                    	i==0?flag='cc-selected':'';                   	
+                    	i==0?flag='cc-selected':'';                    	
                         temp_html+="<li class='treeitem "+flag+"'>"+district.catname+"</li>";
                     });
                     oDistrict.html(temp_html);
@@ -91,11 +96,11 @@ function btnDespose(type){
                 	$('.s-cat-one > li.cc-selected').removeClass("cc-selected");
                 	$(this).addClass("cc-selected");
                 	city();
-                	test();
+                	twoCateChange();
             	});
            	           	
             };
-            var test = function(){
+            var twoCateChange = function(){
             	$('.s-cat-two > li.treeitem').bind('click',function(){
                 	$('.s-cat-two > li.cc-selected').removeClass("cc-selected");
                 	$(this).addClass("cc-selected");
@@ -110,7 +115,7 @@ function btnDespose(type){
                 CateChange();
             });
 
-       // });
+        });
 
     });
     

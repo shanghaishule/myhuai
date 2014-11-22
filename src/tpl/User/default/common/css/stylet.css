@@ -571,13 +571,13 @@ ul{
 .footactions a:hover{color:#000000}
 .footactions{text-align:center}
 
-.msgWrap{max-height:600px;over-flow:auto;}
+.msgWrap{overflow:auto;}
 .s-title{margin-left:150px}
 .self-content{height:281px;border:1px solid #cccccc;padding:20px 20px 0 20px;}
 #cate-cascading{height:280px;border:1px solid #cccccc;}
 .s-first-cat{float: left;
 width: 223px;
-border-right: 2px solid #D5D5D5;
+border-right:2px solid #D5D5D5;
 background: #fff;height:100%;}
 #cate-tree{height:100%;}
 .s-tree{overflow-x: hidden;height:100%;
