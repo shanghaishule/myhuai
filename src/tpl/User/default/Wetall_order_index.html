@@ -3,14 +3,26 @@
 <script type="text/javascript" src="{lanrain::RES}/css/diymen/tipswindown.js"></script> 
 <script type="text/javascript">
 function openpage(str) {
-	tipsWindown("修改订单金额","iframe:"+str,"500","400","true","","true","leotheme");
+	tipsWindown("修改订单金额","iframe:"+str,"500","100","true","","true","leotheme");
+}
+function btnDespose(type){
+	this.form2.action = "./index.php?g=User&m=Wetall_order&a="+type;
+	//alert(this.form2.action);
+	this.form2.submit();
 }
 </script>
-
+<script src="{lanrain::RES}/js/date/WdatePicker.js"></script>
 <div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
 <div class="cLineC" style="line-height: 32px;">
 	<form id="info_form" class="form" method="post" action="{lanrain::U('Wetall_order/index')}">
-	订单号：<input type="text" name="orderId" class="px" value="{lanrain:$searcharr.orderId}">
+	订单编号：<input type="text" name="orderId" class="px" value="{lanrain:$searcharr.orderId}">
+	
+	下单时间：
+	<input type="text" class="px" value="{lanrain:$searcharr['start_time']}" name="start_time" onClick="WdatePicker()" />                
+	到
+	<input type="text" class="px" value="{lanrain:$searcharr['end_time']}" name="end_time" onClick="WdatePicker()"  /> 
+
+	<br/>
 	订单状态：
 	<select name="status" class="pt">
 	<option value="" <if condition="$searcharr.status eq '' ">selected="selected"</if> >--全部--</option>
@@ -18,6 +30,13 @@ function openpage(str) {
 	<option value="{lanrain:$key}" <eq name="key" value="$searcharr['status']">selected="selected"</eq> >{lanrain:$vo}</option>
 	</volist>
 	</select>
+	订单来源：
+	<select name="orderSource" class="pt">
+	<option value="all" <if condition="$searcharr.orderSource eq 'all' ">selected="selected"</if> >--全部--</option>
+	<option value="0" <if condition="$searcharr.orderSource eq '0' ">selected="selected"</if> >用户</option>
+	<option value="1" <if condition="$searcharr.orderSource eq '1' ">selected="selected"</if> >客服</option>
+	</select>
+	
 	
 	<button type="submit"  name="button"  class="btnGreen right" >模糊查询</button>
 	</form>
@@ -25,9 +44,12 @@ function openpage(str) {
 <div class="msgWrap form">
 <div class="bdrcontent">
 <div id="div_ptype">
+<form name="form2" id="form2" action="" method="post">
 <table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
 <thead>
 <tr>
+<th style="width:25px"><input type="checkbox" name="selAll" id="selAll" />全选</th>
+<th>订单类型</th>
 <th>订单编号&状态</th>
 <th>订单金额</th>
 <th>收货人&电话</th>
@@ -38,6 +60,8 @@ function openpage(str) {
 </thead>
 <volist name="list" id="val">
 <tr>
+<td align="center"><input type="checkbox" name="sel[]" id="sel_list_{lanrain:$val.id}" value="{lanrain:$val.id}"/></td>
+<td align="center"><eq name="val.orderSource" value="0">用户<else/>客服<br/>{lanrain:$val.userName}</eq></td>
 <td align="center">{lanrain:$val.orderId}<br/>{lanrain:$order_status[$val['status']]}</td>
 <td align="center">¥{lanrain:$val.order_sumPrice}</td>
 <td align="center">{lanrain:$val.address_name}({lanrain:$val.userName})<br/>{lanrain:$val.mobile}</td>
@@ -52,12 +76,42 @@ function openpage(str) {
 </tr>
 </volist>
 </table>
+</form>
 </div>
 </div>
+
+<div class="footactions" style="padding-left:10px">
+   <table>
+   		<thead>
+   			<tr>
+   				<th>
+   				  <a class="btnGrayS vm smallbtn" href="javascript:btnDespose('delAll')">所选删除</a>
+   				  <a class="btnGrayS vm smallbtn" href="javascript:btnDespose('statusTo2')">设为已付款</a>
+   				  <a class="btnGrayS vm smallbtn" href="javascript:btnDespose('statusTo4')">设为已完成</a>
+   				</th>
+   			</tr>
+   		</thead>
+   </table>
+</div>
+
 <div class="footactions" style="padding-left:10px">
 	<div class="pages">{lanrain:$page}</div>
 </div>
 </div>
 </div>
-
+<script type="text/javascript">
+$(function(){
+	$("#selAll").click(function(){
+		if(this.checked){
+			$("input[name='sel[]']").each(function(){
+		         this.checked = true;
+			});
+		} else {
+			$("input[name='sel[]']").each(function(){
+		         this.checked = false;
+			});
+        }
+	});
+});
+</script>
 <include file="Public:footer"/>

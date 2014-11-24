@@ -3,7 +3,7 @@ class Wetall_orderAction extends UserAction{
 	public function _initialize() {
 		parent::_initialize();
 		$this->_mod = D('item_order');
-        $order_status=array(1=>'待付款',2=>'待发货',3=>'待收货',4=>'完成',5=>'关闭');
+        $order_status=array(1=>'已下单待付款',2=>'已付款待发货',3=>'已发货待收货',4=>'已完成',5=>'已关闭');
         $this->assign('order_status',$order_status);
         $supportmetho=array(1=>'支付宝个人转账支付',2=>'货到付款',3=>'银联支付',4=>'微信支付',5=>'支付宝商家即时到帐支付');
         $this->assign('supportmetho',$supportmetho);
@@ -16,7 +16,7 @@ class Wetall_orderAction extends UserAction{
 	public function index(){
 		$tokenTall = $this->getTokenTall();
 		$map = array();
-		$map['tokenTall'] = $tokenTall;
+		//$map['tokenTall'] = $tokenTall;
 		
 		if(IS_POST){
 			$orderId = $this->_post('orderId');
@@ -32,6 +32,27 @@ class Wetall_orderAction extends UserAction{
 				$map['status'] = $status;
 			}
 			$search['status'] = $status;
+			
+			$orderSource = $this->_post('orderSource');
+			if ($orderSource == "all") {
+				$map['orderSource'] = array('egt', '0');
+			}else{
+				$map['orderSource'] = $orderSource;
+			}
+			$search['orderSource'] = $orderSource;
+			
+			$start_time = $this->_post('start_time');
+			if ($start_time != "") {
+				$map['add_time'] = array('egt',strtotime($start_time));
+			}
+			$search['start_time'] = $start_time;
+			
+			$end_time = $this->_post('end_time');
+			if ($end_time != "") {
+				$map['add_time'] = array('elt',strtotime($end_time));
+			}
+			$search['end_time'] = $end_time;
+				
 			//dump($map);exit;
 			
 		}else{
@@ -98,7 +119,34 @@ class Wetall_orderAction extends UserAction{
 			$this->error('找不到这个订单！');
 		}
 	}
-	
+	//批量删除
+	public function delAll(){
+		$ids =  $_REQUEST["sel"];
+		//dump($ids);exit;
+		if($ids){
+			if(is_array($ids)){
+				$where = 'id in('.implode(',',$ids).')';
+			}else{
+				$where = 'id='.$ids;
+			}
+			
+			$items = $this->_mod->where($where)->select();
+			if ($items) {
+				foreach ($items as $item){
+					M('order_detail')->where(array('orderId'=>$item['orderId']))->delete();
+					M('order_merge')->where(array('orderid'=>$item['orderId']))->delete();
+					$this->_mod->where(array('orderId'=>$item['orderId']))->delete();
+				}
+				$this->success('删除成功！');
+			} else {
+				$this->error('删除失败！');
+			}
+			
+		}else{
+			$this->error("请先选中要删除的订单！");
+		}
+	}
+
 	public function status()
 	{
 		$orderId= $this->_get('orderId', 'trim');
@@ -137,6 +185,69 @@ class Wetall_orderAction extends UserAction{
 			}
 		}
 	}
+	
+	//批量已付款
+	public function statusTo2(){
+		$ids =  $_REQUEST["sel"];
+		//dump($ids);exit;
+		if($ids){
+			if(is_array($ids)){
+				$where = 'id in('.implode(',',$ids).')';
+			}else{
+				$where = 'id='.$ids;
+			}
+			
+			$items = $this->_mod->where($where)->select();
+			if ($items) {
+				//dump($items);exit;
+				foreach ($items as $item){
+					//前提是订单状态为未付款
+					if($item['status']==1){
+						$data['status']=2;
+						$this->_mod->where("orderId='".$item['orderId']."'")->save($data);
+					}
+				}
+				$this->success('修改成功！');
+			} else {
+				$this->error('修改失败！');
+			}
+				
+		}else{
+			$this->error("请先选中订单！");
+		}
+	}
+
+	//批量已完成
+	public function statusTo4(){
+		$ids =  $_REQUEST["sel"];
+		//dump($ids);exit;
+		if($ids){
+			if(is_array($ids)){
+				$where = 'id in('.implode(',',$ids).')';
+			}else{
+				$where = 'id='.$ids;
+			}
+				
+			$items = $this->_mod->where($where)->select();
+			if ($items) {
+				//dump($items);exit;
+				foreach ($items as $item){
+					//前提是订单状态为已发货
+					if($item['status']==3){
+						$data['status']=4;
+						$this->_mod->where("orderId='".$item['orderId']."'")->save($data);
+					}
+				}
+				$this->success('修改成功！');
+			} else {
+				$this->error('修改失败！');
+			}
+	
+		}else{
+			$this->error("请先选中订单！");
+		}
+	}
+	
 	
 	public function fahuo()
 	{

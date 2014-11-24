@@ -31,10 +31,10 @@
 <tr>
 <td align="center">配送方式：{lanrain:$freetype[$info['freetype']]}</td>
 <td align="center">运送费用：{lanrain:$info.freeprice}</td>
-<td align="center">配送快递：{lanrain:$info.userfree}</td>
+<td align="center">配送方：{lanrain:$info.userfree}</td>
 </tr>
 <tr>
-<td align="center">快递单号：{lanrain:$info.freecode}</td>
+<td align="center">配送信息：{lanrain:$info.freecode}</td>
 <td align="center">出库时间：<if condition="$info.fahuo_time neq ''">{lanrain:$info.fahuo_time|date='Y/m/d H:i:s',###}</if></td>
 <td align="center">发货地址：<if condition="$info.fahuoaddress neq ''">{lanrain:$fahuoaddress.contacts}（{lanrain:$fahuoaddress.mobile}）{lanrain:$fahuoaddress.Province} {lanrain:$fahuoaddress.City} {lanrain:$fahuoaddress.Area} {lanrain:$fahuoaddress.address}<if condition="$fahuoaddress.postcode neq ''">（邮编：{lanrain:$fahuoaddress.postcode}）</if></if></td>
 </tr>
@@ -57,11 +57,11 @@
 <table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
 <thead>
 <tr>
-<th colspan="5">商品信息</th>
+<th colspan="5">明细项目信息</th>
 </tr>
 <tr>
-<th>商品图片</th>
-<th>商品名称</th>
+<th>项目图片</th>
+<th>项目名称</th>
 <th>单价</th>
 <th>数量</th>
 <th>小计</th>
