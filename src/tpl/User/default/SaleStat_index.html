@@ -1,0 +1,60 @@
+<include file="Public:head"/>
+<script src="{lanrain::RES}/js/date/WdatePicker.js"></script>
+<div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
+
+<div id="content" style="border:2px solid #ddd; background:#fff; border-radius:10px; padding:10px; overflow:hidden; margin:10px 0px;">
+<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+<thead>
+<tr>
+<th colspan="4">商城提醒</th>
+</tr>
+</thead>
+<tr>
+<td align="center">订单提醒：</td>
+<td align="center">
+<a href="{lanrain::U('Wetall_order/index',array('status'=>1, 'tokenTall'=>$tokenTall))}">待付款订单 [<span class="red">{lanrain:$count.fukuan}</span>]</a>
+<a href="{lanrain::U('Wetall_order/index',array('status'=>2, 'tokenTall'=>$tokenTall))}">待发货订单 [<span class="red">{lanrain:$count.fahuo}</span>]</a>
+<a href="{lanrain::U('Wetall_order/index',array('status'=>3, 'tokenTall'=>$tokenTall))}">待收货订单 [<span class="red">{lanrain:$count.yfahuo}</span>]</a>
+<a href="{lanrain::U('Wetall_order/index',array('status'=>4, 'tokenTall'=>$tokenTall))}">已完成订单 [<span class="red">{lanrain:$count.end}</span>]</a>
+</td>
+</tr>
+<tr>
+<td align="center">商品信息：</td>
+<td align="center">
+<a href="{lanrain::U('Wetall_item/index',array('status'=>1,'tokenTall'=>$tokenTall))}">出售中商品 [<span class="red">{lanrain:$count.buycount}</span>]</a>
+</td>
+</tr>
+<tr>
+<td align="center">财务信息：</td>
+<td align="center">
+已成交总计 [<span class="red">￥{lanrain:$count.totalamt}</span>]
+</td>
+</tr>
+</table>
+</div>
+
+<div style="border:2px solid #ddd; background:#fff; border-radius:10px; padding:10px; overflow:hidden; margin:10px 0px;">
+<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+<thead>
+<tr>
+<th colspan="4">公告</th>
+</tr>
+</thead>
+<tr>
+<th>标题</th>
+<th>内容</th>
+<th>发布时间</th>
+</tr>
+
+<volist name="info_notice" id="val">
+<tr>
+<td align="center">{lanrain:$val.title}</td>
+<td align="center" style="width:500px">{lanrain:$val.content}</td>
+<td align="center">{lanrain:$val.ptime|date='Y-m-d H:i:s',###}</td>
+</tr>
+</volist>
+</table>
+</div>
+</div>
+
+<include file="Public:footer"/>
