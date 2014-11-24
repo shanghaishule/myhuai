@@ -4,17 +4,37 @@ function btnDespose(type){
 	this.form2.action = "/index.php?g=User&m=Member_user&a="+type;
 	this.form2.submit();
 }
+$(function(){
+	$(".cat-item-list > ul >li").click(function(){
+		$('.cat-item-list > ul >li').removeClass("cc-selected");
+    	$(this).addClass("cc-selected");		
+	});
+	$(".cat-item-list > ul >li").dblclick(function(){
+		var str= $(this).find('span').text();
+		var aaa = str.split(" >> ");
+		alert(aaa);
+	});
+});
 </script>
 <div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
 <div class="cLineC" style="line-height: 32px;text-align:center;">
-	<form name="form1" id="form1" action="{lanrain::U('Member_user/search')}" method="post">
+	<form name="form1" id="form1" action="{lanrain::U('Self_order/search')}" method="post">
 	  <span class="fl s-title">商品/服务搜索:</span>
-	  <input type="text" name="keywords" class="s-keywords fl b-h" placeholder="请输入分类名称，服务名称，资讯名称" value="{lanrain:$keyword}"/>
-	  　<input type="submit" name="btn" value="快速寻找" class="btnGrayS vm bigbtn fl btn" />
+	  <input type="text" name="keywords" class="s-keywords fl b-h" placeholder="请输入分类名称，服务名称，资讯名称" value="{lanrain:$keywords}"/>
+	  　<input type="submit" name="btn" onClick="if($('.s-keywords').val() == ''){return false;}" value="快速寻找" class="btnGrayS vm bigbtn fl btn" />
 	</form>
 </div>
 <div class="self-content">
-  <div id="cate-cascading">
+  <div class="cat-item-list">
+    <p>共为您匹配到 <b style="color:red">{lanrain:$countItem}</b> 个类目<span class="note">(双击直接下单)</span></p>
+    <ul>
+	  <volist name="allSerArt" id="allSerArt" key="key">
+	     <li <eq name="key" value="1">class="cc-selected"</eq>>{lanrain:$key}.<span class="cat-span-val"> {lanrain:$allSerArt.listItem}</span></li>
+	  </volist>
+    </ul>
+  </div>
+  
+  <div id="cate-cascading" <notempty name="allSerArt">style="display:none"</notempty>>
 	  <ol id="cate-tree">
 	  	<li class="s-first-cat">
   		   <div class="s-tree">	
@@ -30,7 +50,13 @@ function btnDespose(type){
   		   <div class="s-tree">	
 	  			<ul class="list-box s-cat-three"></ul>
   			</div>
-	  	</li>	  		  	
+	  	</li>	
+	  	<li class="s-first-cat">
+  		   <div class="s-tree">
+  		        <p>该类目下服务和资讯:</p>	
+	  			<ul class="list-box s-cat-four"></ul>
+  			</div>
+	  	</li>	  	  		  	
 	  </ol>
   </div>
 </div>
@@ -38,13 +64,14 @@ function btnDespose(type){
 
     <script>
     $(function(){
-       //$("#cate-tree").each(function(){
-            var url = "{lanrain::U('Service/get_category')}";
+       $("#cate-tree").each(function(){
+            var url = "{lanrain::U('Self_order/get_category')}";
             var areaJson="";
             var temp_html="";
             var oProvince = $("#cate-tree").find(".s-cat-one");
             var oCity = $("#cate-tree").find(".s-cat-two");
             var oDistrict = $("#cate-tree").find(".s-cat-three");
+            var oSerArt = $("#cate-tree").find(".s-cat-four");
             //初始化一级分类
             var province = function(){
             	temp_html = "";
@@ -74,15 +101,42 @@ function btnDespose(type){
                 var m = $('.s-cat-one > li.cc-selected').index();
                 var n = $('.s-cat-two > li.cc-selected').index();
                 if(typeof(areaJson[m].c[n].d) == "undefined"){
-                    oDistrict.html('').css("display","none");
+                    oDistrict.html('').parent().parent().css("display","none");
                 }else{
-                    oDistrict.css("display","block");
+                    oDistrict.parent().parent().css("display","block");
                     $.each(areaJson[m].c[n].d,function(i,district){
                     	var flag='';
-                    	i==0?flag='cc-selected':'';                   	
-                        temp_html+="<li class='treeitem "+flag+"'>"+district.catname+"</li>";
+                    	var res ='';
+                    	i==0?flag='cc-selected':'';
+                    	if(district.catname== null){
+                    		res = district.name;
+                    	}else{
+                    		res =district.catname;
+                    	}
+                        temp_html+="<li class='treeitem "+flag+"'>"+res+"</li>";
                     });
                     oDistrict.html(temp_html);
+                    ser_art();
+                };
+            };
+  
+            //赋值四级
+            var ser_art = function(){
+                temp_html = ""; 
+                var m = $('.s-cat-one > li.cc-selected').index();
+                var n = $('.s-cat-two > li.cc-selected').index();
+                var x = $('.s-cat-three > li.cc-selected').index();
+                if(typeof(areaJson[m].c[n].d[x].e) == "undefined"){
+                	oSerArt.html('').parent().parent().css("display","none");
+                }else{
+                	oSerArt.parent().parent().css("display","block");
+                    $.each(areaJson[m].c[n].d[x].e,function(i,ser_art){
+                    	var flag='';
+                    	var res ='';
+                    	i==0?flag='cc-selected':'';
+                        temp_html+="<li class='treeitem_B "+flag+"'>"+ser_art.name+"</li>";
+                    });
+                    oSerArt.html(temp_html);
                 };
             };
             
@@ -91,26 +145,46 @@ function btnDespose(type){
                 	$('.s-cat-one > li.cc-selected').removeClass("cc-selected");
                 	$(this).addClass("cc-selected");
                 	city();
-                	test();
+                	twoCateChange();
             	});
            	           	
             };
-            var test = function(){
+            
+            var twoCateChange = function(){
             	$('.s-cat-two > li.treeitem').bind('click',function(){
                 	$('.s-cat-two > li.cc-selected').removeClass("cc-selected");
                 	$(this).addClass("cc-selected");
                 	district();
+                	threeCateChange();
             	}); 
             };
+            
+            var threeCateChange = function(){
+            	$('.s-cat-three > li.treeitem').bind('click',function(){
+                	$('.s-cat-three > li.cc-selected').removeClass("cc-selected");
+                	$(this).addClass("cc-selected");
+                	ser_art();
+                	fourCateChange();
+            	}); 
+            };            
 
+            var fourCateChange = function(){
+            	$('.s-cat-four > li.treeitem_B').bind('click',function(){
+                	$('.s-cat-four > li.cc-selected').removeClass("cc-selected");
+                	$(this).addClass("cc-selected");
+            	}); 
+            };            
             //获取json数据
             $.getJSON(url,function(data){
                 areaJson = eval(data);
                 province();
                 CateChange();
+                twoCateChange();
+                threeCateChange();
+                fourCateChange();
             });
 
-       // });
+        });
 
     });
     

@@ -563,7 +563,7 @@ ul{
 
 .fl{float:left;}
 .b-keywords{margin-left:100px;border:1px solid #ccc;width:200px;}
-.s-keywords{margin-left:10px;border:1px solid #ccc;width:400px;}
+.s-keywords{margin-left:10px;border:1px solid #ccc;width:400px;padding-left:10px;}
 .b-h{height:30px;}
 .k-select{margin-left:5px;}
 .btn{margin-left:10px;}
@@ -571,13 +571,13 @@ ul{
 .footactions a:hover{color:#000000}
 .footactions{text-align:center}
 
-.msgWrap{max-height:600px;over-flow:auto;}
+.msgWrap{overflow:auto;}
 .s-title{margin-left:150px}
-.self-content{height:281px;border:1px solid #cccccc;padding:20px 20px 0 20px;}
+.self-content{border:1px solid #cccccc;padding:20px 20px 10px 20px;}
 #cate-cascading{height:280px;border:1px solid #cccccc;}
 .s-first-cat{float: left;
-width: 223px;
-border-right: 2px solid #D5D5D5;
+width: 217px;
+border-right:2px solid #D5D5D5;
 background: #fff;height:100%;}
 #cate-tree{height:100%;}
 .s-tree{overflow-x: hidden;height:100%;
@@ -585,14 +585,19 @@ overflow-y: auto;
 position: relative;
 left: 0;
 top: 0;}
+.s-tree p{text-align:center;font-weight:bold;margin:5px 5px 0 5px;}
 .treeitem{padding: 0 16px 0 14px;height: 20px;
 line-height: 20px;
 overflow: hidden;
 cursor: pointer;background:url(../images/Self-188.png) -999em -999em no-repeat;background-position: right -137px;}
-ul li.cc-selected{border: 1px dotted #006835;background-color: #C5FFC8;padding: 0 16px 0 13px;}
+.content .self-content ul li.cc-selected{border: 1px dotted #006835;background-color: #C5FFC8;padding: 0 16px 0 13px;height:18px;line-height:18px;}
 .list-box{padding: 0 3px;margin-top: 10px;}
 
-
-
-
+.treeitem_B{padding: 0 16px 0 14px;height: 20px;
+line-height: 20px;
+overflow: hidden;
+cursor: pointer;}
+.cat-item-list ul li{height:20px;line-height:20px;padding: 0 16px 0 14px;cursor:pointer;}
+.cat-item-list p{font-size:16px;font-weight:bold;color:#000;}
+.note{color:grey;font-weight:normal;}
 

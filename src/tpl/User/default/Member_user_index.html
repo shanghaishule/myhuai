@@ -46,7 +46,7 @@ function btnDespose(type){
 	<a href="javascript:drop_confirm('你确定要删除吗？', '{lanrain::U('Member_user/del',array('id'=>$val['id']))}');">删除</a>
 	<a class="red" href="{lanrain::U('Member_user/resetPassword',array('id'=>$val['id']))}">重置密码</a>
 	</eq>
-	<if condition="$val.address neq ''"><a class="red" href="{lanrain::U('Member_user/buyHistory',array('id'=>$val['id']))}">消费记录</a><else />无消费</if>
+	<if condition="$val.address neq '无'"><a class="red" href="{lanrain::U('Member_user/buyHistory',array('id'=>$val['id']))}">消费记录</a><else />无消费</if>
 </td>
 </tr>
 </volist>
