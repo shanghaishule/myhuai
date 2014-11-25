@@ -64,7 +64,8 @@ class Self_orderAction extends UserAction{
     	}else{
     		foreach ($resService as $key => $val){
     			$resService[$key]['listItem'] = implode(' >> ',$this->getParentid($val['cate_id']))." >> ".preg_replace("/($keywords)/i","<b style=\"color:red\">\\1</b>",$val['name']);
-    		    $this->arr = array();//清空前条保存的数据
+    			$resService[$key]['source'] = 'service';
+    			$this->arr = array();//清空前条保存的数据
     		}
     	} 
     	$resArticle = M('article_new')->where($where)->select();
@@ -73,10 +74,12 @@ class Self_orderAction extends UserAction{
     	}else{
     		foreach ($resArticle as $key => $va){
     			$resArticle[$key]['listItem'] =implode(' >> ',$this->getParentid($va['cate_id']))." >> ".preg_replace("/($keywords)/i","<b style=\"color:red\">\\1</b>",$va['name']);
+    			$resArticle[$key]['source'] = 'article_new';
     			$this->arr = array();
     		}
     	}
     	$res = array_merge($resService,$resArticle);
+    	//dump($res);die;
     	$this->assign('allSerArt',$res);
     	$this->assign("keywords",$keywords);
     	$this->assign("countItem",count($res));
@@ -93,9 +96,62 @@ class Self_orderAction extends UserAction{
     	krsort($this->arr);
     	return $this->arr;
     }
+    //自助下单
+    public function edit(){
+    	if(IS_POST){
+    		$dingdanhao = date("Y-m-dH-i-s");
+    		$dingdanhao = str_replace("-","",$dingdanhao);
+    		$dingdanhao .= rand(1000,2000);
+    		$data['orderId'] = $dingdanhao;
+    		$data['add_time'] = time();
+    		$dataD['orderId'] = $dingdanhao;
+    		$dataD['itemId'] = $this->_post('Item_id');
+    		$dataD['title'] = $this->_post('Item_name');
+    		$dataD['img'] = $this->_post('Item_img');
+    		$dataD['price'] = $this->_post('Item_price');
+    		$dataD['quantity'] = $this->_post('goods_num');
+    		$data['address_name'] = $this->_post('address_name');
+    		$data['address'] = $this->_post('address');
+    		$data['mobile'] = $this->_post('Item_phone');
+    		$data['note'] = $this->_post('Item_note');
+    		$data['goods_sumPrice'] = $dataD['price'] * $dataD['quantity'];
+    		$data['order_sumPrice'] = $dataD['price'] * $dataD['quantity'];
+    		$data['orderSource'] = 1;//后台客服下单
+    		$data['userId'] = session("uid");
+    		$data['userName'] = session("uname");
+    		$data['supportmetho'] = 2;//货到付款
+    		$data['freetype'] = 0;//卖家包邮
+    		$data['userfree'] = 0;//无需快递
+    		$data['tokenTall'] = $this->getTokenTall();
+    		$flag =M('item_order')->add($data);
+    		if($flag){
+    			if(M('order_detail')->add($dataD)){
+    				 $this->success("订单已生成！",U('Wetall_order/edit',array('id'=>$flag)));
+    			}else{
+    				$this->error("订单生成失败！");
+    			}
+    		}else{
+    			$this->error("订单生成失败！");
+    		}
+    	}else{
+    		$where['name'] = $this->_get("Itemname");
+    		$where['id'] = $this->_get("Itemid",'intval,trim');
+    		$Item_table = $this->_get("Item_table",'trim');
+    		//echo $Itemid.':'.$Itemname.':'.$Item_table;
+    		if($where['name'] == '' || $where['id']== '' || $Item_table == ''){
+    			$this->error("参数错误，返回重新选择！");
+    		}
+    		$ItemInfo = M($Item_table)->where($where)->find();
+    		if(false === $ItemInfo){
+    			$this->error("没发现该服务或资讯！");
+    		}
+    		$this->assign("info",$ItemInfo);
+    	}
+        $this->display();	
+    }
     
     public function test(){
-    	dump($this->getParentid(17));
+    	
     }
 }
 ?>

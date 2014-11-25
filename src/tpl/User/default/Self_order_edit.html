@@ -1,0 +1,78 @@
+<include file="Public:head"/>
+<link rel="stylesheet" href="{lanrain::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{lanrain::STATICS}/kindeditor/plugins/code/prettify.css" />
+<script src="{lanrain::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{lanrain::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{lanrain::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+
+<div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
+	<div class="cLineB"><h4>{lanrain:$myaction}</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
+	<div class="msgWrap">
+	<form id="info_form" class="form" method="post" action="{lanrain::U('Self_order/edit')}">
+	<input type="hidden" name="Item_id" value="{lanrain:$info.id}" />
+	<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+	<TBODY>
+		<tr>
+			<th>商品名称 :</th>
+			<td><input type="text" required="" class="px" id="name" name="Item_name" value="{lanrain:$info.name}"  readonly style="width:500px"></td>
+		</tr>
+		<tr>
+			<th>商品图片 :</th>
+			<td>
+				<input type="text" class="px" id="info" name="Item_img" value="{lanrain:$info.img}" style="width:500px" readonly/>
+			</td>			
+		</tr>
+		
+		<tr>
+			<th>商品单价 :</th>
+			<td>
+				<input type="number" required onblur="if($(this).val()<=0){alert('请填写正确的商品价格');}" maxlength="11" class="px" id="info" name="Item_price" value="{lanrain:$info.price}" style="width:70px" />
+			</td>
+		</tr>
+				
+		<tr>
+			<th>购买数量 :</th>
+			<td><input type="number" onblur="if($(this).val()<=0){$(this).val('1');return true;}else{alert('数量不能小于1')}" class="px" id="info" name="goods_num" value="1" style="width:30px" /></td>
+		</tr>
+		
+		<tr>
+			<th>收货人 :</th>
+			<td><input type="text" required class="px" name="address_name" value="{lanrain:$info.b_bankNum}" style="width:500px"></td>
+		</tr>
+		<tr>
+			<th>收货地址 :</th>
+			<td><input type="text" required class="px" name="address" value="{lanrain:$info.b_bankNum}" style="width:500px"></td>
+		</tr>
+		<tr>
+			<th>联系电话 :</th>
+			<td><input type="text" required onkeypress="intOnly()"  onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" maxlength="11" class="px" id="info" name="Item_phone" value="{lanrain:$info.b_phone}" style="width:100px" />
+				<br />必须为手机号</td>
+		</tr>
+		<tr>
+			<th>客服备注 :</th>
+			<td><input type="text" class="px" name="Item_note" value="{lanrain:$info.b_bankNum}" style="width:500px"></td>
+		</tr>								
+		<TR>
+			<TH></TH>
+			<TD><button type="submit"  name="button"  class="btnGreen left" >保存</button>
+	  		<div class="clr"></div>
+	  		</TD>
+		</TR>
+	</TBODY>
+	</TABLE>
+	</form>
+	</div> 
+</div>
+<<script type="text/javascript">
+//只允许输入数字,左右移动键,删除键,回车键
+//author:larger
+function intOnly(){
+var codeNum=event.keyCode;
+if(codeNum==8||codeNum==37||codeNum==39||(codeNum>=48&&codeNum<=57)){
+  event.returnValue=codeNum;
+}else{
+  event.returnValue=false;
+}
+}
+</script>
+<include file="Public:footer"/>

@@ -12,7 +12,9 @@ $(function(){
 	$(".cat-item-list > ul >li").dblclick(function(){
 		var str= $(this).find('span').text();
 		var aaa = str.split(" >> ");
-		alert(aaa);
+		var Itemid = $(this).attr("data-id");
+		var Item_table = $(this).attr("data-source");
+		window.location.href="{lanrain::U('Self_order/edit')}&Itemname="+aaa[aaa.length-1]+"&Itemid="+Itemid+"&Item_table="+Item_table;
 	});
 });
 </script>
@@ -26,10 +28,10 @@ $(function(){
 </div>
 <div class="self-content">
   <div class="cat-item-list">
-    <p>共为您匹配到 <b style="color:red">{lanrain:$countItem}</b> 个类目<span class="note">(双击直接下单)</span></p>
+    <p>共为您匹配到 <b style="color:red">{lanrain:$countItem|default="0"}</b> 个类目<span class="note">(双击直接下单)</span></p>
     <ul>
 	  <volist name="allSerArt" id="allSerArt" key="key">
-	     <li <eq name="key" value="1">class="cc-selected"</eq>>{lanrain:$key}.<span class="cat-span-val"> {lanrain:$allSerArt.listItem}</span></li>
+	     <li <eq name="key" value="1">class="cc-selected"</eq> data-id="{lanrain:$allSerArt.id}" data-source="{lanrain:$allSerArt.source}">{lanrain:$key}.<span class="cat-span-val"> {lanrain:$allSerArt.listItem}</span></li>
 	  </volist>
     </ul>
   </div>
