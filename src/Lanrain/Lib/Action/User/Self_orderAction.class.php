@@ -141,6 +141,7 @@ class Self_orderAction extends UserAction{
     		if($where['name'] == '' || $where['id']== '' || $Item_table == ''){
     			$this->error("参数错误，返回重新选择！");
     		}
+    		
     		$ItemInfo = M($Item_table)->where($where)->find();
     		if(false === $ItemInfo){
     			$this->error("没发现该服务或资讯！");
