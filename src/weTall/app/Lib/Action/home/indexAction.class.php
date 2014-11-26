@@ -492,5 +492,17 @@ class indexAction extends frontendAction {
     	
     }    
     	 
-
+   public function home(){
+   	   $this->display();
+   }
+   public function listall(){
+   	   $this->display();
+   }
+   public function seclistall(){
+   	   $this->display();
+   }
+   public function threelist1(){
+   	   $this->display();
+   }
+   
 }
