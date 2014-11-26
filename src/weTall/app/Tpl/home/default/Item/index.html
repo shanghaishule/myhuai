@@ -5,9 +5,9 @@
 	<script charset="utf-8" src="__STATIC__/weixin/js/goodsinfo.js" type="text/javascript"></script>
 	<script charset="utf-8" src="__STATIC__/weixin/js/jquery.js" type="text/javascript"></script>
 	<script charset="utf-8" src="__STATIC__/weixin/js/colorbox.js" type="text/javascript"></script>
-	<link type="text/css" rel="stylesheet" href="__STATIC__/weixin/colorbox.css">
+	
 </head>
-<body>
+<body >
 	<include file="public:head" />
 	<div class="s_bottom"></div>
 	<script type="text/javascript">
@@ -230,10 +230,11 @@
          <input type="hidden" value="{$item.id}" name="goodId" id="goodId" >
          <div class="ware_text">
              <div class="rate">
-                <h2 class="ware_title">{$item.title}</h2>       	
-                <h2 class="ware_title">售价：<span class="fontColor3">¥{$item.price}</span></h2>
-                <span class="letter1" style="margin:0px 5px;">销量：{$item.buy_num}件</span>
-                <span class="letter1" style="margin:0px 5px;">品牌：{$item.brand}</span>
+              <h2 class="ware_title"><span class="fontColor3">¥{$item.price}</span></h2>
+               <p class="letter1" style=";">周边价：{$item.zb_price}</p>
+                <h2 class="ware_title">{$item.title}<span class="letter2" style="">已卖出：{$item.buy_num}件</span></h2>       	
+                
+              
                 
 			</div>
             <div class="handle">
@@ -274,13 +275,13 @@
 		       .size_title{border:1px solid #d9d9d9;color:black;width:75px;height:24px;background:none;font-size:14px;float:left;margin:5px;}
 		       .color_title{border:1px solid #d9d9d9;color:black;width:75px;height:24px;background:none;font-size:14px;float:left;margin-left:5px;}
 		  </style>
-                <ul><li class="handle_title">请选择：</li><li class="handle_title" style="color:black;">颜色/尺码</li></ul>
+                <!--  <ul><li class="handle_title">请选择：</li><li class="handle_title" style="color:black;">颜色/尺码</li></ul>-->
                 
                 <if condition="$countColor eq 0">
                 	<input name="color" id="colorChoose" type="hidden" value="无">
                 <else/>
-                <ul style="font-size:12px; font-color:#999; margin-bottom:10px;">
-                    <li style="margin-right:10px; margin-top:5px;">颜色</li>
+                <ul style="font-size:12px; font-color:#999; margin-bottom:10px;padding-top:5px">
+                    <li style="margin-right:10px; margin-top:5px;padding-left:5px;color:#3e4245">颜色:</li>
                     <li>
                     <volist name='color' id='vo'>
                         <if condition="$vo neq ''">
@@ -297,7 +298,7 @@
                     <input name="size" id="sizeChoose" type="hidden" value="无">
                 <else/>
                 <ul style="font-size:12px; font-color:#999">
-                	<li style="margin-right:10px;margin-top:5px;">尺码</li>
+                	<li style="margin-right:10px;margin-top:5px;padding-left:5px;color:#3e4245">尺码:</li>
 
                     <li>
                     <volist name='size' id='vo'>
@@ -311,8 +312,8 @@
                 </if>
                 
                 <ul  style="font-size:12px; font-color:#999;">
-                    <li style="margin-right:10px;margin-top:10px;">数量</li>
-                    <li style="margin-top:5px;margin-left:5px;">
+                    <li style="margin-right:10px;margin-top:10px;padding-bottom:5px;padding-left:5px;color:#3e4245">数量</li>
+                    <li style="margin-top:5px;margin-left:5px;padding-bottom:5px">
                         <a style="float:left;" href="javascript:minus();"><img alt="" src="__STATIC__/images/minus.png" style="width:30px; height:30px;"></a>
                         <input type="text" value="1" id="quantity" name="quantity" style="float:left;width:70px;height:30px;line-height:normal;border:1px solid #ddd;border-left:0;border-right:0;background:#fff;font-size:16px;background:#fff;text-align:center"/>
                         <a style="float:left;" href="javascript:plus();"><img alt="" src="__STATIC__/images/plug.png" style="width:30px; height:30px;"></a>
@@ -322,7 +323,7 @@
                 <div class="clear"></div>
             </div>
             <div class="add-g-s">加入成功</div>
-            <div>
+            <div class="shop_bottom">
             <ul class="ware_btn">
                 <div style="display:none;" class="ware_cen">
                 	
@@ -341,8 +342,8 @@
                     </div>
                     <div class="ware_cen_bottom"></div>
                 </div>
-                	<li><a href="javascript:void(0)" onclick="javascript:buy_now();" title="立即购买" class="buy-now enter">立即购买</a></li>                
-                	<li><a href="javascript:void(0)" onclick="javascript:buys();" title="加入购物车" class="enter">加入购物车</a></li>
+                	<li id="intime_shopping"><a href="javascript:void(0)" onclick="javascript:buy_now();" title="立即购买" class="buy-now enter">立即购买</a></li>                
+                	<li id="addin_car"><a href="javascript:void(0)" onclick="javascript:buys();" title="加入购物车" class="enter" id="enter1">加入购物车</a></li>
             </ul>
             </div>
         </div>
@@ -394,6 +395,6 @@
     <div class="clear"></div>
 </div>
 
-<include file="public:footer" />
+
 </body>
 </html>
