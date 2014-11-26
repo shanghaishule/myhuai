@@ -10,11 +10,12 @@
 	<div class="msgWrap">
 	<form id="info_form" class="form" method="post" action="{lanrain::U('Self_order/edit')}">
 	<input type="hidden" name="Item_id" value="{lanrain:$info.id}" />
-	<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+	<input type="hidden" name="ItemSource" value="{lanrain:$ItemSource}" />
+	<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellpadding="0" width="100%">
 	<TBODY>
 		<tr>
 			<th>商品名称 :</th>
-			<td><input type="text" required="" class="px" id="name" name="Item_name" value="{lanrain:$info.name}"  readonly style="width:500px"></td>
+			<td><input type="text" required class="px" id="name" name="Item_name" value="{lanrain:$info.name}"  readonly style="width:500px"></td>
 		</tr>
 		<tr>
 			<th>商品图片 :</th>
@@ -32,7 +33,7 @@
 				
 		<tr>
 			<th>购买数量 :</th>
-			<td><input type="number" onblur="if($(this).val()<=0){$(this).val('1');return true;}else{alert('数量不能小于1')}" class="px" id="info" name="goods_num" value="1" style="width:30px" /></td>
+			<td><input type="number" required onblur="if($(this).val()<=0){$(this).val('1');}" class="px" id="info" name="goods_num" value="1" style="width:30px" /></td>
 		</tr>
 		
 		<tr>
@@ -63,7 +64,7 @@
 	</form>
 	</div> 
 </div>
-<<script type="text/javascript">
+<script type="text/javascript">
 //只允许输入数字,左右移动键,删除键,回车键
 //author:larger
 function intOnly(){

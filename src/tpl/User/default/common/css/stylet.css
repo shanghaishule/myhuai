@@ -573,7 +573,7 @@ ul{
 
 .msgWrap{overflow:auto;}
 .s-title{margin-left:150px}
-.self-content{border:1px solid #cccccc;padding:20px 20px 10px 20px;}
+.self-content{border:1px solid #cccccc;padding:20px 20px 40px 20px;}
 #cate-cascading{height:280px;border:1px solid #cccccc;}
 .s-first-cat{float: left;
 width: 217px;
@@ -600,4 +600,4 @@ cursor: pointer;}
 .cat-item-list ul li{height:20px;line-height:20px;padding: 0 16px 0 14px;cursor:pointer;}
 .cat-item-list p{font-size:16px;font-weight:bold;color:#000;}
 .note{color:grey;font-weight:normal;}
-
+.s-btn{text-align:center;padding-top:5px;}

@@ -36,5 +36,14 @@ ALTER TABLE `tp_item_order` DROP `personnel`;
 ALTER TABLE  `tp_order_detail` CHANGE  `size`  `size` VARCHAR( 255 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT  '0';
 ALTER TABLE  `tp_order_detail` CHANGE  `color`  `color` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT  '0';
 
+----2014-11-26-------
+ALTER TABLE  `tp_order_detail` CHANGE  `item_source`  `item_source` VARCHAR( 11 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT  '该商品来自哪张表';
+
+ALTER TABLE  `tp_users` ADD  `aaa` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT  '最后登录地址';
+
+
+
+
+
 
 

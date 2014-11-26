@@ -16,6 +16,19 @@ $(function(){
 		var Item_table = $(this).attr("data-source");
 		window.location.href="{lanrain::U('Self_order/edit')}&Itemname="+aaa[aaa.length-1]+"&Itemid="+Itemid+"&Item_table="+Item_table;
 	});
+	
+	$("#s-next").click(function(){
+		var itemName = $(".s-cat-four li.cc-selected").text();
+		var itemTable = $(".s-cat-four li.cc-selected").attr("data-source");
+		var itemId = $(".s-cat-four li.cc-selected").attr("data-id");
+		if(itemName == ''){
+			itemName = $(".s-cat-three li.cc-selected").text();
+			itemTable = $(".s-cat-three li.cc-selected").attr("data-source");
+			itemId = $(".s-cat-three li.cc-selected").attr("data-id");
+		}
+		window.location.href="{lanrain::U('Self_order/edit')}&Itemname="+itemName+"&Itemid="+itemId+"&Item_table="+itemTable;
+	});
+	
 });
 </script>
 <div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
@@ -57,9 +70,10 @@ $(function(){
   		   <div class="s-tree">
   		        <p>该类目下服务和资讯:</p>	
 	  			<ul class="list-box s-cat-four"></ul>
-  			</div>
+  		   </div>
 	  	</li>	  	  		  	
 	  </ol>
+	 <div class="s-btn"><input name="btn" type="button" value="下一步" class="btnGrayS vm bigbtn btn"  id="s-next"/></div>
   </div>
 </div>
 </div>
@@ -109,13 +123,22 @@ $(function(){
                     $.each(areaJson[m].c[n].d,function(i,district){
                     	var flag='';
                     	var res ='';
+                    	var source = '';
+                    	var itemId ='';
                     	i==0?flag='cc-selected':'';
+                    	var s_class='';
                     	if(district.catname== null){
                     		res = district.name;
+                    		s_class = "treeitem_B";
                     	}else{
                     		res =district.catname;
+                    		s_class = "treeitem";
                     	}
-                        temp_html+="<li class='treeitem "+flag+"'>"+res+"</li>";
+                    	if(district.source != null){
+                    	   source = "data-source="+district.source;	
+                    	}
+
+                        temp_html+="<li class='"+s_class+" "+flag+"'"+source+" data-id='"+district.id+"'>"+res+"</li>";
                     });
                     oDistrict.html(temp_html);
                     ser_art();
@@ -136,7 +159,7 @@ $(function(){
                     	var flag='';
                     	var res ='';
                     	i==0?flag='cc-selected':'';
-                        temp_html+="<li class='treeitem_B "+flag+"'>"+ser_art.name+"</li>";
+                        temp_html+="<li class='treeitem_B "+flag+"' data-source='"+ser_art.source+"' data-id='"+ser_art.id+"'>"+ser_art.name+"</li>";
                     });
                     oSerArt.html(temp_html);
                 };
@@ -162,7 +185,7 @@ $(function(){
             };
             
             var threeCateChange = function(){
-            	$('.s-cat-three > li.treeitem').bind('click',function(){
+            	$('.s-cat-three > li').bind('click',function(){
                 	$('.s-cat-three > li.cc-selected').removeClass("cc-selected");
                 	$(this).addClass("cc-selected");
                 	ser_art();

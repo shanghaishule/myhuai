@@ -1,5 +1,8 @@
 <?php
 class UsersAction extends BaseAction{
+	public function _initialize(){
+		$this->_Ip = new IpLocation('UTFWry.dat');
+	}
 	public function index(){
 		header("Location: /");
 	}
@@ -47,7 +50,8 @@ class UsersAction extends BaseAction{
 			//登陆成功，记录本月的值到数据库
 			
 			//
-			$db->where(array('id'=>$res['id']))->save(array('lasttime'=>$now,'lastloginmonth'=>$month,'lastip'=>$_SERVER['REMOTE_ADDR']));//最后登录时间
+			$area = $this->_Ip->getlocation($_SERVER['REMOTE_ADDR']);
+			$db->where(array('id'=>$res['id']))->save(array('lasttime'=>$now,'lastloginmonth'=>$month,'lastip'=>$_SERVER['REMOTE_ADDR'],'last_location'=>$area['country'].$area['area']));//最后登录时间
 			//echo U('User/Index/index');die();
 			$this->success('登录成功',U('User/Index/index'));
 			//$this->redirect(U('User/Index/index'));

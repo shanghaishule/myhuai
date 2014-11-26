@@ -45,10 +45,18 @@ class Self_orderAction extends UserAction{
 		$resService = M('service')->where(array("cate_id"=>$cate_id))->select();
 		if($resService == null || empty($resService)){
 			$resService = $arr;
+		}else{
+			foreach ($resService as $key => $val){
+				$resService[$key]['source'] = 'service';//给每个item加标识，区分商品，服务，资讯
+			}
 		}
 		$resArticle = M('article_new')->where(array("cate_id"=>$cate_id))->select();
 		if($resArticle == null || empty($resArticle)){
 			$resArticle = $arr;
+		}else{
+			foreach ($resArticle as $key => $val){
+				$resArticle[$key]['source'] = 'article_new';
+			}
 		}
 		return array_merge($resService,$resArticle);
 	}
@@ -106,10 +114,14 @@ class Self_orderAction extends UserAction{
     		$data['add_time'] = time();
     		$dataD['orderId'] = $dingdanhao;
     		$dataD['itemId'] = $this->_post('Item_id');
+    		$dataD['item_source'] = $this->_post('ItemSource');
     		$dataD['title'] = $this->_post('Item_name');
     		$dataD['img'] = $this->_post('Item_img');
     		$dataD['price'] = $this->_post('Item_price');
     		$dataD['quantity'] = $this->_post('goods_num');
+    		if($dataD['itemId'] == '' || $dataD['item_source']=='' || $dataD['title']==''|| $dataD['price'] == '' || $dataD['quantity']==''){
+    			$this->error("请填写完整信息！");
+    		}
     		$data['address_name'] = $this->_post('address_name');
     		$data['address'] = $this->_post('address');
     		$data['mobile'] = $this->_post('Item_phone');
@@ -147,12 +159,16 @@ class Self_orderAction extends UserAction{
     			$this->error("没发现该服务或资讯！");
     		}
     		$this->assign("info",$ItemInfo);
+    		$this->assign("ItemSource",$Item_table);
     	}
         $this->display();	
     }
     
     public function test(){
-    	
+    	//$this->get_category();
+    	$Ip = new IpLocation('UTFWry.dat'); // 实例化类 参数表示IP地址库文件
+    	$area = $Ip->getlocation('112.124.112.21'); // 获取某个IP地址所在的位置
+    	dump($area);
     }
 }
 ?>
