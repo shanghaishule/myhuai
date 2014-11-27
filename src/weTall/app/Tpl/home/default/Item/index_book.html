@@ -5,9 +5,12 @@
 	<script charset="utf-8" src="__STATIC__/weixin/js/goodsinfo.js" type="text/javascript"></script>
 	<script charset="utf-8" src="__STATIC__/weixin/js/jquery.js" type="text/javascript"></script>
 	<script charset="utf-8" src="__STATIC__/weixin/js/colorbox.js" type="text/javascript"></script>
-	
+	<link href="__STATIC__/weixin/css/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__STATIC__/weixin/js/home/jquery-1.9.1.js" ></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/date.js" ></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/iscroll.js" ></script>
 </head>
-<body >
+<body style="background:#f1f0f5">
 	<include file="public:head" />
 	<div class="s_bottom"></div>
 	<script type="text/javascript">
@@ -271,62 +274,33 @@
 		          $("#colorChoose").val(color_title);
 		        }
 		  </script>
-		  <style>
-		       .size_title{border:1px solid #d9d9d9;color:black;width:75px;height:24px;background:none;font-size:14px;float:left;margin:5px;}
-		       .color_title{border:1px solid #d9d9d9;color:black;width:75px;height:24px;background:none;font-size:14px;float:left;margin-left:5px;}
-		  </style>
+		  <!--book -->
+		
+<script type="text/javascript">
+$(function(){
+	$('#beginTime').date();
+	$('#endTime').date({theme:"datetime"});
+});
+</script>
+		  
+		 <div class="book_online">
+		    
+		 <ul >
+                    <li id="book_online_1" >选择时间:</li>
+                    <li id="book_online_2">
+                   <div class="demo">
+	
+	<div class="lie"><input id="endTime" class="kbtn" /></div>
+</div>
+                    
+                    </li>
+                    
+		 </div>
                 <!--  <ul><li class="handle_title">请选择：</li><li class="handle_title" style="color:black;">颜色/尺码</li></ul>-->
                 
-                <if condition="$countColor eq 0">
-                	<input name="color" id="colorChoose" type="hidden" value="无">
-                <else/>
-                <ul style="font-size:12px; font-color:#999; margin-bottom:10px;padding-top:5px">
-                    <li id="nocenter" style="margin-right:10px; margin-top:5px;padding-left:5px;color:#3e4245">颜色:</li>
-                    <li id="centerall">
-                    
-                    <volist name='color' id='vo'>
-                        <if condition="$vo neq ''">
-                    	<a href="javascript:void(0);" onclick="colortitle('{$vo}')" ><div class="color_title" id="color{$vo}">{$vo}</div></a>
-                    	</if>
-                    </volist>
-                    <input name="color" id="colorChoose" type="hidden" value="">
-                    </li>
-                   
-                </ul>
-
-                </if>
+               
                 
-                <if condition="$countSize eq 0">
-                    <input name="size" id="sizeChoose" type="hidden" value="无">
-                <else/>
-                <ul style="font-size:12px; font-color:#999">
-                	<li id="nocenter" style="margin-right:10px;margin-top:5px;padding-left:5px;color:#3e4245">尺码:</li>
-
-                    <li id="centerall">
-                 
-                    <volist name='size' id='vo'>
-                    	<if condition="$vo neq ''">
-                    	 <a href="javascript:void(0);" onclick="sizetitle('{$vo}')" ><div class="size_title" id="size{$vo}">{$vo}</div></a>
-                    	 </if>
-                    </volist>
-                    <input name="size" id="sizeChoose" type="hidden" value="">
-                    </li>
-                 
-                </ul>
-                </if>
                 
-                <ul id="allqty" style="font-size:12px; font-color:#999;">
-                    <li style="margin-right:10px;margin-top:10px;padding-bottom:5px;padding-left:5px;color:#3e4245">数量:</li>
-                    <li style="margin-top:5px;margin-left:5px;padding-bottom:5px">
-                        <a style="float:left;margin-left: 1px;border:1px solid #cccccc" href="javascript:minus();"><img alt="" src="__STATIC__/images/minus.png" style="width:30px; height:30px;"></a>
-                        <input type="text" value="1" id="quantity" name="quantity" style="float:left;width:70px;height:32px;line-height:normal;border:1px solid #ddd;border-left:0;border-right:0;background:#fff;font-size:16px;background:#fff;text-align:center"/>
-                        <a style="float:left;margin-right: 1px;border:1px solid #cccccc" href="javascript:plus();"><img alt="" src="__STATIC__/images/plug.png" style="width:30px; height:30px;"></a>
-                    </li>
-                    <li style="margin-left:20px;margin-top:10px;"> 件（仅剩<span id="detail_stock" ectype="goods_stock" style="color:red;" class="stock">{$item.goods_stock}</span>件）</li>
-                </ul>
-                <div class="clear"></div>
-            </div>
-            <div class="add-g-s">加入成功</div>
             <div class="shop_bottom">
             <ul class="ware_btn">
                 <div style="display:none;" class="ware_cen">
@@ -346,8 +320,8 @@
                     </div>
                     <div class="ware_cen_bottom"></div>
                 </div>
-                	<li id="intime_shopping"><a href="javascript:void(0)" onclick="javascript:buy_now();" title="立即购买" class="buy-now enter">立即购买</a></li>                
-                	<li id="addin_car"><a href="javascript:void(0)" onclick="javascript:buys();" title="加入购物车" class="enter" id="enter1">加入购物车</a></li>
+                	<li id="intime_shopping"><a href="javascript:void(0)" onclick="javascript:buy_now();" title="立即购买" class="buy-now enter">立即付款</a></li>                
+                	<li id="addin_car"><a href="javascript:void(0)" onclick="javascript:buys();" title="加入购物车" class="enter" id="enter1">电话预约</a></li>
             </ul>
             
             </div>

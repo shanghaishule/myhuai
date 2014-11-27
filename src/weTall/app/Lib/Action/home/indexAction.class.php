@@ -504,5 +504,8 @@ class indexAction extends frontendAction {
    public function threelist1(){
    	   $this->display();
    }
+   public function threelist2(){
+   	$this->display();
+   }
    
 }
