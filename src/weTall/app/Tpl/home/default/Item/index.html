@@ -230,9 +230,9 @@
          <input type="hidden" value="{$item.id}" name="goodId" id="goodId" >
          <div class="ware_text">
              <div class="rate">
-              <h2 class="ware_title"><span class="fontColor3">¥{$item.price}</span></h2>
+              <h2 class="ware_title"><span class="fontColor3">沪爱价¥{$item.price}</span></h2>
                <p class="letter1" style=";">周边价：{$item.zb_price}</p>
-                <h2 class="ware_title">{$item.title}<span class="letter2" style="">已卖出：{$item.buy_num}件</span></h2>       	
+                <h2 class="ware_title">{$item.title}<!-- <span class="letter2" style="">已卖出：{$item.buy_num}件</span> --></h2>       	
                 
               
                 
@@ -281,8 +281,9 @@
                 	<input name="color" id="colorChoose" type="hidden" value="无">
                 <else/>
                 <ul style="font-size:12px; font-color:#999; margin-bottom:10px;padding-top:5px">
-                    <li style="margin-right:10px; margin-top:5px;padding-left:5px;color:#3e4245">颜色:</li>
-                    <li>
+                    <li id="nocenter" style="margin-right:10px; margin-top:5px;padding-left:5px;color:#3e4245">颜色:</li>
+                    <li id="centerall">
+                    
                     <volist name='color' id='vo'>
                         <if condition="$vo neq ''">
                     	<a href="javascript:void(0);" onclick="colortitle('{$vo}')" ><div class="color_title" id="color{$vo}">{$vo}</div></a>
@@ -290,6 +291,7 @@
                     </volist>
                     <input name="color" id="colorChoose" type="hidden" value="">
                     </li>
+                   
                 </ul>
 
                 </if>
@@ -298,9 +300,10 @@
                     <input name="size" id="sizeChoose" type="hidden" value="无">
                 <else/>
                 <ul style="font-size:12px; font-color:#999">
-                	<li style="margin-right:10px;margin-top:5px;padding-left:5px;color:#3e4245">尺码:</li>
+                	<li id="nocenter" style="margin-right:10px;margin-top:5px;padding-left:5px;color:#3e4245">尺码:</li>
 
-                    <li>
+                    <li id="centerall">
+                 
                     <volist name='size' id='vo'>
                     	<if condition="$vo neq ''">
                     	 <a href="javascript:void(0);" onclick="sizetitle('{$vo}')" ><div class="size_title" id="size{$vo}">{$vo}</div></a>
@@ -308,15 +311,16 @@
                     </volist>
                     <input name="size" id="sizeChoose" type="hidden" value="">
                     </li>
+                 
                 </ul>
                 </if>
                 
-                <ul  style="font-size:12px; font-color:#999;">
-                    <li style="margin-right:10px;margin-top:10px;padding-bottom:5px;padding-left:5px;color:#3e4245">数量</li>
+                <ul id="allqty" style="font-size:12px; font-color:#999;">
+                    <li style="margin-right:10px;margin-top:10px;padding-bottom:5px;padding-left:5px;color:#3e4245">数量:</li>
                     <li style="margin-top:5px;margin-left:5px;padding-bottom:5px">
-                        <a style="float:left;" href="javascript:minus();"><img alt="" src="__STATIC__/images/minus.png" style="width:30px; height:30px;"></a>
-                        <input type="text" value="1" id="quantity" name="quantity" style="float:left;width:70px;height:30px;line-height:normal;border:1px solid #ddd;border-left:0;border-right:0;background:#fff;font-size:16px;background:#fff;text-align:center"/>
-                        <a style="float:left;" href="javascript:plus();"><img alt="" src="__STATIC__/images/plug.png" style="width:30px; height:30px;"></a>
+                        <a style="float:left;margin-left: 1px;border:1px solid #cccccc" href="javascript:minus();"><img alt="" src="__STATIC__/images/minus.png" style="width:30px; height:30px;"></a>
+                        <input type="text" value="1" id="quantity" name="quantity" style="float:left;width:70px;height:32px;line-height:normal;border:1px solid #ddd;border-left:0;border-right:0;background:#fff;font-size:16px;background:#fff;text-align:center"/>
+                        <a style="float:left;margin-right: 1px;border:1px solid #cccccc" href="javascript:plus();"><img alt="" src="__STATIC__/images/plug.png" style="width:30px; height:30px;"></a>
                     </li>
                     <li style="margin-left:20px;margin-top:10px;"> 件（仅剩<span id="detail_stock" ectype="goods_stock" style="color:red;" class="stock">{$item.goods_stock}</span>件）</li>
                 </ul>
@@ -394,7 +398,7 @@
 	    
     <div class="clear"></div>
 </div>
-
+<div class="space"></div>
 
 </body>
 </html>
