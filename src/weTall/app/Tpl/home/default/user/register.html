@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<include file="public:headtop" />
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户注册 - {$page_seo.title}</title>
@@ -83,12 +84,16 @@ $(function(){
 </script>
 
 <div id="content">
-    <form name="" id="register_form" method="post" action="{:U('user/register')}">
-        <input id="user_name" name="user_name" placeholder="用户名" class="text width10" type="text">
-        <input id="password" name="password" placeholder="密&nbsp;&nbsp;&nbsp;码" class="text width10" type="password">
-        <input name="password_confirm" placeholder="确认密码" class="text width10" type="password">
-        <input name="email" placeholder="微信号" class="text width10" type="text">
-        <input name="Submit" value="立即注册" class="login_btn" title="立即注册" type="submit">
+    <form name="" id="register_form" class=" reg_1"method="post" action="{:U('user/register')}">
+        <p>用户名<input id="user_name" name="user_name" placeholder="手机号" class="text width10" type="text"></p>
+        <p>密码 <input id="password" name="password" placeholder="至少六位" class="text width10" type="password"></p>
+        <p>验证码<input id="yanzheng"name="password_confirm" placeholder="" class="text width10" type="password"></p>
+        <!--  <input name="email" placeholder="微信号" class="text width10" type="text">-->
+        <ul>
+        <li id="click_yanzheng"><input name="Submit" value="获取验证码" style="background:#006835;border:none"  class="login_btn" id="login_btn_id" title="获取验证码" type="submit"></li>
+        <li id="intime_reg"><input name="Submit" style="background:red;;border:none" value="立即注册" class="login_btn"id="login_btn_id1" title="立即注册" type="submit"></li>
+        </ul>
+        
         <input name="ret_url" value=" " type="hidden">
     </form>
 </div>
