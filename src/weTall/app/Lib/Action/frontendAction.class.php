@@ -62,9 +62,6 @@ class frontendAction extends baseAction {
             F('index_cate_list', $index_cate_list);
         }
 
-        //echo "<pre>";
-        //var_dump($index_cate_list);
-        //echo "</pre>";
         $this->assign('index_cate_list', $index_cate_list);
     }
     

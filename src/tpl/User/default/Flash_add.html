@@ -30,6 +30,7 @@
           <div class="cLineB"><h4>添加幻灯片</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
 <div class="msgWrap">
   <form class="form" method="post"   action="{lanrain::U('Flash/insert')}"  target="_top" enctype="multipart/form-data" >
+  <input type="hidden" name="pos" value="{lanrain:$pos}">
 <TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
   <TBODY>
 <TR>
@@ -50,7 +51,12 @@
                    </TD>
   <TD>&nbsp;</TD>
 </TR>
-
+<TR>
+  <TH valign="top"><label for="keyword">级别 ：</label></TH>
+  <TD><input type="text" class="px" id="keyword" value="0" name="level" style="width:500px" ><br />
+   值越小排在最前面</TD>
+  <TD>&nbsp;</TD>
+</TR>
 <TR>
   <TH></TH>
   <TD><button type="submit"  name="button"  class="btnGreen left" >保存</button>

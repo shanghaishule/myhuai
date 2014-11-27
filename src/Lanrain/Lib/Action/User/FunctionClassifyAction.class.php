@@ -42,9 +42,15 @@ class FunctionClassifyAction extends UserAction{
 		//提交，有id则为编辑，无id则为新增
 		if (IS_POST) {
 			//dump($_POST);exit;
-			$_POST['funname']='MyClassify';
-			$_POST['actname']='index';
+			//$_POST['funname']='MyClassify';
+			//$_POST['actname']='index';
 			//获取数据
+			if(isset($_POST['tuijian']))
+			{
+				$data['tuijian']=1;
+			}else {
+				$data['tuijian']=0;
+			}
 			if (false === $data = $this->_mod->create()) {
 				$this->error($this->_mod->getError());
 			}
@@ -79,6 +85,23 @@ class FunctionClassifyAction extends UserAction{
 						
 			$this->assign('myaction',$myaction);
 			$this->display();
+		}
+	}
+	
+	//分类推荐处理（推荐/取消推荐）
+	public function TuijianDispose(){
+		$id = $this->_get('id','intval');
+		$currentItem = $this->_mod->where("id=%d",array($id))->find();
+		if(false !== $currentItem){
+			if($currentItem['tuijian'] == 1){//如果已推荐取消推荐
+				$currentItem['tuijian'] = 0;
+			}else{
+				$currentItem['tuijian'] = 1;
+			}
+			$status = $this->_mod->where("id=%d",array($id))->save($currentItem);
+			if($status)$this->success("操作成功");
+		}else{
+			$this->error("该分类不存在");
 		}
 	}
 	

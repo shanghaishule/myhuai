@@ -41,9 +41,30 @@ ALTER TABLE  `tp_order_detail` CHANGE  `item_source`  `item_source` VARCHAR( 11 
 
 ALTER TABLE  `tp_users` ADD  `aaa` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT  '最后登录地址';
 
+---2014-11-27 修改分类表，幻灯片表---
 
+ALTER TABLE  `tp_category` ADD  `tuijian` TINYINT( 1 ) NOT NULL DEFAULT  '0' COMMENT  '是否推荐' AFTER  `picurl` ;
 
+ALTER TABLE  `tp_flash` CHANGE  `pos`  `pos` INT( 10 ) NOT NULL COMMENT  '广告位Id';
 
+ALTER TABLE  `tp_flash` CHANGE  `level`  `level` TINYINT( 2 ) NULL DEFAULT NULL COMMENT  '广告排序';
 
+DROP TABLE IF EXISTS `tp_flash`;
+CREATE TABLE `tp_flash` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pos` int(10) NOT NULL COMMENT '广告位Id',
+  `token` varchar(60) NOT NULL,
+  `img` char(255) NOT NULL,
+  `url` char(255) NOT NULL,
+  `info` varchar(90) NOT NULL,
+  `level` tinyint(2) DEFAULT NULL COMMENT '广告排序',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_flash
+-- ----------------------------
+INSERT INTO `tp_flash` VALUES ('52', '1', 'pjeupf1402729544', '/Uploads/image/20141127/5476d027dd08e.jpg', 'http://www.test.com.cn', '海亮地产控股集团有限公司诸暨分公司', '22');
+INSERT INTO `tp_flash` VALUES ('53', '1', 'pjeupf1402729544', '/Uploads/image/20141127/5476e6e26887e.jpg', 'http://lgxshs.lgjjkfq.gov.cn/index.php?g=Home&m=Shop&a=index', 'test描述', '2');
 
 

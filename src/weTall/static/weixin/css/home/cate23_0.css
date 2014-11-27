@@ -53,7 +53,7 @@ margin-top:-20px;
 	background:white;
 	height:74px
 }
-.nav_links a .top4{width:29px;height:29px;margin:auto}
+.nav_links a .top4{width:29px;height:29px;margin:auto;display:block;}
 .nav_links a{
     color: #000;
     display:block;
@@ -88,12 +88,10 @@ margin-top:-20px;
     display: block;
     width: 34px;
     height:34px;
-   
-    margin-top: 51px;
+background-image:url(/weTall/static/weixin/images/home/hoslogo.png);background-size:100% 100%;
     margin-left:-17px ;
     z-index: 10;
-    background: #fff;
-    
+  
     background-position: center center;
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
@@ -107,7 +105,7 @@ font-weight:bold;padding-left:5px
 .ofh{display:block;position:relative;
 width:100%;
 background:white;
-height:136px
+/*height:136px*/
 }
 #ofh1{margin-top:3px;
 border-right: 1px solid #c6c6c6;
@@ -115,13 +113,10 @@ border-bottom: 1px solid #c6c6c6;}
 
 #ofh2{margin-top:3px;
 border-bottom: 1px solid #c6c6c6;}
-#ofh3{margin-bottom:3px;
-border-right: 1px solid #c6c6c6;}
-#ofh4{margin-bottom:3px;
-}
-.content1{width:140px;
-height:60px;margin:0 auto}
-.content0{position:absolute;left:6%;top:20px;text-indent:-9999px;}
+
+.content1{width:90px;
+height:48px;margin:0 auto;padding-top: 12px;
+padding-right: 50px;color:#000;letter-spacing: 2px;}
 .content0 p{color:#525252;font-weight:normal}
 .ul_list a{
     height:65px;
@@ -164,4 +159,4 @@ width:100%;
 
 text-align:center}
 .cfh  li{width:49.6%;background:white;margin:1px 0 0 1px}
-
+#banner_box ul{height:100px;}
