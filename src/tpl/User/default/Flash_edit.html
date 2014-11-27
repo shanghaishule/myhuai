@@ -30,6 +30,7 @@
           <div class="cLineB"><h4>编辑幻灯片</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
 <div class="msgWrap">
   <form class="form" method="post"   action="{lanrain::U('Flash/upsave')}"  target="_top" enctype="multipart/form-data" >
+  <input type="hidden" name="pos" value="{lanrain:$posid}">
 <TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
   <TBODY><input type="hidden" name="id" value="{lanrain:$info.id}"/>
 <TR>
@@ -46,8 +47,14 @@
 </TR>
 <TR>
   <TH valign="top"><label for="keyword">幻灯片链接地址 ：</label></TH>
-  <TD><input type="input" class="px" id="keyword" value="{lanrain:$info.url}" name="url" style="width:500px" ><br />
+  <TD><input type="text" class="px" id="keyword" value="{lanrain:$info.url}" name="url" style="width:500px" ><br />
                    </TD>
+  <TD>&nbsp;</TD>
+</TR>
+<TR>
+  <TH valign="top"><label for="keyword">级别 ：</label></TH>
+  <TD><input type="text" class="px" id="keyword" value="{lanrain:$info.level}" name="level" style="width:500px" ><br />
+  值越小排在最前面</TD>
   <TD>&nbsp;</TD>
 </TR>
 <TR>

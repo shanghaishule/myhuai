@@ -1,6 +1,9 @@
 <?php
 class indexAction extends frontendAction {
-
+    public function _initialize(){
+    	$this->_cat = M('category');
+    	$this->_ser = M('service');
+    }
     public function index() {
     	//取商家token值，取不到则默认为空
     	$tokenTall = $this->getTokenTall();
@@ -493,6 +496,23 @@ class indexAction extends frontendAction {
     }    
     	 
    public function home(){
+   	   //顶部幻灯片
+   	   $token = $this->getTokenTall();
+   	   $cond['token'] = $token;
+   	   $cond['id'] = 1;
+   	   $flash_pos = M("flash_pos")->where($cond)->find();
+   	   $flash = M("flash")->where(array("pos"=>$flash_pos['id']))->select();
+   	   $where['tuijian'] = 1;
+   	   //四大服务
+   	   $serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
+   	   //推荐分类
+   	   
+   	   //推荐服务
+   	   
+   	   //dump($serArr);die;
+   	   $this->assign("flash",$flash);
+   	   $this->assign("serArr",$serArr);
+   	   $this->assign("test",$serArr);
    	   $this->display();
    }
    public function listall(){

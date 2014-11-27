@@ -8,9 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
-<link href="__STATIC__/weixin/css/home/cate23_0.css" rel="stylesheet" type="text/css">
-        
-
+<link href="__STATIC__/weixin/css/home/cate23_0.css" rel="stylesheet" type="text/css">      
 <link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/reset.css" media="all">
 <link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/font-awesome.css" media="all">
 <!-- <link rel="stylesheet" type="text/css" href="./tpl/Wap/default/common/138wocss/123/home-40.css" media="all"> -->
@@ -18,8 +16,13 @@
 <script type="text/javascript" src="__STATIC__/weixin/js/home/jQuery.js"></script>
 <script type="text/javascript" src="__STATIC__/weixin/js/home/zepto.js"></script>
 <script type="text/javascript" src="__STATIC__/weixin/js/home/swipe.js"></script>
-    </head>
-    <body onselectstart="return true;" ondragstart="return false;">
+<script>
+$(function(){
+   var count = $(".ul_list").find('ol').size();
+});
+</script>
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
     <!--背景音乐-->
 <div class="body" >
 <!--<img src="__STATIC__/weixin/images/home/index3.png" style="width:100%;position:fixed;left:0;top:0">-->
@@ -29,60 +32,36 @@
 	<ul class="navlist1">
 		<li id="n_0">
 		   <div class="headtop1" style="background-image:url(__STATIC__/weixin/images/home/redstar.png);background-size:100% 100%;"></div>
-    		
         </li>
         <li  id="n_1">
-           
-							<div style="padding-top:7.5px">
-
-										<form action="search.asp" method="post" name="search"> 
-										<input name="so" type="text" style="width:65%;height:30px;border:none;font-size:1.3em;color:#cccccc;padding-left:10%" placeholder="搜索医疗服务或商品"/> 
-
-										<input type="submit" style="width:23%;background:none;border:none;color:white;font-size:1.5em"name="Submit" value="搜索"> 
-										</form> 
-				              </div>
+		    <div style="padding-top:7.5px">
+				<form action="search.asp" method="post" name="search"> 
+				<input name="so" type="text" style="width:65%;height:30px;border:none;font-size:1.3em;color:#cccccc;padding-left:10%" placeholder="搜索医疗服务或商品"/> 
+				<input type="submit" style="width:23%;background:none;border:none;color:white;font-size:1.5em"name="Submit" value="搜索"> 
+				</form> 
+             </div>
         </li>
     </ul>
     
 </div>
 
-
-
-
-
 </div>
 <div class="space"></div>
-       <!--         
-    幻灯片管理
-    -->
-    <div id=""style="-webkit-transform:translate3d(0,0,0);height:104px;overflow:hidden">
-	
+       <!--幻灯片管理-->
+    <div id=""style="-webkit-transform:translate3d(0,0,0);height:100px;overflow:hidden">
         <div id="banner_box" class="box_swipe" style="visibility: visible;">
-            <ul style="list-style: none; width: 3200px; -webkit-transition: 0ms; transition: 0ms; -webkit-transform: translate3d(-1280px, 0px, 0px);">
+           <ul style="list-style: none; width: 3200px; -webkit-transition: 0ms; transition: 0ms; -webkit-transform: translate3d(-1280px, 0px, 0px);">
+            <volist name="flash" id="info">
             <li style="width: 640px; display: table-cell; vertical-align: top;">
-            <a href="http://bjqc.weixinkf.cn/index.php?g=Wap&m=Index&a=content&token=neaeob1409209501&id=23&wecha_id=oe_FKt8Nhil5Q6QohJmpr5vV-t7A">
-            <img src="__STATIC__/weixin/images/home/thumb_54588327732be.jpg" style="width:100%;">
-            </a>
-            </li><li style="width: 640px; display: table-cell; vertical-align: top;">
-            <a href="http://bjqc.weixinkf.cn/index.php?g=Wap&m=Index&a=content&token=neaeob1409209501&id=23&wecha_id=oe_FKt8Nhil5Q6QohJmpr5vV-t7A">
-            <img src="__STATIC__/weixin/images/home/thumb_5458833ed8326.jpg" style="width:100%;">
-            </a>
-            </li><li style="width: 640px; display: table-cell; vertical-align: top;">
-            <a href="http://bjqc.weixinkf.cn/index.php?g=Wap&m=Index&a=content&token=neaeob1409209501&id=23&wecha_id=oe_FKt8Nhil5Q6QohJmpr5vV-t7A">
-            <img src="__STATIC__/weixin/images/home/thumb_5466e96b47e02.jpg" style="width:100%;">
-            </a>
-            </li><li style="width: 640px; display: table-cell; vertical-align: top;">
-            <a href="javascript:void(0)">
-            <img src="__STATIC__/weixin/images/home/thumb_5466ea8d04de5.jpg" style="width:100%;">
-            </a>
-            </li><li style="width: 640px; display: table-cell; vertical-align: top;">
-            <a href="javascript:void(0)">
-            <img src="__STATIC__/weixin/images/home/thumb_5466ea7fd8831.jpg" style="width:100%;">
-            </a>
-            </li>            
-        </ul>
+            	<a href="{$info.url}"><img src="{$info.img}" style="width:100%;"></a>
+            </li>
+            </volist>           
+            </ul>
             <ol>
-                <li class=""></li><li class=""></li><li class="on"></li><li></li><li></li>            </ol>
+               <volist name="flash" id="info">
+            	 <li <if condition="$i eq 1">class="on"</if>></li>
+               </volist>	
+            </ol>
         </div>
     </div>
         <script>
@@ -106,51 +85,27 @@
 	<section>
         <nav>
             <ul class="nav_links box">
-                    <li><a href="#">
-					<div class="top4" style="background-image:url(__STATIC__/weixin/images/home/bingyuan.png);background-size:100% 100%;"></div>
-					
-                       <p>病员服务</p></a>
+                <volist name="serArr" id="serArr" mod="2">
+                    <li>
+                     <a href="#">
+				      <span class="top4" style="background-image:url({$serArr.picurl});background-size:100% 100%;"></span>
+                      <b>{$serArr.catname}</b>
+                     </a>
 					</li>
-					<li>
-					   <a href="">
-					   <div class="top4" style="background-image:url(__STATIC__/weixin/images/home/menzhen.png);background-size:100% 100%;"></div>
-					   
-                      <p> 门诊服务</p></a>
-					</li>
-					<li><a href="">
-					<div class="top4" style="background-image:url(__STATIC__/weixin/images/home/muying.png);background-size:100% 100%;"></div>
-					
-                       <p>母婴服务</p></a>
-					 </li>
-					  <li><a href="">
-					  <div class="top4" style="background-image:url(__STATIC__/weixin/images/home/yuangong.png);background-size:100% 100%;"></div>
-					  
-                         <p> 员工服务</p></a>
-					</li>            
+				</volist>          
             </ul>
 		</nav>
         <div class="content_start">
 		       <p>病员服务推荐<span><a href="">更多</a></span></p>
                <ul class="ofh ul_list">
-                <li><a id="ofh1" href="" style="">
-                    <div class="content0" style=""><p>绿色通道</p></div>
-				     <div class="content1" style="background-image:url(__STATIC__/weixin/images/home/lvse.png);background-size:100% 100%;"></div>
+               <?php $index=51;?>
+                <volist name="test" id="test" mod="2">
+                <li><a id="<eq name='mod' value='0'>ofh1<else />ofh2</eq>" href="#">
+				     <div class="content1" style="background:url(__STATIC__/weixin/images/home/home200.png) no-repeat right;background-size:50px 50px;">{$test.catname}</div>
                      </a>
 				</li>
-				<li><a id="ofh2" href="" style="">
-				<div class="content1" style="background-image:url(__STATIC__/weixin/images/home/hugong.png);background-size:100% 100%;"></div>
-                    </a>
-				</li>
-				<li><a id="ofh3" href="" style="">
-				<div class="content1" style="background-image:url(__STATIC__/weixin/images/home/yingyang.png);background-size:100% 100%;"></div>
-                    </a>
-				 </li>
-				<li><a id="ofh4" href="" style="">
-				<div class="content1" style="background-image:url(__STATIC__/weixin/images/home/chaoshi.png);background-size:100% 100%;"></div>
-                    </a>
-				</li>
-				 
-               <ol style="background-image:url(__STATIC__/weixin/images/home/hoslogo.png);background-size:100% 100%;"></ol>
+				<eq name="mod" value="1"><ol style="margin-top:<?php echo $index;?>px;"><?php $index+=69;?></ol></eq>
+			    </volist>						
             </ul>
         </div>
 		<div class="content_start">
@@ -175,6 +130,7 @@
 				 
                <ol style="background-image:url(__STATIC__/weixin/images/home/hoslogo.png);background-size:100% 100%;"></ol>
             </ul>
+        </div>    
 		<div class="content_start">
 		       <p>母婴服务推荐<span><a href="">更多</a></span></p>
                <ul class="ofh ul_list">
@@ -219,7 +175,7 @@
 				</li>
 				 
                <ol style="background-image:url(__STATIC__/weixin/images/home/hoslogo.png);background-size:100% 100%;"></ol>
-            </ul
+            </ul>
         </div>
     </section>
 <section>
