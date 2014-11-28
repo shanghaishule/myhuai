@@ -500,8 +500,9 @@ class indexAction extends frontendAction {
    	   $flash_pos = M("flash_pos")->where($cond)->find();
    	   $flash = M("flash")->where(array("pos"=>$flash_pos['id']))->select();
    	   $where['tuijian'] = 1;
-   	   //四大服务
+   	   /*/四大服务
    	   $serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
+<<<<<<< HEAD
    	   //推荐二级分类，是否有子级，有跳到thdcate(三级分类),没有跳到thdlist(列表，注：如果列表里只有一个商品或服务跳到详情页)
    	   $arr = array();//保存所有二级被推荐的分类
    	   foreach($serArr as $key => $val){
@@ -557,6 +558,14 @@ class indexAction extends frontendAction {
    	   	   }
    	   }
    	   dump($arr);die;
+=======
+   	   //推荐分类
+   	   $tuijian_cat = $this->_cat->where(array("tuijian"=>1))->select();
+   	   foreach ($tuijian_cat as $key => $val){
+   	   	   
+   	   }**/
+   	   
+>>>>>>> branch 'master' of https://github.com/shanghaishule/myhuai.git
    	   //推荐服务
    	   
    	   //dump($serArr);die;
