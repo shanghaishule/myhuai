@@ -502,7 +502,9 @@ class indexAction extends frontendAction {
    	   $serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
    	   //推荐分类
    	   $tuijian_cat = $this->_cat->where(array("tuijian"=>1))->select();
-   	   foreach ($tuijian_cat as $key => $val)
+   	   foreach ($tuijian_cat as $key => $val){
+   	   	   
+   	   }
    	   
    	   //推荐服务
    	   
