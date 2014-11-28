@@ -498,13 +498,13 @@ class indexAction extends frontendAction {
    	   $flash_pos = M("flash_pos")->where($cond)->find();
    	   $flash = M("flash")->where(array("pos"=>$flash_pos['id']))->select();
    	   $where['tuijian'] = 1;
-   	   //四大服务
+   	   /*/四大服务
    	   $serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
    	   //推荐分类
    	   $tuijian_cat = $this->_cat->where(array("tuijian"=>1))->select();
    	   foreach ($tuijian_cat as $key => $val){
    	   	   
-   	   }
+   	   }**/
    	   
    	   //推荐服务
    	   

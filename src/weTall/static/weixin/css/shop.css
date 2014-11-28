@@ -75,7 +75,10 @@ a:visited{ color:#666;}
 #content .mid_banner .ibox{ border:1px solid #ddd; border-radius:10px; max-width:600px;background:#fff; text-align:center;}
 
 #content .module_special{margin-top:10px;}
-
+/*新增*/
+#thdpic {
+width: 100px;
+height: 100px;
 
 /*购物车*/
 #content #chose_all{ font-size:20px; text-indent:20px; color:#888; font-weight:normal;line-height:35px; border-bottom:1px solid #fdfdfd; margin:0 10px;}
