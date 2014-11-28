@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<include file="public:headtop" />
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<title>会员中心 - 我的地址</title>
-<link href="__STATIC__/weixin/css/shop.css" rel="stylesheet" type="text/css" />
+<title>添加收货地址</title>
+
 <script type="text/javascript" src="__STATIC__/weixin/js/jquery.js" charset="utf-8"></script>
 <script type="text/javascript" src="__STATIC__/weixin/js/ecmall.js" charset="utf-8"></script>
 <script type="text/javascript" src="__STATIC__/weixin/js/touchslider.dev.js" charset="utf-8"></script>
@@ -18,7 +19,10 @@
 <link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/jquery.ui.css" /></head>
 
 <body onLoad="setup()">
-<include file="public:head" />
+
+<div class="index_head1">
+
+</div>
 <script type="text/javascript" src="__STATIC__/weixin/js/jquery_002.js" charset="utf-8"></script>
 <script type="text/javascript">
 
@@ -96,7 +100,7 @@ function hide_error(){
         <form method="post" action="{:U('user/addaddress',array('tokenTall'=>$tokenTall))}" id="address_form">
             <ul class="form_address">
                 <li>
-                    <input class="text width_normal" name="consignee" placeholder="请填写您的真实姓名" type="text">
+                    <input id="border_none" class="text width_normal" name="consignee" placeholder="请填写您的真实姓名" type="text">
                     <label class="field_message"><span class="field_notice"></span></label>
                 </li>
                 <li>
@@ -111,10 +115,10 @@ function hide_error(){
                     <input class="text width_normal" name="address" placeholder="不必重复填写地区" type="text"><label class="field_message"><span class="field_notice"></span></label>
                 </li>
                 <li>
-                    <input class="text width_normal" name="phone_mob" placeholder="电话号码" type="text"><label class="field_message"><span class="field_notice"></span></label>
+                    <input class="text width_normal" name="phone_mob" placeholder="手机号码" type="text"><label class="field_message"><span class="field_notice"></span></label>
                 </li>
             </ul>
-            <div class="submit">
+            <div class="submit" id="newadd">
                 <input class="btn enter" value="新增地址" type="submit">
             </div>
         </form>

@@ -321,9 +321,20 @@ class itemAction extends frontendAction {
             $this->ajaxReturn(1, L('unlike_failed'));
         }
     }
+    /*显示页面*/
     public function index_book(){
     	$this->display();
     }
+    public function house_book(){
+    	$this->display();
+    }
+    public function hugong_book(){
+    	$this->display();
+    }
+    public function index_phone(){
+    	$this->display();
+    }
+    /*end*/
     /**
      * 删除商品
      */

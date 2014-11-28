@@ -524,5 +524,11 @@ class indexAction extends frontendAction {
    public function threelist2(){
    	$this->display();
    }
+   public function houselist2(){
+   	$this->display();
+   }
+   public function hugonglist2(){
+   	$this->display();
+   }
    
 }

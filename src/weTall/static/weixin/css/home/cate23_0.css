@@ -42,6 +42,13 @@ width:100%
 .navlist1 #a_0 .headtop2{width:35px;height:30px;margin:auto;
 }
 .navlist1 #a_1{ width:60%;}
+.navlist1 #a_2{ width:20%;}
+#addliter{color:white}
+#a_2 p{
+padding-left: 10px;
+padding-top: 12px;
+font-size: 16px;
+}
 #a_1 div{padding-top:10.5px;}
 #a_1 div p{text-align:center;font-size:1.5em;color:white}
 	
