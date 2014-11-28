@@ -502,6 +502,7 @@ class indexAction extends frontendAction {
    	   $serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
    	   //推荐分类
    	   $tuijian_cat = $this->_cat->where(array("tuijian"=>1))->select();
+   	   foreach ($tuijian_cat as $key => $val)
    	   
    	   //推荐服务
    	   
@@ -515,13 +516,13 @@ class indexAction extends frontendAction {
    public function listall(){
    	   $this->display();
    }
-   public function seclistall(){
+   public function seclist(){
    	   $this->display();
    }
-   public function threelist1(){
+   public function thdcate(){
    	   $this->display();
    }
-   public function threelist2(){
+   public function thdlist(){
    	$this->display();
    }
    public function houselist2(){
