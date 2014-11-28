@@ -501,6 +501,7 @@ class indexAction extends frontendAction {
    	   //四大服务
    	   $serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
    	   //推荐分类
+   	   $tuijian_cat = $this->_cat->where(array("tuijian"=>1))->select();
    	   
    	   //推荐服务
    	   
