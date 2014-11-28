@@ -510,6 +510,7 @@ class indexAction extends frontendAction {
    	   $this->assign("test",$serArr);
    	   $this->display();
    }
+   
    public function listall(){
    	   $this->display();
    }
