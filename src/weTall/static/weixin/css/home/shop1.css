@@ -106,6 +106,7 @@ a:visited{ color:#666;}
 
 
 /*登陆*/
+.bg_white{background:white}
 #content #login_form{ margin:30px 10px 0;}
 .login_right{ margin:0 10px;}
 #register_form,#order_form{ margin:0 10px;}
@@ -125,11 +126,13 @@ a:visited{ color:#666;}
 #login_btn_id{background:#006835;border:bone}
 #login_btn_id1{background:red;;border:bone}
 #content form .width5,#content form .width10{ width:100%;}
-
-#content form .text,#content #address_form .text{height:40px;margin:5px 0; border-radius:5px; border:1px solid #ddd; text-indent:10px; width:100%;}
-#content form .text,#content #address_form select{margin-left:10px; border-radius:5px; border:1px solid #ddd; height: 38px; margin: 5px 0;}
-#content form .text.error{ border:1px solid #F00;}
-#content .enter,#content .login_btn{ width:100%; display:block; text-align:center; margin:7px 0; height:30px; line-height:30px;   background-color: #f0f0f0;;border-radius:5px; color:#fff; font-size:1em; cursor:pointer;/* margin-top: 100px;*/}
+#newadd{padding-left:10%}
+#content form .text{height:40px;margin:5px 0;  text-indent:10px; width:100%;}
+#content #address_form .text{height:40px;margin:5px 0; border:none; text-indent:10px; width:100%;}
+.form_address{text-align: ;}
+#content form .text,#content #address_form select{margin-left:10px;border:none; ; height: 38px; margin: 5px 0;}
+#content form .text.error{}
+#content .enter,#content .login_btn{ margin-left:10%;width:80%; display:block; border:none;text-align:center; margin:7px 0; height:30px; line-height:30px;   background-color: red;;border-radius:5px; color:#fff; font-size:1em; cursor:pointer;/* margin-top: 100px;*/}
 #content .ware_btn .enter{background-color: red;
 }
 #content .ware_btn #enter1{background-color:#006835;}
@@ -186,6 +189,7 @@ div.order_cancel_box p span {color: #f34; font-weight: bold;}
 
 /*新增地址*/
 #address_form ul.form_address {	padding: 10px;}
+#border_none {border：none}
 
 /*会员中心*/
 .content {margin: 0; min-height:300px; position: relative;}
@@ -1092,7 +1096,38 @@ z-index: 890;
 	top:0; left:0;
 }
 
+/*房屋租赁新增*/
+.fang_new {
+-webkit-box-sizing: inherit;
+}
+.fang {
+font-size: 13px;
+margin-top: 15px;
+padding: 0 10px 7px;
+width: 300px;
+-webkit-box-sizing: border-box;
+}
+ul {
 
+}
+}
+.fang_new li {
+min-width: 148px;
+width: 148px;
+margin-bottom: 5px;
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
+}
+.fang li {
+color: #3F4358;
+display: inline-block;
+font-size: 13px;
+
+min-width: 128px;
+text-align: -webkit-match-parent;}
+
+/*房屋租赁结束
 
 /**
  *

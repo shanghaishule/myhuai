@@ -233,48 +233,35 @@
          <input type="hidden" value="{$item.id}" name="goodId" id="goodId" >
          <div class="ware_text">
              <div class="rate">
-              <h2 class="ware_title"><span class="fontColor3">沪爱价¥{$item.price}</span></h2>
-               <p class="letter1" style=";">周边价：{$item.zb_price}</p>
-                <h2 class="ware_title">{$item.title}<!-- <span class="letter2" style="">已卖出：{$item.buy_num}件</span> --></h2>       	
-               
+              <!-- <h2 class="ware_title"><span class="fontColor3">沪爱价¥{$item.price}</span></h2> -->
+               <!--<p class="letter1" style=";">周边价：{$item.zb_price}</p> -->
+                <h2 class="ware_title">阿姨很好{$item.title}<!-- <span class="letter2" style="">已卖出：{$item.buy_num}件</span> --></h2>       	
+                <!-- detail list start -->
+        <ul class="attr_info fang fang_new">
+    <li>薪资： <span class="pri">
+    <span class="pri"><strong
+            class="fontColor3">沪爱价¥100{$item.price}</strong> 元/月
+                                    
+                            </span>
+   </li>
+   
+
+                <li>工作年限：<span>10年以上</span></li>
+                <li>性别： <span>女</span></li>
+                <li>籍贯： <span>江苏</span></li>
+                <li>学历：<span>小学</span></li>
+                <li>年龄：<span>45</span></li>
+                
+    
+</ul>
+        <!-- detail list end -->
                 
               
                 
 			</div>
             <div class="handle">
 
-           <script type="text/javascript">
-           var colorchoose = "";
-           var sizechoose = "";
-				function sizetitle(size_title){
-					sizechoose = size_title;
-	            	if(colorchoose != ""){
-			    		item_id=$("#goodId").val();
-			    		$.get('./index.php?g=home&m=index&a=addressselect&item_id='+item_id+'&color='+colorchoose+"&size="+size_title,function(data,status){
-			    			var obj = eval('('+  data +')');               		
-			    			$("#detail_stock").text(obj.status);
-	                	  });
-			    	}
-	              $(".size_title").css('background','none');
-		          $("#size" + size_title).css('background','url(__STATIC__/images/xiaokuang.png)');
-		          $("#sizeChoose").val(size_title);
-		        }
-		        function colortitle(color_title){
-		        	colorchoose = color_title;
-			    	if(sizechoose != ""){
-			    		item_id=$("#goodId").val();
-			    		$.get('./index.php?g=home&m=index&a=addressselect&item_id='+item_id+'&color='+color_title+"&size="+sizechoose,function(data,status){
-			    			var obj = eval('('+  data +')');               		
-			    			$("#detail_stock").text(obj.status);
-	                	  });
-			    	}
-		        	
-		        	
-	              $(".color_title").css('background','none');
-		          $("#color" + color_title).css('background','url(__STATIC__/images/xiaokuang.png)');
-		          $("#colorChoose").val(color_title);
-		        }
-		  </script>
+           
 		  <!--book -->
 		
 <script type="text/javascript">
@@ -297,8 +284,6 @@ $(function(){
                     </li>
                     
 		 </div>
-                <!--  <ul><li class="handle_title">请选择：</li><li class="handle_title" style="color:black;">颜色/尺码</li></ul>-->
-                
                
                 
                 
@@ -306,23 +291,11 @@ $(function(){
             <ul class="ware_btn">
                 <div style="display:none;" class="ware_cen">
                 	
-                    <div class="ware_center">
-                        <h1>
-                            <span class="dialog_title"></span>
-                            <span onclick="slideUp_fn();" onmouseout="this.className = 'close_link'" onmouseover="this.className = 'close_hover'" title="关闭" class="close_link"></span>
-                        </h1>
-                        <div class="ware_cen_btn">
-                            <p class="ware_text_p">购物车内共有 <span class="bold_num"></span> 种商品 共计 <span class="bold_mly"></span></p>
-                            <p class="ware_text_btn">
-                                <a href="{:U('shopcart/index',array('tokenTall'=>$tokenTall))}"><input type="submit" onclick="#" value="查看购物车" name="" class="btn1"></a>
-                               <a href="{:U('book/allcate',array('tokenTall'=>$tokenTall))}"> <input type="submit" onclick="$('.ware_cen').css({'display':'none'});" value="继续挑选商品" name="" class="btn2"></a>
-                            </p>
-                        </div>
-                    </div>
+                    
                     <div class="ware_cen_bottom"></div>
                 </div>
                 	<li id="intime_shopping"><a href="javascript:void(0)" onclick="javascript:buy_now();" title="立即购买" class="buy-now enter">立即付款</a></li>                
-                	<li id="addin_car"><a href="tel:15900998149">电话预约</a></li>
+                	<li id="addin_car"><a href="tel:15900998149" >电话预约</a></li>
             </ul>
             
             </div>
@@ -335,8 +308,8 @@ $(function(){
         <div class="ornament1"></div>
         <div class="ornament2"></div>
 	<!--xxl start-->
-        <li class="btn_1 active" id = "sheet1"><a href="javascript:showinfo(1);"><span>商品详情</span></a></li>
-        <li class="btn_2" id = "sheet2"><a href="javascript:showinfo(2);"><span>商品评论</span></a></li>
+        <li class="btn_1 active" id = "sheet1"><a href="javascript:showinfo(1);"><span>阿姨介绍</span></a></li>
+        <li class="btn_2" id = "sheet2"><a href="javascript:showinfo(2);"><span>阿姨评论</span></a></li>
 	<!--xxl end-->
     </ul>
 	<div class="option_box" id = "item_info">		 
