@@ -67,4 +67,8 @@ CREATE TABLE `tp_flash` (
 INSERT INTO `tp_flash` VALUES ('52', '1', 'pjeupf1402729544', '/Uploads/image/20141127/5476d027dd08e.jpg', 'http://www.test.com.cn', '海亮地产控股集团有限公司诸暨分公司', '22');
 INSERT INTO `tp_flash` VALUES ('53', '1', 'pjeupf1402729544', '/Uploads/image/20141127/5476e6e26887e.jpg', 'http://lgxshs.lgjjkfq.gov.cn/index.php?g=Home&m=Shop&a=index', 'test描述', '2');
 
+----2014-11-28----
+
+ALTER TABLE  `tp_flash_pos` ADD  `type` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT  '类型(所属页面)';
+
 

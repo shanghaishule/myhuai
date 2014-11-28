@@ -4,14 +4,28 @@
           <div class="cLineB"><h4>添加广告位</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
 <div class="msgWrap">
 <form class="form" method="post"  action="{lanrain::U('Flash/addPos')}"  target="_top" enctype="multipart/form-data" >
+ <input type="hidden" name="id" value="{lanrain:$info['id']}" />
 <TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
   <TBODY>
 <TR>
   <TH valign="top"><label for="keyword">广告位名称：</label></TH>
-  <TD><input type="text" class="px" id="keyword" required name="name" style="width:500px" /><br />
+  <TD><input type="text" class="px" id="keyword" value="{lanrain:$info['name']}" required name="name" style="width:500px" /><br />
                   30个字简短分类描述，可为空   </TD>
   <TD>&nbsp;</TD>
 </TR>
+		<tr>
+			<th>所属分类：</th>
+			<td class="all_category">
+			    <select name="type" class="pt oneCategory" style="width:150px">
+				<option value="">--请选择--</option>
+				<option value="首页">首页</option>
+				<volist name="cateG" id="va">
+				  <option value="{lanrain:$va.catname}" <if condition="$info['type'] eq $va['catname']">selected</if>>{lanrain:$va.catname}</option>
+				</volist>
+				<option value="三级分类">三级分类</option>
+				</select>						
+			</td>
+		</tr>
 <TR>
   <TH></TH>
   <TD><button type="submit"  name="button"  class="btnGreen left" >保存</button>
@@ -31,5 +45,5 @@
   </div> 
 
 <!--底部-->
-  	</div>
+  	</div>  	
 <include file="Public:footer"/>
