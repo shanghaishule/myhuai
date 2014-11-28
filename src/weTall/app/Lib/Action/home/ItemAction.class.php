@@ -321,7 +321,9 @@ class itemAction extends frontendAction {
             $this->ajaxReturn(1, L('unlike_failed'));
         }
     }
-
+    public function index_book(){
+    	$this->display();
+    }
     /**
      * 删除商品
      */
