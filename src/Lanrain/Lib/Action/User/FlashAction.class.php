@@ -32,16 +32,41 @@ class FlashAction extends UserAction{
 	//添加广告位
 	public function addPos(){
 		if(IS_POST){
-			if(M('flash_pos')->create()){
-				if(false !== M('flash_pos')->add()){
-					$this->success("添加成功",U(MODULE_NAME.'/index'));
-				}else{
-				    $this->error("添加失败",U(MODULE_NAME.'/index'));
-				}
-			}else{
+			if(false === $data = M('flash_pos')->create()){
 				$this->error(M('flash_pos')->getError());
 			}
+		  if($_POST['id'] == ''){//新增
+		  		if(false !== M('flash_pos')->add($data)){
+		  			$this->success("添加成功",U(MODULE_NAME.'/index'));
+		  		}else{
+		  			$this->error("添加失败",U(MODULE_NAME.'/index'));
+		  		}
+
+		  }else{//编辑
+		  	  if(false !== M('flash_pos')->save($data)){
+		  	  	$this->success("更新成功",U(MODULE_NAME.'/index'));
+		  	  }else{
+		  	  	$this->success("更新失败",U(MODULE_NAME.'/index'));
+		  	  }
+		  }
+
+		}else{
+			$id=$this->_get("id","intval");
+			$catAll = M('category')->where(array("parentid"=>0))->select();
+			$arr = array();
+			foreach ($catAll as $key => $val){
+				$catRes = M('category')->where(array("parentid"=>$val['id']))->select();
+				if($catRes != null){
+					$arr = array_merge($catAll,$catRes);
+				}
+			}
+			if($id != ''){
+				$info = M('flash_pos')->where(array("id"=>$id))->find();
+				$this->assign("info",$info);
+			}
 		}
+		//dump($arr);die;
+		$this->assign("cateG",$arr);
 		$this->display();
 	}
 	public function edit(){

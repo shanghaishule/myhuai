@@ -8,31 +8,48 @@ class SaleStatAction extends UserAction{
 		$shopinfo = M('wecha_shop')->where(array('tokenTall'=>$tokenTall))->find();
 		$this->assign('shopinfo', $shopinfo);
 		
+		$buycount= M('item')->where(array('status'=>1))->count();
+		$nobuycount= M('item')->where(array('status'=>0))->count();
+		$fukuan= M('item_order')->where(array('status'=>1))->count();
+		$fahuo= M('item_order')->where(array('status'=>2))->count();
+		$yfahuo= M('item_order')->where(array('status'=>3))->count();
+		$end = M('item_order')->where(array('status'=>4))->count();
+		$totalamt = M('item_order')->where(array('status'=>4))->sum('order_sumPrice');
+		$srvcount= M('service')->where(array('status'=>1))->count();
+		$srvcount_bad= M('service')->where(array('status'=>0))->count();
+		$totalamt_today = M('item_order')->where(" status=4 and date_format(add_time,'%m/%d/%Y')=date_format(now(),'%m/%d/%Y') ")->sum('order_sumPrice');
+		$totalamt_online = M('item_order')->where('status=4 and supportmetho<>2')->sum('order_sumPrice');
+		$this->assign('count',
+				array(	'fukuan'=>$fukuan,
+						'fahuo'=>$fahuo,
+						'yfahuo'=>$yfahuo,
+						'end'=>$end,
+						'buycount'=>$buycount,
+						'nobuycount'=>$nobuycount,
+						'totalamt'=>$totalamt,
+						'srvcount'=>$srvcount,
+						'srvcount_bad'=>$srvcount_bad,
+						'totalamt_today'=>$totalamt_today,
+						'totalamt_online'=>$totalamt_online
+				)
+		);
+		
+			
+$order_detail=M()->query("
+select b.title,b.img,b.quantity,SUM(b.price*b.quantity) amt, d.b_name 
+from tp_item_order a, tp_order_detail b, tp_item c, tp_business d 
+where a.orderId=b.orderId 
+and a.`status`=4 
+and DATE_FORMAT(a.add_time,'%m/%d/%Y')=date_format(now(),'%m/%d/%Y') 
+and b.itemId=c.id 
+and c.isBusiness=d.id
+order by SUM(b.price*b.quantity) desc
+");
+		
+		$this->assign('order_detail',$order_detail);//订单商品信息
 		
 		
-				$buycount= M('item')->where(array('status'=>1))->count();
-				$nobuycount= M('item')->where(array('status'=>0))->count();
-				$fukuan= M('item_order')->where(array('status'=>1))->count();
-				$fahuo= M('item_order')->where(array('status'=>2))->count();
-				$yfahuo= M('item_order')->where(array('status'=>3))->count();
-				$end = M('item_order')->where(array('status'=>4))->count();
-				$totalamt = M('item_order')->where(array('status'=>4))->sum('order_sumPrice');
-				$this->assign('count',
-						array(	'fukuan'=>$fukuan,
-								'fahuo'=>$fahuo,
-								'yfahuo'=>$yfahuo,
-								'end'=>$end,
-								'buycount'=>$buycount,
-								'nobuycount'=>$nobuycount,
-								'totalamt'=>$totalamt
-						)
-				);
-				
-				
-				$info_notice = M('info_notice')->where(array('status'=>1))->select();
-				$this->assign('info_notice', $info_notice);
-				
-				$this->display();
+		$this->display();
 			
 		
 	}

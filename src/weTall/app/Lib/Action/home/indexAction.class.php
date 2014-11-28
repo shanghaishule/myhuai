@@ -482,24 +482,19 @@ class indexAction extends frontendAction {
     	
     	$rate = $goodNum/$allNum*100;
     	$this->assign("rate",$rate);
-//dump($allNum);
-//dump($goodNum);
-//dump($rate);    	
-//dump($weChaShopDetail["phone"]);
-//die();
-
-		
-    	 
-    	
+		//dump($allNum);
+		//dump($goodNum);
+		//dump($rate);    	
+		//dump($weChaShopDetail["phone"]);
+		//die();
     	$this->display();
-    	
     }    
     	 
    public function home(){
    	   //顶部幻灯片
    	   $token = $this->getTokenTall();
    	   $cond['token'] = $token;
-   	   $cond['id'] = 1;
+   	   $cond['type'] ="首页";
    	   $flash_pos = M("flash_pos")->where($cond)->find();
    	   $flash = M("flash")->where(array("pos"=>$flash_pos['id']))->select();
    	   $where['tuijian'] = 1;
@@ -515,6 +510,7 @@ class indexAction extends frontendAction {
    	   $this->assign("test",$serArr);
    	   $this->display();
    }
+   
    public function listall(){
    	   $this->display();
    }

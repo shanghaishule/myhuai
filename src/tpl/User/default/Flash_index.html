@@ -5,7 +5,7 @@
   <h4>广告位管理 <span class="FAQ">3G网站头部幻灯片。</span></h4>
  </div>
  <div class="cLineC" style="line-height: 32px;">
- <a  target="ddd" href="{lanrain::U('Flash/addPos')}" class="btnGrayS vm bigbtn" >添加广告位</a>　 
+ <a href="{lanrain::U('Flash/addPos')}" class="btnGrayS vm bigbtn" >添加广告位</a>　 
 </div>
  
  <div class="msgWrap form">
@@ -17,6 +17,7 @@
 <tr>    
 <th>广告位ID</th>             
 <th>广告位名称</th>
+<th>广告位类型</th>
 <th class="norightborder">操作</th>
 </tr>
 </thead>
@@ -24,24 +25,24 @@
 <tr>
 <td align="center">{lanrain:$vo.id}</td>
 <td align="center">{lanrain:$vo.name}</td>
+<td align="center">{lanrain:$vo.type}</td>
 <td align="center" class="norightborder">
-	<a target="ddd" href="{lanrain::U('Flash/flashAd',array('id'=>$vo['id']))}">查看广告</a> |
-	<a href="javascript:drop_confirm('你确定要本项目删除吗？', '{lanrain::U('Flash/delPos',array('id'=>$vo['id']))}');">删除</a>
+	<a href="{lanrain::U('Flash/flashAd',array('id'=>$vo['id']))}">查看广告</a> |
+	<a href="{lanrain::U('Flash/addPos',array('id'=>$vo['id']))}">编辑</a> |
+	<a href="javascript:drop_confirm('你确定要本项目删除吗？','{lanrain::U('Flash/delPos',array('id'=>$vo['id']))}');">删除</a>
 </td>
 </tr>
 </volist>
                
-  </table>
+ </table>
 </div>
 </div>
 <div class="footactions" style="padding-left:10px">
   <div class="pages">{lanrain:$page}</div>
 </div>
-          </div>
-  
-        </div>
-   
-        <div class="clr"></div>
+    </div>
+    </div>
+   <div class="clr"></div>
       </div>
     </div>
   </div> 

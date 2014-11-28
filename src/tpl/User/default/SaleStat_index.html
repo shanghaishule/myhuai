@@ -21,13 +21,19 @@
 <tr>
 <td align="center">商品信息：</td>
 <td align="center">
-<a href="{lanrain::U('Wetall_item/index',array('status'=>1,'tokenTall'=>$tokenTall))}">出售中商品 [<span class="red">{lanrain:$count.buycount}</span>]</a>
+<a href="{lanrain::U('Wetall_item/index',array('status'=>1, 'tokenTall'=>$tokenTall))}">出售中商品 [<span class="red">{lanrain:$count.buycount}</span>]</a>
+<a href="{lanrain::U('Service/index',array('status'=>1, 'tokenTall'=>$tokenTall))}">出售中服务 [<span class="red">{lanrain:$count.srvcount}</span>]</a>
+<a href="{lanrain::U('Service/index',array('status'=>0, 'tokenTall'=>$tokenTall))}">已暂停的服务 [<span class="red">{lanrain:$count.srvcount_bad}</span>]</a>
+
 </td>
 </tr>
 <tr>
 <td align="center">财务信息：</td>
 <td align="center">
 已成交总计 [<span class="red">￥{lanrain:$count.totalamt}</span>]
+今日成交总计 [<span class="red">￥{lanrain:$count.totalamt_today}</span>]
+在线支付总计 [<span class="red">￥{lanrain:$count.totalamt_online}</span>]
+
 </td>
 </tr>
 </table>
@@ -37,20 +43,23 @@
 <table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
 <thead>
 <tr>
-<th colspan="4">公告</th>
+<th colspan="5">销售统计分析</th>
 </tr>
 </thead>
 <tr>
-<th>标题</th>
-<th>内容</th>
-<th>发布时间</th>
+<th>项目图片</th>
+<th>项目名称</th>
+<th>销售数量</th>
+<th>销售金额</th>
+<th>所属商家</th>
 </tr>
-
-<volist name="info_notice" id="val">
+<volist name='order_detail' id='vo' >
 <tr>
-<td align="center">{lanrain:$val.title}</td>
-<td align="center" style="width:500px">{lanrain:$val.content}</td>
-<td align="center">{lanrain:$val.ptime|date='Y-m-d H:i:s',###}</td>
+<td align="center"><div class="cateimg"><img src="{lanrain:$vo.img}" class="cateimg_small"  /><img src="{lanrain:$vo.img}" class="cateimg_big"  /></div></td>
+<td align="center">{lanrain:$vo.title}</td>
+<td align="center">{lanrain:$vo.quantity}</td>
+<td align="center" class="red">¥{lanrain:$vo.amt}</td>
+<td align="center">{lanrain:$vo.b_name}</td>
 </tr>
 </volist>
 </table>
