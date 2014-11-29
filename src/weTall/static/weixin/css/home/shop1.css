@@ -25,7 +25,7 @@
  */
 
 body {font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3"; line-height:1.6; background:#f6f6f6; }
-html,body { min-width: 320px; max-width:640px; margin:0 auto;background:white; }
+html,body { min-width: 320px; max-width:640px; margin:0 auto;background:#f1f0f5 }
 h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dt, dd, li, body, form, input, button, img, cite, strong, em, table, td, th { padding:0; margin:0; }
 h1, h2, h3, h4, h5, h6 { font-size: 15px;}
 hr{border:1px solid #D9D9D9;}
@@ -79,8 +79,8 @@ a:visited{ color:#666;}
 
 /*购物车*/
 #content #chose_all{ font-size:20px; text-indent:20px; color:#888; font-weight:normal;line-height:35px; border-bottom:1px solid #fdfdfd; margin:0 10px;}
-#content .cart_list{ border-top:1px solid #ddd; padding-top:10px; margin:0 10px;}
-#content .cart_list li{ border:2px solid #ddd; background:#fff; border-radius:10px; padding:10px; overflow:hidden; margin-bottom:10px;}
+#content .cart_list{  }
+#content .cart_list li{  background:#fff;  padding:5px; overflow:hidden;border-bottom:1px solid #ccc }
 #content .cart_list li p{ clear:both;}
 #content .cart_list li p.goods_info{ display:block; overflow:hidden; }
 #content .cart_list li p.buy_info{ color: #838383;}
@@ -90,21 +90,30 @@ a:visited{ color:#666;}
 #content .cart_list li .price1{ color: #f34;}
 #content .cart_list li p.buy_info .total .attr{ line-height: 15px;}
 #content .cart_list li p.buy_info .total .price2{ font-weight:bold; color:#ea393f; margin-left: 12px;}
-#content .cart_list li span.img{ display:block; width:80px; float:left;}
-#content .cart_list li span.tit{ display:block; float:left; margin-left:10px; font-size: 13px; color:#838383; }
-#content .cart_list li span.tit a{ font-size:15px; text-decoration:none; color:#333; }
+#content .cart_list li span{line-height: 25px;}
+#content .cart_list li span.img{ display:block; width:100px;height:100px; float:left;}
+#content .cart_list li span.img a{display:block;}
+#content .cart_list li span.tit{ display:block; float:left; margin-left:1%; font-size: 13px; color:#838383;width:45% }
+#content .cart_list li span.titadd{width:15% }
+#content .cart_list li span.tit a{ font-size:15px; text-decoration:none; color:#3e4245;word-wrap: break-word; }
 #content .cart_list li span.tit input{width: 28px;height: 16px;padding: 2px;border: 1px solid #EAEAEA;color: #999;text-align: center;line-height: 14px;font-size: 12px;}
 
-#content .buy_foot{ text-align:right; line-height:24px; font-size:16px; color: #838383; margin:0 10px;}
-#content .buy_foot p.jiesuan_btn{margin-bottom: 15px;}
-#content .buy_foot strong{font-weight:bold; color:#ea393f; margin-left: 12px;}
+#content .buy_foot{ line-height:24px; font-size:16px; color: #838383; width:100%;background:white;opacity:0.9;height:45px;position:fixed;left:0;bottom:45px}
+#content .buy_foot p{float:left;width:50%;padding-top:7px;}
+#content .buy_foot p.goods_amount{padding-left:20px;}
+#content .buy_foot p.jiesuan_btn{width:30%}
+#content .buy_foot strong{font-weight:bold; color:red; }
 #content .buy_foot a span{ text-decoration:none; color:#fff; text-indent:-2000px;}
-#content .cart_list li span.tit input{width: 28px;height: 16px;padding: 2px;border: 1px solid #EAEAEA;color: #999;text-align: center;line-height: 14px;font-size: 12px;}
+#content .cart_list li span.tit input{width: 28px;height: 16px;padding: 2px;color:#868686;text-align: center;line-height: 14px;font-size: 12px;}
 
 #content .buy_foot p.jiesuan_btn a img{display: none;}
-#content .buy_foot p.jiesuan_btn a{border-radius: 5px; display: block;height: 40px;line-height: 40px;font-size: 17px;border: 0;background: -moz-linear-gradient(top, #ff4747, #f52f40);background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff4747), to(#f52f40));text-align: center;text-decoration: none;-webkit-appearance: none;}
-
-
+#content .buy_foot p.jiesuan_btn a{ color:white;display: block;height: 31px;line-height: 32px;font-size: 17px;border: 0;background:red;text-align: center;text-decoration: none;-webkit-appearance: none;}
+#content .buy_foot p#gds_id{width:28%;margin-left:2%;font-size:12px}
+#content .buy_foot p.jiesuan_btn a#backcart{background:#006835;;margin-left:2%}
+#content #by_id{bottom:0px}
+#save_address{width: 20px;
+height: 20px;
+background: #006835}
 /*登陆*/
 .bg_white{background:white}
 #content #login_form{ margin:30px 10px 0;}
@@ -128,11 +137,11 @@ a:visited{ color:#666;}
 #content form .width5,#content form .width10{ width:100%;}
 #newadd{padding-left:10%}
 #content form .text{height:40px;margin:5px 0;  text-indent:10px; width:100%;}
-#content #address_form .text{height:40px;margin:5px 0; border:none; text-indent:10px; width:100%;}
+#content #address_form .text{height:25px;margin:5px 0; border:none; text-indent:10px; width:100%;}
 .form_address{text-align: ;}
 #content form .text,#content #address_form select{margin-left:10px;border:none; ; height: 38px; margin: 5px 0;}
 #content form .text.error{}
-#content .enter,#content .login_btn{ margin-left:10%;width:80%; display:block; border:none;text-align:center; margin:7px 0; height:30px; line-height:30px;   background-color: red;;border-radius:5px; color:#fff; font-size:1em; cursor:pointer;/* margin-top: 100px;*/}
+#content .enter,#content .login_btn{ margin-left:10%;width:80%; display:block; border:none;text-align:center; margin:7px 0; height:30px; line-height:30px;   background-color: red;;border-radius:0spx; color:#fff; font-size:1em; cursor:pointer;/* margin-top: 100px;*/}
 #content .ware_btn .enter{background-color: red;
 }
 #content .ware_btn #enter1{background-color:#006835;}
@@ -144,9 +153,11 @@ a:visited{ color:#666;}
 /*购物车·空*/
 .null_shopping{ text-align: center; color: #ccc;}
 .null_shopping h4{ text-indent:10px; font-size: 18px; margin: 10px 0;}
-.null_shopping .cart_pic{background: url(../images/cart_pic.png) no-repeat center; height: 100px;}
-#content .null_shopping p a.enter{line-height:30px; width: auto;display: inline-block; background: none; color: #999; padding: 5px;background-color: #fafafa; font-size: 15px; height: 30px; }
+.null_shopping .cart_pic{ height: 100px;}
+#content .null_shopping p a.enter{line-height:30px; width: auto;display: inline-block; background: none; color: white; padding: 5px;background-color: #006835; font-size: 15px; height: 30px; }
 /*下单页面*/
+#region select{color:#cccccc;width:33.3%;float:left}
+#address_form li{border-bottom:1px solid #ccc}
 .address_item,.receive_add,.fill_in_content{ font-size:14px; line-height:20px;}
 .radio{ float:left; width:20px;}
 .address_item li.name,.address_item li.mobile{ text-indent:20px; clear:both;}

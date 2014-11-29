@@ -2,15 +2,29 @@
 <html>
 <head>
 <include file="public:headtop" />
-<link type="text/css" rel="stylesheet" href="__STATIC__/weixin/css/shop.css">
+<link type="text/css" rel="stylesheet" href="__STATIC__/weixin/css/home/shop1.css">
 </head>
 
 <body onload="setup()" >
-<include file="public:head" />
+<div class="index_head1">
+<div id="nav">
+	<ul class="navlist1">
+		<li id="a_0">
+		   <div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div>
+         </li>
+        <li  id="a_1">
+    						<div style="">
+
+										<p>确认订单信息</p>
+				              </div>
+        </li>
+    </ul>
+ </div>
+</div>
 <div id="content">
-    <h4 class="add_title"><a class="enter" href="javascript:void(0)">确认订单信息</a></h4>
-    <div style="border:2px solid #ddd; background:#fff; border-radius:10px; padding:10px; overflow:hidden; margin-bottom:10px;">
-        <h3 style="margin-bottom:10px;">确认收货地址</h3>
+    <!-- <h4 class="add_title"><a class="enter" href="javascript:void(0)">确认订单信息</a></h4> -->
+    <div style=" background:#fff;  padding:10px; overflow:hidden; margin-bottom:10px;">
+        <h3 style="margin-bottom:10px;">收货地址</h3>
         <script type="text/javascript" src="__STATIC__/weixin/js/mlselection.js" charset="utf-8"></script>
         <!-- <script type="text/javascript" src="__STATIC__/weixin/js/area.js" charset="utf-8"></script>-->
         <script type="text/javascript" src="__STATIC__/weixin/js/jquery_003.js" charset="utf-8"></script>
@@ -146,11 +160,11 @@
 <!-- 一开始不显示 -- begin -->
             <ul style="display: none;" class="fill_in_content" id="address_form">
             <li>
-                <p class="title">收货人姓名</p>
-                <p><input value="" name="consignee" id="consignee" class="text" type="text"></p>
+                
+                <p><input value="" name="consignee" id="consignee" class="text" type="text" placeholder="请填写您的真实姓名" ></p>
             </li>
             <li>
-                <p class="title">所在地区</p>
+               
                 <p></p>
                 <div id="region">
                 <select name="sheng" id="s1"></select>
@@ -163,14 +177,14 @@
                 <p></p>
             </li>
             <li>
-                <p class="title">详细地址</p>
-                <p><input value="" name="address" id="address" class="text width1" type="text"></p>
+                
+                <p><input value="" name="address" id="address"  placeholder="详细地址不必重复填写地区" class="text width1" type="text"></p>
             </li>
             <li>
-                <p class="title">手机号码</p>
-                <p><input value="" id="phone_mob" name="phone_mob" class="text" type="text"></p>
+                
+                <p><input value="" id="phone_mob" name="phone_mob" placeholder="手机号码" class="text" type="text"></p>
             </li>
-            <li>
+           
                 <p class="title">&nbsp;</p>
                 <p>
                     <label>
@@ -178,7 +192,7 @@
                         <span class="explain">&nbsp;(&nbsp;选择后该地址将会保存到您的收货地址列表&nbsp;)&nbsp;</span>
                     </label>
                 </p>
-            </li>
+           
             </ul>
 <!-- 一开始不显示 -- end -->
 
@@ -189,12 +203,12 @@
            </li><li class="particular">使用新的收货地址</li>
            </ul> 
            <ul class="fill_in_content" id="address_form">
+          <li>
+                
+                <p><input value="" name="consignee" id="consignee" class="text" type="text" placeholder="请填写您的真实姓名" ></p>
+            </li>
            <li>
-               <p class="title">收货人姓名</p>
-               <p><input value="" name="consignee" id="consignee" class="text" type="text"></p>
-           </li>
-           <li>
-               <p class="title">所在地区</p>
+               
                <p></p>
                <div id="region">
                <select name="sheng" id="s1"></select>
@@ -207,51 +221,73 @@
                <p></p>
             </li>
             <li>
-                <p class="title">详细地址</p>
-                <p><input value="" name="address" id="address" class="text width1" type="text"></p>
+                
+                <p><input value="" name="address" id="address"  placeholder="详细地址不必重复填写地区" class="text width1" type="text"></p>
             </li>
             <li>
-                <p class="title">手机号码</p>
-                <p><input value="" id="phone_mob" name="phone_mob" class="text" type="text"></p>
+              
+                <p><input value="" id="phone_mob" name="phone_mob"  placeholder="手机号码" class="text" type="text"></p>
             </li>
-            <li>
+           
                 <p class="title">&nbsp;</p>
                 <p>
                     <label>
-                        <input value="1" id="save_address" name="save_address" type="checkbox">&nbsp;自动保存收货地址
-                        <span class="explain">&nbsp;(&nbsp;选择后该地址将会保存到您的收货地址列表&nbsp;)&nbsp;</span>
+                        <input value="1" id="save_address" name="save_address" type="checkbox">&nbsp;点击添加新增地址
+                      
                     </label>
                 </p>
-            </li>
+           
             </ul>
         <?php } ?>
     </div>
     
-    <div style="border:2px solid #ddd; background:#fff; border-radius:10px; padding:10px; overflow:hidden; margin-bottom:10px;">
+    <div style=" background:#fff;  padding:10px; overflow:hidden; margin-bottom:10px;">
         <h3 style="margin-bottom:10px;">确认订单信息</h3>
         <ul class="cart_list">
     	<volist name='allinfo' id='vo_group'>
-        <div style="border:2px solid #ddd; background:#fff; border-radius:10px; padding:10px; overflow:hidden; margin-bottom:10px;">
-        {$vo_group.name}
+        <div style=" background:#fff;   overflow:hidden; margin-bottom:1px;">
+        <!--  {$vo_group.name}-->
         <volist name='vo_group.item' id='vo'>
-           <li>
+        
+        <li id="cart_item_{$vo.id}">
               <p class="goods_info">
-                  <span class="img"><img src="{$vo['img']}" height="80" width="80"></span>
+                  <span class="img"><a href="{:U('Item/index',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}" ><img src="{:$vo['img']}" height="100" width="100"></a></span>
                   <span class="tit">
-                      {$vo.name}<br>
-                      <span>大小：</span><span style="color:black;">{$vo.size}</span>
-                      <span style="margin-left:5px">颜色：</span><span style="color:black;">{$vo.color}</span><br>
-                      <span style="margin-right:5px">价格：¥</span><span class="price1" id="gdprice_{$vo.tokenTall}_{$vo.id}">{$vo.price}</span><br>
+                      <a href="{:U('Item/index',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}" >000000000000000000000{$vo.name}</a><br>
+                     
+                      <span>尺寸:{$vo.size}<span>&nbsp;颜色:{$vo.color}</span></span>
+                      
+                      <br>
+                    
+                       
                       <span>数量：</span><span class="price1" id="gdnum_{$vo.tokenTall}_{$vo.id}">{$vo.num}</span><br>
+                      
+                      
+                  </span>
+                  <span class="tit titadd">
+                     
+                      <span></span><span class="price1">¥{$vo.price}</span><br>
+                      
+                      <br>
+                      <br>
+                      
                   </span>
               </p>
-              <div style="font-size:13px; text-align:right;">
-    			 <span>小计：¥</span>
-    			 <span class="price1" id="xiaoji_{$vo.tokenTall}_{$vo.id}"></span>
-              </div>
+              <p class="buy_info">
+                  <span class="total">
+                      <span>小计:</span>
+                      <span class="price2" id="item{$vo.id}_subtotal">¥<?php echo sprintf("%01.2f",$vo['num']*$vo['price']); ?></span>
+                  </span>
+              </p>
            </li>
+        
+        
+           
+           
+           
+           
         </volist>
-		<div style="font-size:13px; color:green;">运送方式：
+		<div style="font-size:13px; color:green;margin-top:5px;color:#ccc">运送方式：
 			<eq name="vo_group.free" value="1">
 				<select id="free_{$vo_group.tokenTall}" name="free_{$vo_group.tokenTall}"><option value ="0" selected="selected">卖家承担运费</option></select>
 			<else />
@@ -264,7 +300,7 @@
           	<input id="freefee_{$vo_group.tokenTall}" name="freefee_{$vo_group.tokenTall}" type="hidden"/>
          </div>
          <div>
-			<span style="font-size:13px; color: green;">给卖家的附言：</span>
+			<span style="font-size:13px; color: #ccc;">给卖家的附言：</span>
             <textarea id="mymsg_{$vo_group.tokenTall}" name="mymsg_{$vo_group.tokenTall}" style="font-size:10px; color: lightgrey; width:97%;" placeholder="选填，可以告诉卖家您对商品的特殊需求，如个人喜好等"></textarea>
         </div>
         <div style="font-size:13px; text-align:right;">
@@ -277,15 +313,33 @@
     </div>
     </form>
     
-    <div class="make_sure">
+    
+    
+    <div class="buy_foot" id="by_id">
+        <p class="goods_amount" id="gds_id">
+            <span>总价：</span>
+           <strong class="fontsize3" id="order_amount">¥<font id='order_amount2'></font></strong>
+        </p>
+        <p class="jiesuan_btn">
+            <a onclick="ordertj();" class="btn">提交订单</a>
+            
+        </p>
+        <p class="jiesuan_btn">
+           <a href="{:U('shopcart/index')}" class="btn" id="backcart">返回购物车</a>
+            
+        </p>
+        
+    </div>
+    
+   <!--   <div class="make_sure">
         <p class="order_amount">订单总价：<strong class="fontsize3" id="order_amount">¥<font id='order_amount2'></font></strong></p>
         <div>
             <a onclick="ordertj();" class="btn enter">下单完成并支付</a>
             <a href="{:U('shopcart/index')}" class="back">返回购物车</a>
         </div>
-    </div>
+    </div>-->
 </div>
-<include file="public:footer" />
+
 </body>
 </html>
 
