@@ -3,6 +3,8 @@ class indexAction extends frontendAction {
     public function _initialize(){
     	$this->_cat = M('category');
     	$this->_ser = M('service');
+    	$this->_item = M('item');
+    	$this->_art = M('article_new');
     }
     public function index() {
     	//取商家token值，取不到则默认为空
@@ -498,16 +500,64 @@ class indexAction extends frontendAction {
    	   $flash_pos = M("flash_pos")->where($cond)->find();
    	   $flash = M("flash")->where(array("pos"=>$flash_pos['id']))->select();
    	   $where['tuijian'] = 1;
-   	   /*/四大服务
+   	   //四大服务
    	   $serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
-   	   //推荐分类
-   	   $tuijian_cat = $this->_cat->where(array("tuijian"=>1))->select();
-   	   foreach ($tuijian_cat as $key => $val){
-   	   	   
-   	   }**/
-   	   
+   	   //推荐二级分类，是否有子级，有跳到thdcate(三级分类),没有跳到thdlist(列表，注：如果列表里只有一个商品或服务跳到详情页)
+   	   $arr = array();//保存所有二级被推荐的分类
+   	   foreach($serArr as $key => $val){
+	   	   	$tuijian_arr = $this->_cat->where(array("parentid"=>$val['id'],"tuijian"=>1))->select();
+	   	   	if(!empty($tuijian_arr)){
+	   	   		$arr = array_merge($arr,$tuijian_arr);
+	   	   	}
+   	   }
+   	   header("Content-type:text/html;charset=utf-8");
+       //判断被推荐的分类是否有子级，对应添加不同的链接
+   	   foreach($arr as $key => $val){
+   	   	   $flag = $this->_cat->where(array('parentid'=>$val['id']))->find();
+   	   	   if(empty($flag) || $flag == null){//没有子集
+   	   	   	    //查找itme,article,service,只有一个商品，跳到详情
+   	   	   	    $where['cate_id'] = $val['id'];
+   	   	   	    $itemAll = $this->_item->where($where)->count();
+   	   	   	    $serAll = $this->_ser->where($where)->count();
+   	   	   	    $artmAll = $this->_art->where($where)->count();
+   	   	   	    
+   	   	   	    if($itemAll > 1 || $serAll > 1 || $artmAll > 1 || ($itemAll+$serAll+$artmAll) > 1){//不止一条数据
+   	   	   	    	
+   	   	   	    	$arr[$key]['link'] = U("index/thdlist",array("catid"=>$val['id']));
+   	   	   	    	
+   	   	   	    }else if($itemAll == 1 || $serAll == 1 || $artmAll == 1 && ($itemAll+$serAll+$artmAll) == 1){
+   	   	   	    	//判断表及对应的页面
+   	   	   	       	$page = "";
+   	   	   	       	$table="";
+   	   	   	    	if($itemAll == 1){
+   	   	   	    		 $page = "index";
+   	   	   	    		 $table ="item";
+   	   	   	    	 }
+   	   	   	    	 if($serAll == 1){
+   	   	   	    		 $page = "index_book";
+   	   	   	    		 $table ="service";
+   	   	   	    	}
+   	   	   	        if($artmAll == 1){
+   	   	   	    		 $page = "index_phone";
+   	   	   	    		 $table ="article_new";
+   	   	   	    	 }
+   	   	   	    	
+   	   	   	    	if($table != ''){
+   	   	   	    		 //找到这条数据
+   	   	   	    		 dump($table);
+   	   	   	    		 $item = M($table)->where($where)->find();
+   	   	   	    		 //根据商品所属跳到不同商品详情页
+   	   	   	    		 $arr[$key]['link'] = U("Item/{$page}",array("itemid"=>$item['id']));
+   	   	   	    	}
+   	   	   	    }else{//都没有数据
+   	   	   	    	
+   	   	   	    }
+   	   	   }else{//no empty
+   	   	   	   $arr[$key]['link'] = U("index/thdcate",array("catid"=>$val['id']));
+   	   	   }
+   	   }
+   	   dump($arr);die;
    	   //推荐服务
-   	   
    	   //dump($serArr);die;
    	   $this->assign("flash",$flash);
    	   $this->assign("serArr",$serArr);
