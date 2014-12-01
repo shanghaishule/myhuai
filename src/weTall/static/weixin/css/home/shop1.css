@@ -1,4 +1,4 @@
-@charset "utf-8";
+phone_book_1z@charset "utf-8";
 /*
  * css catalogue:
  * -------------------
@@ -653,6 +653,8 @@ font-size: 1.2em;}
 .ware_btn {position: relative; }
 .ware_btn li { float: left; /*margin-right: 20px;*/width:42%; cursor: pointer; }
 #intime_shopping{margin-left:4%}
+#content .ware_btn li.phone_book_1{background:#006835;text-align:center;margin: 7px 0}
+#content .ware_btn li.phone_book_1 a{color:white;line-height: 30px;}
 #addin_car{margin-left:8%;}
 .btn_c1 a { display: block; width: 144px; height: 32px; background: url(../images/btn.gif) 0 -268px; }
 .btn_c2 a { display: block; width: 144px; height: 32px; background: url(../images/btn.gif) 0 -340px; }

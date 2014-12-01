@@ -488,7 +488,7 @@ class indexAction extends frontendAction {
    	   	   	    		 $arr[$keys]['parrTag'][$key]['link'] = U("Item/{$page}",array("itemid"=>$item['id']));
    	   	   	    	}
    	   	   	    }else{//都没有数据
-   	   	   	    	   //$this->error("暂时没有数据！");
+   	   	   	    	   $arr[$keys]['parrTag'][$key]['link'] = U("index/index");
    	   	   	    }
    	   	   }else{//no empty
    	   	   	   $arr[$keys]['parrTag'][$key]['link'] = U("index/thdcate",array("catid"=>$val['id']));
