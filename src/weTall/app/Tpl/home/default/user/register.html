@@ -51,6 +51,12 @@ $(function(){
                 required : true,
                 minlength: 6
             },
+            password_confirm : {
+                required : true,
+                minlength: 6,
+                equalTo:"#password"
+            },
+            
             checkCode : {
                 required : true,
                 minlength: 6
@@ -69,7 +75,8 @@ $(function(){
             },
             password_confirm  : {
                 required : '亲！请确认密码',
-                minlength: '亲！密码长度应在6-20个字符之间'
+                minlength: '亲！密码长度应在6-20个字符之间',
+                equalTo: "两次密码输入不一致"
             },
             checkCode : {
                 required : '亲！不能为空哦',
@@ -139,7 +146,7 @@ function SetRemainTime() {
     <form name="" id="register_form" class=" reg_1" method="post" action="{:U('user/register')}">
         <p>用户名<input id="user_name" name="user_name" placeholder="手机号" class="text width10" type="text"></p>
         <p>密码 <input id="password" name="password" placeholder="至少六位" class="text width10" type="password"></p>
-        <p>密码 <input id="password" name="password_confirm" placeholder="确认密码" class="text width10" type="password"></p>
+        <p>确认密码<input id="password_confirm" name="password_confirm" placeholder="确认密码" class="text width10" type="password"></p>
         
         <p>验证码<input id="yanzheng" name="checkCode" placeholder="六位验证码" class="text width10" type="text" ></p>
         
