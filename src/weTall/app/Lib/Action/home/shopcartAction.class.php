@@ -138,4 +138,5 @@ class shopcartAction extends frontendAction {
     	}
     	echo json_encode($data);
     }
+    
 }
