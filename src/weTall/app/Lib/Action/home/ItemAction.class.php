@@ -15,11 +15,11 @@ class itemAction extends frontendAction {
      * 商品详细页
      */
     public function index() {
-        $id = $this->_get('id', 'intval');
+        $id = $this->_get('itemid', 'intval');
         !$id && $this->_404();
         $tokenTall = $this->getTokenTall();
         $item_mod = M('item');
-        $item = $item_mod->field('id,title,intro,price,info,comments,add_time,goods_stock,buy_num,brand,size,color')->where(array('id' => $id, 'status' => 1))->find();
+        $item = $item_mod->field('id,title,intro,price,zb_price,info,comments,add_time,goods_stock,buy_num,brand,size,color')->where(array('id' => $id, 'status' => 1))->find();
         !$item && $this->_404();
     
         //大小

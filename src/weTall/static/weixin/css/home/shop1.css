@@ -695,7 +695,7 @@ font-size: 1.2em;}
 #item_info{margin-top:15px}
 .user_menu {height: 25px; background:white;position: relative; ;margin-top:10px;}
 .user_menu li {padding-bottom:10px ;padding-top:10px ; float: left; /* margin-right: 4px; */ /* border:2px solid #ddd; */ /* border: none; */ /* border-radius:5px 5px 0 0; */ width: 49.5%; text-align: center;}
-.shop_bottom{width:100%;heigth:50px;background:white;opacity:0.9;position:fixed;bottom:0;left:0}
+.shop_bottom{width:100%;heigth:50px;background:white;opacity:0.9;position:fixed;bottom:45px;left:0}
 .user_menu .ornament1 { position: absolute; }
 .user_menu .ornament2 { position: absolute; }
 
@@ -1053,7 +1053,7 @@ font-size: 10px;
 background-image: url(images/base_bg.png);
 background-repeat: no-repeat;
 }
-.add-g-s{position:fixed;width:64px;opacity:1.0;padding:3px;top:50%;left:40%;display:none;z-index:999999;background:rgba(0,0,0,0.5)}
+.add-g-s{position:fixed;width:64px;opacity:1.0;padding:3px;top:50%;left:40%;display:none;z-index:999999;border-radius:5px;text-align:center;background:rgba(26, 119, 73,0.8);color:#FFF;}
 #floatOrder {
 width: 50px;
 height: 50px;
