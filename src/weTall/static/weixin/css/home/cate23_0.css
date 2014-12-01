@@ -88,7 +88,7 @@ margin-top:-20px;
     width:50%;
     float:left;
 	background:white;
-	margin-bottom:1px;
+	margin-bottom:2px;
 }
 .ul_list ol{
     position: absolute;
@@ -116,7 +116,7 @@ width:100%;
 }
 #ofh1{margin-top:0px;border-right: 1px solid #c6c6c6;}
 
-#ofh2{margin-top:3px;}
+#ofh2{margin-top:0px;}
 
 .content1{width:90px;
 height:48px;margin:0 auto;padding-top: 12px;
