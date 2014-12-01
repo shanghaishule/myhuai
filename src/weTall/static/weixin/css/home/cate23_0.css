@@ -114,13 +114,13 @@ font-weight:bold;padding-left:5px
 .ofh{display:block;position:relative;
 width:100%;
 }
-#ofh1{margin-top:3px;border-right: 1px solid #c6c6c6;}
+#ofh1{margin-top:0px;border-right: 1px solid #c6c6c6;}
 
 #ofh2{margin-top:3px;}
 
 .content1{width:90px;
 height:48px;margin:0 auto;padding-top: 12px;
-padding-right: 50px;color:#000;letter-spacing: 2px;}
+padding-right: 50px;color:#000;letter-spacing: 0px;font-size:16px}
 .content0 p{color:#525252;font-weight:normal}
 .ul_list a{
     height:65px;
