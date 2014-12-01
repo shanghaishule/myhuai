@@ -54,7 +54,7 @@ $(function(){
               <p class="goods_info">
                   <span class="img"><a href="{:U('Item/index',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}" ><img src="{:$vo['img']}" height="100" width="100"></a></span>
                   <span class="tit">
-                      <a href="{:U('Item/index',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}" >000000000000000000000{$vo.name}</a><br>
+                      <a href="{:U('Item/index',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}" >{$vo.name}</a><br>
                      
                       <span>尺寸:{$vo.size}<span>&nbsp;颜色:{$vo.color}</span></span>
                       
