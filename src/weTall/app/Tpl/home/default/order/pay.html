@@ -3,8 +3,8 @@
 <head>
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<title>会员中心 - 支付订单</title>
-<link href="__STATIC__/weixin/css/shop.css" rel="stylesheet" type="text/css" />
+<title>支付订单</title>
+<include file="public:headtop" />
 <script type="text/javascript" src="__STATIC__/weixin/js/jquery.js" charset="utf-8"></script>
 <script type="text/javascript" src="__STATIC__/weixin/js/ecmall.js" charset="utf-8"></script>
 <script type="text/javascript" src="__STATIC__/weixin/js/touchslider.dev.js" charset="utf-8"></script>
@@ -65,7 +65,22 @@ function callpay()
 </head>
 
 <body>
-<include file="public:head" />
+
+<div class="index_head1">
+<div id="nav">
+	<ul class="navlist1">
+		<li id="a_0">
+		   <a href="javascript:history.go(-1)" ><div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div></a>
+         </li>
+        <li  id="a_1">
+    						<div style="">
+
+										<p>确认支付</p>
+				              </div>
+        </li>
+    </ul>
+ </div>
+</div>
 <div id="content">
     <form action="" method="POST" id="goto_pay">
         <input type="hidden" name="orderid" value="{$allorderid[0]}" />
@@ -85,8 +100,9 @@ function callpay()
 
 
             <div class="buy">
-            	<p>支付编号：<span style="color:blue;">{$dingdanhao}</span></p>
-                <h3>选择支付方式并付款</h3>
+            	
+                <h3>选择支付方式并付款:</h3>
+                <p>支付编号：<span style="">{$dingdanhao}</span></p>
                     <dl class="defray">
                         <dt>在线支付</dt>
                         <eq name="wxpay" value="ok">
@@ -129,7 +145,7 @@ function callpay()
             </div>
             <div class="make_sure">
                 <p>
-                    <a href="javascript: submitaction();" class="btn enter">确认支付</a>
+                    <a href="javascript: submitaction();" class="btn enter" style="width:100%">确认支付</a>
                 </p>
             </div>
             
@@ -138,6 +154,6 @@ function callpay()
         </div>
     </form>
 </div>
-<include file="public:footer" />
+
 </body>
 </html>

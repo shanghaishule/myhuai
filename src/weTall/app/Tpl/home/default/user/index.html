@@ -11,18 +11,31 @@
 <style>
 .button_aaa
 {
-color:white;
+color:#ccc;
 font-size: 12px; 
 padding: 5px;
 border:1px solid #CCC;
-background: #2BD54D;
+
 }
 .button_aaa:visited {color: white;}  /* 已访问的链接 */
 </style>
 </head>
 
 <body>
-<include file="public:head" />
+<div class="index_head1">
+<div id="nav">
+	<ul class="navlist1">
+		<li id="a_0">
+		   <div class="headtop2" style="background-image:url();background-size:100% 100%;"></div>
+         </li>
+        <li  id="a_1">
+    						<div style="">
+									<p>个人中心</p>
+				              </div>
+        </li>
+    </ul>
+ </div>
+</div>
 <div class="content">
     <div class="membertop">
        <div class="my_name" style="height:40px; padding-left:15px;"><a>{$visitor.username}</a></div>
@@ -66,7 +79,7 @@ background: #2BD54D;
                     <volist name='vo.items' id='item' >
                     
                     <div style="clear:both">
-                    	<div style="float:left;display:inline;"> <span style="margin-left:20px"><p class="ware_pic"><a href="{:U('Item/index',array('id'=>$item['itemId'],'tokenTall'=>$tokenTall))}" ><img src="{:$item['img']}" height="80" width="80"></a></p></div>
+                    	<div style="float:left;display:inline;"> <span style="/*margin-left:20px*/"><p class="ware_pic"><a href="{:U('Item/index',array('id'=>$item['itemId'],'tokenTall'=>$tokenTall))}" ><img src="{:$item['img']}" height="80" width="80"></a></p></div>
                     	<div style="float:left;display:imline;">
                     		<div style="float:left;display:imline;margin-top:20px;margin-left:20px;">
                     			<ul>
@@ -102,14 +115,14 @@ background: #2BD54D;
  	                              
                     </volist>
                     <div class="clear"></div>
-                    <div class="foot">
-                        <p class="time">添加时间:{$vo.add_time|date='Y-m-d H:i:s',###}</p>
-                         <div class="handle">
-                            <div>订单总价: <b id="order118_order_amount" style="color:red;">¥{$vo.order_sumPrice}&nbsp;&nbsp;</b></div>
-                            <div style="float:left;">
+                    <div class="foot" style="padding-left: 5px">
+                        <p class="time">{$vo.add_time|date='Y-m-d H:i:s',###}</p>
+                         <div class="handle"  style="margin-top:1px">
+                            <div> <b id="order118_order_amount" style="color:red;">¥{$vo.order_sumPrice}&nbsp;&nbsp;</b></div>
+                            <div style="float:left;float: right;padding-right: 4%;padding-top: 5px">
                             <switch name="vo.status" >
 	                        <case value="1"><!--待付款 -->
-	                           <a class="button_aaa" href="{:U('order/pay',array('orderId'=>$vo['orderId'],'tokenTall'=>$tokenTall, 'showwxpaytitle'=>1))}" id="order118_action_pay" class="btn">付款</a>
+	                           <a class="button_aaa" href="{:U('order/pay',array('orderId'=>$vo['orderId'],'tokenTall'=>$tokenTall, 'showwxpaytitle'=>1))}" id="order118_action_pay" class="btn">立即付款</a>
 	                           <a class="button_aaa" href="{:U('order/cancelOrder',array('orderId'=>$vo['orderId'],'tokenTall'=>$tokenTall))}" id="order118_action_cancel"> 取消订单</a>
 	                           <a class="button_aaa" href="{:U('order/checkOrder',array('orderId'=>$vo['orderId'],'status'=>$status,'tokenTall'=>$tokenTall))}" >查看订单</a>
 	                        </case>
@@ -132,7 +145,7 @@ background: #2BD54D;
             	</div>
             </volist>
             <else/>
-            <div class="order_form member_no_records">
+            <div class="order_form member_no_records" style="text-align: center;padding: 5px;">
                 <span>没有符合条件的记录</span>
             </div>
             </notempty>

@@ -1,7 +1,7 @@
 ﻿<div id="bottom" class="box_xuanfu" style="">
 				<ul style="list-style: none; width: 100%; transition: 0ms; -webkit-transition: 0ms; -webkit-transform: translate3d(0px, 0px, 0px);">
 								<li style="width: 25%;float:left;text-align:center  ">
-									<a  href="" class="weimob-list-item">
+									<a  href="{:U('user/index', array('tokenTall'=>$tokenTall))} " class="weimob-list-item">
 										<img src="__STATIC__/weixin/images/home/home.png" />
 										<div style="color:white;">首页</div>
 								    </a>
@@ -13,9 +13,10 @@
 									</a>
 									</li>
 									<li style="width: 25%;float:left ;text-align:center  ">
-									<a   href="" class="weimob-list-item">
+									<a   href="{:U('shopcart/index', array('tokenTall'=>$tokenTall))}"  class="weimob-list-item">
 										<img src="__STATIC__/weixin/images/home/shoppingcar.png" />
 										<div style="color:white;">购物车</div>
+										<span class="baseBg J-shoping-num"><?php echo count($_SESSION['cart']);?></span>
 								    </a>
 									</li>
 									<li style="width: 25%; float:left;text-align:center  ">
@@ -32,7 +33,7 @@
 			</div>
 
 
-
+<!-- <a href="{:U('shopcart/index', array('tokenTall'=>$tokenTall))}"><span></span></a><span class="baseBg J-shoping-num"><?php echo count($_SESSION['cart']);?></span> -->
 <script>
 var PINER = {
     root: "__ROOT__",
