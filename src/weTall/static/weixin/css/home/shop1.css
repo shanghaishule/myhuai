@@ -122,6 +122,7 @@ background: #006835}
 #register_form p label.error{display:block;color:red}
 #register_form #user_name {width:70%;border:none}
 #register_form #password {width:70%;border:none}
+#register_form #password_confirm {width:70%;border:none}
 #register_form #yanzheng {width:70%;border:none}
 #register_form p{border-bottom:1px solid #ccc}
 #register_form ul li{float:left;width:36%}
