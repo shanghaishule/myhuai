@@ -73,7 +73,7 @@
 				</ul>
 				<ol>
 					<volist name="flash" id="info">
-					<li<if condition="$i eq 1">class="on"</if>></li>
+					<li <if condition="$i eq 1"> class="on"</if>></li>
 					</volist>
 				</ol>
 			</div>
@@ -312,5 +312,10 @@
 							}, 'json')
 		}
 	</script>
+	<script>
+	$(function() {
+		$(".ul_list > ol:last").remove();
+	});
+</script>
 </body>
 </html>

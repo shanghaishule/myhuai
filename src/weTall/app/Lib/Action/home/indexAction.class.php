@@ -25,7 +25,7 @@ class indexAction extends frontendAction {
     	$detail_stock=explode(",", $result2["detail_stock"]);
     	foreach ($detail_stock as $stock){
     		$stock_real=explode("|",$stock);
-    		if ($stock_real[0] == $color and $stock_real[1] == $size) {
+    		if ($stock_real[0] == $color && $stock_real[1] == $size) {
     			$item_stcok = $stock_real[2];
     		}
     	}

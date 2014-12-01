@@ -13,6 +13,20 @@
 	<script type="text/javascript">
 		$(function(){
 			$("div.module_special .wrap .major ul.list li:last-child").addClass("remove_bottom_line");
+			
+			$(".option_box").hide(); //Hide all content
+			$("ul.user_menu li:first").addClass("active").show(); //Activate first tab
+			$(".option_box:first").show(); //Show first tab content
+			
+			//On Click Event
+			$("ul.user_menu li").click(function() {
+				$("ul.user_menu li").removeClass("active"); //Remove any "active" class
+				$(this).addClass("active"); //Add "active" class to selected tab
+				$(".option_box").hide(); //Hide all tab content
+				var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+				$(activeTab).fadeIn(); //Fade in the active content
+				return false;
+			});			
 		});
 		var active=0,
 			as=document.getElementById('pagenavi').getElementsByTagName('a');
@@ -80,7 +94,7 @@
 	    }
 	    function buy_now(){
 	    	if(check_buy()){
-	    	document.getElementById('form1').action="{:U('shopcart/index',array('tokenTall'=>$tokenTall))}";
+	    	document.getElementById('form1').action="{:U('shopcart/item_buy',array('tokenTall'=>$tokenTall))}";
 	    	document.getElementById('form1').submit();
 	    	}
 	    }
@@ -123,7 +137,7 @@
 	        return true;
 	    }
 		//xxl start
-		function showinfo(sheetnum)
+	/*	function showinfo(sheetnum)
 		{
 			if (sheetnum == 2){
 				$("#item_comments").show();
@@ -137,7 +151,7 @@
 				$("#sheet2").removeClass("active");			
 			}
 		 
-		}
+		}*/
 		//xxl end	    
 	    /* add cart */
 	    function add_to_cart(spec_id, quantity)
@@ -168,7 +182,7 @@
 			//alert(quantity);
 			var qty = parseInt(quantity);
 			//alert(qty);
-			if(qty > 0){
+			if(qty > 1){
 				qty = qty - 1;
 				//alert(qty);
 				$("#quantity").val(qty);
@@ -356,17 +370,17 @@
         <div class="ornament1"></div>
         <div class="ornament2"></div>
 	<!--xxl start-->
-        <li class="btn_1 active" id = "sheet1"><a href="javascript:showinfo(1);"><span>商品详情</span></a></li>
-        <li class="btn_2" id = "sheet2"><a href="javascript:showinfo(2);"><span>商品评论</span></a></li>
+        <li class="btn_1 active" ><a href="#tab1">商品详情</a></li>
+        <li class="btn_2"><a href="#tab2">商品评论</a></li>
 	<!--xxl end-->
     </ul>
-	<div class="option_box" id = "item_info">		 
+	<div class="option_box" id ="tab1">		 
 			<div class="default">
 			{$item.info}
 			</div>
 	</div>
 	<!--xxl start-->
-	<div class="option_box" id = "item_comments">
+	<div class="option_box" id ="tab2">
 	<table style = "width:100%;border-collapse:collapse;" border="1">	
 		<volist name='comments_list' id='vo' mod='2'>
 		<eq name="mod" value="1">
