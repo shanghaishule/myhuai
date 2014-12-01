@@ -105,7 +105,6 @@ a:visited{ color:#666;}
 #content .buy_foot strong{font-weight:bold; color:red; }
 #content .buy_foot a span{ text-decoration:none; color:#fff; text-indent:-2000px;}
 #content .cart_list li span.tit input{width: 28px;height: 16px;padding: 2px;color:#868686;text-align: center;line-height: 14px;font-size: 12px;}
-
 #content .buy_foot p.jiesuan_btn a img{display: none;}
 #content .buy_foot p.jiesuan_btn a{ color:white;display: block;height: 31px;line-height: 32px;font-size: 17px;border: 0;background:red;text-align: center;text-decoration: none;-webkit-appearance: none;}
 #content .buy_foot p#gds_id{width:28%;margin-left:2%;font-size:12px}
@@ -143,12 +142,9 @@ background: #006835}
 .form_address{text-align: ;}
 #content form .text,#content #address_form select{margin-left:10px;border:none; ; height: 38px; margin: 5px 0;}
 #content form lable.error{display:block;color:#006835}
-
 #content .enter,#content .login_btn{ margin-left:10%;width:80%; display:block; border:none;text-align:center; margin:7px 0; height:30px; line-height:30px;   background-color: red;;border-radius:0spx; color:#fff; font-size:1em; cursor:pointer;/* margin-top: 100px;*/}
-#content .ware_btn .enter{background-color: red;
-}
+#content .ware_btn .enter{background-color: red;}
 #content .ware_btn #enter1{background-color:#006835;}
-
 #content .login_right h4{ margin-bottom:10px;}
 #content .login_right ol{ margin:0 0 15px; height:20px; line-height:20px;}
 #content #login_text b{ color:#0C3; font-size:16px;}
@@ -170,7 +166,7 @@ background: #006835}
 .add_title{ clear:both;}
 div.order_address_list, div.order_delivery, div.message_box ,.particular_wrap dl,.particular_wrap .ware_line, .particular_wrap .ware_line ul,
 .ware_line .transportation,div.order_cancel_box, #content .step_main, #content .payment_desc
-{color:#333; margin:15px; border: 1px solid #EAEAEA;background-color: #FFF;box-shadow: 0 0 2px rgba(0,0,0,.1);font-size: 14px;line-height: 24px;padding: 10px 0 5px 15px;}
+{color:#333; margin:15px; border: 1px solid #EAEAEA;background-color: #FFF;font-size: 14px;line-height: 24px;padding: 10px 0 5px 15px;}
 div.order_address_list h4, div.order_delivery h4{font-weight: normal; margin-bottom: 5px;}
 div.order_delivery ul li{min-height: 25px;}
 div.order_address_list ul, div.order_delivery ul, div.message_box .message textarea{margin-bottom: 5px; color:#666;}
@@ -190,9 +186,9 @@ div.make_sure #order_amount{color: #f34; }
 .ware .ware_pic, .ware .ware_text{float: left;}
 .ware .ware_text{margin:0px 0px 2px 10px;}
 div.btn_list{padding: 15px;}
-div.btn_list a {width: 45%;text-shadow: none;border: 1px solid #eaeaea;border-radius: 5px;text-align: center;text-decoration: none;-webkit-appearance: none;display: inline-block;line-height: 40px;height: 40px;font-size: 17px;color: #999;padding: 0 5px;}
+div.btn_list a {width: 45%;text-shadow: none;border: 0px solid #eaeaea;border-radius: 0px;text-align: center;text-decoration: none;-webkit-appearance: none;display: inline-block;line-height: 40px;height: 40px;font-size: 17px;color: #ccc;padding: 0 5px;}
 div.btn_list a.order_cancel{margin-right:2px; background-color: #fafafa;background-image: linear-gradient(to bottom,#fff,#fafafa);}
-div.btn_list a.order_pay{float:right;border: 0;color: #FFF;background-color: #f52f40;background-image: linear-gradient(to bottom,#ff4747,#f52f40);}
+div.btn_list a.order_pay{float:right;border: 0;color: #FFF;background-color: red;}
 
 
 
@@ -244,16 +240,17 @@ div.order_cancel_box p span {color: #f34; font-weight: bold;}
 .delete_icon{display:inline-block; background: url(../images/head_menu_btn.png);background-position: -228px 0;width: 15px;height: 15px; margin-right: 5px;vertical-align: -1px;}
 
 /*订单列表*/
-.order_form {border-radius: 5px;border: 1px solid #aaa;margin: 10px;padding: 15px;font-size: 14px;color: #666;/* background: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#ddd)); */background: -moz-linear-gradient(top,#fff,#ddd);/* box-shadow: 0.1em 0.1em 0.1em #ccc inset; */}
+.order_form {padding-bottom: 32px;margin-top: 10px;font-size: 14px;color: #666;/* background: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#ddd)); */background:white;/* box-shadow: 0.1em 0.1em 0.1em #ccc inset; */}
 .order_form .con{margin:5px; border:1px solid #ddd; padding:5px; border-radius:5px; overflow:hidden;}
 .order_form .con p{ float:left; line-height:25px; margin:5px 5px 0 0;}
 .order_form .con p.ware_text{float: none;}
 .order_form .con p.price span, div.handle #order39_order_amount{color: #f34;}
+.order_form p.num{background:#f1f0f5}
 
 /*支付成功页面*/
-#content .step_main{ max-width:600px; margin: 10px auto; padding:10px;}
+#content .step_main{ max-width:600px; margin: 3% auto; padding:10px;}
 #content .step_main .clue_on{color: #666; font-size: 12px;}
-#content .step_main h4, #content .step_main h3{ background: #f6f6f6;padding: 10px;color: #333; font-weight: normal; color: #3d3d3d;font-size: 20px;font-weight: normal;}
+#content .step_main h4, #content .step_main h3{ background: white;padding: 5px 0;color: #333; font-weight: normal; color: #3d3d3d;font-size: 16px;font-weight: normal;}
 #content .step_main .order_information{color: #444;font-size: 14px; border-bottom: 1px solid #ccc; padding: 10px 0;}
 #content .step_main .order_information span{color: #f34;}
 #content .step_main .buy{padding: 10px 0;}
@@ -608,6 +605,7 @@ padding-left: 5px;}
 .ware_info ul{}
 .ware_info ul li{ ; overflow:hidden;}
 #idcolor{}
+.ware_pic a{display:block}
 .ware_info #pagenavi{ display:none;}
 .ware_text { position: relative; z-index: 10;margin: 0px; }
 
@@ -900,9 +898,16 @@ font-size: 1.2em;}
  * ******************** end hack.css *********************
  * -------------------------------------------------------
  */
-.particular_wrap{ margin:15px;}
-.particular .particular_wrap dl{ margin:10px 0;}
+.order_buy{position:fixed;bottom:0;left:0}
+.ware_line ul.order_detail_list{margin:0;padding: 10px 0 5px 5px;border:none}
+.particular_wrap{ }
+.ware_line{padding:0}
+.particular_wrap dl{margin:0}
+.particular .particular_wrap dl{ }
 .particular .particular_wrap .ware_line{ margin:10px 0;}
+.order_detail_list li{float:left}
+ul.order_detail_list{border:none;box-shadow:0 0 0;}
+.ware .transportation{border:none;box-shadow:0 0 0;padding:0}
 /*banner*/
 #head_card{ width:100%; height:175px; background-color:#000; position:relative;}
 .head_card{width:269px; height:164px; background:url(../images/pink.png) no-repeat left top; background-size:contain;  left:50%; margin-left:-134px; top:25px; position:absolute;}
@@ -1044,13 +1049,13 @@ overflow: hidden;
 line-height: 14px;
 display: block;
 position: absolute;
-left: 42%;
-top: 1px;
+left: 61%;
+top: 6px;
 color: white;
 font-size: 10px;
 }
 .baseBg {
-background-image: url(images/base_bg.png);
+background-image: url(/weTall/static/weixin/images/home/base_bg.png);
 background-repeat: no-repeat;
 }
 .add-g-s{position:fixed;width:64px;opacity:1.0;padding:3px;top:50%;left:40%;display:none;z-index:999999;border-radius:5px;text-align:center;background:rgba(26, 119, 73,0.8);color:#FFF;}

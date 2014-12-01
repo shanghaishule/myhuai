@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<include file="public:headtop" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<title>会员中心 - 查看订单</title>
-<link href="__STATIC__/weixin/css/shop.css" rel="stylesheet" type="text/css" />
+<title>查看订单</title>
+
 <script type="text/javascript" src="__STATIC__/weixin/js/jquery.js" charset="utf-8"></script>
 <script type="text/javascript" src="__STATIC__/weixin/js/ecmall.js" charset="utf-8"></script>
 <script type="text/javascript" src="__STATIC__/weixin/js/touchslider.dev.js" charset="utf-8"></script>
@@ -27,10 +27,44 @@ $(function(){
 </head>
 
 <body>
-<include file="public:head" />
-<div class="content">
+<div class="index_head1">
+<div id="nav">
+	<ul class="navlist1">
+		<li id="a_0">
+		  <a href="javascript:history.go(-1)" > <div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div></a>
+         </li>
+        <li  id="a_1">
+    						<div style="">
+
+										<p>查看订单</p>
+				              </div>
+        </li>
+    </ul>
+ </div>
+</div>
+<div class="content" style="background:#f1f0f5">
     <div class="particular">
         <div class="particular_wrap">
+            <dl>
+				
+				<dt>收货地址</dt>
+				<dd>{$order.address_name} &nbsp;{$order.mobile}&nbsp;{$order.address}</dd>
+				<dt>配送方式</dt>
+				<dd><switch name="order.freetype" >
+                        <case value="1">平邮</case>
+                        <case value="2">快递</case>
+                        <case value="3">EMS</case>
+                        <default />卖家包邮
+                        </switch></dd>
+                <dt>配送快递</dt>
+                <dd><if condition="$order.userfree eq '0'">无需快递<elseif condition="$order.userfree neq '' and $order.userfree neq '0' " />{$order.userfree}<else />-</if></dd>
+                <dt>快递编号</dt>
+                <dd><if condition="$order.freecode eq ''">-<else />{$order.freecode}</if></dd>
+                <dt>发货时间</dt>
+                <dd><if condition="$order.fahuo_time eq ''">-<else />{$order.fahuo_time|date='Y-m-d H:i:s',###}</if></dd>
+
+            </dl>
+        
             <dl class="order_detail">
             	<dt class="til_font">订单详情</dt>
                 <dt>订单状态</dt>
@@ -60,8 +94,8 @@ $(function(){
                        <li>价格:¥{$item.price}</li>
                      </ul> 
                 </volist>   
-
-                <div class="transportation">
+     <div class="clear"></div>
+                <div class="transportation" id="order_buy">
                     <if condition='$order.freetype eq 0' >
                                                             卖家包邮 
                     <else />
@@ -94,25 +128,7 @@ $(function(){
                 </div>
             </div>
             
-			<dl>
-				<dt class="til_font">物流信息</dt>
-				<dt>收货地址</dt>
-				<dd>{$order.address_name}, &nbsp;{$order.mobile}, {$order.address}</dd>
-				<dt>配送方式</dt>
-				<dd><switch name="order.freetype" >
-                        <case value="1">平邮</case>
-                        <case value="2">快递</case>
-                        <case value="3">EMS</case>
-                        <default />卖家包邮
-                        </switch></dd>
-                <dt>配送快递</dt>
-                <dd><if condition="$order.userfree eq '0'">无需快递<elseif condition="$order.userfree neq '' and $order.userfree neq '0' " />{$order.userfree}<else />-</if></dd>
-                <dt>快递编号</dt>
-                <dd><if condition="$order.freecode eq ''">-<else />{$order.freecode}</if></dd>
-                <dt>发货时间</dt>
-                <dd><if condition="$order.fahuo_time eq ''">-<else />{$order.fahuo_time|date='Y-m-d H:i:s',###}</if></dd>
-
-            </dl>
+			
         </div>
         <div class="clear"></div>
         
@@ -129,6 +145,6 @@ $(function(){
     </div>
     <div class="clear"></div>
 </div>
-<include file="public:footer" />
+<div class="space"></div>
 </body>
 </html>
