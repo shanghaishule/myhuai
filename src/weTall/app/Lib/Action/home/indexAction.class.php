@@ -6,7 +6,7 @@ class indexAction extends frontendAction {
     	$this->_item = M('item');
     	$this->_art = M('article_new');
     }
-    public function index() {
+    public function index_yuanshi() {
     	//取商家token值，取不到则默认为空
     	$tokenTall = $this->getTokenTall();
     	$_SESSION["tokenTall"]=$tokenTall;
@@ -492,7 +492,7 @@ class indexAction extends frontendAction {
     	$this->display();
     }    
     	 
-   public function home(){
+   public function index(){
    	   //顶部幻灯片
    	   $token = $this->getTokenTall();
    	   $cond['token'] = $token;
