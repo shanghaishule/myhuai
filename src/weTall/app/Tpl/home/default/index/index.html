@@ -22,12 +22,6 @@
 <script type="text/javascript" src="__STATIC__/weixin/js/home/jQuery.js"></script>
 <script type="text/javascript" src="__STATIC__/weixin/js/home/zepto.js"></script>
 <script type="text/javascript" src="__STATIC__/weixin/js/home/swipe.js"></script>
-<script>
-	$(function() {
-		var count = $(".ul_list").find('ol').size();
-		$(".ul_list > ol:last").remove();
-	});
-</script>
 </head>
 <body onselectstart="return true;" ondragstart="return false;">
 	<!--背景音乐-->
@@ -73,7 +67,7 @@
 				</ul>
 				<ol>
 					<volist name="flash" id="info">
-					<li<if condition="$i eq 1">class="on"</if>></li>
+					<li <if condition="$i eq 1"> class="on"</if>></li>
 					</volist>
 				</ol>
 			</div>
@@ -312,5 +306,12 @@
 							}, 'json')
 		}
 	</script>
+	<script>
+	$(function() {
+		$(".ul_list").each(function(){
+			$(this).find("ol").last().remove();
+		});
+	});
+</script>
 </body>
 </html>

@@ -122,7 +122,26 @@ class itemAction extends frontendAction {
 
         $this->display();
     }
-
+    
+    //服务
+    public function index_book(){
+    	$id = $this->_get("itemid","trim,intval");
+    	!$id && $this->_404();
+    	$tokenTall = $this->getTokenTall();
+    	
+    	
+    	$this->display();
+    }
+    
+    //资讯
+    public function index_phone(){
+    	$id = $this->_get("itemid","trim,intval");
+    	!$id && $this->_404();
+    	$tokenTall = $this->getTokenTall();    	
+    	$res = M("article_new")->field("")->where(array("id"=>$id))->find();
+    	
+    	$this->display();
+    }
     /**
      * 点击去购买
      */
@@ -322,18 +341,13 @@ class itemAction extends frontendAction {
         }
     }
     /*显示页面*/
-    public function index_book(){
-    	$this->display();
-    }
     public function house_book(){
     	$this->display();
     }
     public function hugong_book(){
     	$this->display();
     }
-    public function index_phone(){
-    	$this->display();
-    }
+
     /*end*/
     /**
      * 删除商品

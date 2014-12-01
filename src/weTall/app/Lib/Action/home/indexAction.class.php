@@ -25,7 +25,7 @@ class indexAction extends frontendAction {
     	$detail_stock=explode(",", $result2["detail_stock"]);
     	foreach ($detail_stock as $stock){
     		$stock_real=explode("|",$stock);
-    		if ($stock_real[0] == $color and $stock_real[1] == $size) {
+    		if ($stock_real[0] == $color && $stock_real[1] == $size) {
     			$item_stcok = $stock_real[2];
     		}
     	}
@@ -488,7 +488,7 @@ class indexAction extends frontendAction {
    	   	   	    		 $arr[$keys]['parrTag'][$key]['link'] = U("Item/{$page}",array("itemid"=>$item['id']));
    	   	   	    	}
    	   	   	    }else{//都没有数据
-   	   	   	    	   //$this->error("暂时没有数据！");
+   	   	   	    	   $arr[$keys]['parrTag'][$key]['link'] = U("index/index");
    	   	   	    }
    	   	   }else{//no empty
    	   	   	   $arr[$keys]['parrTag'][$key]['link'] = U("index/thdcate",array("catid"=>$val['id']));
