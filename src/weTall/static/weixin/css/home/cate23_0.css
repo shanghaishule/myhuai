@@ -114,8 +114,8 @@ font-weight:bold;padding-left:5px
 .ofh{display:block;position:relative;
 width:100%;
 }
-#ofh1{margin-top:0px;border-right: 1px solid #f1f0f5;border-bottom: 1px solid #f1f0f5;}
-
+#ofh1{margin-top:0px;border-right: 1px solid #f1f0f5;}
+ul.ul_list{margin-bottom:1px}
 #ofh2{margin-top:0px;}
 
 .content1{width:96px;

@@ -32,7 +32,7 @@ hr{border:1px solid #D9D9D9;}
 img, table, td, th { border: 0; }
 ul, ol { list-style-type:none; }
 a{ text-decoration:none; color:#666;}
-a:visited{ color:white;}
+/*a:visited{ color:white;}*/
 
 /*
  * -------------------------------------------------------
