@@ -45,15 +45,18 @@ class FunctionClassifyAction extends UserAction{
 			//$_POST['funname']='MyClassify';
 			//$_POST['actname']='index';
 			//获取数据
+
+			if (false === $data = $this->_mod->create()) {
+				$this->error($this->_mod->getError());
+			}
+			
 			if(isset($_POST['tuijian']))
 			{
 				$data['tuijian']=1;
 			}else {
 				$data['tuijian']=0;
 			}
-			if (false === $data = $this->_mod->create()) {
-				$this->error($this->_mod->getError());
-			}
+			
 			$data['token'] = $tokenTall;
 			$arr = array(0,$_POST['parentid']);
 			$data['arrparentid'] = implode(',',$arr);

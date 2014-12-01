@@ -11,7 +11,6 @@ class shopcartAction extends frontendAction {
 	
     public function index(){
     	$tokenTall = $this->getTokenTall();
-	    import('Think.ORG.Cart');// 导入购物车类
 	    $cart=new Cart();
 	    
 	    $result = array();

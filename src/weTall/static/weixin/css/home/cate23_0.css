@@ -87,6 +87,8 @@ margin-top:-20px;
 .ul_list li{
     width:50%;
     float:left;
+	background:white;
+	margin-bottom:1px;
 }
 .ul_list ol{
     position: absolute;
@@ -111,15 +113,10 @@ font-weight:bold;padding-left:5px
 .content_start span a{color:#8b8b8b;font-size:0.9em}
 .ofh{display:block;position:relative;
 width:100%;
-background:white;
-/*height:136px*/
 }
-#ofh1{margin-top:3px;
-border-right: 1px solid #c6c6c6;
-border-bottom: 1px solid #c6c6c6;}
+#ofh1{margin-top:3px;border-right: 1px solid #c6c6c6;}
 
-#ofh2{margin-top:3px;
-border-bottom: 1px solid #c6c6c6;}
+#ofh2{margin-top:3px;}
 
 .content1{width:90px;
 height:48px;margin:0 auto;padding-top: 12px;

@@ -111,15 +111,18 @@ class CategoryAction extends UserAction{
 			//$_POST['actname']='index';
 			
 			//获取数据
+
+			if (false === $data = $this->_mod->create()) {
+				$this->error($this->_mod->getError());
+			}
+			
 			if(isset($_POST['tuijian']))
 			{
 				$data['tuijian']=1;
 			}else {
 				$data['tuijian']=0;
 			}
-			if (false === $data = $this->_mod->create()) {
-				$this->error($this->_mod->getError());
-			}
+			
 			$arr = array(0,$_POST['Fparentid'],$_POST['Sparentid']);
 			
 			$data['arrparentid'] = implode(',',$arr);

@@ -501,18 +501,24 @@ class indexAction extends frontendAction {
    	   $flash = M("flash")->where(array("pos"=>$flash_pos['id']))->select();
    	   $where['tuijian'] = 1;
    	   //四大服务
+   	   header("Content-type:text/html;charset=utf-8");
    	   $serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
    	   //推荐二级分类，是否有子级，有跳到thdcate(三级分类),没有跳到thdlist(列表，注：如果列表里只有一个商品或服务跳到详情页)
+       //dump($serArr);die();
    	   $arr = array();//保存所有二级被推荐的分类
    	   foreach($serArr as $key => $val){
 	   	   	$tuijian_arr = $this->_cat->where(array("parentid"=>$val['id'],"tuijian"=>1))->select();
 	   	   	if(!empty($tuijian_arr)){
-	   	   		$arr = array_merge($arr,$tuijian_arr);
+	   	   		$arr[$key]["parrName"] = $val['catname'];
+	   	   		$arr[$key]["parrId"] = $val['id'];
+	   	   		$arr[$key]['parrTag']= $tuijian_arr;
 	   	   	}
    	   }
-   	   header("Content-type:text/html;charset=utf-8");
+   	  // dump($arr);die;
+   	   
        //判断被推荐的分类是否有子级，对应添加不同的链接
-   	   foreach($arr as $key => $val){
+   	   foreach($arr as $keys => $vals){
+          foreach ($vals['parrTag'] as $key => $val){
    	   	   $flag = $this->_cat->where(array('parentid'=>$val['id']))->find();
    	   	   if(empty($flag) || $flag == null){//没有子集
    	   	   	    //查找itme,article,service,只有一个商品，跳到详情
@@ -520,10 +526,10 @@ class indexAction extends frontendAction {
    	   	   	    $itemAll = $this->_item->where($where)->count();
    	   	   	    $serAll = $this->_ser->where($where)->count();
    	   	   	    $artmAll = $this->_art->where($where)->count();
-   	   	   	    
+   	   	   	   
    	   	   	    if($itemAll > 1 || $serAll > 1 || $artmAll > 1 || ($itemAll+$serAll+$artmAll) > 1){//不止一条数据
    	   	   	    	
-   	   	   	    	$arr[$key]['link'] = U("index/thdlist",array("catid"=>$val['id']));
+   	   	   	    	$arr[$keys]['parrTag'][$key]['link'] = U("index/thdlist",array("catid"=>$val['id']));
    	   	   	    	
    	   	   	    }else if($itemAll == 1 || $serAll == 1 || $artmAll == 1 && ($itemAll+$serAll+$artmAll) == 1){
    	   	   	    	//判断表及对应的页面
@@ -544,24 +550,41 @@ class indexAction extends frontendAction {
    	   	   	    	
    	   	   	    	if($table != ''){
    	   	   	    		 //找到这条数据
-   	   	   	    		 dump($table);
+   	   	   	    		// dump($table);
    	   	   	    		 $item = M($table)->where($where)->find();
    	   	   	    		 //根据商品所属跳到不同商品详情页
-   	   	   	    		 $arr[$key]['link'] = U("Item/{$page}",array("itemid"=>$item['id']));
+   	   	   	    		 $arr[$keys]['parrTag'][$key]['link'] = U("Item/{$page}",array("itemid"=>$item['id']));
    	   	   	    	}
    	   	   	    }else{//都没有数据
-   	   	   	    	   $this->error("暂时没有数据！");
+   	   	   	    	   //$this->error("暂时没有数据！");
    	   	   	    }
    	   	   }else{//no empty
-   	   	   	   $arr[$key]['link'] = U("index/thdcate",array("catid"=>$val['id']));
+   	   	   	   $arr[$keys]['parrTag'][$key]['link'] = U("index/thdcate",array("catid"=>$val['id']));
    	   	   }
+   	     }
    	   }
-   	   dump($arr);die;
-   	   //推荐服务
-   	   //dump($serArr);die;
+   	   //dump($arr);die;
+   	   
+   	   //为我推荐模块
+   	   $tuijianItem = $this->_item->where(array('status'=>1,'tuijan'=>1))->select();
+   	   foreach($tuijianItem as $key => $val){
+   	   		$tuijianItem[$key]['link'] = U("Item/index",array("itemid"=>$val['id']));
+   	   }
+   	   $tuijianArticle = $this->_art->where(array('tuijan'=>1))->select();
+   	   foreach($tuijianArticle as $key => $val){
+   	   		$tuijianArticle[$key]['link'] = U("Item/index_phone",array("itemid"=>$val['id']));
+   	   }
+   	   $tuijianService = $this->_ser->where(array('tuijan'=>1))->select();
+   	   foreach($tuijianService as $key => $val){
+   	   		$tuijianService[$key]['link'] = U("Item/index_book",array("itemid"=>$val['id']));
+   	   }
+   	   //dump($tuijianArticle);die;
    	   $this->assign("flash",$flash);
    	   $this->assign("serArr",$serArr);
-   	   $this->assign("test",$serArr);
+   	   $this->assign("tuijian",$arr);
+   	   $this->assign("tuijianItem",$tuijianItem);
+   	   $this->assign("tuijianArticle",$tuijianArticle);
+   	   $this->assign("tuijianService",$tuijianService);
    	   $this->display();
    }
    
@@ -575,6 +598,7 @@ class indexAction extends frontendAction {
    	   $this->display();
    }
    public function thdlist(){
+   	echo $this->_get("catid","trim,intval");die;
    	$this->display();
    }
    public function houselist2(){
