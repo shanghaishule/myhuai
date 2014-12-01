@@ -32,7 +32,7 @@ hr{border:1px solid #D9D9D9;}
 img, table, td, th { border: 0; }
 ul, ol { list-style-type:none; }
 a{ text-decoration:none; color:#666;}
-a:visited{ color:#666;}
+a:visited{ color:white;}
 
 /*
  * -------------------------------------------------------
@@ -203,13 +203,13 @@ div.order_cancel_box p span {color: #f34; font-weight: bold;}
 
 /*会员中心*/
 .content {margin: 0; min-height:300px; position: relative;}
-.membertop{ /* padding:4px 10px 10px 20px; */ background:yellow;  } 
+.membertop{ /* padding:4px 10px 10px 20px; */ background:yellow; height:115px;position:relative } 
 .membertop .my_address{ display:block; /* background:-webkit-gradient(linear,left top,left bottom,from(#dbe4c8),to(#dbe4c8)); */background: -moz-linear-gradient(top,#dbe4c8,#dbe4c8); padding:5px 10px 5px 10px; /* border-radius:30px; */ /* border:1px solid #b0d5f9; */ /* box-shadow:2px 1px 1px 2px #dbe4c8 inset; */}
-.membertop .my_address a{ color:#ccc; display:block; padding-left:0px; background:url(../images/address_ico.png) no-repeat left top;}
+.membertop .my_address a{ color:white; display:block; padding-left:0px; background:url(../images/address_ico.png) no-repeat left top;}
 .membertop .my_name a{float:left; /* width: 100%; */ color:black; font-size: 18px; display:block; /* padding: 2px 20px; */ }
 .membertop .logout a { font-size:1em; ;}
 .membertop .logout {float:right; /* width:140px; */ color:#ccc; font-size:1.25em; display:block; ; margin-right: 15px;}
-.buyer_stat{ overflow:hidden;}
+.buyer_stat{ overflow:hidden;position:absolute;bottom:0;left:0;width:100%}
 .buyer_stat li{ background:white; opacity:0.9;float:left; width:25%; height:38px; line-height:24px;text-align:center;font-size:1em;padding-top: 5px;padding-bottom: 5px}
 .buyer_stat li a{ height:44px; display:block; color:#333333;}
 .buyer_stat li span, .buyer_stat li a { line-height:17px;} 
