@@ -527,6 +527,9 @@ class indexAction extends frontendAction {
    	   $this->display();
    }
    public function thdcate(){
+   	   $catid = $this->_get("catid","trim,intval");
+   	   
+   	   
    	   $this->display();
    }
    public function thdlist(){

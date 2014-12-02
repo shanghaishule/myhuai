@@ -110,7 +110,7 @@
 						href="{:U('index/seclist',array('catid'=>$tuijian['parrId']))}">更多</a></span>
 				</p>
 				<ul class="ofh ul_list">
-					<?php $index=51;?>
+					<?php $index=48;?>
 					<volist name="tuijian['parrTag']" id="con" mod="2">
 					<li><a id="<eq name='mod' value='0'>ofh1<else />ofh2</eq>"
 						href="{$con.link}">
@@ -119,7 +119,7 @@
 					</a></li>
 					<eq name="mod" value="1">
 					<ol style="margin-top:<?php echo $index;?>px">
-						<?php $index+=69;?>
+						<?php $index+=67;?>
 					</ol>
 					</eq> </volist>
 				</ul>
