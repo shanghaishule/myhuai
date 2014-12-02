@@ -142,7 +142,7 @@ background: #006835}
 .form_address{text-align: ;}
 #content form .text,#content #address_form select{margin-left:10px;border:none; ; height: 38px; margin: 5px 0;}
 #content form lable.error{display:block;color:#006835}
-#content .enter,#content .login_btn{ margin-left:10%;width:100%; display:block; border:none;text-align:center; margin:7px 0; height:30px; line-height:30px;   background-color: red;;border-radius:0spx; color:#fff; font-size:1em; cursor:pointer;/* margin-top: 100px;*/}
+#content .enter,#content .login_btn{ margin-left:10%;width:100%; display:block; border:none;text-align:center;height:30px; line-height:30px;   background-color: red;;border-radius:0spx; color:#fff; font-size:1em; cursor:pointer;/* margin-top: 100px;*/}
 #content .ware_btn .enter{background-color: red;}
 #content .ware_btn .reserveP{background-color:#006835;display:block;}
 #content .ware_btn #grey{background-color:#CCC}
@@ -671,15 +671,9 @@ font-size: 1.2em;}
 .aggregate { color: #50a5e5; }
 
 .ware_btn {position: relative; }
-<<<<<<< HEAD
 .ware_btn li { float: left; /*margin-right: 20px;*/width:42%; cursor: pointer; }
 #intime_shopping{margin-left:4%}
 #content .ware_btn li.phone_book_1{text-align:center;}
-=======
-.ware_btn li { float: left; /*margin-right: 20px;*/width:45%; cursor: pointer; }
-#intime_shopping{margin-left:3%}
-#content .ware_btn li.phone_book_1{background:#006835;text-align:center;margin: 7px 0}
->>>>>>> branch 'master' of https://github.com/shanghaishule/myhuai.git
 #content .ware_btn li.phone_book_1 a{color:white;line-height: 30px;}
 #addin_car{margin-left:4%;}
 .btn_c1 a { display: block; width: 144px; height: 32px; background: url(../images/btn.gif) 0 -268px; }
