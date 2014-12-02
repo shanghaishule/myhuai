@@ -87,7 +87,7 @@ $(function(){
                 <volist name='item_detail' id='item' >
                      <ul class="order_detail_list">
                        <li><img src="{:$item['img']}" height="50" width="50"></li>
-                       <li>品名:{$item.title}</li>
+                       <li>{$item.title}</li>
                        <li>大小:{$item.size}</li>
                        <li>颜色:{$item.color}</li>
                        <li class="red">数量:{$item.quantity}</li>
@@ -114,7 +114,7 @@ $(function(){
                  </div>
                  
                  	 <if condition='$order.status neq 1' >
-                     <ul class="order_detail_list">
+                     <ul id="order_detail_list_add" style="height:50px">
                        <li>支付方式:<switch name="order.supportmetho" >
                          <case value="1">支付宝</case>
                          <case value="2">货到付款</case>
