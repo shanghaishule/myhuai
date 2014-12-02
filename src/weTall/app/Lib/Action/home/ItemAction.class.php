@@ -27,55 +27,6 @@ class itemAction extends frontendAction {
         
         //颜色
         $color = substr(trim($item['color']),0,1) == '|' ? explode('|', substr(trim($item['color']),1)) : explode('|', $item['color']);
-        /*
-        $color = array();
-        foreach ($color_tmp as $key => $value){
-        	switch ($value)
-        	{
-        		case "white":
-        			$color[] = '白色';
-        			break;
-        		case "blue":
-        			$color[] = '蓝色';
-        			break;
-        		case "yellow":
-        			$color[] = '黄色';
-        			break;
-        		case "red":
-        			$color[] = '红色';
-        			break;
-        		case "black":
-        			$color[] = '黑色';
-        			break;
-        		case "orange":
-        			$color[] = '橙色';
-        			break;
-        		case "coffee":
-        			$color[] = '咖啡色';
-        			break;
-        		case "gold":
-        			$color[] = '金色';
-        			break;
-        		case "piller":
-        			$color[] = '紫色';
-        			break;
-        		case "green":
-        			$color[] = '绿色';
-        			break;
-        		case "indigo":
-        			$color[] = '靛色';
-        			break;
-        		case "mix":
-        			$color[] = '杂色';
-        			break;
-        		default:
-        			$color[] = '其他';
-        			break;
-        			
-        	}
-        }
-		*/
-
         
         //品牌 
         $brand = M('brandlist')->field('name')->find($item['brand']);
@@ -129,7 +80,15 @@ class itemAction extends frontendAction {
     	!$id && $this->_404();
     	$tokenTall = $this->getTokenTall();
     	
+    	$mod = M("service");
+    	$item = $mod->field("id,name,price,zb_price,img,status")->where("id = %d",$id)->find();
+    	!$item && $this->_404();
+
+    	$img_list = M('item_img')->field('url')->where(array('item_id' => $id))->order('ordid')->select();
     	
+    	$this->assign('item', $item);
+    	$this->assign('img_list', $img_list);    	
+
     	$this->display();
     }
     
