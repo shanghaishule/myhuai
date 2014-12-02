@@ -78,6 +78,7 @@ a{ text-decoration:none; color:#666;}
 
 
 /*购物车*/
+#cart_item_17 img{border:1px solid #ccc}
 #content #chose_all{ font-size:20px; text-indent:20px; color:#888; font-weight:normal;line-height:35px; border-bottom:1px solid #fdfdfd; margin:0 10px;}
 #content .cart_list{  }
 #content .cart_list li{  background:#fff;  padding:5px; overflow:hidden;border-bottom:1px solid #ccc }
