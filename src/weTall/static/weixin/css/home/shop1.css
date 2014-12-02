@@ -114,7 +114,8 @@ a{ text-decoration:none; color:#666;}
 height: 20px;
 background: #006835}
 /*登陆*/
-.bg_white{background:white}
+.bg_white{background:white;}
+.bg_white ul{margin-top:20px} 
 #content #login_form{ margin:30px 10px 0;}
 .login_right{ margin:0 10px;}
 #register_form,#order_form{ margin:0 10px;}
@@ -130,7 +131,7 @@ background: #006835}
 #login_form #password {width:70%;border:none;background:white}
 #login_form #yanzheng {width:70%;border:none}
 #login_form p{border-bottom:1px solid #ccc}
-#login_form ul li{float:left;width:36%}
+#login_form ul li{float:left;width:36%;margin-top: 20px;}
 #click_yanzheng{;margin-left:7%}
 #intime_reg{;margin-left:14%}
 #login_btn_id{background:#006835;border:bone}
@@ -623,7 +624,8 @@ padding-left: 5px;}
 .ware_info .slider .sliderlist li{ width: 200px !important; margin: 2px;}
 .ware_info .slider .sliderlist li img{margin-left: 10px;margin-top: 8px; border-radius: 3px;}
 .ware_info ul{}
-.ware_info ul li{padding-top:7px; overflow:hidden;}
+.ware_info ul li{padding:5px 0; overflow:hidden;}
+#module_special_1{margin-top:0}
 #idcolor{}
 .ware_pic a{display:block}
 .ware_info #pagenavi{ display:none;}
@@ -676,7 +678,7 @@ font-size: 1.2em;}
 #content .ware_btn li.phone_book_1{text-align:center;margin-left: 8%}
 #content .ware_btn li.phone_book_1 a{color:white;line-height: 30px;}
 #addin_car{margin-left:4%;}
-#addin_car_1{margin-left:18%;}
+#addin_car_1{margin-left:8%;}
 .btn_c1 a { display: block; width: 144px; height: 32px; background: url(../images/btn.gif) 0 -268px; }
 .btn_c2 a { display: block; width: 144px; height: 32px; background: url(../images/btn.gif) 0 -340px; }
 .btn_c3 a { display: block; width: 144px; height: 32px; background: url(../images/style1.gif); }
