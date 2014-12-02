@@ -136,13 +136,13 @@ background: #006835}
 #login_btn_id{background:#006835;border:bone}
 #login_btn_id1{background:red;;border:bone}
 #content form .width5,#content form .width10{ width:100%;}
-#newadd{padding-left:10%}
+#newadd{padding-left:16.6666%}
 #content form .text{height:40px;margin:5px 0;  text-indent:10px; width:100%;}
 #content #address_form .text{height:25px;margin:5px 0; border:none; text-indent:10px; width:100%;}
 .form_address{text-align: ;}
 #content form .text,#content #address_form select{margin-left:10px;border:none; ; height: 38px; margin: 5px 0;}
 #content form lable.error{display:block;color:#006835}
-#content .enter,#content .login_btn{ margin-left:10%;width:80%; display:block; border:none;text-align:center; margin:7px 0; height:30px; line-height:30px;   background-color: red;;border-radius:0spx; color:#fff; font-size:1em; cursor:pointer;/* margin-top: 100px;*/}
+#content .enter,#content .login_btn{ margin-left:10%;width:100%; display:block; border:none;text-align:center; margin:7px 0; height:30px; line-height:30px;   background-color: red;;border-radius:0spx; color:#fff; font-size:1em; cursor:pointer;/* margin-top: 100px;*/}
 #content .ware_btn .enter{background-color: red;}
 #content .ware_btn .reserveP{background-color:#006835;display:block;}
 #content .ware_btn #grey{background-color:#CCC}
@@ -206,10 +206,10 @@ div.order_cancel_box p span {color: #f34; font-weight: bold;}
 /*会员中心*/
 .content {margin: 0; min-height:300px; position: relative;}
 .membertop{ /* padding:4px 10px 10px 20px; */ background:yellow; height:115px;position:relative } 
-.membertop .my_address{ display:block; /* background:-webkit-gradient(linear,left top,left bottom,from(#dbe4c8),to(#dbe4c8)); */background: -moz-linear-gradient(top,#dbe4c8,#dbe4c8); padding:5px 10px 5px 10px; /* border-radius:30px; */ /* border:1px solid #b0d5f9; */ /* box-shadow:2px 1px 1px 2px #dbe4c8 inset; */}
+.membertop .my_address{ display:block; /* background:-webkit-gradient(linear,left top,left bottom,from(#dbe4c8),to(#dbe4c8)); */background: -moz-linear-gradient(top,#dbe4c8,#dbe4c8); padding:4px 10px 5px 10px; /* border-radius:30px; */ /* border:1px solid #b0d5f9; */ /* box-shadow:2px 1px 1px 2px #dbe4c8 inset; */}
 .membertop .my_address a{ color:white; display:block; padding-left:0px; background:url(../images/address_ico.png) no-repeat left top;}
 .membertop .my_name a{float:left; /* width: 100%; */ color:black; font-size: 18px; display:block; /* padding: 2px 20px; */ }
-.membertop .logout a { font-size:1em; ;}
+.membertop .logout a { font-size:0.8em; ;}
 .membertop .logout {float:right; /* width:140px; */ color:#ccc; font-size:1.25em; display:block; ; margin-right: 15px;}
 .buyer_stat{ overflow:hidden;position:absolute;bottom:0;left:0;width:100%}
 .buyer_stat li{ background:white; opacity:0.9;float:left; width:25%; height:38px; line-height:24px;text-align:center;font-size:1em;padding-top: 5px;padding-bottom: 5px}
@@ -223,7 +223,7 @@ div.order_cancel_box p span {color: #f34; font-weight: bold;}
 .buyer_stat li.active a{ display:none;}
 #profile_form th{ text-align:right; padding-right:5px;}
 /*地址管理*/
-.eject_btn,.eject_con .add{ margin-top:25px;}
+.eject_btn,.eject_con .add{ margin-top:0px;background:white}
 .eject_btn,.eject_con .add #warning{ color: #fd207d; margin: 8px 0;}
 .eject_btn,.eject_con .add .form_address {color: #aaa;}
 .eject_btn,.eject_con .add .form_address select {padding: 6px; margin:4px;}
@@ -254,7 +254,7 @@ div.order_cancel_box p span {color: #f34; font-weight: bold;}
 #content .step_main .clue_on{color: #666; font-size: 12px;}
 #content .step_main h4, #content .step_main h3{ background: white;padding: 5px 0;color: #333; font-weight: normal; color: #3d3d3d;font-size: 16px;font-weight: normal;}
 #content .step_main .order_information{color: #444;font-size: 14px; border-bottom: 1px solid #ccc; padding: 10px 0;}
-#content .step_main .order_information span{color: #f34;}
+#content .step_main .order_information span{color: red;}
 #content .step_main .buy{padding: 10px 0;}
 .defray dd{min-height: 60px;}
 .defray dd p.logo{float: left;width: 140px;}
@@ -506,7 +506,7 @@ padding-left: 5px;}
 .major_1 .good_content{float:left;width:65%;} 
 .major_1 .pic img { width:100%; /*height:300px;*/}
 .major_1 .pic a { display: block; text-align:center;}
-.major_1 h3 { color:#ababab; text-align:left; overflow: hidden; margin: 5px; line-height: 18px; font-weight: normal; font-size: 12px; height:18px;}
+.major_1 h3 { color:#ababab; padding-left: 7px;text-align:left; overflow: hidden; margin: 5px; line-height: 18px; font-weight: normal; font-size: 12px; height:18px;}
 .major_1 h3 a { color: #646665; text-decoration: none; }
 .major_1 h3 a:hover { color: #f60; text-decoration: underline; }
 .major_1 p {color: #f34; font-size: 12px; text-align:left; margin-left:5px;}
@@ -555,8 +555,6 @@ padding-left: 5px;}
 .credited_css { border-right: 1px solid #e1efd6; margin: 3px 0; font-weight: bold; }
 .new_size th { font-weight: normal; color: #a9a9a9; }
 .credited td { text-align: center; color: #666; }
-
-
 .tab_table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 .tab_table th { height: 25px; color: #a9a9a9; }
 .tab_table th, .tab_table td { border-bottom: 1px solid #e2e2e2; }
@@ -673,11 +671,17 @@ font-size: 1.2em;}
 .aggregate { color: #50a5e5; }
 
 .ware_btn {position: relative; }
+<<<<<<< HEAD
 .ware_btn li { float: left; /*margin-right: 20px;*/width:42%; cursor: pointer; }
 #intime_shopping{margin-left:4%}
 #content .ware_btn li.phone_book_1{text-align:center;}
+=======
+.ware_btn li { float: left; /*margin-right: 20px;*/width:45%; cursor: pointer; }
+#intime_shopping{margin-left:3%}
+#content .ware_btn li.phone_book_1{background:#006835;text-align:center;margin: 7px 0}
+>>>>>>> branch 'master' of https://github.com/shanghaishule/myhuai.git
 #content .ware_btn li.phone_book_1 a{color:white;line-height: 30px;}
-#addin_car{margin-left:8%;}
+#addin_car{margin-left:4%;}
 .btn_c1 a { display: block; width: 144px; height: 32px; background: url(../images/btn.gif) 0 -268px; }
 .btn_c2 a { display: block; width: 144px; height: 32px; background: url(../images/btn.gif) 0 -340px; }
 .btn_c3 a { display: block; width: 144px; height: 32px; background: url(../images/style1.gif); }
@@ -715,14 +719,14 @@ font-size: 1.2em;}
 .fill_in_fun .btn_fun { padding-left: 60px; }
 .fill_in_fun .btn_fun input { border: 0; width: 75px; height: 29px; font-weight: bold; color: #c53800; background: url(../images/enter_btn.gif) no-repeat; }
 #item_info{margin-top:15px}
-.user_menu {height: 25px; background:white;position: relative; ;margin-top:10px;}
+.user_menu {height: 40px; background:white;position: relative; ;margin-top:10px;}
 .user_menu li {padding-bottom:10px ;padding-top:10px ; float: left; width: 49.5%; text-align: center;}
 .shop_bottom{width:100%;heigth:50px;background:white;opacity:0.9;position:fixed;bottom:45px;left:0}
 .user_menu .ornament1 { position: absolute; }
 .user_menu .ornament2 { position: absolute; }
-ul.user_menu li.active{border-right:1px solid #ccc;}
-.user_menu .active { display: block; /* font-size: 12px; */ font-weight: bold; /* color: #F80317; */ text-decoration: none; width: 49.5%; text-align: center;}
-.user_menu .active a{ display: block;  color: #006835;border-botom:1px solid #006835}
+ul.user_menu li.active{border-right:1px solid #ccc;border-left:1px solid #ccc;border-bottom:2px solid #006835}
+.user_menu .active { display: block; /* font-size: 12px; */  /* color: #F80317; */ text-decoration: none; width: 49.5%; text-align: center;}
+.user_menu .active a{ display: block;  color:;}
 .user_menu .normal { display: block; font-size: 12px; font-weight: bold; color: #3e403f; text-decoration: none; background: url(../images/user_menu_nav.gif) no-repeat right 0; }
 .user_menu .normal:hover { text-decoration: underline; }
 .user_menu .normal span { display: block; padding: 8px 20px 8px 22px; background: url(../images/user_menu_nav.gif) no-repeat left -150px; }
@@ -765,6 +769,18 @@ ul.user_menu li.active{border-right:1px solid #ccc;}
 
 .buy_name { width: 92%; padding: 4%; overflow: hidden; }
 .buy_name li { width: 16.5%; line-height: 25px; float: left; color: #666; }
+/*
+ * -------------------------------------------------------
+ * ******************** 个人中心 *******************
+ * -------------------------------------------------------
+ */
+.logout a{color:white}
+
+/*
+ * -------------------------------------------------------
+ * ******************** 个人中心end*******************
+ * -------------------------------------------------------
+ */
 
 /*
  * -------------------------------------------------------
@@ -928,7 +944,8 @@ ul.user_menu li.active{border-right:1px solid #ccc;}
 .particular_wrap dl{margin:0}
 .particular .particular_wrap dl{ }
 .particular .particular_wrap .ware_line{ margin:10px 0;}
-.order_detail_list li{float:left}
+.order_detail_list li{float:left;margin-left: 8%;}
+ul#order_detail_list_add {margin-left: 0%;padding:0;border:0}
 ul.order_detail_list{border:none;box-shadow:0 0 0;}
 .ware .transportation{border:none;box-shadow:0 0 0;padding:0}
 /*banner*/

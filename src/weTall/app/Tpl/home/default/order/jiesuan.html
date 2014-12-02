@@ -286,7 +286,7 @@
            
            
         </volist>
-		<div style="font-size:13px; color:green;margin-top:5px;color:#ccc">运送方式：
+		<div style="font-size:13px; color:green;margin-top:5px;color:#3e4245">运送方式：
 			<eq name="vo_group.free" value="1">
 				<select id="free_{$vo_group.tokenTall}" name="free_{$vo_group.tokenTall}"><option value ="0" selected="selected">卖家承担运费</option></select>
 			<else />
@@ -299,7 +299,7 @@
           	<input id="freefee_{$vo_group.tokenTall}" name="freefee_{$vo_group.tokenTall}" type="hidden"/>
          </div>
          <div>
-			<span style="font-size:13px; color: #ccc;">给卖家的附言：</span>
+			<span style="font-size:13px; color:#3e4245;">给卖家的附言：</span>
             <textarea id="mymsg_{$vo_group.tokenTall}" name="mymsg_{$vo_group.tokenTall}" style="font-size:10px; color: lightgrey; width:97%;" placeholder="选填，可以告诉卖家您对商品的特殊需求，如个人喜好等"></textarea>
         </div>
         <div style="font-size:13px; text-align:right;">
