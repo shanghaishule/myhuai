@@ -623,7 +623,7 @@ padding-left: 5px;}
 .ware_info .slider .sliderlist li{ width: 200px !important; margin: 2px;}
 .ware_info .slider .sliderlist li img{margin-left: 10px;margin-top: 8px; border-radius: 3px;}
 .ware_info ul{}
-.ware_info ul li{ ; overflow:hidden;}
+.ware_info ul li{padding-top:7px; overflow:hidden;}
 #idcolor{}
 .ware_pic a{display:block}
 .ware_info #pagenavi{ display:none;}
@@ -676,6 +676,7 @@ font-size: 1.2em;}
 #content .ware_btn li.phone_book_1{text-align:center;margin-left: 8%}
 #content .ware_btn li.phone_book_1 a{color:white;line-height: 30px;}
 #addin_car{margin-left:4%;}
+#addin_car_1{margin-left:18%;}
 .btn_c1 a { display: block; width: 144px; height: 32px; background: url(../images/btn.gif) 0 -268px; }
 .btn_c2 a { display: block; width: 144px; height: 32px; background: url(../images/btn.gif) 0 -340px; }
 .btn_c3 a { display: block; width: 144px; height: 32px; background: url(../images/style1.gif); }
@@ -715,7 +716,7 @@ font-size: 1.2em;}
 #item_info{margin-top:15px}
 .user_menu {height: 40px; background:white;position: relative; ;margin-top:10px;}
 .user_menu li {padding-bottom:10px ;padding-top:10px ; float: left; width: 49.5%; text-align: center;}
-.shop_bottom{width:100%;heigth:50px;background:white;opacity:0.9;position:fixed;bottom:45px;left:0}
+.shop_bottom{width:100%;heigth:44px;background:white;opacity:0.9;position:fixed;bottom:45px;left:0}
 .user_menu .ornament1 { position: absolute; }
 .user_menu .ornament2 { position: absolute; }
 ul.user_menu li.active{border-right:1px solid #ccc;border-left:1px solid #ccc;border-bottom:2px solid #006835}
