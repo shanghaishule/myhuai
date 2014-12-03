@@ -233,8 +233,8 @@
          <input type="hidden" value="{$item.id}" name="goodId" id="goodId" >
          <div class="ware_text">
              <div class="rate">
-              <h2 class="ware_title"><span class="fontColor3">沪爱价¥{$item.price}</span></h2>
-               <p class="letter1" style=";">周边价：{$item.zb_price}</p>
+              <if condition="$item.zb_price neq ''"><h2 class="ware_title"><span class="fontColor3">沪爱价¥{$item.price}</span></h2></if>
+              <if condition="$item.zb_price neq ''"> <p class="letter1" style=";">周边价：{$item.zb_price}</p></if>
                 <h2 class="ware_title">{$item.title}<!-- <span class="letter2" style="">已卖出：{$item.buy_num}件</span> --></h2>       	
                
                 
@@ -352,7 +352,7 @@
     <div class="clear"></div>
     <div id="content" >
      <p>为我推荐</p>
-    <div class="module_special tbr">
+    <div class="module_special tbr" id="module_special_1">
         
         <div class="wrap">
             <div class="wrap_child">
@@ -426,5 +426,82 @@
 <div class="space"></div>
 <div class="space"></div>
 <include file="public:footer" />
+<script type="text/javascript">
+		window.shareData = {
+			"moduleName" : "Index",
+			"moduleID" : '0',
+			"imgUrl" : "http://m.hajk.com.cn/images/logo.png",
+			"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+			"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+			"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+			"tTitle" : "欢迎关注沪爱健康",
+			"tContent" : "沪爱健康   专业让健康更简单"
+		};
+	</script>
+	<script>
+		document.addEventListener('WeixinJSBridgeReady',
+				function onBridgeReady() {
+					WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+						shareHandle('friend');
+						WeixinJSBridge.invoke('sendAppMessage', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('send_msg', res.err_msg);
+						})
+					});
+
+					WeixinJSBridge.on('menu:share:timeline', function(argv) {
+						shareHandle('frineds');
+						WeixinJSBridge.invoke('shareTimeline', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('timeline', res.err_msg);
+						});
+					});
+
+					WeixinJSBridge.on('menu:share:weibo', function(argv) {
+						shareHandle('weibo');
+						WeixinJSBridge.invoke('shareWeibo', {
+							"content" : window.shareData.tContent,
+							"url" : window.shareData.sendFriendLink,
+						}, function(res) {
+							_report('weibo', res.err_msg);
+						});
+					});
+				}, false)
+
+		function shareHandle(to) {
+			var submitData = {
+				module : window.shareData.moduleName,
+				moduleid : window.shareData.moduleID,
+				token : 'ipwhoy1414718223',
+				wecha_id : 'ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+				url : window.shareData.sendFriendLink,
+				to : to
+			};
+			$
+					.post(
+							'/index.php?g=Wap&m=Share&a=shareData&token=ipwhoy1414718223&wecha_id=ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+							submitData, function(data) {
+							}, 'json')
+		}
+	</script>
+	<script>
+	$(function() {
+		$(".ul_list").each(function(){
+			$(this).find("ol").last().remove();
+		});
+	});
+</script>
 </body>
 </html>
