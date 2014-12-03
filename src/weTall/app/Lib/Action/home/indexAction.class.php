@@ -519,29 +519,146 @@ class indexAction extends frontendAction {
    	   $this->assign("tuijianService",$tuijianService);
    	   $this->display();
    }
-   
+   public function list1(){
+   	$this->display();
+   }  
    public function listall(){
    	   $this->display();
    }
-   public function seclist(){
+   public function seclist(){//二级分类列表
+   	   $secCatid = $this->_get("catid","trim,intval");//一级分类id
+   	   !$secCatid && $this->_404();
+   	   $res = $this->_cat->where(array("parentid"=>$secCatid))->select();//一级下所有二级分类
+   	   foreach ($res as $key => $val){
+   	   	$flag = $this->_cat->where(array('parentid'=>$val['id']))->find();
+   	   	if(empty($flag) || $flag == null){//没有子集
+   	   		//查找itme,article,service,只有一个商品，跳到详情
+   	   		$where['cate_id'] = $val['id'];
+   	   		$itemAll = $this->_item->where($where)->count();
+   	   		$serAll = $this->_ser->where($where)->count();
+   	   		$artmAll = $this->_art->where($where)->count();
+   	   			
+   	   		if($itemAll > 1 || $serAll > 1 || $artmAll > 1 || ($itemAll+$serAll+$artmAll) > 1){//不止一条数据
+   	   			 
+   	   			$res[$key]['link'] = U("index/thdlist",array("catid"=>$val['id']));
+   	   			 
+   	   		}else if($itemAll == 1 || $serAll == 1 || $artmAll == 1 && ($itemAll+$serAll+$artmAll) == 1){
+   	   			//判断表及对应的页面
+   	   			$page = "";
+   	   			$table="";
+   	   			if($itemAll == 1){
+   	   				$page = "index";
+   	   				$table ="item";
+   	   			}
+   	   			if($serAll == 1){
+   	   				$page = "index_book";
+   	   				$table ="service";
+   	   			}
+   	   			if($artmAll == 1){
+   	   				$page = "index_phone";
+   	   				$table ="article_new";
+   	   			}
+   	   			 
+   	   			if($table != ''){
+   	   				//找到这条数据
+   	   				// dump($table);
+   	   				$item = M($table)->where($where)->find();
+   	   				//根据商品所属跳到不同商品详情页
+   	   				$res[$key]['link'] = U("Item/{$page}",array("itemid"=>$item['id']));
+   	   			}
+   	   		}else{//都没有数据
+   	   			$res[$key]['link'] = U("index/index");
+   	   		}
+   	   	}else{//no empty
+   	   		$res[$key]['link'] = U("index/thdcate",array("catid"=>$val['id']));
+   	   	}
+   	   } 
+   	   //dump($res);die;
+   	   $this->assign("res",$res); 
    	   $this->display();
    }
-   public function thdcate(){
-   	   $catid = $this->_get("catid","trim,intval");
-   	   
-   	   
+   public function thdcate(){//三级分类
+   	   header("Content-type:text/html;charset=utf-8");
+   	   $catid = $this->_get("catid","trim,intval");//二级id
+   	   !$catid && $this->_404();
+   	   $res = $this->_cat->field("id,catname,picurl")->where(array("parentid"=>$catid))->order("id ASC")->select();
+   	   foreach($res as $key =>$val){
+	   	   	$tuijianItem = $this->_item->field("id,title,img,price,zb_price")->where(array('cate_id'=>$val['id'],"status"=>1))->select();
+			if(is_array($tuijianItem)){
+		   	   	foreach($tuijianItem as $key => $val){
+		   	   		$tuijianItem[$key]['link'] = U("Item/index",array("itemid"=>$val['id']));
+		   	   	}
+			}else{
+				$tuijianItem = array();
+			}
+			
+	   	   	$tuijianArticle = $this->_art->field("id,name,img")->where(array('cate_id'=>$val['id']))->select();
+            if(is_array($tuijianArticle)){
+            	foreach($tuijianArticle as $key => $val){
+            		$tuijianArticle[$key]['link'] = U("Item/index_phone",array("itemid"=>$val['id']));
+            	}
+            }else{
+            	$tuijianArticle = array();
+            }
+	   	   	
+	   	   	$tuijianService = $this->_ser->field("id,name,img,price,zb_price")->where(array('cate_id'=>$val['id']))->select();
+	   	   	if(is_array($tuijianService)){
+	   	   		foreach($tuijianService as $key => $val){
+	   	   			$tuijianService[$key]['link'] = U("Item/index_book",array("itemid"=>$val['id']));
+	   	   		}
+	   	   	}else{
+	   	   		$tuijianService = array();
+	   	   	}
+
+	   	   	$res[$key]["item"] = array_merge($tuijianItem,$tuijianArticle,$tuijianService);
+   	   } 
+   	   //dump($res);die; 
+   	   $this->assign("res",$res);	   
    	   $this->display();
    }
-   public function thdlist(){
-   	echo $this->_get("catid","trim,intval");die;
-   	$this->display();
+   public function thdlist(){//没有三级，列出二级所有服务，商品，资讯
+	   	$catid = $this->_get("catid","trim,intval");
+	   	!$catid && $this->_404();
+	   	 $res = array();
+		    $tuijianItem = $this->_item->field("id,title,img,price,zb_price")->where(array('cate_id'=>$catid,"status"=>1))->select();
+			if(is_array($tuijianItem)){
+		   	   	foreach($tuijianItem as $key => $val){
+		   	   		$tuijianItem[$key]['link'] = U("Item/index",array("itemid"=>$val['id']));
+		   	   	}
+			}else{
+				$tuijianItem = array();
+			}
+			
+	   	   	$tuijianArticle = $this->_art->field("id,name,img")->where(array('cate_id'=>$catid))->select();
+            if(is_array($tuijianArticle)){
+            	foreach($tuijianArticle as $key => $val){
+            		$tuijianArticle[$key]['link'] = U("Item/index_phone",array("itemid"=>$val['id']));
+            	}
+            }else{
+            	$tuijianArticle = array();
+            }
+	   	   	
+	   	   	$tuijianService = $this->_ser->field("id,name,img,price,zb_price")->where(array('cate_id'=>$catid))->select();
+	   	   	if(is_array($tuijianService)){
+	   	   		foreach($tuijianService as $key => $val){
+	   	   			$tuijianService[$key]['link'] = U("Item/index_book",array("itemid"=>$val['id']));
+	   	   		}
+	   	   	}else{
+	   	   		$tuijianService = array();
+	   	   	}
+
+	   	   $res = array_merge($tuijianItem,$tuijianArticle,$tuijianService);
+	   	   
+	   	   //dump($res);die;
+	   	   $this->assign("res",$res);
+	       $this->display();
    }
    public function houselist2(){
-   	$this->display();
+	   	$this->display();
    }
    
    public function hugonglist2(){
-   	$this->display();
+	   	$this->display();
    }
    
 }

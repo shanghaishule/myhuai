@@ -85,7 +85,7 @@ class ServiceAction extends UserAction{
 						$_img['item_id'] = $result;
 						$_img['url'] = $data['img'];
 						$_img['add_time'] = time();
-						M('item_img')->add($_img);
+						M('item_service_img')->add($_img);
 						//从导入表里删除
 						M('item_taobao')->where(array('id'=>$dataid))->delete();
 						$this->success('成功！',U('Service/index'));
@@ -105,7 +105,7 @@ class ServiceAction extends UserAction{
 						$_img['add_time'] = time();
 						foreach ($imgs as $oneimg){
 							$_img['url'] = $oneimg;
-							M('item_img')->add($_img);
+							M('item_service_img')->add($_img);
 						}
 						$this->success('成功！',U('Service/index'));
 					} else {
@@ -127,7 +127,7 @@ class ServiceAction extends UserAction{
 					//M('item_img')->add($_img);
 					foreach ($imgs as $oneimg){
 						$_img['url'] = $oneimg;
-						M('item_img')->add($_img);
+						M('item_service_img')->add($_img);
 					}
 					$this->success('成功！', U('Service/index'));
 				} else {

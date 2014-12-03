@@ -77,4 +77,9 @@ ALTER TABLE  `tp_order_detail` CHANGE  `item_source`  `item_source` TINYINT( 1 )
 
 ALTER TABLE  `tp_item_order` ADD  `reserveDate` VARCHAR( 50 ) NOT NULL DEFAULT  '0' COMMENT  '预约时间';
 
+-------2014-12-3 新加item_article_img 与 item_service_img 结构与item_img一样----------
+
+
+
+
 
