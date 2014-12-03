@@ -1,7 +1,7 @@
 @charset "utf-8";
 /*商品信息*/
 .commment_form {padding: 15px;font-size: 14px;color: #666;;}
-.commment_form .con{margin:5px;; padding:5px;  overflow:hidden;}
+.commment_form .con{margin:5px;; padding:5px;  overflow:hidden;background:white}
 .commment_form .con p{ float:left; line-height:25px; margin:5px 5px 0 0;}
 .commment_form .con p.ware_text{float: none;}
 .commment_form .con p.price span, div.handle #order39_order_amount{color: #f34;}
