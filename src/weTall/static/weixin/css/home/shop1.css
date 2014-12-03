@@ -716,7 +716,7 @@ font-size: 1.2em;}
 .fill_in_fun .text { width: 165px; border: 1px solid #c2c2c2; background: url(../images/text.gif) repeat-x; padding: 2px 3px; font-family: Arial, Helvetica, sans-serif; color: #666; }
 .fill_in_fun .btn_fun { padding-left: 60px; }
 .fill_in_fun .btn_fun input { border: 0; width: 75px; height: 29px; font-weight: bold; color: #c53800; background: url(../images/enter_btn.gif) no-repeat; }
-#item_info{margin-top:15px}
+#item_info{margin-top:}
 .user_menu {height: 40px; background:white;position: relative; ;margin-top:10px;}
 .user_menu li {padding-bottom:10px ;padding-top:10px ; float: left; width: 49.5%; text-align: center;}
 .shop_bottom{width:100%;heigth:44px;background:white;opacity:0.9;position:fixed;bottom:45px;left:0}
