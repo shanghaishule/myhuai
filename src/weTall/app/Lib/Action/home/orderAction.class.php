@@ -237,7 +237,7 @@ class orderAction extends userbaseAction {
 
 		//header("content-Type: text/html; charset=Utf-8");
 	
-		if(IS_POST)//&& count($_SESSION['cart'])>0
+		if(IS_POST && count($_SESSION['cart'])>0)//
 		{
 			import('Think.ORG.Cart');// 导入购物车类
 			$cart=new Cart();
@@ -304,7 +304,7 @@ class orderAction extends userbaseAction {
 				$time = time();//订单添加时间
 			  
 				$goods_sum = 0;
-				foreach ($value['item'] as $items){
+				foreach($value['item'] as $items){
 					$goods_sum = $goods_sum + (floatval($items['price']) * floatval($items['num']));
 				}
 	
@@ -360,8 +360,7 @@ class orderAction extends userbaseAction {
 						$order_detail->data($orders)->add();  //添加订单明细
 					}
 	
-				}else
-				{
+				}else{
 					$this->error('生成订单失败!');
 				}
 	
@@ -445,9 +444,8 @@ class orderAction extends userbaseAction {
 				//exit;
 				$this->assign('order_zhifu',$orders['supportmetho']);
 			}
-		}
-		else
-		{
+		}else{
+			
 			$this->redirect('user/index',array('tokenTall'=>$tokenTall));
 		}
 		

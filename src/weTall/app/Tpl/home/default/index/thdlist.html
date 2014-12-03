@@ -61,67 +61,24 @@
         
         <div id="content">
     <div class="module_special tbr">
-        
         <div class="wrap">
             <div class="wrap_child">
                 <div class="major">
                      <ul class="list">
-                     <li>
-                     <div class="pic">
-                     	<a href=""><div id="thdpic" style="background-image:url(__STATIC__/weixin/images/home/bingyuan.png);background-size:100% 100%"> </div></a>
-                     </div>
-                     <div class="good_content">
-                     <h3>
-                     	<a href="">毛巾套餐价格满五条送一条天天低价</a>
-                     </h3>
-					 <p class="tishi" style="">¥18.00周边价 </p>	
-                     <p class="tishi1" style="">¥17	</p>	   					 
-				     <p class="tishi2" style="" ;="">已卖出220	
-					 </p>
-                 	 </div>
-                     </li>
-					 <li>
-                     <div class="pic">
-                     	<a href=""><div id="thdpic" style="background-image:url(__STATIC__/weixin/images/home/bingyuan.png);background-size:100% 100%"> </div></a>
-                     </div>
-                     <div class="good_content">
-                     <h3>
-                     	<a href="">毛巾套餐价格满五条送一条天天低价</a>
-                     </h3>
-					 <p class="tishi" style="">¥18.00周边价 </p>	
-                     <p class="tishi1" style="">¥17	</p>	   					 
-				     <p class="tishi2" style="" ;="">已卖出220	
-					 </p>
-                 	 </div>
-                     </li>
-					 <li>
-                     <div class="pic">
-                     	<a href=""><div id="thdpic" style="background-image:url(__STATIC__/weixin/images/home/bingyuan.png);background-size:100% 100%"> </div></a>
-                     </div>
-                     <div class="good_content">
-                     <h3>
-                     	<a href="">毛巾套餐价格满五条送一条天天低价</a>
-                     </h3>
-					 <p class="tishi" style="">¥18.00周边价 </p>	
-                     <p class="tishi1" style="">¥17	</p>	   					 
-				     <p class="tishi2" style="" ;="">已卖出220	
-					 </p>
-                 	 </div>
-                     </li>
-					 <li>
-                     <div class="pic">
-                     	<a href=""><div id="thdpic" style="background-image:url(__STATIC__/weixin/images/home/bingyuan.png);background-size:100% 100%"> </div></a>
-                     </div>
-                     <div class="good_content">
-                     <h3>
-                     	<a href="">毛巾套餐价格满五条送一条天天低价</a>
-                     </h3>
-					 <p class="tishi" style="">¥18.00周边价 </p>	
-                     <p class="tishi1" style="">¥17	</p>	   					 
-				     <p class="tishi2" style="" ;="">已卖出220	
-					 </p>
-                 	 </div>
-                     </li>
+                     <volist name="res" id="val">
+	                     <li>
+	                     <div class="pic">
+	                     	<a href="{$val.link}"><div id="thdpic" style="background-image:url({$val.img});background-size:100% 100%"> </div></a>
+	                     </div>
+	                     <div class="good_content">
+	                     <h3>
+	                     	<a href="{$val.link}"><if condition="$val.title neq ''">{$val.title}<else />{$val.name}</if></a>
+	                     </h3>
+						 <if condition="$val.zb_price neq ''"><p class="tishi" style="">{$val.zb_price}</p>	</if>
+	                     <if condition="$val.price neq ''"><p class="tishi1" style="">{$val.price}</p>	</if>	   					 
+	                 	 </div>
+	                     </li>
+					 </volist>
 					 </ul>
                 </div>
             </div>

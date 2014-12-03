@@ -42,7 +42,24 @@ class ArticleAction extends UserAction{
 			if (empty($_POST['img'])){
 				$this->error('请上传商品主图。');
 			}
-			
+			if (! empty($_POST['img1'])) {
+				$imgs[] = $_POST['img1'];
+			}			
+			if (! empty($_POST['img2'])) {
+				$imgs[] = $_POST['img2'];
+			}
+			if (! empty($_POST['img3'])) {
+				$imgs[] = $_POST['img3'];
+			}
+			if (! empty($_POST['img4'])) {
+				$imgs[] = $_POST['img4'];
+			}
+			if (! empty($_POST['img5'])) {
+				$imgs[] = $_POST['img5'];
+			}
+			if (! empty($_POST['img5'])) {
+				$imgs[] = $_POST['img5'];
+			}			
 			if(isset($_POST['tuijian']))
 			{
 				$data['tuijian']=1;
@@ -66,7 +83,7 @@ class ArticleAction extends UserAction{
 						$_img['item_id'] = $result;
 						$_img['url'] = $data['img'];
 						$_img['add_time'] = time();
-						M('item_img')->add($_img);
+						M('item_article_img')->add($_img);
 						//从导入表里删除
 						M('item_taobao')->where(array('id'=>$dataid))->delete();
 						$this->success('成功！', U('Article/index'));
@@ -80,9 +97,13 @@ class ArticleAction extends UserAction{
 					$result = $this->_mod->save($data);
 					if ($result !== false) {
 						//相册更新
-						//$_img['url'] = $data['img'];
-						//M('item_img')->where(array('item_id'=>$data['id']))->save($_img);
-						//M('item_img')->where(array('item_id'=>$data['id']))->delete();
+						M('item_img')->where(array('item_id'=>$data['id']))->delete();
+						$_img['item_id'] = $data['id'];
+						$_img['add_time'] = time();
+						foreach ($imgs as $oneimg){
+							$_img['url'] = $oneimg;
+							M('item_article_img')->add($_img);
+						}
 						$this->success('成功！', U('Article/index'));
 					} else {
 						$this->error('失败！');
@@ -96,7 +117,15 @@ class ArticleAction extends UserAction{
 				
 				$result = $this->_mod->add($data);
 				if ($result !== false) {
-
+					//保存详情页图片到相册
+					$_img['item_id'] = $result;
+					$_img['add_time'] = time();
+					//$_img['url'] = $data['img'];
+					//M('item_img')->add($_img);
+					foreach ($imgs as $oneimg){
+						$_img['url'] = $oneimg;
+						M('item_article_img')->add($_img);
+					}
 					$this->success('成功！', U('Article/index'));
 				} else {
 					$this->error('失败！');

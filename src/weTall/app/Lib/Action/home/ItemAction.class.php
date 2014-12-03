@@ -81,10 +81,10 @@ class itemAction extends frontendAction {
     	$tokenTall = $this->getTokenTall();
     	
     	$mod = M("service");
-    	$item = $mod->field("id,name,price,zb_price,img,status")->where("id = %d",$id)->find();
+    	$item = $mod->field("id,name,price,zb_price,img,status,info")->where("id = %d",$id)->find();
     	!$item && $this->_404();
 
-    	$img_list = M('item_img')->field('url')->where(array('item_id' => $id))->order('ordid')->select();
+    	$img_list = M('item_service_img')->field('url')->where(array('item_id' => $id))->order('ordid')->select();
     	
     	$this->assign('item', $item);
     	$this->assign('img_list', $img_list);    	
@@ -97,8 +97,14 @@ class itemAction extends frontendAction {
     	$id = $this->_get("itemid","trim,intval");
     	!$id && $this->_404();
     	$tokenTall = $this->getTokenTall();    	
-    	$res = M("article_new")->field("")->where(array("id"=>$id))->find();
+    	$res = M("article_new")->field("id,name,img,info")->where(array("id"=>$id))->find();
+    	!$res && $this->_404();
     	
+    	$img_list = M('item_article_img')->field('url')->where(array('item_id' => $id))->order('ordid')->select();
+    	 
+    	$this->assign('item', $res);
+    	$this->assign('img_list', $img_list);
+    	 
     	$this->display();
     }
     /**

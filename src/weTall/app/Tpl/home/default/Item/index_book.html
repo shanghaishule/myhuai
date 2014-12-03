@@ -160,7 +160,7 @@
          <div id="slider" class="slider" style="overflow: hidden; visibility: visible; list-style: none outside none; position: relative;">
              <ul id="sliderlist" class="sliderlist" style="position: relative; overflow: hidden; transition: left 600ms ease 0s; width: 784px; left: 202px;">
                  <volist name="img_list" id="img">
-                     <li style="float: left; display: block; width: 596px;"><a class="group1" href="{:$img['url']}"><img class="goods-img"  width="90%" height="90%" src="{:$img['url']}"></li>
+                     <li style="float: left; display: block; width: 596px;"><a class="group1" href="{$img['url']}"><img class="goods-img"  width="90%" height="90%" src="{$img['url']}"></li>
                  </volist>
              </ul>
             <div id="pagenavi">
@@ -170,7 +170,7 @@
             </div>
          </div>
          <script type="text/javascript">
-       /*  var active=0,
+        var active=0,
              as=document.getElementById('pagenavi').getElementsByTagName('a');
              
          for(var i=0;i<as.length;i++){
@@ -187,7 +187,7 @@
                  active=index;
                  as[active].className='active';
              }});
-		   */      
+		       
          </script>
          <form name="form1" id="form1" action="" method="post">
          <input type="hidden" value="{$item.id}" name="goodId" id="goodId" >

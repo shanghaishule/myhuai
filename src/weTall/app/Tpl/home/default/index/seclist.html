@@ -100,45 +100,20 @@
 	<section>
         
         <div class="seccontent" id=>
-		      
-               <ul class="cfh ul_list">
-                <li><a id="bfh1" href="" style="">
-                    <div class="content0" style=""><p>绿色通道</p></div>
-				     <div class="content1" style="background-image:url(__STATIC__/weixin/images/home/lvse.png);background-size:100% 100%;"></div>
-                     </a>
-				</li>
-				<li><a id="bfh1" href="" style="">
-				<div class="content1" style="background-image:url(__STATIC__/weixin/images/home/hugong.png);background-size:100% 100%;"></div>
-                    </a>
-				</li>
-				<li><a id="bfh1" href="" style="">
-				<div class="content1" style="background-image:url(__STATIC__/weixin/images/home/yingyang.png);background-size:100% 100%;"></div>
-                    </a>
-				 </li>
-				<li><a id="bfh1" href="" style="">
-				<div class="content1" style="background-image:url(__STATIC__/weixin/images/home/chaoshi.png);background-size:100% 100%;"></div>
-                    </a>
-				</li>
-				<li><a id="bfh1" href="" style="">
-                    <div class="content0" style=""><p>绿色通道</p></div>
-				     <div class="content1" style="background-image:url(__STATIC__/weixin/images/home/lvse.png);background-size:100% 100%;"></div>
-                     </a>
-				</li>
-				<li><a id="bfh1" href="" style="">
-				<div class="content1" style="background-image:url(__STATIC__/weixin/images/home/hugong.png);background-size:100% 100%;"></div>
-                    </a>
-				</li>
-				<li><a id="bfh1" href="" style="">
-				<div class="content1" style="background-image:url(__STATIC__/weixin/images/home/yingyang.png);background-size:100% 100%;"></div>
-                    </a>
-				 </li>
-				<li><a id="bfh1" href="" style="">
-				<div class="content1" style="background-image:url(__STATIC__/weixin/images/home/chaoshi.png);background-size:100% 100%;"></div>
-                    </a>
-				</li>
-				 
-               <!--<ol style="background-image:url(__STATIC__/weixin/images/home/hoslogo.png);background-size:100% 100%;"></ol>-->
-            </ul>
+			<div class="content_start">
+				<ul class="ofh ul_list">
+					<?php $index=48;?>
+					<volist name="res" id="con" mod="2">
+					<li>
+						<a id="<eq name='mod' value='0'>ofh1<else />ofh2</eq>"
+							href="{$con.link}">
+								<div class="content1"
+									style="background: url({$con.picurl}) no-repeat right; background-size: 50px 50px;">{$con.catname}</div>
+						</a>
+					</li>
+					</volist>
+				</ul>
+			</div>
         </div>
 		
 		</section>
