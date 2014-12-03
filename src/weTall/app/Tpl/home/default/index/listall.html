@@ -35,168 +35,32 @@
 					</li></a>
 					<li id="a_1">
 						<div style="">
-
 							<p>总分类</p>
 						</div>
 					</li>
 				</ul>
 			</div>
 		</div>
-		
+		<volist name="res" id="val">
 		<div id="list1">
 			<p>
-				<span class="fangge"></span>病员服务
+				<span class="fangge"></span>{$val.parrName}
 			</p>
 			<div class="alllist">
 				<ul class="alllist_ul_list">
-					<li><a id="afh1" href="" style="">
+					<volist name="val['parrTag']" id="va" mod="5">
+					<li><a id="afh_{$key}" href="{$va.link}" >
 							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-
-					</a></li>
-					<li><a id="afh2" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
+								<p>{$va.catname}</p>
 							</div>
 					</a></li>
-					<li><a id="afh3" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-					</a></li>
-					<li><a id="ofh4" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-					</a></li>
-					<li><a id="afh1" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-
-					</a></li>
-					<li><a id="afh2" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-					</a></li>
-					<li><a id="afh3" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-					</a></li>
-					<li><a id="ofh4" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-					</a></li>
-
-					
+					</volist>
 				</ul>
 
 			</div>
 			<div class="clear"></div>
 		</div>
-
-		<div id="list1">
-			<p><span class="fangge"></span>门诊服务</p>
-			<div class="alllist">
-				<ul class="alllist_ul_list">
-					<li><a id="afh1" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-
-					</a></li>
-					<li><a id="afh2" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-					</a></li>
-					<li><a id="afh3" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-					</a></li>
-					<li><a id="ofh4" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-					</a></li>
-
-					</ul>
-
-			</div>
-			<div class="clear"></div>
-		</div>
-
-		<div id="list1">
-			<p><span class="fangge"></span>母婴服务</p>
-			<div class="alllist">
-				<ul class="alllist_ul_list">
-					<li><a id="afh1" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-
-					</a></li>
-					<li><a id="afh2" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-					</a></li>
-					<li><a id="afh3" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-					</a></li>
-					<li><a id="ofh4" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-					</a></li>
-
-					<ol
-						style="background-image: url(__STATIC__/weixin/images/home/hoslogo.png); background-size: 100% 100%;"></ol>
-				</ul>
-
-			</div>
-			<div class="clear"></div>
-		</div>
-
-		<div id="list1">
-			<p><span class="fangge"></span>员工服务</p>
-			<div class="alllist">
-				<ul class="alllist_ul_list">
-					<li><a id="afh1" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-
-					</a></li>
-					<li><a id="afh2" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-					</a></li>
-					<li><a id="afh3" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-					</a></li>
-					<li><a id="ofh4" href="" style="">
-							<div class="afh1_content">
-								<p>绿色通道</p>
-							</div>
-					</a></li>
-
-					<ol
-						style="background-image: url(__STATIC__/weixin/images/home/hoslogo.png); background-size: 100% 100%;"></ol>
-				</ul>
-
-			</div>
-			<div class="clear"></div>
+        </volist>
 		</div>
 		<div class="space"></div>
 		<include file="public:footer" />
