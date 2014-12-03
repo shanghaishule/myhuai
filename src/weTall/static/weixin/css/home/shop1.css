@@ -723,6 +723,7 @@ font-size: 1.2em;}
 .user_menu {height: 40px; background:white;position: relative; ;margin-top:10px;}
 .user_menu li {padding-bottom:10px ;padding-top:10px ; float: left; width: 49.5%; text-align: center;}
 .shop_bottom{width:100%;heigth:44px;background:white;opacity:0.9;position:fixed;bottom:45px;left:0}
+.shop_bottom_1{width:100%;heigth:44px;background:white;opacity:0.9;position:fixed;bottom:0;left:0}
 .user_menu .ornament1 { position: absolute; }
 .user_menu .ornament2 { position: absolute; }
 ul.user_menu li.active{border-right:1px solid #ccc;border-left:1px solid #ccc;border-bottom:2px solid #006835}
