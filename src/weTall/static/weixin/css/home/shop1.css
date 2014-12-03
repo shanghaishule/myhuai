@@ -625,7 +625,7 @@ padding-left: 5px;}
 .ware_info .slider .sliderlist li{ width: 200px !important; margin: 2px;}
 .ware_info .slider .sliderlist li img{margin-left: 10px;margin-top: 8px; border-radius: 3px;}
 .ware_info ul{}
-.ware_info ul li{padding:5px 0; overflow:hidden;}
+.ware_info ul li{overflow:hidden;}
 #module_special_1{margin-top:0}
 #idcolor{}
 .ware_pic a{display:block}

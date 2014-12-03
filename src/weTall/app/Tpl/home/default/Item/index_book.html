@@ -202,13 +202,13 @@
 		 <div class="book_online">
 		    
 		 <ul >
-                    <li id="book_online_1" >选择时间:</li>
-                    <li id="book_online_2">
-                   <div class="demo">
-						<div class="lie"><input id="endTime" style="border: 1px solid #ccc"name="reserveDate" class="kbtn" /></div>
-					</div>
-                    
-                    </li>
+                  <li id="book_online_1" >选择时间:</li>
+                  <li id="book_online_2">
+                 <div class="demo">
+				<div class="lie"><input id="endTime" style="border: 1px solid #ccc" name="reserveDate" class="kbtn" /></div>
+			    </div>
+                  
+                  </li>
           </ul>          
 		 </div>
 		 <div id="datePlugin"></div>
@@ -357,12 +357,7 @@
 </div>
 </div>
 <div class="space"></div>
-		  <!--book -->
-<script type="text/javascript">
-$(function(){
-	$('#endTime').date({theme:"datetime"});
-});
-</script>
+
 <include file="public:footer" />
 <script type="text/javascript">
 		window.shareData = {
@@ -440,6 +435,12 @@ $(function(){
 			$(this).find("ol").last().remove();
 		});
 	});
+</script>
+<!--book -->
+<script type="text/javascript">
+$(function(){
+	$('#endTime').date({theme:"datetime"});
+});
 </script>
 </body>
 </html>
