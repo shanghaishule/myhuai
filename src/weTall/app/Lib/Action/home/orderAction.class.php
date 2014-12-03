@@ -340,7 +340,6 @@ class orderAction extends userbaseAction {
 				$all_order_arr[] = $dingdanhao;
 				$all_order_price = $all_order_price + $goods_sum + $free_sum;
 			  
-			  
 				if($orderid=$item_order->add($data))//添加订单汇总
 				{
 					$orders = array();
