@@ -209,7 +209,7 @@ div.order_cancel_box p span {color: #f34; font-weight: bold;}
 .content {margin: 0; min-height:300px; position: relative;}
 .membertop{ /* padding:4px 10px 10px 20px; */ background:yellow; height:115px;position:relative } 
 .membertop .my_address{ display:block; /* background:-webkit-gradient(linear,left top,left bottom,from(#dbe4c8),to(#dbe4c8)); */background: -moz-linear-gradient(top,#dbe4c8,#dbe4c8); padding:4px 10px 5px 10px; /* border-radius:30px; */ /* border:1px solid #b0d5f9; */ /* box-shadow:2px 1px 1px 2px #dbe4c8 inset; */}
-.membertop .my_address a{ color:white; display:block; padding-left:0px; background:url(../images/address_ico.png) no-repeat left top;}
+.membertop .my_address a{ color:white;; padding-left:0px; background:url(../images/address_ico.png) no-repeat left top;}
 .membertop .my_name a{float:left; /* width: 100%; */ color:black; font-size: 18px; display:block; /* padding: 2px 20px; */ }
 .membertop .logout a { font-size:0.8em; ;}
 .membertop .logout {float:right; /* width:140px; */ color:#ccc; font-size:1.25em; display:block; ; margin-right: 15px;}
