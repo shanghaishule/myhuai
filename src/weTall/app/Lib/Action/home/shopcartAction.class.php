@@ -86,9 +86,7 @@ class shopcartAction extends frontendAction {
     	$quantity=$this->_post('quantity', 'intval');//购买数量
     	$size= $this->_post('size', 'intval');//大小
     	$color=$this->_post('color', 'trim');//颜色
-    	
-        $reserveDate = $this->_post("reserveDate","trim");//服务时间
-        
+
     	$item=M('item')->field('id,title,img,price,goods_stock,tokenTall,free,pingyou,kuaidi,ems')->find($goodId);
     	$item['size'] = $size;
     	$item['color'] = $color; //mb_convert_encoding($color, "UTF-8", "GBK");

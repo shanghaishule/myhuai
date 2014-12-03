@@ -21,7 +21,7 @@ $(function(){
         errorPlacement: function(error, element){
             $(element).next("label").append(error); 
         },
-        success       : function(label){
+        success : function(label){
             //label.addClass('validate_right').text('OK!');
         },
 		onsubmit:true,// 是否在提交时验证 
@@ -58,9 +58,10 @@ $(function(){
     			//function a(){location.href=decodeURIComponent("%2Findex.php%3Fapp%3Dmemberbuy%26store_id%3D9");}
     			function a(){
     				//location.href=data.url;
-    				window.history.go(-1);
+    				//window.history.go(-1);
     			    //window.location.reload();
     			    //alert(data.url);
+    			    location.href="<?php echo $_SERVER['HTTP_REFERER'];?>";
     			}
     			setTimeout(a,1000);
     		} else {

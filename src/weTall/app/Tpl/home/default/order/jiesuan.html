@@ -141,6 +141,8 @@
        
          
        <form method="post"  action="{:U('order/pay',array('tokenTall'=>$tokenTall, 'showwxpaytitle'=>1))}" id="order_form" name="order_form" >
+        <div>
+          <input type="hidden" name="tabType" value="{$tabType}" />
        <?php if(count($address_list)!=0){ ?>
 	        <volist name='address_list' id='vo' >
 	        <ul class="receive_add address_item selected_address">
@@ -177,14 +179,11 @@
                 <p></p>
             </li>
             <li>
-                
                 <p><input value="" name="address" id="address"  placeholder="详细地址不必重复填写地区" class="text width1" type="text"></p>
             </li>
             <li>
-                
                 <p><input value="" id="phone_mob" name="phone_mob" placeholder="手机号码" class="text" type="text"></p>
             </li>
-           
                 <p class="title">&nbsp;</p>
                 <p>
                     <label>
@@ -252,7 +251,7 @@
               <p class="goods_info">
                   <span class="img"><a href="{:U('Item/index',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}" ><img src="{:$vo['img']}" height="100" width="100"></a></span>
                   <span class="tit">
-                      <a href="{:U('Item/index',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}" >000000000000000000000{$vo.name}</a><br>
+                      <a href="{:U('Item/index',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}" >{$vo.name}</a><br>
                      
                       <span>尺寸:{$vo.size}<span>&nbsp;颜色:{$vo.color}</span></span>
                       
@@ -263,6 +262,10 @@
                       
                       
                   </span>
+                  <if condition="$vo.reserveDate neq ''">
+                  <span class="yuyue">预约时间：{$vo.reserveDate}</span>
+                  <input name="reserveDate" type="hidden" value="{$vo.reserveDate}" />
+                  </if>
                   <span class="tit titadd">
                      
                       <span></span><span class="price1">¥{$vo.price}</span><br>
@@ -279,12 +282,7 @@
                   </span>
               </p>
            </li>
-        
-        
-           
-           
-           
-           
+
         </volist>
 		<div style="font-size:13px; color:green;margin-top:5px;color:#3e4245">运送方式：
 			<eq name="vo_group.free" value="1">

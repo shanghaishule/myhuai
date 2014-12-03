@@ -181,7 +181,7 @@ class orderAction extends userbaseAction {
 			//header("content-Type: text/html; charset=Utf-8");
 			//dump($result);exit;
 			$this->assign('allinfo',$result);
-			 
+			$this->assign("tabType",'0');
 			import('Think.ORG.Cart');// 导入购物车类
 			$cart=new Cart();
 			$sumPrice= $cart->getPrice();
@@ -196,6 +196,39 @@ class orderAction extends userbaseAction {
 
 	}
 	
+	//直接结算
+	public function jiesuanNow(){
+		$tokenTall = $this->getTokenTall();
+		
+		$goodId= $this->_post('goodId', 'intval');//服务ID
+		
+		$reserveDate= $this->_post('reserveDate');//预约时间
+		
+		$this->assign('tokenTall',$tokenTall);
+		
+		$user_address_mod = M('user_address');
+		$address_list = $user_address_mod->where(array('uid' => $this->visitor->info['id']))->select();
+   
+		$item = M("service")->field("id,name,price,img")->find($goodId);
+		if(is_array($item)){
+			$item['num'] = 1;
+			$item['size'] = '0';
+			$item['color'] = '无';
+			$item['reserveDate'] = $reserveDate;
+			$arr = array();
+			$kudi = array("tokenTall"=>$tokenTall,"free"=>1,"pingyou"=>0,"kuaidi"=>0,"ems"=>0);
+			$arr[$tokenTall] = $kudi;
+			$arr[$tokenTall]['item'][] = $item;
+		}else{
+			$this->redirect($_SERVER['HTTP_REFERER']);
+		}
+		//dump($arr);die;
+		$this->assign('address_list', $address_list);
+		$this->assign('allinfo',$arr);
+		$this->assign("tabType",'1');
+		$this->display("jiesuan");
+	}
+	
 	public function pay()//出订单
 	{
 		//取商家token值，取不到则默认为空
@@ -203,9 +236,8 @@ class orderAction extends userbaseAction {
 		$this->assign('tokenTall',$tokenTall);
 
 		//header("content-Type: text/html; charset=Utf-8");
-		//dump($_POST);exit;
 	
-		if(IS_POST && count($_SESSION['cart'])>0)
+		if(IS_POST)//&& count($_SESSION['cart'])>0
 		{
 			import('Think.ORG.Cart');// 导入购物车类
 			$cart=new Cart();
@@ -215,7 +247,7 @@ class orderAction extends userbaseAction {
 			$item_goods=M('item');
 			$this->visitor->info['id'];//用户ID
 			$this->visitor->info['username'];//用户账号
-			 
+
 			//收货地址begin
 			$addr = array();
 			$address_options = $this->_post('address_options','intval');//0：刚填的地址；大于0：历史地址
@@ -261,7 +293,7 @@ class orderAction extends userbaseAction {
 	
 			$all_order_arr = array();  //所有生成的订单单号集合
 			$all_order_price = 0;  //所有生成的订单总额
-	
+			
 			//按店铺生成订单
 			foreach ($result as $key => $value){
 				$data = array();
@@ -300,12 +332,16 @@ class orderAction extends userbaseAction {
 				$data['freetype'] = $freetype;//配送方式
 				$data['freeprice'] = $free_sum;//配送金额
 				$data['tokenTall']=$key;
-	
+				$reserveDate = $this->_post('reserveDate');//预约时间
+				//dump($reserveDate);die;
+				if($reserveDate !=''){
+					$data['reserveDate'] = $reserveDate;
+				}
 				$all_order_arr[] = $dingdanhao;
 				$all_order_price = $all_order_price + $goods_sum + $free_sum;
 			  
 			  
-				if($orderid=$item_order->data($data)->add())//添加订单汇总
+				if($orderid=$item_order->add($data))//添加订单汇总
 				{
 					$orders = array();
 					$orders['orderId']=$dingdanhao;
@@ -320,12 +356,12 @@ class orderAction extends userbaseAction {
 						$orders['quantity']=$item['num'];//购买数量
 						$orders['size']=$item['size'];//购买大小
 						$orders['color']=$item['color'];//购买颜色
-	
+
+						$orders['item_source'] = $this->_post("tabType","trim,intval");//所属表
 						$order_detail->data($orders)->add();  //添加订单明细
 					}
 	
-				}
-				else
+				}else
 				{
 					$this->error('生成订单失败!');
 				}
@@ -454,9 +490,7 @@ class orderAction extends userbaseAction {
 		
 		$biz_package = $wxPayHelper->create_biz_package();
 		$this->assign('biz_package', $biz_package);
-		
-		
-		
+
 		$this->display();
 	}
 	
