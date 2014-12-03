@@ -73,7 +73,7 @@ ALTER TABLE  `tp_flash_pos` ADD  `type` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE
 
 
 ----2014-12-2----
-ALTER TABLE  `tp_order_detail` CHANGE  `item_source`  `item_source` TINYINT( 1 ) NOT NULL DEFAULT  '0' COMMENT  '该商品来自哪张表0item,1service';
+ALTER TABLE  `tp_order_detail` CHANGE  `item_source`  `item_source` TINYINT( 1 ) NOT NULL DEFAULT  '0' COMMENT  '该商品来自哪张表0/item,1/service';
 
 ALTER TABLE  `tp_item_order` ADD  `reserveDate` VARCHAR( 50 ) NOT NULL DEFAULT  '0' COMMENT  '预约时间';
 

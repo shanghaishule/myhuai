@@ -519,11 +519,73 @@ class indexAction extends frontendAction {
    	   $this->assign("tuijianService",$tuijianService);
    	   $this->display();
    }
-   public function list1(){
-   	$this->display();
-   }  
+
    public function listall(){
-   	   $this->display();
+   	   
+   	$serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
+   	//推荐二级分类，是否有子级，有跳到thdcate(三级分类),没有跳到thdlist(列表，注：如果列表里只有一个商品或服务跳到详情页)
+   	//dump($serArr);die();
+   	$arr = array();//保存所有二级被推荐的分类
+   	foreach($serArr as $key => $val){
+   		$tuijian_arr = $this->_cat->where(array("parentid"=>$val['id']))->select();
+   		if(!empty($tuijian_arr)){
+   			$arr[$key]["parrName"] = $val['catname'];
+   			$arr[$key]["parrId"] = $val['id'];
+   			$arr[$key]['parrTag']= $tuijian_arr;
+   		}
+   	}
+   	// dump($arr);die;
+   		
+   	//判断被推荐的分类是否有子级，对应添加不同的链接
+   	foreach($arr as $keys => $vals){
+   		foreach ($vals['parrTag'] as $key => $val){
+   			$flag = $this->_cat->where(array('parentid'=>$val['id']))->find();
+   			if(empty($flag) || $flag == null){//没有子集
+   				//查找itme,article,service,只有一个商品，跳到详情
+   				$where['cate_id'] = $val['id'];
+   				$itemAll = $this->_item->where($where)->count();
+   				$serAll = $this->_ser->where($where)->count();
+   				$artmAll = $this->_art->where($where)->count();
+   					
+   				if($itemAll > 1 || $serAll > 1 || $artmAll > 1 || ($itemAll+$serAll+$artmAll) > 1){//不止一条数据
+   					 
+   					$arr[$keys]['parrTag'][$key]['link'] = U("index/thdlist",array("catid"=>$val['id']));
+   					 
+   				}else if($itemAll == 1 || $serAll == 1 || $artmAll == 1 && ($itemAll+$serAll+$artmAll) == 1){
+   					//判断表及对应的页面
+   					$page = "";
+   					$table="";
+   					if($itemAll == 1){
+   						$page = "index";
+   						$table ="item";
+   					}
+   					if($serAll == 1){
+   						$page = "index_book";
+   						$table ="service";
+   					}
+   					if($artmAll == 1){
+   						$page = "index_phone";
+   						$table ="article_new";
+   					}
+   					 
+   					if($table != ''){
+   						//找到这条数据
+   						// dump($table);
+   						$item = M($table)->where($where)->find();
+   						//根据商品所属跳到不同商品详情页
+   						$arr[$keys]['parrTag'][$key]['link'] = U("Item/{$page}",array("itemid"=>$item['id']));
+   					}
+   				}else{//都没有数据
+   					$arr[$keys]['parrTag'][$key]['link'] = U("index/index");
+   				}
+   			}else{//no empty
+   				$arr[$keys]['parrTag'][$key]['link'] = U("index/thdcate",array("catid"=>$val['id']));
+   			}
+   		}
+   	}
+   	  //dump($arr);die; 
+   	  $this->assign("res",$arr);  	
+   	  $this->display();
    }
    public function seclist(){//二级分类列表
    	   $secCatid = $this->_get("catid","trim,intval");//一级分类id
