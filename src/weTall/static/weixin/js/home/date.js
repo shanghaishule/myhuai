@@ -80,7 +80,7 @@
             MinuteScroll.scrollTo(0, initI*40, 100, true);   
             initH=parseInt(nowdate.getHours());
         }
-	function resetIndex(){
+	    function resetIndex(){
             indexY=1;
             indexM=1;
             indexD=1;
