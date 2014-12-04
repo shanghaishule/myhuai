@@ -437,64 +437,7 @@ class indexAction extends frontendAction {
    	   $serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
    	   //推荐二级分类，是否有子级，有跳到thdcate(三级分类),没有跳到thdlist(列表，注：如果列表里只有一个商品或服务跳到详情页)
        //dump($serArr);die();
-   	   $arr = array();//保存所有二级被推荐的分类
-   	   foreach($serArr as $key => $val){
-	   	   	$tuijian_arr = $this->_cat->where(array("parentid"=>$val['id'],"tuijian"=>1))->select();
-	   	   	if(!empty($tuijian_arr)){
-	   	   		$arr[$key]["parrName"] = $val['catname'];
-	   	   		$arr[$key]["parrId"] = $val['id'];
-	   	   		$arr[$key]['parrTag']= $tuijian_arr;
-	   	   	}
-   	   }
-   	  // dump($arr);die;
-   	   
-       //判断被推荐的分类是否有子级，对应添加不同的链接
-   	   foreach($arr as $keys => $vals){
-          foreach ($vals['parrTag'] as $key => $val){
-   	   	   $flag = $this->_cat->where(array('parentid'=>$val['id']))->find();
-   	   	   if(empty($flag) || $flag == null){//没有子集
-   	   	   	    //查找itme,article,service,只有一个商品，跳到详情
-   	   	   	    $cond['cate_id'] = $val['id'];
-   	   	   	    $itemAll = $this->_item->where($cond)->count();
-   	   	   	    $serAll = $this->_ser->where($cond)->count();
-   	   	   	    $artmAll = $this->_art->where($cond)->count();
-   	   	   	   
-   	   	   	    if($itemAll > 1 || $serAll > 1 || $artmAll > 1 || ($itemAll+$serAll+$artmAll) > 1){//不止一条数据
-   	   	   	    	
-   	   	   	    	$arr[$keys]['parrTag'][$key]['link'] = U("index/thdlist",array("catid"=>$val['id']));
-   	   	   	    	
-   	   	   	    }else if($itemAll == 1 || $serAll == 1 || $artmAll == 1 && ($itemAll+$serAll+$artmAll) == 1){
-   	   	   	    	//判断表及对应的页面
-   	   	   	       	$page = "";
-   	   	   	       	$table="";
-   	   	   	    	if($itemAll == 1){
-   	   	   	    		 $page = "index";
-   	   	   	    		 $table ="item";
-   	   	   	    	 }
-   	   	   	    	 if($serAll == 1){
-   	   	   	    		 $page = "index_book";
-   	   	   	    		 $table ="service";
-   	   	   	    	}
-   	   	   	        if($artmAll == 1){
-   	   	   	    		 $page = "index_phone";
-   	   	   	    		 $table ="article_new";
-   	   	   	    	 }
-   	   	   	    	
-   	   	   	    	if($table != ''){
-   	   	   	    		 //找到这条数据
-   	   	   	    		// dump($table);
-   	   	   	    		 $item = M($table)->where($cond)->find();
-   	   	   	    		 //根据商品所属跳到不同商品详情页
-   	   	   	    		 $arr[$keys]['parrTag'][$key]['link'] = U("Item/{$page}",array("itemid"=>$item['id']));
-   	   	   	    	}
-   	   	   	    }else{//都没有数据
-   	   	   	    	   $arr[$keys]['parrTag'][$key]['link'] = U("index/index");
-   	   	   	    }
-   	   	   }else{//no empty
-   	   	   	   $arr[$keys]['parrTag'][$key]['link'] = U("index/thdcate",array("catid"=>$val['id']));
-   	   	   }
-   	     }
-   	   }
+       $arr = $this->getArr(1);
    	   //dump($arr);die;
    	   
    	   //为我推荐模块
@@ -521,68 +464,7 @@ class indexAction extends frontendAction {
    }
 
    public function listall(){
-   	   
-   	$serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
-   	//推荐二级分类，是否有子级，有跳到thdcate(三级分类),没有跳到thdlist(列表，注：如果列表里只有一个商品或服务跳到详情页)
-   	//dump($serArr);die();
-   	$arr = array();//保存所有二级被推荐的分类
-   	foreach($serArr as $key => $val){
-   		$tuijian_arr = $this->_cat->where(array("parentid"=>$val['id']))->select();
-   		if(!empty($tuijian_arr)){
-   			$arr[$key]["parrName"] = $val['catname'];
-   			$arr[$key]["parrId"] = $val['id'];
-   			$arr[$key]['parrTag']= $tuijian_arr;
-   		}
-   	}
-   	// dump($arr);die;
-   		
-   	//判断被推荐的分类是否有子级，对应添加不同的链接
-   	foreach($arr as $keys => $vals){
-   		foreach ($vals['parrTag'] as $key => $val){
-   			$flag = $this->_cat->where(array('parentid'=>$val['id']))->find();
-   			if(empty($flag) || $flag == null){//没有子集
-   				//查找itme,article,service,只有一个商品，跳到详情
-   				$where['cate_id'] = $val['id'];
-   				$itemAll = $this->_item->where($where)->count();
-   				$serAll = $this->_ser->where($where)->count();
-   				$artmAll = $this->_art->where($where)->count();
-   					
-   				if($itemAll > 1 || $serAll > 1 || $artmAll > 1 || ($itemAll+$serAll+$artmAll) > 1){//不止一条数据
-   					 
-   					$arr[$keys]['parrTag'][$key]['link'] = U("index/thdlist",array("catid"=>$val['id']));
-   					 
-   				}else if($itemAll == 1 || $serAll == 1 || $artmAll == 1 && ($itemAll+$serAll+$artmAll) == 1){
-   					//判断表及对应的页面
-   					$page = "";
-   					$table="";
-   					if($itemAll == 1){
-   						$page = "index";
-   						$table ="item";
-   					}
-   					if($serAll == 1){
-   						$page = "index_book";
-   						$table ="service";
-   					}
-   					if($artmAll == 1){
-   						$page = "index_phone";
-   						$table ="article_new";
-   					}
-   					 
-   					if($table != ''){
-   						//找到这条数据
-   						// dump($table);
-   						$item = M($table)->where($where)->find();
-   						//根据商品所属跳到不同商品详情页
-   						$arr[$keys]['parrTag'][$key]['link'] = U("Item/{$page}",array("itemid"=>$item['id']));
-   					}
-   				}else{//都没有数据
-   					$arr[$keys]['parrTag'][$key]['link'] = U("index/index");
-   				}
-   			}else{//no empty
-   				$arr[$keys]['parrTag'][$key]['link'] = U("index/thdcate",array("catid"=>$val['id']));
-   			}
-   		}
-   	}
+   	  $arr = $this->getArr();
    	  //dump($arr);die; 
    	  $this->assign("res",$arr);  	
    	  $this->display();
@@ -645,34 +527,10 @@ class indexAction extends frontendAction {
    	   !$catid && $this->_404();
    	   $res = $this->_cat->field("id,catname,picurl")->where(array("parentid"=>$catid))->order("id ASC")->select();
    	   foreach($res as $key =>$val){
-	   	   	$tuijianItem = $this->_item->field("id,title,img,price,zb_price")->where(array('cate_id'=>$val['id'],"status"=>1))->select();
-			if(is_array($tuijianItem)){
-		   	   	foreach($tuijianItem as $key => $val){
-		   	   		$tuijianItem[$key]['link'] = U("Item/index",array("itemid"=>$val['id']));
-		   	   	}
-			}else{
-				$tuijianItem = array();
-			}
-			
-	   	   	$tuijianArticle = $this->_art->field("id,name,img")->where(array('cate_id'=>$val['id']))->select();
-            if(is_array($tuijianArticle)){
-            	foreach($tuijianArticle as $key => $val){
-            		$tuijianArticle[$key]['link'] = U("Item/index_phone",array("itemid"=>$val['id']));
-            	}
-            }else{
-            	$tuijianArticle = array();
-            }
-	   	   	
-	   	   	$tuijianService = $this->_ser->field("id,name,img,price,zb_price")->where(array('cate_id'=>$val['id']))->select();
-	   	   	if(is_array($tuijianService)){
-	   	   		foreach($tuijianService as $key => $val){
-	   	   			$tuijianService[$key]['link'] = U("Item/index_book",array("itemid"=>$val['id']));
-	   	   		}
-	   	   	}else{
-	   	   		$tuijianService = array();
-	   	   	}
-
-	   	   	$res[$key]["item"] = array_merge($tuijianItem,$tuijianArticle,$tuijianService);
+	   	   	$where["cate_id"] = $val['id'];
+	   	   	$where["status"] = 1;
+	   	   	$condi['cate_id'] = $val['id'];
+	   	   	$res[$key]["item"] = $this->getRes($where,$condi);
    	   } 
    	   //dump($res);die; 
    	   $this->assign("res",$res);	   
@@ -681,39 +539,13 @@ class indexAction extends frontendAction {
    public function thdlist(){//没有三级，列出二级所有服务，商品，资讯
 	   	$catid = $this->_get("catid","trim,intval");
 	   	!$catid && $this->_404();
-	   	 $res = array();
-		    $tuijianItem = $this->_item->field("id,title,img,price,zb_price")->where(array('cate_id'=>$catid,"status"=>1))->select();
-			if(is_array($tuijianItem)){
-		   	   	foreach($tuijianItem as $key => $val){
-		   	   		$tuijianItem[$key]['link'] = U("Item/index",array("itemid"=>$val['id']));
-		   	   	}
-			}else{
-				$tuijianItem = array();
-			}
-			
-	   	   	$tuijianArticle = $this->_art->field("id,name,img")->where(array('cate_id'=>$catid))->select();
-            if(is_array($tuijianArticle)){
-            	foreach($tuijianArticle as $key => $val){
-            		$tuijianArticle[$key]['link'] = U("Item/index_phone",array("itemid"=>$val['id']));
-            	}
-            }else{
-            	$tuijianArticle = array();
-            }
-	   	   	
-	   	   	$tuijianService = $this->_ser->field("id,name,img,price,zb_price")->where(array('cate_id'=>$catid))->select();
-	   	   	if(is_array($tuijianService)){
-	   	   		foreach($tuijianService as $key => $val){
-	   	   			$tuijianService[$key]['link'] = U("Item/index_book",array("itemid"=>$val['id']));
-	   	   		}
-	   	   	}else{
-	   	   		$tuijianService = array();
-	   	   	}
-
-	   	   $res = array_merge($tuijianItem,$tuijianArticle,$tuijianService);
-	   	   
-	   	   //dump($res);die;
-	   	   $this->assign("res",$res);
-	       $this->display();
+	   	$where["cate_id"] = $catid;
+	   	$where["status"] = 1;
+	   	$condi['cate_id'] = $catid;
+        $res = $this->getRes($where,$condi);	   	   
+	   	//dump($res);die;
+   	   $this->assign("res",$res);
+       $this->display();
    }
    public function houselist2(){
 	   	$this->display();
@@ -723,4 +555,117 @@ class indexAction extends frontendAction {
 	   	$this->display();
    }
    
+   //搜索
+   public function searchlist(){
+   	  $keywords = $this->_post('keywords','trim');
+   	  $where['title'] = array('like','%'.$keywords.'%');
+   	  $condi['name'] = array('like','%'.$keywords.'%');
+   	  $res = $this->getRes($where, $condi);
+   	  //dump($res);die;
+   	  $this->assign("res",$res);
+   	  $this->assign("keywords",$keywords);
+   	  $this->display();
+   }
+   
+   public function getRes($where=array(),$condi=array()){
+	     	$res = array();
+   		    $tuijianItem = $this->_item->field("id,title,img,price,zb_price")->where($where)->select();
+			if(is_array($tuijianItem)){
+		   	   	foreach($tuijianItem as $key => $val){
+		   	   		$tuijianItem[$key]['link'] = U("Item/index",array("itemid"=>$val['id']));
+		   	   	}
+			}else{
+				$tuijianItem = array();
+			}
+			
+	   	   	$tuijianArticle = $this->_art->field("id,name,img")->where($condi)->select();
+            if(is_array($tuijianArticle)){
+            	foreach($tuijianArticle as $key => $val){
+            		$tuijianArticle[$key]['link'] = U("Item/index_phone",array("itemid"=>$val['id']));
+            	}
+            }else{
+            	$tuijianArticle = array();
+            }
+	   	   	
+	   	   	$tuijianService = $this->_ser->field("id,name,img,price,zb_price")->where($condi)->select();
+	   	   	if(is_array($tuijianService)){
+	   	   		foreach($tuijianService as $key => $val){
+	   	   			$tuijianService[$key]['link'] = U("Item/index_book",array("itemid"=>$val['id']));
+	   	   		}
+	   	   	}else{
+	   	   		$tuijianService = array();
+	   	   	}
+	   	
+	   		$res = array_merge($tuijianItem,$tuijianArticle,$tuijianService);
+	   	
+	   	return $res;
+   }
+   
+   public function getArr($condi=null){
+   	
+   	$serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
+   	$arr = array();//保存所有二级被推荐的分类
+   	foreach($serArr as $key => $val){
+   		 $where['parentid'] = $val['id'];
+   		if(!empty($condi) && $condi != null && $condi != '' && isset($condi)){
+   		 $where['status'] = 1;	
+   		}
+   		$tuijian_arr = $this->_cat->where($where)->select();
+   		if(!empty($tuijian_arr)){
+   			$arr[$key]["parrName"] = $val['catname'];
+   			$arr[$key]["parrId"] = $val['id'];
+   			$arr[$key]['parrTag']= $tuijian_arr;
+   		}
+   	}
+   	// dump($arr);die;
+   		
+   	//判断被推荐的分类是否有子级，对应添加不同的链接
+   	foreach($arr as $keys => $vals){
+   		foreach ($vals['parrTag'] as $key => $val){
+   			$flag = $this->_cat->where(array('parentid'=>$val['id']))->find();
+   			if(empty($flag) || $flag == null){//没有子集
+   				//查找itme,article,service,只有一个商品，跳到详情
+   				$cond['cate_id'] = $val['id'];
+   				$itemAll = $this->_item->where($cond)->count();
+   				$serAll = $this->_ser->where($cond)->count();
+   				$artmAll = $this->_art->where($cond)->count();
+   					
+   				if($itemAll > 1 || $serAll > 1 || $artmAll > 1 || ($itemAll+$serAll+$artmAll) > 1){//不止一条数据
+   					 
+   					$arr[$keys]['parrTag'][$key]['link'] = U("index/thdlist",array("catid"=>$val['id']));
+   					 
+   				}else if($itemAll == 1 || $serAll == 1 || $artmAll == 1 && ($itemAll+$serAll+$artmAll) == 1){
+   					//判断表及对应的页面
+   					$page = "";
+   					$table="";
+   					if($itemAll == 1){
+   						$page = "index";
+   						$table ="item";
+   					}
+   					if($serAll == 1){
+   						$page = "index_book";
+   						$table ="service";
+   					}
+   					if($artmAll == 1){
+   						$page = "index_phone";
+   						$table ="article_new";
+   					}
+   					 
+   					if($table != ''){
+   						//找到这条数据
+   						// dump($table);
+   						$item = M($table)->where($cond)->find();
+   						//根据商品所属跳到不同商品详情页
+   						$arr[$keys]['parrTag'][$key]['link'] = U("Item/{$page}",array("itemid"=>$item['id']));
+   					}
+   				}else{//都没有数据
+   					$arr[$keys]['parrTag'][$key]['link'] = U("index/index");
+   				}
+   			}else{//no empty
+   				$arr[$keys]['parrTag'][$key]['link'] = U("index/thdcate",array("catid"=>$val['id']));
+   			}
+   		}
+   	}
+   	return $arr;   	
+   }
 }
