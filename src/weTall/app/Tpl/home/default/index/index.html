@@ -135,56 +135,72 @@
 						<div class="major_1">
 							<ul class="list">
 							   <volist name="tuijianItem" id="tj">	
+								<a href="{$tj.link}">
 								<li>
-									<div class="pic" id="pic_1">
-										<a href="{$tj.link}"><div id="thdpic_1"
-												style="background-image: url({$tj.img}); background-size: 100% 100%">
-											</div></a>
-									</div>
-									<div class="good_content" id="good_content_1">
-										<h3>
-											<a href="{$tj.link}">{$tj.title}</a>
-										</h3>
-										<p class="tishi" style="">￥{$tj.zb_price}</p>
-										<p class="tishi1" style="">￥{$tj.price}</p>
-										<!-- -<p class="tishi2" style="">已卖出220</p>- -->
+									<div class="">
+										<div class="pic" id="pic_1">
+											<div id="thdpic_1"
+													style="background-image: url({$tj.img}); background-size: 100% 100%">
+												</div>
+										</div>
+										
+										<div class="good_content" id="good_content_1">
+											<h3>
+												{$tj.title}
+											</h3>
+											<p class="tishi" style="">￥{$tj.zb_price}</p>
+											<p class="tishi1" style="">￥{$tj.price}</p>
+											<!-- -<p class="tishi2" style="">已卖出220</p>- -->
+										</div>
+										
 									</div>
 									<div class="clear"></div>
+                                   </a>
 								</li>
 							   </volist>
 							   
 							   <volist name="tuijianArticle" id="ar">	
 								<li>
+								<a href="{$ar.link}">
+								<div class="">
 									<div class="pic" id="pic_1">
-										<a href="{$ar.link}"><div id="thdpic_1"
+										<div id="thdpic_1"
 												style="background-image: url({$ar.img}); background-size: 100% 100%">
 											</div></a>
 									</div>
 									<div class="good_content" id="good_content_1">
 										<h3>
-											<a href="{$tj.link}">{$ar.name}</a>
+											{$ar.name}
 										</h3>
 										<!-- -<p class="tishi2" style="">已卖出220</p>- -->
 									</div>
+								</div>
+								</a>
 									<div class="clear"></div>
 								</li>
+								
 							   </volist>
 							   
 							   <volist name="tuijianService" id="ser">	
-								<li>
+							<li>
+							<a href="{$ser.link}">
+							<div class="">
 									<div class="pic" id="pic_1">
-										<a href="{$ser.link}"><div id="thdpic_1"
+										<div id="thdpic_1"
 												style="background-image: url({$ser.img}); background-size: 100% 100%">
-											</div></a>
+											</div>
 									</div>
 									<div class="good_content" id="good_content_1">
 										<h3>
-											<a href="{$tj.link}">{$ser.name}</a>
+											{$ser.name}
 										</h3>
 										<p class="tishi" style="">￥{$ser.zb_price}</p>
 										<p class="tishi1" style="">￥{$ser.price}</p>
 										<!-- -<p class="tishi2" style="">已卖出220</p>- -->
 									</div>
+									</div>
+									</a>
+									<div class="clear"></div>
 								</li>
 							   </volist>							   							   
 							</ul>
@@ -195,13 +211,14 @@
 			<div class="clear"></div>
 		</div>
 		<section>
+		   <div class=""style="text-align:center;color:#000">版权所有：沪爱健康管理有限公司</div>
 			<include file="public:footer" />
 		</section>
 
 		<div class="copyright" style="text-align: center; padding: 10px 0">
 		</div>
 	</div>
-	<div class="space"></div>
+	
 	<script src="__STATIC__/weixin/js/home/jquery.min.js" type="text/javascript"></script>
 	<script>
 		function displayit(n) {

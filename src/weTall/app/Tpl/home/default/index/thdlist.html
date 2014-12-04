@@ -10,7 +10,7 @@
         <meta name="format-detection" content="telephone=no">
 <link href="__STATIC__/weixin/css/home/cate23_0.css" rel="stylesheet" type="text/css">
        <link href="__STATIC__/weixin/css/home/css.css" rel="stylesheet" type="text/css">
-	   <link href="__STATIC__/weixin/css/home/shop.css" rel="stylesheet" type="text/css">
+	   <link href="__STATIC__/weixin/css/home/shop1.css" rel="stylesheet" type="text/css">
 
 <link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/reset.css" media="all">
 <link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/font-awesome.css" media="all">
@@ -59,23 +59,26 @@
     </header>  
 	<section>
         
-        <div id="content">
+        <div id="content" style="margin-top: -14px;">
     <div class="module_special tbr">
         <div class="wrap">
             <div class="wrap_child">
-                <div class="major">
+                <div class="major_1">
                      <ul class="list">
                      <volist name="res" id="val" empty="没有数据">
 	                     <li>
-	                     <div class="pic">
-	                     	<a href="{$val.link}"><div id="thdpic" style="background-image:url({$val.img});background-size:100% 100%"> </div></a>
+	                     <a href="{$val.link}">
+	                     <div>
+	                     <div class="pic" id="pic_1">
+	                     	<div id="thdpic" style="background-image:url({$val.img});background-size:100% 100%"> </div>
 	                     </div>
-	                     <div class="good_content">
+	                     <div class="good_content" id="good_content_1">
 	                     <h3>
-	                     	<a href="{$val.link}"><if condition="$val.title neq ''">{$val.title}<else />{$val.name}</if></a>
+	                     	<if condition="$val.title neq ''">{$val.title}<else />{$val.name}</if>
 	                     </h3>
 						 <if condition="$val.zb_price neq ''"><p class="tishi" style="">{$val.zb_price}</p>	</if>
 	                     <if condition="$val.price neq ''"><p class="tishi1" style="">{$val.price}</p>	</if>	   					 
+	                 	 </div>
 	                 	 </div>
 	                     </li>
 					 </volist>

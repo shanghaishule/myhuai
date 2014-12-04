@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>居家家居中心</title>
+<title>沪爱健康</title>
 <!--<base href=".">-->
 <base href=".">
 <meta name="viewport"
@@ -133,21 +133,25 @@ $(function(){
     <div class="module_special tbr" id="one_{$k}">
         <div class="wrap">
             <div class="wrap_child">
-                <div class="major">
+                <div class="major_1">
                    <ul class="list">
                     <volist name="val['item']" id="va"> 
                      <li>
-	                     <div class="pic">
-	                     	<a href="{$va.link}"><div id="thdpic" style="background-image:url({$va.img});background-size:100% 100%"> </div></a>
+                     <a href="{$va.link}">
+                     <div>
+	                     <div class="pic" id="pic_1">
+	                     	<div id="thdpic" style="background-image:url({$va.img});background-size:100% 100%"> </div>
 	                     </div>
-	                     <div class="good_content">
+	                     <div class="good_content" id="good_content_1">
 	                     <h3>
-	                     	<a href="{$va.link}"><if condition="$va.title neq ''">{$va.title}<else />{$va.name}</if></a>
+	                     	<if condition="$va.title neq ''">{$va.title}<else />{$va.name}</if>
 	                     </h3>
 						 <if condition="$va.zb_price neq ''"><p class="tishi" style="">{$va.zb_price}</p>	</if>
 	                     <if condition="$va.price neq ''"><p class="tishi1" style="">{$va.price}</p>	</if>	   					 
 						 
 	                 	 </div>
+	                 	 </div>
+	                 	 
                      </li>
                      </volist>
                      
