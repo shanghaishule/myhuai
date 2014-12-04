@@ -63,16 +63,16 @@
     <div class="module_special tbr">
         <div class="wrap">
             <div class="wrap_child">
-                <div class="major">
+                <div class="major_1">
                      <ul class="list">
                      <volist name="res" id="val" empty="没有数据">
 	                     <li>
 	                     <a href="{$val.link}">
 	                     <div>
-	                     <div class="pic">
+	                     <div class="pic" id="pic_1">
 	                     	<div id="thdpic" style="background-image:url({$val.img});background-size:100% 100%"> </div>
 	                     </div>
-	                     <div class="good_content">
+	                     <div class="good_content" id="good_content_1">
 	                     <h3>
 	                     	<if condition="$val.title neq ''">{$val.title}<else />{$val.name}</if>
 	                     </h3>
