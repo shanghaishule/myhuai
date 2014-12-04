@@ -57,16 +57,16 @@ class FlashAction extends UserAction{
 			foreach ($catAll as $key => $val){
 				$catRes = M('category')->where(array("parentid"=>$val['id']))->select();
 				if($catRes != null){
-					$arr = array_merge($catAll,$catRes);
+					$arr = array_merge($arr,$catRes);
 				}
 			}
+			$res = array_merge($catAll,$arr);
 			if($id != ''){
 				$info = M('flash_pos')->where(array("id"=>$id))->find();
-				$this->assign("info",$info);
 			}
 		}
-		//dump($arr);die;
-		$this->assign("cateG",$arr);
+		$this->assign("info",$info);
+		$this->assign("cateG",$res);
 		$this->display();
 	}
 	public function edit(){

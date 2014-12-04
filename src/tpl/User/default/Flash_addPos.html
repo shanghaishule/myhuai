@@ -17,12 +17,11 @@
 			<th>所属分类：</th>
 			<td class="all_category">
 			    <select name="type" class="pt oneCategory" style="width:150px">
-				<option value="">--请选择--</option>
-				<option value="首页">首页</option>
-				<volist name="cateG" id="va">
-				  <option value="{lanrain:$va.catname}" <if condition="$info['type'] eq $va['catname']">selected</if>>{lanrain:$va.catname}</option>
-				</volist>
-				<option value="三级分类">三级分类</option>
+					<option value="">--请选择--</option>
+					<option value="首页">首页</option>
+					<volist name="cateG" id="va">
+					<option value="{lanrain:$va.catname}" <eq name="va.catname" value="首页">selected</eq>>{lanrain:$va.catname}</option>
+					</volist>
 				</select>						
 			</td>
 		</tr>
