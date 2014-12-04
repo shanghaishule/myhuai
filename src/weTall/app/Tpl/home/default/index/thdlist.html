@@ -67,15 +67,18 @@
                      <ul class="list">
                      <volist name="res" id="val" empty="没有数据">
 	                     <li>
+	                     <a href="{$val.link}">
+	                     <div>
 	                     <div class="pic">
-	                     	<a href="{$val.link}"><div id="thdpic" style="background-image:url({$val.img});background-size:100% 100%"> </div></a>
+	                     	<div id="thdpic" style="background-image:url({$val.img});background-size:100% 100%"> </div>
 	                     </div>
 	                     <div class="good_content">
 	                     <h3>
-	                     	<a href="{$val.link}"><if condition="$val.title neq ''">{$val.title}<else />{$val.name}</if></a>
+	                     	<if condition="$val.title neq ''">{$val.title}<else />{$val.name}</if>
 	                     </h3>
 						 <if condition="$val.zb_price neq ''"><p class="tishi" style="">{$val.zb_price}</p>	</if>
 	                     <if condition="$val.price neq ''"><p class="tishi1" style="">{$val.price}</p>	</if>	   					 
+	                 	 </div>
 	                 	 </div>
 	                     </li>
 					 </volist>
