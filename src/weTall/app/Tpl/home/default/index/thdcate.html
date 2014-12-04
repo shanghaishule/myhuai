@@ -165,14 +165,14 @@ $(function(){
     <div class="module_special tbr" id="one_{$k}">
         <div class="wrap">
             <div class="wrap_child">
-                <div class="major">
+                <div class="major_1">
                    <ul class="list">
                     <volist name="val['item']" id="va"> 
                      <li>
-	                     <div class="pic">
+	                     <div class="pic" id="pic_1">
 	                     	<a href="{$va.link}"><div id="thdpic" style="background-image:url({$va.img});background-size:100% 100%"> </div></a>
 	                     </div>
-	                     <div class="good_content">
+	                     <div class="good_content" id="good_content_1">
 	                     <h3>
 	                     	<a href="{$va.link}"><if condition="$va.title neq ''">{$va.title}<else />{$va.name}</if></a>
 	                     </h3>
