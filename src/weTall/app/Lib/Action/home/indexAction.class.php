@@ -441,15 +441,15 @@ class indexAction extends frontendAction {
    	   //dump($arr);die;
    	   
    	   //为我推荐模块
-   	   $tuijianItem = $this->_item->where(array('status'=>1,'tuijan'=>1))->select();
+   	   $tuijianItem = $this->_item->where(array('status'=>1,'tuijian'=>1))->select();
    	   foreach($tuijianItem as $key => $val){
    	   		$tuijianItem[$key]['link'] = U("Item/index",array("itemid"=>$val['id']));
    	   }
-   	   $tuijianArticle = $this->_art->where(array('tuijan'=>1))->select();
+   	   $tuijianArticle = $this->_art->where(array('tuijian'=>1))->select();
    	   foreach($tuijianArticle as $key => $val){
    	   		$tuijianArticle[$key]['link'] = U("Item/index_phone",array("itemid"=>$val['id']));
    	   }
-   	   $tuijianService = $this->_ser->where(array('tuijan'=>1))->select();
+   	   $tuijianService = $this->_ser->where(array('tuijian'=>1))->select();
    	   foreach($tuijianService as $key => $val){
    	   		$tuijianService[$key]['link'] = U("Item/index_book",array("itemid"=>$val['id']));
    	   }

@@ -309,6 +309,7 @@ class itemAction extends frontendAction {
     public function house_book(){
     	$this->display();
     }
+    
     public function hugong_book(){
     	$this->display();
     }
