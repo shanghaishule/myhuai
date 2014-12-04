@@ -955,7 +955,11 @@ ul.user_menu li.active{border-right:1px solid #ccc;border-left:1px solid #ccc;bo
 .particular_wrap dl{margin:0}
 .particular .particular_wrap dl{ }
 .particular .particular_wrap .ware_line{ margin:10px 0;}
-.order_detail_list li{float:left;margin-left: 8%;}
+.order_detail_list li{float:left;margin-left: 0%;}
+#ware_1{padding:0}
+#order_detail_list_1{padding:0;width:100%"}
+#order_detail_list_1 li.order_detail_list_01{width:25%}
+#order_detail_list_1 li.order_detail_list_02{width:70%;margin-left:1%}
 ul#order_detail_list_add {margin-left: 0%;padding:0;border:0}
 ul.order_detail_list{border:none;box-shadow:0 0 0;}
 .ware .transportation{border:none;box-shadow:0 0 0;padding:0}

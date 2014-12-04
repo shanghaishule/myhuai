@@ -67,9 +67,9 @@ border:1px solid #CCC;
                     <volist name='vo.items' id='item' >
                     
                     <div style="clear:both;border-bottom:1px solid #f1f0f5">
-                    	<div style="float:left;display:inline;"> <span style="/*margin-left:20px*/"><p class="ware_pic"><a href="{:U('Item/index',array('id'=>$item['itemId'],'tokenTall'=>$tokenTall))}" ><img src="{:$item['img']}" height="80" width="80"></a></p></div>
-                    	<div style="float:left;display:imline;">
-                    		<div style="float:left;display:imline;margin-top:5px;margin-left:20px;">
+                    	<div style="float:left;display:inline;width:30%"> <span style="/*margin-left:20px*/"><p class="ware_pic"><a href="{:U('Item/index',array('id'=>$item['itemId'],'tokenTall'=>$tokenTall))}" ><img src="{:$item['img']}" height="80" width="80"></a></p></div>
+                    	<div style="float:left;display:inline;width:65%">
+                    		<div style="float:left;display:imline;margin-top:5px;margin-left:2%;">
                     			<ul>
                     				<li> <p class="ware_text"><a href="{:U('Item/index',array('id'=>$item['itemId'],'tokenTall'=>$tokenTall))}">{$item.title}</a><br><span class="attr"></span></p></li>
                     				<li><span class="buy-size">大小:{$item.size}</span><span class="buy-color">颜色: {$item.color}</span></li>

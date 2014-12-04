@@ -83,15 +83,21 @@ $(function(){
             </dl>
      
             <div class="ware_line">
-                <div class="ware">
+                <div class="ware" id="ware_1">
                 <volist name='item_detail' id='item' >
-                     <ul class="order_detail_list">
-                       <li><img src="{:$item['img']}" height="50" width="50"></li>
-                       <li>{$item.title}</li>
-                       <if condition="$item.zb_price neq ''"><li>大小:{$item.size}</li></if>
-                       <if condition="$item.zb_price neq ''"><li>颜色:{$item.color}</li></if>
-                       <li class="red">数量:{$item.quantity}</li>
-                       <li>价格:¥{$item.price}</li>
+                     <ul class="order_detail_list" id="order_detail_list_1">
+                       <li class="order_detail_list_01"><img src="{:$item['img']}" height="50" width="50"></li>
+                       <li class="order_detail_list_02">>
+                         <h1> {$item.title}</h1>
+                         <h2><if condition="$item.zb_price neq ''"><li>大小:{$item.size}</li></if>
+                         <span><if condition="$item.zb_price neq ''"><li>颜色:{$item.color}</li></if></span>
+                         </h2>
+                         <h3 class="red">数量:{$item.quantity}</h3>
+                        <h4>价格:¥{$item.price}</h4>
+                      </li>
+                       
+                       
+                      
                        <div class="clear"></div>
                      </ul> 
                 </volist>   

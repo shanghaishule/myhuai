@@ -148,8 +148,8 @@
 											<h3>
 												{$tj.title}
 											</h3>
-											<p class="tishi" style="">￥{$tj.zb_price}</p>
-											<p class="tishi1" style="">￥{$tj.price}</p>
+											<if condition="$tj.zb_price neq ''"><p class="tishi" style="">周边价：￥{$tj.zb_price}</p></if>
+											<if condition="$tj.price neq ''"><p class="tishi1" style="">沪爱价：￥{$tj.price}</p></if>
 											<!-- -<p class="tishi2" style="">已卖出220</p>- -->
 										</div>
 										
@@ -194,8 +194,8 @@
 										<h3>
 											{$ser.name}
 										</h3>
-										<p class="tishi" style="">￥{$ser.zb_price}</p>
-										<p class="tishi1" style="">￥{$ser.price}</p>
+										<if condition="$ser.zb_price neq ''"><p class="tishi" style="">周边价：￥{$ser.zb_price}</p></if>
+										<if condition="$ser.price neq ''"><p class="tishi1" style="">沪爱价：￥{$ser.price}</p></if>
 										<!-- -<p class="tishi2" style="">已卖出220</p>- -->
 									</div>
 									</div>
