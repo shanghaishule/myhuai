@@ -472,6 +472,15 @@ class indexAction extends frontendAction {
    public function seclist(){//二级分类列表
    	   $secCatid = $this->_get("catid","trim,intval");//一级分类id
    	   !$secCatid && $this->_404();
+   	   
+   	   //幻灯片
+   	   $catName = $this->_cat->field("catname")->where(array("id"=>$secCatid))->find();
+   	   $flash_pos = M("flash_pos")->where(array("type"=>$catName['catname']))->find();
+   	   if(empty($flash_pos) || $flash_pos == false){
+   	   	$flash_pos = M("flash_pos")->where(array("type"=>"首页"))->find();
+   	   }
+   	   $flash = M("flash")->where(array("pos"=>$flash_pos['id']))->select();
+   	   
    	   $res = $this->_cat->where(array("parentid"=>$secCatid))->select();//一级下所有二级分类
    	   foreach ($res as $key => $val){
    	   	$flag = $this->_cat->where(array('parentid'=>$val['id']))->find();
@@ -519,19 +528,27 @@ class indexAction extends frontendAction {
    	   } 
    	   //dump($res);die;
    	   $this->assign("res",$res); 
+   	   $this->assign("flash",$flash);
    	   $this->display();
    }
    public function thdcate(){//三级分类
-	   $cond['type'] ="三级分类";
-	   $flash_pos = M("flash_pos")->where($cond)->find();
-	   if(empty($flash_pos) || $flash_pos == false){
-	   	  $flash_pos = M("flash_pos")->where(array("type"=>"首页"))->find();
-	   }
-	   $flash = M("flash")->where(array("pos"=>$flash_pos['id']))->select();
-	   
+
    	   header("Content-type:text/html;charset=utf-8");
    	   $catid = $this->_get("catid","trim,intval");//二级id
    	   !$catid && $this->_404();
+   	   
+   	   //幻灯片
+   	   $catName = $this->_cat->field("id,parentid,catname")->where(array("id"=>$catid))->find();//找二级下的名称
+   	   $flash_pos = M("flash_pos")->where(array("type"=>$catName['catname']))->find();
+       if(empty($flash_pos) || $flash_pos == false){
+	       	$cName = $this->_cat->field("catname")->where(array("id"=>$catName['parentid']))->find();
+	       	$flash_pos = M("flash_pos")->where(array("type"=>$cName['catname']))->find();
+	       	if(empty($flash_pos) || $flash_pos == false){
+		       	$flash_pos = M("flash_pos")->where(array("type"=>"首页"))->find();
+		    }      	
+       }
+   	   $flash = M("flash")->where(array("pos"=>$flash_pos['id']))->select();
+   	   
    	   $res = $this->_cat->field("id,catname,picurl")->where(array("parentid"=>$catid))->order("id ASC")->select();
    	   foreach($res as $key =>$val){
 	   	   	$where["cate_id"] = $val['id'];
@@ -544,6 +561,7 @@ class indexAction extends frontendAction {
    	   $this->assign("flash",$flash_pos);	   
    	   $this->display();
    }
+   
    public function thdlist(){//没有三级，列出二级所有服务，商品，资讯
 	   	$catid = $this->_get("catid","trim,intval");
 	   	!$catid && $this->_404();
