@@ -107,7 +107,7 @@ a{ text-decoration:none; color:#666;}
 #content .buy_foot a span{ text-decoration:none; color:#fff; text-indent:-2000px;}
 #content .cart_list li span.tit input{width: 28px;height: 16px;padding: 2px;color:#868686;text-align: center;line-height: 14px;font-size: 12px;}
 #content .buy_foot p.jiesuan_btn a img{display: none;}
-#content .buy_foot p.jiesuan_btn a{ color:white;display: block;height: 31px;line-height: 32px;font-size: 17px;border: 0;background:red;text-align: center;text-decoration: none;-webkit-appearance: none;}
+#content .buy_foot p.jiesuan_btn a{border-radius: 2px; color:white;display: block;height: 31px;line-height: 32px;font-size: 17px;border: 0;background:red;text-align: center;text-decoration: none;-webkit-appearance: none;}
 #content .buy_foot p#gds_id{width:28%;margin-left:2%;font-size:12px}
 #content .buy_foot p.jiesuan_btn a#backcart{background:#006835;;margin-left:2%}
 #content #by_id{bottom:0px}
@@ -677,6 +677,7 @@ font-size: 1.2em;}
 .dotted { padding: 2px 4px; border: 1px dotted #c4c4c4; margin-right: 8px; background: #fff; }
 .aggregate { color: #50a5e5; }
 #seccontent_1{margin-top:-32px}
+
 #searchlist_1 li{height:171px}
 #searchlist_1 .pic{padding-top:3px}
 .ware_btn {position: relative; }
@@ -729,6 +730,7 @@ font-size: 1.2em;}
 .user_menu li {padding-bottom:10px ;padding-top:10px ; float: left; width: 49.5%; text-align: center;}
 .shop_bottom{width:100%;heigth:44px;background:white;opacity:0.9;position:fixed;bottom:45px;left:0}
 .shop_bottom_1{width:100%;heigth:44px;background:white;opacity:0.9;position:fixed;bottom:0;left:0}
+.shop_bottom_1 a{border-radius:2px}
 .user_menu .ornament1 { position: absolute; }
 .user_menu .ornament2 { position: absolute; }
 ul.user_menu li.active{border-right:1px solid #ccc;border-left:1px solid #ccc;border-bottom:2px solid #006835}
