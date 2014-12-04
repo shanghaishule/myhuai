@@ -431,7 +431,7 @@ class indexAction extends frontendAction {
    	   $cond['type'] ="首页";
    	   $flash_pos = M("flash_pos")->where($cond)->find();
    	   $flash = M("flash")->where(array("pos"=>$flash_pos['id']))->select();
-   	   $where['tuijian'] = 1;
+   	   //$where['tuijian'] = 1;
    	   //四大服务
    	   header("Content-type:text/html;charset=utf-8");
    	   $serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
@@ -454,10 +454,10 @@ class indexAction extends frontendAction {
    	   	   $flag = $this->_cat->where(array('parentid'=>$val['id']))->find();
    	   	   if(empty($flag) || $flag == null){//没有子集
    	   	   	    //查找itme,article,service,只有一个商品，跳到详情
-   	   	   	    $where['cate_id'] = $val['id'];
-   	   	   	    $itemAll = $this->_item->where($where)->count();
-   	   	   	    $serAll = $this->_ser->where($where)->count();
-   	   	   	    $artmAll = $this->_art->where($where)->count();
+   	   	   	    $cond['cate_id'] = $val['id'];
+   	   	   	    $itemAll = $this->_item->where($cond)->count();
+   	   	   	    $serAll = $this->_ser->where($cond)->count();
+   	   	   	    $artmAll = $this->_art->where($cond)->count();
    	   	   	   
    	   	   	    if($itemAll > 1 || $serAll > 1 || $artmAll > 1 || ($itemAll+$serAll+$artmAll) > 1){//不止一条数据
    	   	   	    	
@@ -483,7 +483,7 @@ class indexAction extends frontendAction {
    	   	   	    	if($table != ''){
    	   	   	    		 //找到这条数据
    	   	   	    		// dump($table);
-   	   	   	    		 $item = M($table)->where($where)->find();
+   	   	   	    		 $item = M($table)->where($cond)->find();
    	   	   	    		 //根据商品所属跳到不同商品详情页
    	   	   	    		 $arr[$keys]['parrTag'][$key]['link'] = U("Item/{$page}",array("itemid"=>$item['id']));
    	   	   	    	}
