@@ -676,7 +676,7 @@ font-size: 1.2em;}
 .solid { padding: 2px 4px; border: 1px solid #3f3f3f; color: #fff; margin-right: 8px; background: #666; }
 .dotted { padding: 2px 4px; border: 1px dotted #c4c4c4; margin-right: 8px; background: #fff; }
 .aggregate { color: #50a5e5; }
-.seccontent{margin-top:-22px}
+#seccontent_1{margin-top:-32px}
 .ware_btn {position: relative; }
 .ware_btn li { float: left; /*margin-right: 20px;*/width:42%; cursor: pointer; }
 #intime_shopping{margin-left:4%}
