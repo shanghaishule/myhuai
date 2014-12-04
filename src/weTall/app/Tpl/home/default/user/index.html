@@ -69,7 +69,7 @@ border:1px solid #CCC;
                     <div style="clear:both;border-bottom:1px solid #f1f0f5">
                     	<div style="float:left;display:inline;width:30%"> <span style="/*margin-left:20px*/"><p class="ware_pic"><a href="{:U('Item/index',array('id'=>$item['itemId'],'tokenTall'=>$tokenTall))}" ><img src="{:$item['img']}" height="80" width="80"></a></p></div>
                     	<div style="float:left;display:inline;width:65%">
-                    		<div style="float:left;display:imline;margin-top:5px;margin-left:2%;">
+                    		<div style="float:left;display:imline;margin-top:5px;width:100%;">
                     			<ul>
                     				<li> <p class="ware_text"><a href="{:U('Item/index',array('id'=>$item['itemId'],'tokenTall'=>$tokenTall))}">{$item.title}</a><br><span class="attr"></span></p></li>
                     				<li><span class="buy-size">大小:{$item.size}</span><span class="buy-color">颜色: {$item.color}</span></li>
@@ -79,7 +79,7 @@ border:1px solid #CCC;
                     		<div style=";display:imline;;">
                     		<if condition="$vo.status eq 4">
 	                          <span>
-	                         		<a class="button_aaa" style="color: red;border: none;font-size: 16px;padding-left: 19px;display: block;" href="{:U('user/comments',array('item'=>$item))}" >添加评论</a> 
+	                         		<a class="button_aaa" style="color: red;border: none;font-size: 16px;padding-left: 0px;display: block;" href="{:U('user/comments',array('item'=>$item))}" >添加评论</a> 
 	                          </span>                       
                         </if> 
                     		</div>

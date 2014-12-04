@@ -87,10 +87,10 @@ $(function(){
                 <volist name='item_detail' id='item' >
                      <ul class="order_detail_list" id="order_detail_list_1">
                        <li class="order_detail_list_01"><img src="{:$item['img']}" height="50" width="50"></li>
-                       <li class="order_detail_list_02">>
+                       <li class="order_detail_list_02">
                          <h1> {$item.title}</h1>
-                         <h2><if condition="$item.zb_price neq ''"><li>大小:{$item.size}</li></if>
-                         <span><if condition="$item.zb_price neq ''"><li>颜色:{$item.color}</li></if></span>
+                         <h2><if condition="$item.zb_price neq ''">大小:{$item.size}</if>
+                         <span><if condition="$item.zb_price neq ''">颜色:{$item.color}</if></span>
                          </h2>
                          <h3 class="red">数量:{$item.quantity}</h3>
                         <h4>价格:¥{$item.price}</h4>
