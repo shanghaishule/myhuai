@@ -56,7 +56,7 @@ class FlashAction extends UserAction{
 			$arr = array();
 			foreach ($catAll as $key => $val){
 				$catRes = M('category')->where(array("parentid"=>$val['id']))->select();
-				if($catRes != null){
+				if(is_array($catRes)){
 					$arr = array_merge($arr,$catRes);
 				}
 			}
