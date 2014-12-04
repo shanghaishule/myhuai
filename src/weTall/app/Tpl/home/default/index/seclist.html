@@ -53,30 +53,20 @@
 	
         <div id="banner_box" class="box_swipe" style="visibility: visible;">
             <ul style="list-style: none; width: 3200px; -webkit-transition: 0ms; transition: 0ms; -webkit-transform: translate3d(-1280px, 0px, 0px);">
-            <li style="width: 640px; display: table-cell; vertical-align: top;">
-            <a href="http://bjqc.weixinkf.cn/index.php?g=Wap&m=Index&a=content&token=neaeob1409209501&id=23&wecha_id=oe_FKt8Nhil5Q6QohJmpr5vV-t7A">
-            <img src="__STATIC__/weixin/images/home/thumb_54588327732be.jpg" style="width:100%;">
-            </a>
-            </li><li style="width: 640px; display: table-cell; vertical-align: top;">
-            <a href="http://bjqc.weixinkf.cn/index.php?g=Wap&m=Index&a=content&token=neaeob1409209501&id=23&wecha_id=oe_FKt8Nhil5Q6QohJmpr5vV-t7A">
-            <img src="__STATIC__/weixin/images/home/thumb_5458833ed8326.jpg" style="width:100%;">
-            </a>
-            </li><li style="width: 640px; display: table-cell; vertical-align: top;">
-            <a href="http://bjqc.weixinkf.cn/index.php?g=Wap&m=Index&a=content&token=neaeob1409209501&id=23&wecha_id=oe_FKt8Nhil5Q6QohJmpr5vV-t7A">
-            <img src="__STATIC__/weixin/images/home/thumb_5466e96b47e02.jpg" style="width:100%;">
-            </a>
-            </li><li style="width: 640px; display: table-cell; vertical-align: top;">
-            <a href="javascript:void(0)">
-            <img src="__STATIC__/weixin/images/home/thumb_5466ea8d04de5.jpg" style="width:100%;">
-            </a>
-            </li><li style="width: 640px; display: table-cell; vertical-align: top;">
-            <a href="javascript:void(0)">
-            <img src="__STATIC__/weixin/images/home/thumb_5466ea7fd8831.jpg" style="width:100%;">
-            </a>
-            </li>            
-        </ul>
-            <ol>
-                <li class=""></li><li class=""></li><li class="on"></li><li></li><li></li>            </ol>
+				<volist name="flash" id="info">
+				<li style="width: 640px; display: table-cell; vertical-align: top;">
+					<a href="{$info.url}"><img src="{$info.img}"
+						style="width: 100%;"></a>
+				</li>
+				</volist>
+			</ul>
+			<ol>
+				<volist name="flash" id="info">
+				
+				<li <if condition="$i eq 1"> class="on"</if>></li>
+				
+				</volist>
+			</ol>
         </div>
     </div>
         <script>
