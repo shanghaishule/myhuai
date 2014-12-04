@@ -69,6 +69,7 @@ class FlashAction extends UserAction{
 		$this->assign("cateG",$res);
 		$this->display();
 	}
+	
 	public function edit(){
 		$where['id']=$this->_get('id','intval');
 		$where['uid']=session('uid');
