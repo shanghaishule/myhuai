@@ -94,11 +94,11 @@ a{ text-decoration:none; color:#666;}
 #content .cart_list li span{line-height: 25px;}
 #content .cart_list li span.img{ display:block; width:100px;height:100px; float:left;}
 #content .cart_list li span.img a{display:block;}
-#content .cart_list li span.tit{ display:block; float:left; margin-left:0%; font-size: 13px; color:#838383;width:45% }
+#content .cart_list li span.tit{ display:block; float:left; margin-left:1%; font-size: 13px; color:#666;width:45% }
 #content .cart_list li span.titadd{width:15% }
 #content .cart_list li span.tit a{ font-size:13px; text-decoration:none; color:#3e4245;word-wrap: break-word; }
 #content .cart_list li span.tit input{width: 28px;height: 16px;padding: 2px;border: 1px solid #EAEAEA;color: #999;text-align: center;line-height: 14px;font-size: 12px;}
-
+p.yuyue{padding-top: 5px;}
 #content .buy_foot{ line-height:24px; font-size:16px; color: #838383; width:100%;background:white;opacity:0.9;height:45px;position:fixed;left:0;bottom:45px}
 #content .buy_foot p{float:left;width:50%;padding-top:7px;}
 #content .buy_foot p.goods_amount{padding-left:20px;}
@@ -680,7 +680,8 @@ font-size: 1.2em;}
 .aggregate { color: #50a5e5; }
 #seccontent_1{margin-top:-32px}
 
-#searchlist_1 li{height:171px}
+#searchlist_1 li{/*height:171px*/}
+#searchlist_1 #good_content_1 h3{padding-left:0}
 #searchlist_1 .pic{padding-top:3px}
 .ware_btn {position: relative; }
 .ware_btn li { float: left; /*margin-right: 20px;*/width:42%; cursor: pointer; }
@@ -949,7 +950,7 @@ ul.user_menu li.active{border-right:1px solid #ccc;border-left:1px solid #ccc;bo
  * -------------------------------------------------------
  */
 .order_buy{position:fixed;bottom:0;left:0}
-.ware_line ul.order_detail_list{margin:0;padding: 10px 0 5px 5px;border:none}
+.ware_line ul.order_detail_list{margin-top:8px;padding: 10px 0 5px 5px;border:none}
 .particular_wrap{ }
 .ware_line{padding:0}
 .particular_wrap dl{margin:0}

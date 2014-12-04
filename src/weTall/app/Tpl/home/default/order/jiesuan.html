@@ -3,37 +3,16 @@
 <head>
 <include file="public:headtop" />
 <link type="text/css" rel="stylesheet" href="__STATIC__/weixin/css/home/shop1.css">
-</head>
-
-<body onload="setup()" >
-<div class="index_head1">
-<div id="nav">
-	<ul class="navlist1">
-		<li id="a_0">
-		   <div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div>
-         </li>
-        <li  id="a_1">
-    						<div style="">
-
-										<p>确认订单信息</p>
-				              </div>
-        </li>
-    </ul>
- </div>
-</div>
-<div id="content">
-    <!-- <h4 class="add_title"><a class="enter" href="javascript:void(0)">确认订单信息</a></h4> -->
-    <div style=" background:#fff;  padding:10px; overflow:hidden; margin-bottom:10px;">
-        <h3 style="margin-bottom:10px;">收货地址</h3>
-        <script type="text/javascript" src="__STATIC__/weixin/js/mlselection.js" charset="utf-8"></script>
-        <!-- <script type="text/javascript" src="__STATIC__/weixin/js/area.js" charset="utf-8"></script>-->
+<script type="text/javascript" src="__STATIC__/weixin/js/mlselection.js" charset="utf-8"></script>
+        
         <script type="text/javascript" src="__STATIC__/weixin/js/jquery_003.js" charset="utf-8"></script>
         <script type="text/javascript" src="__STATIC__/weixin/js/dialog.js" id="dialog_js" charset="utf-8"></script>
         <link href="__STATIC__/weixin/css/dialog.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="__STATIC__/weixin/js/jquery.js" id="dialog_js" charset="utf-8"></script>
         <script type="text/javascript" language="javascript" src='__STATIC__/weixin/js/dizhi2.js'></script>
 		<script type="text/javascript" language="javascript" src='__STATIC__/weixin/js/diqu2.js'></script>
-        <script type="text/javascript">
+		
+       
 
        <script type="text/javascript">
        $(function(){
@@ -138,6 +117,29 @@
 
         }
         </script>
+</head>
+
+<body onload="setup()" >
+<div class="index_head1">
+<div id="nav">
+	<ul class="navlist1">
+		<li id="a_0">
+		   <div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div>
+         </li>
+        <li  id="a_1">
+    						<div style="">
+
+										<p>确认订单信息</p>
+				              </div>
+        </li>
+    </ul>
+ </div>
+</div>
+<div id="content">
+    <!-- <h4 class="add_title"><a class="enter" href="javascript:void(0)">确认订单信息</a></h4> -->
+    <div style=" background:#fff;  padding:10px 2px; overflow:hidden; margin-bottom:10px;">
+        <h3 style="margin-bottom:10px;">收货地址</h3>
+        
        
          
        <form method="post"  action="{:U('order/pay',array('tokenTall'=>$tokenTall, 'showwxpaytitle'=>1))}" id="order_form" name="order_form" >
