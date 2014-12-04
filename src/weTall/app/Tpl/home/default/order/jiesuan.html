@@ -262,10 +262,7 @@
                       
                       
                   </span>
-                  <if condition="$vo.reserveDate neq ''">
-                  <span class="yuyue">预约时间：{$vo.reserveDate}</span>
-                  <input name="reserveDate" type="hidden" value="{$vo.reserveDate}" />
-                  </if>
+                  
                   <span class="tit titadd">
                      
                       <span></span><span class="price1">¥{$vo.price}</span><br>
@@ -274,6 +271,10 @@
                       <br>
                       
                   </span>
+                  <if condition="$vo.reserveDate neq ''">
+                  <p class="yuyue">预约时间：{$vo.reserveDate}</p>
+                  <input name="reserveDate" type="hidden" value="{$vo.reserveDate}" />
+                  </if>
               </p>
               <p class="buy_info">
                   <span class="total">
