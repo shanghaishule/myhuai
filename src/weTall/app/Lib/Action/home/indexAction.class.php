@@ -522,6 +522,13 @@ class indexAction extends frontendAction {
    	   $this->display();
    }
    public function thdcate(){//三级分类
+	   $cond['type'] ="三级分类";
+	   $flash_pos = M("flash_pos")->where($cond)->find();
+	   if(empty($flash_pos) || $flash_pos == false){
+	   	  $flash_pos = M("flash_pos")->where(array("type"=>"首页"))->find();
+	   }
+	   $flash = M("flash")->where(array("pos"=>$flash_pos['id']))->select();
+	   
    	   header("Content-type:text/html;charset=utf-8");
    	   $catid = $this->_get("catid","trim,intval");//二级id
    	   !$catid && $this->_404();
@@ -533,7 +540,8 @@ class indexAction extends frontendAction {
 	   	   	$res[$key]["item"] = $this->getRes($where,$condi);
    	   } 
    	   //dump($res);die; 
-   	   $this->assign("res",$res);	   
+   	   $this->assign("res",$res);
+   	   $this->assign("flash",$flash_pos);	   
    	   $this->display();
    }
    public function thdlist(){//没有三级，列出二级所有服务，商品，资讯
