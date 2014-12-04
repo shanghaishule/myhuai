@@ -677,6 +677,8 @@ font-size: 1.2em;}
 .dotted { padding: 2px 4px; border: 1px dotted #c4c4c4; margin-right: 8px; background: #fff; }
 .aggregate { color: #50a5e5; }
 #seccontent_1{margin-top:-32px}
+#searchlist_1 li{height:171px}
+#searchlist_1 pic{padding-top:3px}
 .ware_btn {position: relative; }
 .ware_btn li { float: left; /*margin-right: 20px;*/width:42%; cursor: pointer; }
 #intime_shopping{margin-left:4%}
