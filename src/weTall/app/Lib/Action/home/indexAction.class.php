@@ -608,7 +608,7 @@ class indexAction extends frontendAction {
    	foreach($serArr as $key => $val){
    		 $where['parentid'] = $val['id'];
    		if($condi != ''){
-   		 $where['tuijian'] = 1;	
+   		 	$where['tuijian'] = 1;
    		}
    		$tuijian_arr = $this->_cat->where($where)->select();
    		if(!empty($tuijian_arr)){
