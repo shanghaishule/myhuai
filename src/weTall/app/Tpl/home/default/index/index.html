@@ -136,6 +136,9 @@
 							<ul class="list">
 							   <volist name="tuijianItem" id="tj">	
 								<li>
+								
+								<div class="">
+								
 									<div class="pic" id="pic_1">
 										<a href="{$tj.link}"><div id="thdpic_1"
 												style="background-image: url({$tj.img}); background-size: 100% 100%">
@@ -150,11 +153,13 @@
 										<!-- -<p class="tishi2" style="">已卖出220</p>- -->
 									</div>
 									<div class="clear"></div>
+									</div>
+									
 								</li>
 							   </volist>
 							   
 							   <volist name="tuijianArticle" id="ar">	
-								<li>
+								<a herf="{$ar.link}" style="display:block"><li>
 									<div class="pic" id="pic_1">
 										<a href="{$ar.link}"><div id="thdpic_1"
 												style="background-image: url({$ar.img}); background-size: 100% 100%">
@@ -168,10 +173,11 @@
 									</div>
 									<div class="clear"></div>
 								</li>
+								</a>
 							   </volist>
 							   
 							   <volist name="tuijianService" id="ser">	
-								<li>
+								<a herf="{$ar.link}" style="display:block"><li>
 									<div class="pic" id="pic_1">
 										<a href="{$ser.link}"><div id="thdpic_1"
 												style="background-image: url({$ser.img}); background-size: 100% 100%">
@@ -185,7 +191,7 @@
 										<p class="tishi1" style="">￥{$ser.price}</p>
 										<!-- -<p class="tishi2" style="">已卖出220</p>- -->
 									</div>
-								</li>
+								</li></a>
 							   </volist>							   							   
 							</ul>
 						</div>
