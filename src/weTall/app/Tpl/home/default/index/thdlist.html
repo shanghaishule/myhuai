@@ -59,7 +59,7 @@
     </header>  
 	<section>
         
-        <div id="content" style="margin-top: -14px;">
+        <div id="content" style="margin-top: -23px;">
     <div class="module_special tbr">
         <div class="wrap">
             <div class="wrap_child">
@@ -73,11 +73,11 @@
 	                     	<div id="thdpic" style="background-image:url({$val.img});background-size:100% 100%"> </div>
 	                     </div>
 	                     <div class="good_content" id="good_content_1">
-	                     <h3>
+	                     <h3 id="good_content_h"style="">
 	                     	<if condition="$val.title neq ''">{$val.title}<else />{$val.name}</if>
 	                     </h3>
-						 <if condition="$val.zb_price neq ''"><p class="tishi" style="">{$val.zb_price}</p>	</if>
-	                     <if condition="$val.price neq ''"><p class="tishi1" style="">{$val.price}</p>	</if>	   					 
+						 <if condition="$val.zb_price neq ''"><p class="tishi" style="">周边价：{$val.zb_price}</p>	</if>
+	                     <if condition="$val.price neq ''"><p class="tishi1" style="">沪爱价：{$val.price}</p>	</if>	   					 
 	                 	 </div>
 	                 	 </div>
 	                     </li>
