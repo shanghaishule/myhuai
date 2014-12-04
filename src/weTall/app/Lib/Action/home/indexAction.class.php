@@ -558,7 +558,7 @@ class indexAction extends frontendAction {
    	   } 
    	   //dump($res);die; 
    	   $this->assign("res",$res);
-   	   $this->assign("flash",$flash_pos);	   
+   	   $this->assign("flash",$flash);	   
    	   $this->display();
    }
    
