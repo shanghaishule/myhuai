@@ -538,11 +538,11 @@ class indexAction extends frontendAction {
    	   !$catid && $this->_404();
    	   
    	   //幻灯片
-   	   $catName = $this->_cat->field("catname")->where(array("id"=>$catid))->find();//找二级下的名称
+   	   $catName = $this->_cat->field("id,parentid,catname")->where(array("id"=>$catid))->find();//找二级下的名称
    	   $flash_pos = M("flash_pos")->where(array("type"=>$catName['catname']))->find();
        if(empty($flash_pos) || $flash_pos == false){
-	       	$cName = $this->_cat->field("catname")->where(array("parentid"=>$catid))->find();
-	       	$flash_pos = M("flash_pos")->where(array("type"=>$catName['catname']))->find();
+	       	$cName = $this->_cat->field("catname")->where(array("id"=>$catName['parentid']))->find();
+	       	$flash_pos = M("flash_pos")->where(array("type"=>$cName['catname']))->find();
 	       	if(empty($flash_pos) || $flash_pos == false){
 		       	$flash_pos = M("flash_pos")->where(array("type"=>"首页"))->find();
 		    }      	
