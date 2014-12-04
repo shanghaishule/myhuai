@@ -78,10 +78,10 @@ a{ text-decoration:none; color:#666;}
 
 
 /*购物车*/
-#cart_item_17 img{border:1px solid #ccc}
+#cart_item_17 img{}
 #content #chose_all{ font-size:20px; text-indent:20px; color:#888; font-weight:normal;line-height:35px; border-bottom:1px solid #fdfdfd; margin:0 10px;}
 #content .cart_list{  }
-#content .cart_list li{  background:#fff;  padding:5px; overflow:hidden;border-bottom:1px solid #ccc }
+#content .cart_list li{  background:#fff;  padding:5px; overflow:hidden;border-bottom:1px solid #f1f0f5 }
 #content .cart_list li p{ clear:both;}
 #content .cart_list li p.goods_info{ display:block; overflow:hidden; }
 #content .cart_list li p.buy_info{ color: #838383;}
@@ -676,7 +676,7 @@ font-size: 1.2em;}
 .solid { padding: 2px 4px; border: 1px solid #3f3f3f; color: #fff; margin-right: 8px; background: #666; }
 .dotted { padding: 2px 4px; border: 1px dotted #c4c4c4; margin-right: 8px; background: #fff; }
 .aggregate { color: #50a5e5; }
-
+.seccontent{margin-top:-22px}
 .ware_btn {position: relative; }
 .ware_btn li { float: left; /*margin-right: 20px;*/width:42%; cursor: pointer; }
 #intime_shopping{margin-left:4%}
