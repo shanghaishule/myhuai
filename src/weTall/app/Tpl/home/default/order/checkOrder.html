@@ -89,8 +89,8 @@ $(function(){
                        <li class="order_detail_list_01"><img src="{:$item['img']}" height="50" width="50"></li>
                        <li class="order_detail_list_02">
                          <p> {$item.title}</p>
-                         <p><if condition="$item.zb_price neq ''">大小:{$item.size}</if>
-                         <span><if condition="$item.zb_price neq ''">颜色:{$item.color}</if></span>
+                         <p><if condition="$item.size neq ''">大小:{$item.size}</if>
+                         <span><if condition="$item.color neq ''">颜色:{$item.color}</if></span>
                          </p>
                          <p class="red">数量:{$item.quantity}</p>
                         <p>价格:¥{$item.price}</p>
