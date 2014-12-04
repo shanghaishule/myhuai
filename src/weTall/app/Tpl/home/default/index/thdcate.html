@@ -143,11 +143,11 @@ $(function(){
 	                     	<div id="thdpic" style="background-image:url({$va.img});background-size:100% 100%"> </div>
 	                     </div>
 	                     <div class="good_content" id="good_content_1">
-	                     <h3>
+	                     <h3 id="good_content_h">
 	                     	<if condition="$va.title neq ''">{$va.title}<else />{$va.name}</if>
 	                     </h3>
-						 <if condition="$va.zb_price neq ''"><p class="tishi" style="">{$va.zb_price}</p>	</if>
-	                     <if condition="$va.price neq ''"><p class="tishi1" style="">{$va.price}</p>	</if>	   					 
+						 <if condition="$va.zb_price neq ''"><p class="tishi" style="">周边价：{$va.zb_price}</p>	</if>
+	                     <if condition="$va.price neq ''"><p class="tishi1" style="">沪爱价：{$va.price}</p>	</if>	   					 
 						 
 	                 	 </div>
 	                 	 </div>
