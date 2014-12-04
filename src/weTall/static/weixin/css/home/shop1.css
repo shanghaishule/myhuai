@@ -144,7 +144,7 @@ background: #006835}
 .form_address{text-align: ;}
 #content form .text,#content #address_form select{margin-left:10px;border:none; ; height: 38px; margin: 5px 0;}
 #content form lable.error{display:block;color:#006835}
-#content .enter,#content .login_btn{ ;width:100%; display:block; border:none;text-align:center;height:30px; line-height:30px;   background-color: red;;border-radius:0spx; color:#fff; font-size:1em; cursor:pointer;/* margin-top: 100px;*/}
+#content .enter,#content .login_btn{ border-radius: 2px;;width:100%; display:block; border:none;text-align:center;height:30px; line-height:30px;   background-color: red;;border-radius:0spx; color:#fff; font-size:1em; cursor:pointer;/* margin-top: 100px;*/}
 #content .ware_btn .enter{background-color: red;}
 #content .ware_btn .reserveP{background-color:#006835;display:block;}
 #content .ware_btn #grey{background-color:#CCC}
@@ -678,7 +678,7 @@ font-size: 1.2em;}
 .aggregate { color: #50a5e5; }
 #seccontent_1{margin-top:-32px}
 #searchlist_1 li{height:171px}
-#searchlist_1 pic{padding-top:3px}
+#searchlist_1 .pic{padding-top:3px}
 .ware_btn {position: relative; }
 .ware_btn li { float: left; /*margin-right: 20px;*/width:42%; cursor: pointer; }
 #intime_shopping{margin-left:4%}
