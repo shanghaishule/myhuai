@@ -437,7 +437,7 @@ class indexAction extends frontendAction {
    	   $serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
    	   //推荐二级分类，是否有子级，有跳到thdcate(三级分类),没有跳到thdlist(列表，注：如果列表里只有一个商品或服务跳到详情页)
        //dump($serArr);die();
-       $arr = $this->getArr(1);
+       $arr = $this->getArr("Y");
    	   //dump($arr);die;
    	   
    	   //为我推荐模块
@@ -601,13 +601,13 @@ class indexAction extends frontendAction {
 	   	return $res;
    }
    
-   public function getArr($condi=null){
+   public function getArr($condi=''){
    	
    	$serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
    	$arr = array();//保存所有二级被推荐的分类
    	foreach($serArr as $key => $val){
    		 $where['parentid'] = $val['id'];
-   		if(!empty($condi) && $condi != null && $condi != '' && isset($condi)){
+   		if($condi != ''){
    		 $where['status'] = 1;	
    		}
    		$tuijian_arr = $this->_cat->where($where)->select();
