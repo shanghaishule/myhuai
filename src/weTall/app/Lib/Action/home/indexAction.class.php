@@ -561,6 +561,7 @@ class indexAction extends frontendAction {
    	   $this->assign("flash",$flash_pos);	   
    	   $this->display();
    }
+   
    public function thdlist(){//没有三级，列出二级所有服务，商品，资讯
 	   	$catid = $this->_get("catid","trim,intval");
 	   	!$catid && $this->_404();
