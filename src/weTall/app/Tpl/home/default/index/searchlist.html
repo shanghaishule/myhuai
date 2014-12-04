@@ -56,21 +56,27 @@
 		<section>
 			 <div class="wrap">
             <div class="wrap_child">
-                <div class="major" id="searchlist_1">
+                <div class="major_1" id="searchlist_1">
                      <ul class="list">
                     <volist name="res" id="va"> 
                      <li>
-	                     <div class="pic">
-	                     	<a href="{$va.link}"><div id="thdpic" style="background-image:url({$va.img});background-size:100% 100%"> </div></a>
+                     <a href="{$va.link}">
+                        <div>
+	                     <div class="pic" id="pic_1">
+	                     	<div id="thdpic">
+	                     	   <img data-original="{$va.img}" width="100%" height="100%" src="__STATIC__/LazyLoad/js/grey.gif" />
+	                     	 </div>
 	                     </div>
-	                     <div class="good_content">
+	                     <div class="good_content" id="good_content_1">
 	                     <h3>
-	                     	<a href="{$va.link}"><if condition="$va.title neq ''">{$va.title}<else />{$va.name}</if></a>
+	                     	<if condition="$va.title neq ''">{$va.title}<else />{$va.name}</if>
 	                     </h3>
 						 <if condition="$va.zb_price neq ''"><p class="tishi" style="">{$va.zb_price}</p>	</if>
 	                     <if condition="$va.price neq ''"><p class="tishi1" style="">{$va.price}</p>	</if>	   					 
 						 
 	                 	 </div>
+	                 	 </div>
+	                 	 </a>
                      </li>
                      </volist>
 					 </ul>
@@ -166,5 +172,13 @@
 		});
 	});
 </script>
+<script src="__STATIC__/LazyLoad/js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+			$(".wrap_child img").lazyload({
+				effect : "fadeIn"
+			});
+		});
+	</script>
 </body>
 </html>

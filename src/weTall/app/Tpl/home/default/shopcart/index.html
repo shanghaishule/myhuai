@@ -1,5 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<!-- saved from url=(0048)http://store.weiapps.cn/index.php -->
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" name="viewport">
@@ -10,7 +9,6 @@
 <script charset="utf-8" src="__STATIC__/weixin/js/ecmall.js" type="text/javascript"></script>
 <script charset="utf-8" src="__STATIC__/weixin/js/touchslider.dev.js" type="text/javascript"></script>
 <script type="text/javascript">
-
 var SITE_URL = "index.php-app=member&act=login&ret_url=-index.php-app=member.htm"/*tpa=http://store.weiapps.cn/*/;
 var REAL_SITE_URL = "index.php-app=member&act=login&ret_url=-index.php-app=member.htm"/*tpa=http://store.weiapps.cn/*/;
 var PRICE_FORMAT = '¥%s';
@@ -23,13 +21,9 @@ $(function(){
         $("#float_layer").hide();
     });
 });
-
-
 </script>
 </head>
-
 <body>
-
 <script type="text/javascript" src="__STATIC__/weixin/js/cart.js" charset="utf-8"></script>
 <div class="index_head1">
 			<div id="nav">
@@ -68,24 +62,17 @@ $(function(){
                   <span class="img"><a href="{:U('Item/index',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}" ><img src="{:$vo['img']}" height="100" width="100"></a></span>
                   <span class="tit">
                       <a href="{:U('Item/index',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}" >{$vo.name}</a><br>
-                     
                       <span>尺寸:{$vo.size}<span>&nbsp;颜色:{$vo.color}</span></span>
-                      
                       <br>
-                    
-                       
                       <span>                      	 
                        	   <a href="javascript:minus();"> <img src="__STATIC__/weixin/images/subtract.gif" onClick="decrease_quantity({$vo.id});" alt="decrease" style="vertical-align: middle;width=:16px"></a> 
                            <input id="input_item_{$vo.id}" value="{$vo.num}" orig="1" changed="{$vo.num}" onKeyUp="change_quantity({$vo.id}, this);" class="text1 width3" type="text" style="height:20px;">
                            <a href="javascript:plus();"><img src="__STATIC__/weixin/images/adding.gif" onClick="add_quantity({$vo.id});" alt="increase" style="vertical-align: middle;width=:16px"></a>
-                           
                       </span><br>
                       
                   </span>
                   <span class="tit titadd">
-                     
                       <span></span><span class="price1">¥{$vo.price}</span><br>
-                      
                       <br>
                       <br>
                       <span>
