@@ -26,6 +26,7 @@
 <script type="text/javascript" src="__STATIC__/weixin/js/home/jQuery.js"></script>
 <script type="text/javascript" src="__STATIC__/weixin/js/home/zepto.js"></script>
 <script type="text/javascript" src="__STATIC__/weixin/js/home/swipe.js"></script>
+
 </head>
 <body onselectstart="return true;" ondragstart="return false;">
 	<!--背景音乐-->
@@ -97,7 +98,7 @@
 $(function(){
 	//Default Action
 	$(".module_special").hide(); //Hide all content
-	$("ul.box:first").addClass("active").show(); //Activate first tab
+	$("ul.box li:first").addClass("active").show(); //Activate first tab
 	$(".module_special:first").show(); //Show first tab content
 
 	//On Click Event
@@ -114,8 +115,8 @@ $(function(){
 </script>
 
 <section id="content-new" class="">
-        <nav>
-            <ul class="nav_links box">
+        <nav id="box_1">
+            <ul class="nav_links box" >
                    <volist name="res" id="va" key="k" empty="没有数据">
                     <li class="">
                          <a href="#one_{$k}">

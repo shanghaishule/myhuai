@@ -955,6 +955,8 @@ ul.user_menu li.active{border-right:1px solid #ccc;border-left:1px solid #ccc;bo
 .ware_line{padding:0}
 .particular_wrap dl{margin:0}
 .particular .particular_wrap dl{ }
+#box_1 ul li.active{border-bottom:1px solid #006835}
+
 .particular .particular_wrap .ware_line{ margin:10px 0;}
 .order_detail_list li{float:left;margin-left: 0%;}
 #ware_1{padding:0}
