@@ -4,7 +4,7 @@ $(document).ready(function(){
     //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
     $(function () {
     $(window).scroll(function(){
-    if ($(window).scrollTop()>200){
+    if ($(window).scrollTop()>100){
     $("#back-to-top").fadeIn(500);
     }
     else
