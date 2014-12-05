@@ -174,7 +174,7 @@
      -moz-box-sizing: border-box;
 }
 .submit {
-	background-color:#006835;
+	background-color:red;
 	padding:10px 20px;
 	font-size:16px;
 	text-decoration:none;
@@ -185,6 +185,7 @@
 	display:block;
 	text-align:center;
 	text-shadow:0 1px rgba(0, 0, 0, 0.2);
+	border-radius:2px
 }
 .submit:active {
 	padding-bottom:9px;
