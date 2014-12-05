@@ -920,6 +920,10 @@ ul.user_menu li.active{border-right:1px solid #ccc;border-left:1px solid #ccc;bo
 .FloatLeft{float:left; margin:0;}
 .FloatRight { float:right; margin:0;}
 
+/*返回顶部start*/
+#back-to-top{display:block;width:29px;height:29px;position:fixed;right:20px;bottom:75px}
+
+/*返回顶部end*/
 /*-------------------------------------------------------
  **
  **分页css
