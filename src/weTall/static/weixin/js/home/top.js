@@ -19,3 +19,21 @@ $(document).ready(function(){
     });
     });
     });
+
+$(document).ready(function(){
+    //首先将#back-to-top隐藏
+    
+    //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+    $(function () {
+    $(window).scroll(function(){
+    if ($(window).scrollTop()>50){
+    $("#bottom").fadeOut(500);
+    }
+    else
+    {
+    $("#bottom").fadeIn(500);
+    }
+    });
+   
+    });
+    });
