@@ -506,6 +506,7 @@ padding-left: 5px;}
 .major_1 .list li span.show_good{display: none;}
 .major_1 .pic {margin:3px; text-align:center; width:30%;/* height:300px;*/float:left}
 .major_1 #pic_1 {margin:3px; text-align:center; width:35%;/* height:300px;*/float:left}
+#pic_1 img{padding-top:0}
 .major_1 .good_content{float:left;width:65%;}
 .major_1 #good_content_1{float:left;width:60%;}
 .major .good_content h3{padding-left:0}
@@ -921,7 +922,7 @@ ul.user_menu li.active{border-right:1px solid #ccc;border-left:1px solid #ccc;bo
 .FloatRight { float:right; margin:0;}
 
 /*返回顶部start*/
-#back-to-top{display:block;width:29px;height:29px;position:fixed;right:20px;bottom:95px}
+#back-to-top{display:block;width:29px;height:29px;position:fixed;right:20px;bottom:95px;z-index:9999}
 
 /*返回顶部end*/
 /*-------------------------------------------------------

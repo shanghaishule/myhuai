@@ -25,22 +25,7 @@
 <!--<img src="__STATIC__/weixin/images/home/index3.png" style="width:100%;position:fixed;left:0;top:0">-->
 <!--头部-->
 
-<div class="index_head1">
-<div id="nav">
-	<ul class="navlist1">
-		<li id="a_0">
-		  <a href="javascript:history.go(-1)"> <div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div></a>
-         </li>
-        <li  id="a_1">
-    						<div style="">
-
-										<p>{$page_seo.title}</p>
-				              </div>
-        </li>
-    </ul>
- </div>
-</div>
-
+<include file="public:head_1" />
 
 
 
@@ -147,16 +132,16 @@ document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
 });
 </script> 
     	<script type="text/javascript">
-		window.shareData = {
-			"moduleName" : "Index",
-			"moduleID" : '0',
-			"imgUrl" : "http://m.hajk.com.cn/images/logo.png",
-			"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
-			"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
-			"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
-			"tTitle" : "欢迎关注沪爱健康",
-			"tContent" : "沪爱健康   专业让健康更简单"
-		};
+    	window.shareData = {
+    			"moduleName" : "Index",
+    			"moduleID" : '0',
+    			"imgUrl" : "http://m.hajk.com.cn/weTall/static/weixin/images/home/mlogo.png",
+    			"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+    			"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+    			"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+    			"tTitle" : "欢迎关注沪爱健康",
+    			"tContent" : "专业让健康更简单 沪爱健康   "
+    		};
 	</script>
 	<script>
 		document.addEventListener('WeixinJSBridgeReady',

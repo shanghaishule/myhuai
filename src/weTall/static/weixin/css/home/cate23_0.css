@@ -15,7 +15,7 @@ body {
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 100000;
+	z-index: 99999999;
 	height: 45px;
 	background: #006835;
 	width: 100%
@@ -261,7 +261,7 @@ ul.ul_list {
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	z-index: 100000;
+	z-index: 999999999;
 }
 
 .space {
