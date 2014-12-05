@@ -277,7 +277,7 @@ KindEditor.plugin('image', function(K) {
 					// Bugfix: [Firefox] 上传图片后，总是出现正在加载的样式，需要延迟执行hideDialog
 					setTimeout(function() {
 						self.hideDialog().focus();
-					}, 0);
+					},0);
 				}
 			});
 		},
