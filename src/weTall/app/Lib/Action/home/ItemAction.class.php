@@ -128,6 +128,7 @@ class itemAction extends frontendAction {
     	 
     	$this->display();
     }
+    
     /**
      * 点击去购买
      */
