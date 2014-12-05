@@ -137,6 +137,12 @@ class ArticleAction extends UserAction{
 			if ($id) {
 				$myaction = "编辑";
 				$info = $this->_mod->where(array('id'=>$id))->find();
+				$imgDetail = M("item_article_img")->where(array("item_id"=>$id))->order("id DESC")->select();
+				$index = 1;
+				foreach ($imgDetail as $key => $val){
+					$info['img'.$index] = $val['url'];
+					$index ++;
+				}
 				$this->assign('info',$info);
 				
 				//商品所属分类

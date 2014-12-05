@@ -437,42 +437,42 @@ function sum_stock(){
 		<tr>
 			<th>商品详情页图片1：</th>
 			<td>
-				<input type='text' class='px' id='pic1' value='{lanrain:$info.imgs.img1}' name='img1' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload1' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
+				<input type='text' class='px' id='pic1' value="{lanrain:$info['img1']}" name='img1' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload1' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
 				请上传250x250(px)的图片
 			</td>
 		</tr>
 		<tr>
 			<th>商品详情页图片2：</th>
 			<td>
-				<input type='text' class='px' id='pic2' value='{lanrain:$info.imgs.img2}' name='img2' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload2' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
+				<input type='text' class='px' id='pic2' value="{lanrain:$info['img2']}" name='img2' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload2' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
 				请上传250x250(px)的图片
 			</td>
 		</tr>
 		<tr>
 			<th>商品详情页图片3：</th>
 			<td>
-				<input type='text' class='px' id='pic3' value='{lanrain:$info.imgs.img3}' name='img3' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload3' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
+				<input type='text' class='px' id='pic3' value="{lanrain:$info['img3']}" name='img3' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload3' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
 				请上传250x250(px)的图片
 			</td>
 		</tr>
 		<tr>
 			<th>商品详情页图片4：</th>
 			<td>
-				<input type='text' class='px' id='pic4' value='{lanrain:$info.imgs.img4}' name='img4' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload4' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
+				<input type='text' class='px' id='pic4' value="{lanrain:$info['img4']}" name='img4' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload4' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
 				请上传250x250(px)的图片
 			</td>
 		</tr>
 		<tr>
 			<th>商品详情页图片5：</th>
 			<td>
-				<input type='text' class='px' id='pic5' value='{lanrain:$info.imgs.img5}' name='img5' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload5' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
+				<input type='text' class='px' id='pic5' value="{lanrain:$info['img5']}" name='img5' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload5' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
 				请上传250x250(px)的图片
 			</td>
 		</tr>
 		<tr>
 			<th>商品详情页图片6：</th>
 			<td>
-				<input type='text' class='px' id='pic6' value='{lanrain:$info.imgs.img6}' name='img6' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload6' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
+				<input type='text' class='px' id='pic6' value="{lanrain:$info['img6']}" name='img6' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload6' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
 				请上传250x250(px)的图片
 			</td>
 		</tr>
@@ -484,7 +484,8 @@ function sum_stock(){
                       <input type="text" class="px" name="color[]" id="mycolor{lanrain:$color}" value="{lanrain:$color}" size='12' readOnly><img id="color_img{lanrain:$color}" onclick="delete_colortr('{lanrain:$color}')"  style='margin-right:3px;' height="15" width="15" src="/tpl/User/default/common/images/icons/delete.png" />
                       </if>
                      </volist>
-                     </div></td>
+                     </div>
+                </td>
 			</tr>
 		<tr>
 				<th width="120">型号 :</th>
