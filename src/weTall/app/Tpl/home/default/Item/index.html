@@ -28,24 +28,6 @@
 				return false;
 			});			
 		});
-		
-		var active=0,
-			as=document.getElementById('pagenavi').getElementsByTagName('a');
-			
-		for(var i=0;i<as.length;i++){
-			(function(){
-				var j=i;
-				as[i].onclick=function(){
-					t2.slide(j);
-					return false;
-				}
-			})();
-		}
-		var t2=new TouchSlider({id:'sliderlist', speed:600, timeout:6000, before:function(index){
-				as[active].className='';
-				active=index;
-				as[active].className='active';
-			}});
 	</script>
 
 <div id="content">
@@ -213,7 +195,7 @@
          <div id="slider" class="slider" style="overflow: hidden; visibility: visible; list-style: none outside none; position: relative;">
              <ul id="sliderlist" class="sliderlist" style="position: relative; overflow: hidden; transition: left 600ms ease 0s; width: 784px; left:0;">
                  <volist name="img_list" id="img">
-                     <li style="float: left; display: block; width: 596px;"><a class="group1" href="{:$img['url']}"><img class="goods-img"  width="90%" height="90%" src="{:$img['url']}"></a></li>
+                     <li style="float: left; display: block; width: 596px;"><a class="group1" href="{$img['url']}"><img class="goods-img"  width="90%" height="90%" src="{$img['url']}"></a></li>
                  </volist>
              </ul>
             <div id="pagenavi">
