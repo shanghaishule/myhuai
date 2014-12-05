@@ -20,7 +20,7 @@ $(document).ready(function(){
     });
     });
 
-$(document).ready(function(){
+/*$(document).ready(function(){
     //首先将#back-to-top隐藏
     
     //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
@@ -36,4 +36,25 @@ $(document).ready(function(){
     });
    
     });
-    });
+    });*/
+
+function touchMoveFunc(evt) {
+    try {
+        //evt.preventDefault(); //阻止触摸时浏览器的缩放、滚动条滚动等
+        var touch = evt.touches[0]; //获取第一个触点
+        var x = Number(touch.pageX); //页面触点X坐标
+        var y = Number(touch.pageY); //页面触点Y坐标
+        if (y - startY > 0) {
+            //向下滑
+            $("#bottom").fadeIn();
+ 
+        } else {
+            //向上滑
+            $("#bottom").fadeOut();
+        }
+    }
+    catch (e) {
+        alert('touchMoveFunc：' + e.message);
+    }
+}
+ 
