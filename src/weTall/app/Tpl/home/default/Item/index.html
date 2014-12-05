@@ -500,9 +500,7 @@ window.shareData = {
 				url : window.shareData.sendFriendLink,
 				to : to
 			};
-			$
-					.post(
-							'/index.php?g=Wap&m=Share&a=shareData&token=ipwhoy1414718223&wecha_id=ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+			$.post('/index.php?g=Wap&m=Share&a=shareData&token=ipwhoy1414718223&wecha_id=ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
 							submitData, function(data) {
 							}, 'json')
 		}
