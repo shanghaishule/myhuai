@@ -97,7 +97,7 @@ class ArticleAction extends UserAction{
 					$result = $this->_mod->save($data);
 					if ($result !== false) {
 						//相册更新
-						M('item_img')->where(array('item_id'=>$data['id']))->delete();
+						M('item_article_img')->where(array('item_id'=>$data['id']))->delete();
 						$_img['item_id'] = $data['id'];
 						$_img['add_time'] = time();
 						foreach ($imgs as $oneimg){
