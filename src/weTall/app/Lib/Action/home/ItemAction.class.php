@@ -19,7 +19,7 @@ class itemAction extends frontendAction {
         !$id && $this->_404();
         $tokenTall = $this->getTokenTall();
         $item_mod = M('item');
-        $item = $item_mod->field('id,title,intro,price,zb_price,info,comments,add_time,goods_stock,buy_num,brand,size,color')->where(array('id' => $id, 'status' => 1))->find();
+        $item = $item_mod->field('id,cate_id,title,intro,price,zb_price,info,comments,add_time,goods_stock,buy_num,brand,size,color')->where(array('id' => $id, 'status' => 1))->find();
         !$item && $this->_404();
     
         //大小
@@ -57,6 +57,13 @@ class itemAction extends frontendAction {
         	}
         }
         
+        //相关产品
+        $condi['cate_id'] = $item['cate_id'];
+        $condi['id'] = array('neq'=>$id);
+        $recommendRes = $item_mod->field("id,img,title,price,zb_price")->where($condi)->limit(6)->select();
+        
+        $this->assign("recommendRes",$recommendRes);
+        
         $this->assign('countSize', $countSize);
         $this->assign('countColor', $countColor);
 
@@ -81,10 +88,17 @@ class itemAction extends frontendAction {
     	$tokenTall = $this->getTokenTall();
     	
     	$mod = M("service");
-    	$item = $mod->field("id,name,price,zb_price,img,status,info")->where("id = %d",$id)->find();
+    	$item = $mod->field("id,cate_id,name,price,zb_price,img,status,info")->where("id = %d",$id)->find();
     	!$item && $this->_404();
 
     	$img_list = M('item_service_img')->field('url')->where(array('item_id' => $id))->order('ordid')->select();
+    	
+    	//相关产品
+    	$condi['cate_id'] = $item['cate_id'];
+    	$condi['id'] = array('neq'=>$id);
+    	$recommendRes = $mod->field("id,img,name,price,zb_price")->where($condi)->limit(4)->select();
+    	
+    	$this->assign("recommendRes",$recommendRes);
     	
     	$this->assign('item', $item);
     	$this->assign('img_list', $img_list);    	
@@ -97,11 +111,18 @@ class itemAction extends frontendAction {
     	$id = $this->_get("itemid","trim,intval");
     	!$id && $this->_404();
     	$tokenTall = $this->getTokenTall();    	
-    	$res = M("article_new")->field("id,name,img,info")->where(array("id"=>$id))->find();
+    	$res = M("article_new")->field("id,name,img,info,cate_id")->where(array("id"=>$id))->find();
     	!$res && $this->_404();
     	
     	$img_list = M('item_article_img')->field('url')->where(array('item_id' => $id))->order('ordid')->select();
     	 
+    	
+    	//相关产品
+    	$condi['cate_id'] = $res['cate_id'];
+    	$condi['id'] = array('neq'=>$id);
+    	$recommendRes = M("article_new")->field("id,img,name")->where($condi)->limit(4)->select();
+    	 
+    	$this->assign("recommendRes",$recommendRes);
     	$this->assign('item', $res);
     	$this->assign('img_list', $img_list);
     	 
