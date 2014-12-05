@@ -59,7 +59,7 @@ class itemAction extends frontendAction {
         
         //相关产品
         $condi['cate_id'] = $item['cate_id'];
-        $condi['id'] = array('neq'=>$id);
+        $condi['id'] = array('neq',$id);
         $recommendRes = $item_mod->field("id,img,title,price,zb_price")->where($condi)->limit(6)->select();
         
         $this->assign("recommendRes",$recommendRes);
@@ -95,7 +95,7 @@ class itemAction extends frontendAction {
     	
     	//相关产品
     	$condi['cate_id'] = $item['cate_id'];
-    	$condi['id'] = array('neq'=>$id);
+    	$condi['id'] = array('neq',$id);
     	$recommendRes = $mod->field("id,img,name,price,zb_price")->where($condi)->limit(4)->select();
     	
     	$this->assign("recommendRes",$recommendRes);
@@ -119,7 +119,7 @@ class itemAction extends frontendAction {
     	
     	//相关产品
     	$condi['cate_id'] = $res['cate_id'];
-    	$condi['id'] = array('neq'=>$id);
+    	$condi['id'] = array('neq',$id);
     	$recommendRes = M("article_new")->field("id,img,name")->where($condi)->limit(4)->select();
     	 
     	$this->assign("recommendRes",$recommendRes);
