@@ -34,7 +34,7 @@ class itemAction extends frontendAction {
         
         //商品相册
 
-        $img_list = M('item_img')->field('url')->where(array('item_id' => $id))->order('ordid')->select();        
+        $img_list = M('item_img')->field('url')->where(array('item_id' => $id))->order('id DESC')->select();        
         $comments_list = M('comments')->where(array('item_id' => $id))->order('create_time desc')->select();
         
         $this->assign('comments_list', $comments_list);        
@@ -91,7 +91,7 @@ class itemAction extends frontendAction {
     	$item = $mod->field("id,cate_id,name,price,zb_price,img,status,info")->where("id = %d",$id)->find();
     	!$item && $this->_404();
 
-    	$img_list = M('item_service_img')->field('url')->where(array('item_id' => $id))->order('ordid')->select();
+    	$img_list = M('item_service_img')->field('url')->where(array('item_id' => $id))->order('id DESC')->select();
     	
     	//相关产品
     	$condi['cate_id'] = $item['cate_id'];
@@ -114,7 +114,7 @@ class itemAction extends frontendAction {
     	$res = M("article_new")->field("id,name,img,info,cate_id")->where(array("id"=>$id))->find();
     	!$res && $this->_404();
     	
-    	$img_list = M('item_article_img')->field('url')->where(array('item_id' => $id))->order('ordid')->select();
+    	$img_list = M('item_article_img')->field('url')->where(array('item_id' => $id))->order('id DESC')->select();
     	 
     	
     	//相关产品
