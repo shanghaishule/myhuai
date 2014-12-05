@@ -99,7 +99,7 @@ class ServiceAction extends UserAction{
 						//相册更新
 						//$_img['url'] = $data['img'];
 						//M('item_img')->where(array('item_id'=>$data['id']))->save($_img);
-						M('item_img')->where(array('item_id'=>$data['id']))->delete();
+						M('item_service_img')->where(array('item_id'=>$data['id']))->delete();
 						$_img['item_id'] = $data['id'];
 						$_img['add_time'] = time();
 						foreach ($imgs as $oneimg){
