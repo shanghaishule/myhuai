@@ -70,7 +70,6 @@ class ServiceAction extends UserAction{
 			}
 
 			$data['tokenTall'] = $tokenTall;
-			
 			//dump($data);exit;	
 			
 			if ($_POST['id'] != "") {
