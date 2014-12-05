@@ -3184,7 +3184,7 @@ _extend(KCmd, {
 	insertimage : function(url, title, width, height, border, align) {
 		title = _undef(title, '');
 		border = _undef(border, 0);
-		var html = '<img src="/weTall/static/LazyLoad/js/grey.gif" data-original="' + _escape(url) + '" data-ke-src="' + _escape(url) + '" ';
+		var html = '<img src="' + _escape(url) + '" data-ke-src="' + _escape(url) + '" ';
 		if (width) {
 			html += 'width="' + _escape(width) + '" ';
 		}

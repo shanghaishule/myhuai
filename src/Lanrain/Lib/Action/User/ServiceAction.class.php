@@ -70,7 +70,7 @@ class ServiceAction extends UserAction{
 			}
 
 			$data['tokenTall'] = $tokenTall;
-			//dump($data);exit;	
+			//dump($data['info']);die;
 			
 			if ($_POST['id'] != "") {
 				if ($flag=="import"){
