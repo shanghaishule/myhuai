@@ -68,7 +68,7 @@ class ArticleAction extends UserAction{
 			}
 
 			$data['tokenTall'] = $tokenTall;
-			
+			$data['info'] = str_replace("src=",'src="/weTall/static/LazyLoad/js/grey.gif" data-original=',$data['info']);
 			//dump($data);exit;	
 			
 			if ($_POST['id'] != "") {
@@ -137,6 +137,7 @@ class ArticleAction extends UserAction{
 			if ($id) {
 				$myaction = "编辑";
 				$info = $this->_mod->where(array('id'=>$id))->find();
+				$info['info'] = str_replace('src="/weTall/static/LazyLoad/js/grey.gif" data-original=',"src=", $info['info']);
 				$imgDetail = M("item_article_img")->where(array("item_id"=>$id))->order("id ASC")->select();
 				$index = 1;
 				foreach ($imgDetail as $key => $val){

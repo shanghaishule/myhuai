@@ -63,7 +63,8 @@ class Wetall_itemAction extends UserAction{
 				$imgs[] = $_POST['img5'];
 			}
 			
-
+            $data['info'] = str_replace("src=",'src="/weTall/static/LazyLoad/js/grey.gif" data-original=',$data['info']);
+            //dump($data['info']);die;
             //加入颜色和尺码
             $data["size"]=$_POST['sizes_ar'];
             $data["color"]=$_POST['colors_ar'];
@@ -170,7 +171,8 @@ class Wetall_itemAction extends UserAction{
 			if ($id) {
 				$myaction = "编辑";
 				$info = $this->_mod->where(array('id'=>$id))->find();
-				
+				//dump($info);die;
+				$info['info'] = str_replace('src="/weTall/static/LazyLoad/js/grey.gif" data-original=',"src=", $info['info']);
 				$imgDetail = M("item_img")->where(array("item_id"=>$id))->order("id DESC")->select();
 				$index = 1;
 				foreach ($imgDetail as $key => $val){
@@ -178,7 +180,7 @@ class Wetall_itemAction extends UserAction{
 					$index ++;
 				}
 				$this->assign('info',$info);
-				
+				//dump($info);die;
 				$sizestr = $info["size"];
 				$sizearr = explode("|",$sizestr);
 				$this->assign("sizearr",$sizearr);
