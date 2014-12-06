@@ -63,7 +63,8 @@ class Wetall_itemAction extends UserAction{
 				$imgs[] = $_POST['img5'];
 			}
 			
-
+            $data['info'] = str_replace("src=",'src="/weTall/static/LazyLoad/js/grey.gif" data-original=',$data['info']);
+            //dump($data['info']);die;
             //加入颜色和尺码
             $data["size"]=$_POST['sizes_ar'];
             $data["color"]=$_POST['colors_ar'];

@@ -68,7 +68,7 @@ class ArticleAction extends UserAction{
 			}
 
 			$data['tokenTall'] = $tokenTall;
-			
+			$data['info'] = str_replace("src=",'src="/weTall/static/LazyLoad/js/grey.gif" data-original=',$data['info']);
 			//dump($data);exit;	
 			
 			if ($_POST['id'] != "") {

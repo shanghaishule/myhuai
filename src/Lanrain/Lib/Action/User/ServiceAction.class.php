@@ -70,6 +70,7 @@ class ServiceAction extends UserAction{
 			}
 
 			$data['tokenTall'] = $tokenTall;
+			$data['info'] = str_replace("src=",'src="/weTall/static/LazyLoad/js/grey.gif" data-original=',$data['info']);
 			//dump($data['info']);die;
 			
 			if ($_POST['id'] != "") {
