@@ -59,7 +59,8 @@ $(function(){
             
             checkCode : {
                 required : true,
-                minlength: 6
+                minlength: 6,
+                equalTo:"#ret_code"
             }
            
         },
@@ -80,7 +81,8 @@ $(function(){
             },
             checkCode : {
                 required : '亲！不能为空哦',
-                minlength: '亲！验证码长度应为6位数字'
+                minlength: '亲！验证码长度应为6位数字',
+                equalTo: "验证码不一致！"
             }
         }
     });
@@ -103,6 +105,8 @@ function sendMessage() {
             code += parseInt(Math.random() * 9).toString();  
         }  
         //alert(code);
+        $("#ret_code").val(code);
+        
         //设置button效果，开始计时  
         $("#login_btn_id").attr("disabled", "true");  
         $("#login_btn_id").val("请在" + curCount + "秒内输入验证码");  
@@ -113,11 +117,12 @@ function sendMessage() {
             dataType: "json", //数据格式:JSON  
             url: "{:U('sms/PHPSMS')}", //目标地址  
             data: {act:'register', mob:phone, smscode:code},  
-            error: function (XMLHttpRequest, textStatus, errorThrown) { alert('Error loading XML document'); },  
+            error: function (XMLHttpRequest, textStatus, errorThrown) { alert('操作失败！'); },  
             //success: function (msg){ alert(msg); }  
             success: function(data){ 
             	//alert('act:'+data.act+'; phone:'+data.mob+'; code:'+data.smscode); 
-            	//alert(data.code+'-'+data.msg); 
+            	//alert(data.code+'-'+data.msg);
+            	
             }
 
         });          
@@ -139,6 +144,7 @@ function SetRemainTime() {
         $("#login_btn_id").val("请在" + curCount + "秒内输入验证码");  
     }  
 }  
+
 </script>
 
 
@@ -153,10 +159,10 @@ function SetRemainTime() {
         
         <ul>
         <li id="click_yanzheng"><input value="获取验证码" style="background:#006835;border:none"  class="login_btn" id="login_btn_id" type="button" onclick="sendMessage()"></li>
-        <li id="intime_reg"><input name="Submit" style="background:red;;border:none" value="立即注册" class="login_btn"id="login_btn_id1" title="立即注册" type="submit"></li>
+        <li id="intime_reg"><input name="Submit" style="background:red;;border:none" value="立即注册" class="login_btn" id="login_btn_id1" title="立即注册" type="submit"></li>
         </ul>
         
-        <input name="ret_url" value=" " type="hidden">
+        <input id="ret_code" value="" type="hidden">
     </form>
 </div>
 
