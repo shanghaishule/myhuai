@@ -171,7 +171,8 @@ class Wetall_itemAction extends UserAction{
 			if ($id) {
 				$myaction = "编辑";
 				$info = $this->_mod->where(array('id'=>$id))->find();
-				
+				//dump($info);die;
+				$info['info'] = str_replace('src="/weTall/static/LazyLoad/js/grey.gif" data-original=',"src=", $info['info']);
 				$imgDetail = M("item_img")->where(array("item_id"=>$id))->order("id DESC")->select();
 				$index = 1;
 				foreach ($imgDetail as $key => $val){
@@ -179,7 +180,7 @@ class Wetall_itemAction extends UserAction{
 					$index ++;
 				}
 				$this->assign('info',$info);
-				
+				//dump($info);die;
 				$sizestr = $info["size"];
 				$sizearr = explode("|",$sizestr);
 				$this->assign("sizearr",$sizearr);
