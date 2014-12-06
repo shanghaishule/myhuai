@@ -125,7 +125,7 @@ background: #006835}
 #register_form #password {width:70%;border:none}
 #register_form #password_confirm {width:70%;border:none}
 #register_form #yanzheng {width:45%;border:none;float:left};
-form#register_form p{border-bottom:1px solid #ccc}
+p#border_p{}
 #register_form ul li{float:left;width:72%}
 #register_form,#order_form{ margin:0 3px;}
 #login_form #user_name {width:70%;border:none;background:white}
