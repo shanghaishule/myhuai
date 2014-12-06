@@ -181,18 +181,27 @@ class baseAction extends Action
     	【微米网】您的验证码是：610912，3分钟内有效。如非您本人操作，可忽略本消息。
      * */
     public function PHPSMS(){
-    	/*
-    	$ch = curl_init();
-    	curl_setopt($ch, CURLOPT_URL, "http://api.weimi.cc/2/sms/send.html");
-    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-    	curl_setopt($ch, CURLOPT_POST, TRUE);
-    	//填写参数
-    	curl_setopt($ch, CURLOPT_POSTFIELDS, 'uid=<enter your UID>&pas=<enter your UID Pass>&mob=<enter your mobiles>&cid=<enter your cid>&p1=&p2&type=json');
     	
-    	$res = curl_exec( $ch );
-    	curl_close( $ch );
-    	echo($res);
-    	*/
-    	echo json_encode($_POST);
+    	$act = $this->_request('act', 'trim', '');
+    	$mob = $this->_request('mob', 'trim', '');
+    	$smscode = $this->_request('smscode', 'trim', '');
+    	
+    	if($mob != "" && $smscode != ""){
+	    	$ch = curl_init();
+	    	curl_setopt($ch, CURLOPT_URL, "http://api.weimi.cc/2/sms/send.html");
+	    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+	    	curl_setopt($ch, CURLOPT_POST, TRUE);
+	    	$uid = '1A0mXEFdgXNn';
+	    	$pas = '2bb3w3x4';
+	    	if($act == 'register'){
+	    		$cid = 'PPE1fo4CUJxJ';
+		    	//填写参数
+		    	curl_setopt($ch, CURLOPT_POSTFIELDS, 'uid='.$uid.'&pas='.$pas.'&mob='.$mob.'&cid='.$cid.'&p1=沪爱健康&p2='.$smscode.'&p3=4006555899&type=json');
+		    }
+	    	$res = curl_exec( $ch );
+	    	curl_close( $ch );
+	    	echo($res);
+    	}
+    	//echo json_encode($_POST);
     }
 }

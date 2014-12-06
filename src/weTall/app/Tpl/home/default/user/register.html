@@ -107,16 +107,17 @@ function sendMessage() {
         $("#login_btn_id").attr("disabled", "true");  
         $("#login_btn_id").val("请在" + curCount + "秒内输入验证码");  
         InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次  
-    //向后台发送处理数据  
+        //向后台发送处理数据  
         $.ajax({  
             type: "POST", //用POST方式传输  
             dataType: "json", //数据格式:JSON  
             url: "{:U('sms/PHPSMS')}", //目标地址  
-            data: {sms_phone:phone, sms_code:code},  
+            data: {act:'register', mob:phone, smscode:code},  
             error: function (XMLHttpRequest, textStatus, errorThrown) { alert('Error loading XML document'); },  
             //success: function (msg){ alert(msg); }  
             success: function(data){ 
-            	alert('phone:'+data.sms_phone+'; code:'+data.sms_code); 
+            	//alert('act:'+data.act+'; phone:'+data.mob+'; code:'+data.smscode); 
+            	//alert(data.code+'-'+data.msg); 
             }
 
         });          
