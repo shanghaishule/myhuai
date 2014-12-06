@@ -115,7 +115,7 @@ p.yuyue{padding-top: 5px;}
 height: 20px;
 background: #006835}
 /*登陆*/
-.bg_white{background:white;}
+.bg_white{background:white;margin-top:50px}
 .bg_white ul{margin-top:20px} 
 #content #login_form{ margin:30px 10px 0;}
 .login_right{ margin:0 10px;}
@@ -124,9 +124,9 @@ background: #006835}
 #register_form #user_name {width:70%;border:none}
 #register_form #password {width:70%;border:none}
 #register_form #password_confirm {width:70%;border:none}
-#register_form #yanzheng {width:70%;border:none}
-#register_form p{border-bottom:1px solid #ccc}
-#register_form ul li{float:left;width:36%}
+#register_form #yanzheng {width:45%;border:none;float:left};
+form#register_form p{border-bottom:1px solid #ccc}
+#register_form ul li{float:left;width:72%}
 #register_form,#order_form{ margin:0 3px;}
 #login_form #user_name {width:70%;border:none;background:white}
 #login_form #password {width:70%;border:none;background:white}

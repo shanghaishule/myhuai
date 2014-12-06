@@ -142,16 +142,16 @@ function SetRemainTime() {
 
 
 
-<div id="content" class="bg_white">
+<div id="content" class="bg_white" style="margin-top:50px">
     <form name="" id="register_form" class=" reg_1" method="post" action="{:U('user/register')}">
         <p>用户名<input id="user_name" name="user_name" placeholder="手机号" class="text width10" type="text"></p>
         <p>密　码 <input id="password" name="password" placeholder="至少六位" class="text width10" type="password"></p>
         <p>确认密码<input id="password_confirm" name="password_confirm" placeholder="确认密码" class="text width10" type="password"></p>
         
-        <p>验证码<input id="yanzheng" name="checkCode" placeholder="六位验证码" class="text width10" type="text" ></p>
+        <p id="yanzhenma"><p style="float:left;padding-top: 16px">验证码</p><input id="yanzheng" name="checkCode" placeholder="六位验证码" class="text width10" type="text" ><input value="获取验证码" style="background:#006835;border:none;width:24%;float:left;margin-top:9px"  class="login_btn" id="login_btn_id" type="button" onclick="sendMessage()"></p>
         
-        <ul>
-        <li id="click_yanzheng"><input value="获取验证码" style="background:#006835;border:none"  class="login_btn" id="login_btn_id" type="button" onclick="sendMessage()"></li>
+        <ul style="clear:both">
+       <!--   <li id="click_yanzheng"><input value="获取验证码" style="background:#006835;border:none"  class="login_btn" id="login_btn_id" type="button" onclick="sendMessage()"></li>-->
         <li id="intime_reg"><input name="Submit" style="background:red;;border:none" value="立即注册" class="login_btn"id="login_btn_id1" title="立即注册" type="submit"></li>
         </ul>
         
