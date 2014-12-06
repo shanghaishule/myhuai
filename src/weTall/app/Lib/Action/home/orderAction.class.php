@@ -399,7 +399,45 @@ class orderAction extends userbaseAction {
 			$ordersumPrice = $all_order_price;
 
 			$this->assign('order_zhifu','0');
-	
+			
+			//发短信通知顾客下单成功 by zcb 20141206
+			$_REQUEST['act'] = 'order_guke';
+			$_REQUEST['mob'] = $this->visitor->info['username'];
+			$_REQUEST['mobuser'] = $this->visitor->info['username'];
+			$mobitem_desc = '';
+			foreach ($all_order_arr as $oneorder){
+				$oneorderarr = M('order_detail')->where("orderid='".$oneorder."'")->select();
+				foreach ($oneorderarr as $oneorderitem){
+					$mobitem_desc .= $oneorderitem['title'].'、';
+				}
+			}
+			$_REQUEST['mobitem'] = rtrim($mobitem_desc, '、');
+			$_REQUEST['mobprice'] = $all_order_price;
+			$_REQUEST['mobaddrname'] = $addr['address_name'].'('.$addr['mobile'].')';//收货人姓名+电话
+			$_REQUEST['mobaddr'] = $addr['address'];//地址
+			$this->PHPSMS();
+			
+			//发短信通知每个商家下单成功 by zcb 20141206
+			foreach ($all_order_arr as $oneorder2){
+				//取第一个商品，找它所属的商家
+				$oneorderarr2 = M('order_detail')->where("orderid='".$oneorder2."'")->select();
+				$shangjia = M('item')->where(array('id'=>$oneorderarr2[0]['itemId']))->getField('isBusiness');
+				$mobshangjia = M('business')->where(array('id'=>$shangjia))->getField('b_phone');
+				
+				$_REQUEST['act'] = 'order_shangjia';
+				$_REQUEST['mob'] = $mobshangjia;
+				$_REQUEST['mobuser'] = $this->visitor->info['username'];
+				$mobitem_desc2 = '';
+				foreach ($oneorderarr2 as $oneorderitem2){
+					$mobitem_desc2 .= $oneorderitem2['title'].'、';
+				}
+				$_REQUEST['mobitem'] = rtrim($mobitem_desc2, '、');
+				$_REQUEST['mobprice'] = M('item_order')->where("orderid='".$oneorder2."'")->getField('order_sumPrice');
+				$_REQUEST['mobaddrname'] = $addr['address_name'].'('.$addr['mobile'].')';//收货人姓名+电话
+				$_REQUEST['mobaddr'] = $addr['address'];//地址
+				$this->PHPSMS();
+			}
+			
 		}
 		else if(isset($_GET['orderId']))
 		{

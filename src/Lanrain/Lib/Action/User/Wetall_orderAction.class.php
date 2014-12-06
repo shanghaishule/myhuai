@@ -272,13 +272,27 @@ class Wetall_orderAction extends UserAction{
 			$date['status']=3;
 			if($mod->where("orderId='".$data['orderId']."'")->data($date)->save()){
 				$orderinfo = $mod->where("orderId='".$data['orderId']."'")->find();
+				
+				$mobitem_desc = '';
+				$oneorderarr = M('order_detail')->where("orderid='".$orderinfo['orderId']."'")->select();
+				foreach ($oneorderarr as $oneorderitem){
+					$mobitem_desc .= $oneorderitem['title'].'、';
+				}
+				
+				
 				if ($orderinfo['supportmetho'] == 4) {
 					if($this->orderWxDeliver($data['orderId'])){
+						//向顾客发短信通知发货
+						$this->sendsmstouser($orderinfo['userName'], $orderinfo['userName'], $mobitem_desc, $orderinfo['address_name'], $orderinfo['mobile']);
+						
 						$this->success('发货成功！', U('Wetall_order/index'));
 					}else{
 						$this->error('微信发货通知失败');
 					}
 				} else {
+					//向顾客发短信通知发货
+					$this->sendsmstouser($orderinfo['userName'], $orderinfo['userName'], $mobitem_desc, $orderinfo['address_name'], $orderinfo['mobile']);
+					
 					$this->success('发货成功！', U('Wetall_order/index'));
 				}
 			} else {
@@ -296,7 +310,17 @@ class Wetall_orderAction extends UserAction{
 		}
 	}
 	
-	
+	public function sendsmstouser($mob, $mobuser, $mobitem, $mobaddrname, $mobaddrmob){
+		//发短信通知顾客发货成功 by zcb 20141206
+		$_REQUEST['act'] = 'fahuo';
+		$_REQUEST['mob'] = $mob;
+		$_REQUEST['mobuser'] = $mobuser;
+		$_REQUEST['mobitem'] = rtrim($mobitem, '、');
+		$_REQUEST['mobaddrname'] = $mobaddrname;
+		$_REQUEST['$mobaddrmob'] = $mobaddrmob;
+		
+		$this->PHPSMS();
+	}
 
 	/*订单微信发货接口*/
 	public function orderWxDeliver($num="")

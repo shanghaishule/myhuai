@@ -181,27 +181,38 @@ class baseAction extends Action
     	【微米网】您的验证码是：610912，3分钟内有效。如非您本人操作，可忽略本消息。
      * */
     public function PHPSMS(){
-    	
     	$act = $this->_request('act', 'trim', '');
     	$mob = $this->_request('mob', 'trim', '');
-    	$smscode = $this->_request('smscode', 'trim', '');
-    	
-    	if($mob != "" && $smscode != ""){
+    	if($mob != ""){
 	    	$ch = curl_init();
 	    	curl_setopt($ch, CURLOPT_URL, "http://api.weimi.cc/2/sms/send.html");
 	    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 	    	curl_setopt($ch, CURLOPT_POST, TRUE);
 	    	$uid = '1A0mXEFdgXNn';
 	    	$pas = '2bb3w3x4';
+	    	$tel = '4006555899';
 	    	if($act == 'register'){
+	    		$smscode = $this->_request('smscode', 'trim', '');
 	    		$cid = 'PPE1fo4CUJxJ';
+	    		$title = '沪爱健康';
 		    	//填写参数
-		    	curl_setopt($ch, CURLOPT_POSTFIELDS, 'uid='.$uid.'&pas='.$pas.'&mob='.$mob.'&cid='.$cid.'&p1=沪爱健康&p2='.$smscode.'&p3=4006555899&type=json');
-		    }
+		    	curl_setopt($ch, CURLOPT_POSTFIELDS, 'uid='.$uid.'&pas='.$pas.'&mob='.$mob.'&cid='.$cid
+		    	.'&p1='.$title.'&p2='.$smscode.'&p3='.$tel.'&type=json');
+	    	}elseif($act == 'order_guke' || $act == 'order_shangjia'){
+	    		$cid = 'EJUFuhI08MHZ';
+	    		$mobuser = $this->_request('mobuser', 'trim', '');
+	    		$mobitem = $this->_request('mobitem', 'trim', '');
+	    		$mobprice = $this->_request('mobprice', 'trim', '');
+	    		$mobaddrname = $this->_request('mobaddrname', 'trim', '');
+	    		$mobaddr = $this->_request('mobaddr', 'trim', '');
+	    		//填写参数
+	    		curl_setopt($ch, CURLOPT_POSTFIELDS, 'uid='.$uid.'&pas='.$pas.'&mob='.$mob.'&cid='.$cid
+	    		.'&p1='.$mobuser.'&p2='.$mobitem.'&p3='.$mobprice.'&p4='.$mobaddrname.'&p5='.$mobaddr
+	    		.'&p6='.$tel.'&type=json');
+	    	}
 	    	$res = curl_exec( $ch );
 	    	curl_close( $ch );
 	    	echo($res);
     	}
-    	//echo json_encode($_POST);
     }
 }
