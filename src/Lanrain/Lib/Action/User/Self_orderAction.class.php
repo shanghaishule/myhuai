@@ -65,6 +65,7 @@ class Self_orderAction extends UserAction{
     public function search(){
     	$arr = array();
     	$keywords = $this->_post('keywords','trim');
+    	$where = array();
     	$where['name'] = array('like','%'.$keywords.'%');
     	$resService = M('service')->where($where)->select();
     	if($resService == null || empty($resService)){
