@@ -368,9 +368,9 @@
 	<table style = "width:100%;border-collapse:collapse;" border="1">	
 		<volist name='comments_list' id='vo' mod='2'>
 		<eq name="mod" value="1">
-		<tr style="">
+		<tr style="color:#ccc">
 		<else />
-		<tr style="">
+		<tr style="color:#ccc">
 		</eq>
 		   <td style="text-align:center; border:0px;"><label><font size="1px">评价等级:
 				<switch name="vo.comments_type" >
@@ -379,12 +379,12 @@
 					<default />差  
 				</switch>
 			</font></label></td>
-			<td style="text-align:center; border:0px;"><label><font size="1px">{$vo.user_name}</font></label></td>
+			<td style="text-align:center; border:0px;"><label><font size="1px">{$vo.user_name|msubstr=0,4,'utf-8',true}</font></label></td>
 			<td style="padding:10px; border:0px;"><label><font size="1px">{$vo.create_time}</font></label></td>
 			
 		</tr>
 		<tr style="border-bottom:1px solid #f1f0f5" >
-			<td colspan="3" style="padding:10px"><label><font size="1px">评价内容：{$vo.user_comments}</font></label></td>
+			<td colspan="3" style="padding:5px 0  5px 0"><label><font size="1px">：{$vo.user_comments}</font></label></td>
 		</tr>
 		</div>
 		</volist>			
