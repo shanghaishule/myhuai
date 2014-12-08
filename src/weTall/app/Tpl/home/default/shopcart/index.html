@@ -66,13 +66,13 @@ $(function(){
                       <br>
                       <span>                      	 
                        	   <a href="javascript:minus();"> <img src="__STATIC__/weixin/images/subtract.gif" onClick="decrease_quantity({$vo.id});" alt="decrease" style="vertical-align: middle;width=:16px"></a> 
-                           <input id="input_item_{$vo.id}" value="{$vo.num}" orig="1" changed="{$vo.num}" onKeyUp="change_quantity({$vo.id}, this);" class="text1 width3" type="text" style="height:20px;">
+                           <input id="input_item_{$vo.id}" value="{$vo.num}" orig="1" changed="{$vo.num}" onBlur="change_quantity({$vo.id}, this);" class="text1 width3" type="text" style="height:20px;">
                            <a href="javascript:plus();"><img src="__STATIC__/weixin/images/adding.gif" onClick="add_quantity({$vo.id});" alt="increase" style="vertical-align: middle;width=:16px"></a>
                       </span><br>
                       
                   </span>
                   <span class="tit titadd">
-                      <span></span><span class="price1">¥{$vo.price}</span><br>
+                      <span></span><span class="price1">¥<b id="price_{$vo.id}">{$vo.price}</b></span><br>
                       <br>
                       <br>
                       <span>
@@ -83,7 +83,7 @@ $(function(){
               <p class="buy_info">
                   <span class="total">
                       <span>小计:</span>
-                      <span class="price2" id="item{$vo.id}_subtotal">¥<?php echo sprintf("%01.2f",$vo['num']*$vo['price']); ?></span>
+                      <span class="price2" id="item{$vo.id}_subtotal">¥<b id="sumP_{$vo.id}" class="sumP"><?php echo sprintf("%01.2f",$vo['num']*$vo['price']); ?></b></span>
                   </span>
               </p>
            </li>
@@ -95,7 +95,7 @@ $(function(){
     <div class="buy_foot">
         <p class="goods_amount">
             <span>合计:</span>
-            <strong class="fontsize1" id="cart_amount">¥{$sumPrice}</strong>
+            <strong class="fontsize1" id="cart_amount">¥<b id="countP">{$sumPrice}</b></strong>
         </p>
         <p class="jiesuan_btn">
             <a href="{:U('order/jiesuan',array('tokenTall'=>$tokenTall))}" class="btn"><span>去结算</span><img src="__STATIC__/weixin/images/jiesuan.png" width="50%"></a>
@@ -110,6 +110,7 @@ function drop_cart_item(id){
 	$.post(url, {'itemId' : id}, function(data){
 		//刷新当前页面，如果传参数true进去，则为强制刷新(shift+F5)
 		window.location.reload();  
+		//setPrice(id);
 	},"json");
 }
 
@@ -117,7 +118,7 @@ function decrease_quantity(id){
 	//alert(id);
 	var url = "{:U('shopcart/change_quantity')}";
 	
-	var qty = parseInt($("#input_item_{$vo.id}").val());
+	var qty = parseInt($("#input_item_"+id).val());
 	if(qty > 0){
 		
 		qty = qty - 1;
@@ -129,33 +130,46 @@ function decrease_quantity(id){
 		if(data.status == 0){
 			alert(data.msg);
 		}else{
-			window.location.reload();
+			//window.location.reload();
+			setPrice(id,qty);
 		}
 	},"json");
 }
 function add_quantity(id){
 	var url = "{:U('shopcart/change_quantity')}";
-	var qty = parseInt($("#input_item_{$vo.id}").val()) + 1;
+	var qty = parseInt($("#input_item_"+id).val()) + 1;
 	$.post(url, {'itemId':id, quantity:qty}, function(data){
 		if(data.status == 0){
 			alert(data.msg);
 		}else{
-			window.location.reload();
+			//window.location.reload();
+			setPrice(id,qty);
 		}
 	},"json");
 }
 function change_quantity(id,th){
 	var url = "{:U('shopcart/change_quantity')}";
-	var qty = parseInt($("#input_item_{$vo.id}").val());
+	var qty = parseInt($("#input_item_"+id).val());
 	$.post(url, {'itemId':id, quantity:qty}, function(data){
 		if(data.status == 0){
 			alert(data.msg);
 		}else{
-			window.location.reload();
+			//window.location.reload();
+			setPrice(id,qty);
 		}
 	},"json");
 }
 
+function setPrice(id,qty){
+	$("#input_item_"+id).val(qty);
+	var itemPrice = parseInt($("#price_"+id).text()) * qty;
+	$("#sumP_"+id).text(itemPrice.toFixed(2));
+   var sum = 0;
+	$(".sumP").each(function(){
+		  sum += parseInt($(this).text());
+	});
+	$("#countP").text(sum.toFixed(2));
+}
 </script>
 <div class="space"></div>
 <div class="space"></div>
