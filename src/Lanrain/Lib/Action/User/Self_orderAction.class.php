@@ -88,7 +88,7 @@ class Self_orderAction extends UserAction{
     		}
     	}
     	$res = array_merge($resService,$resArticle);
-    	dump($res);die;
+    	//dump($res);die;
     	$this->assign('allSerArt',$res);
     	$this->assign("keywords",$keywords);
     	$this->assign("countItem",count($res));
