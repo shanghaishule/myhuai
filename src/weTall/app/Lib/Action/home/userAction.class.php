@@ -251,11 +251,11 @@ class userAction extends userbaseAction {
       		$order_details = $order_detail->where("orderId='".$val['orderId']."'")->select();
 	      	foreach ($order_details as $val)
 	      	{
-	      		$items = array('title'=>$val['title'],'img'=>$val['img'],'price'=>$val['price'],'quantity'=>$val['quantity'],'itemId'=>$val['itemId'],'size'=>$val['size'],'color'=>$val['color']);
+	      		$items = array('title'=>$val['title'],'img'=>$val['img'],'price'=>$val['price'],'quantity'=>$val['quantity'],'itemId'=>$val['itemId'],'size'=>$val['size'],'color'=>$val['color'],'item_source'=>$val['item_source']);
 	      		$item_orders[$key]['items'][] = $items;
 	      	}
         }
-      
+       //dump($item_orders);die;
        $this->assign('item_orders',$item_orders);
        $this->assign('status',$status);
        $this->assign('tokenTall',$tokenTall);
