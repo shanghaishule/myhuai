@@ -115,10 +115,10 @@ function hide_error(){
                     <input id="border_none" class="text width_normal" name="consignee" placeholder="请填写您的真实姓名" type="text">
                     <label class="field_message"><span class="field_notice"></span></label>
                 </li>
-                <li>
-            		<select name="sheng" id="s1"></select>
-        			<select name="shi" id="s2"></select>
-         			<select name="qu" id="s3"></select>
+                <li style="width:100%">
+            		<select name="sheng" id="s1" style="width:33.3%;background:white"></select>
+					<select name="shi" id="s2" style="width:33.3%;background:white"></select>
+					<select name="qu" id="s3" style="width:33.3%;background:white"></select>
                   	<script language="javascript">
 						new PCAS("sheng","shi","qu","","","");
 					</script>
@@ -131,7 +131,8 @@ function hide_error(){
                 </li>
             </ul>
             <div class="submit" id="newadd_1">
-                <input style="margin-left: 10%;"class="btn enter" value="新增地址" type="submit">
+                <input style="margin-left: 10%;border-radius: 2px;width: 100%;display: block;border: none;text-align: center;height: 30px;line-height: 30px;
+ background-color: red; "class="btn enter" value="新增地址" type="submit">
             </div>
         </form>
     </div>

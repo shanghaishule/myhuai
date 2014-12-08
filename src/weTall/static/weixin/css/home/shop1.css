@@ -970,7 +970,7 @@ ul.user_menu li.active{border-right:1px solid #ccc;border-left:1px solid #ccc;bo
 #order_detail_list_1 li.order_detail_list_01{width:25%}
 #order_detail_list_1 li.order_detail_list_02{width:70%;margin-left:1%}
 #order_detail_list_1 li.order_detail_list_02 h1{color:#666;font-size:13px}
-#order_detail_list_1 li.order_detail_list_02 h2,h3{color:#ccc;font-size:13px}
+#order_detail_list_1 li.order_detail_list_02 h2,h3{color:#006835;font-size:13px}
 ul#order_detail_list_add {margin-left: 0%;padding:0;border:0}
 ul.order_detail_list{border:none;box-shadow:0 0 0;}
 .ware .transportation{border:none;box-shadow:0 0 0;padding:0}

@@ -133,7 +133,7 @@
 <div id="content">
     <!-- <h4 class="add_title"><a class="enter" href="javascript:void(0)">确认订单信息</a></h4> -->
     <div style=" background:#fff;  padding:10px 2px; overflow:hidden; margin-bottom:10px;">
-        <h3 style="margin-bottom:10px;">收货地址</h3>
+        <h3 style="margin-bottom:10px;">确认收货地址</h3>
        <form method="post"  action="{:U('order/pay',array('tokenTall'=>$tokenTall, 'showwxpaytitle'=>1))}" id="order_form" name="order_form" >
         <div>
           <input type="hidden" name="tabType" value="{$tabType}" />
@@ -197,13 +197,13 @@
                 
                 <p><input value="" name="consignee" id="consignee" class="text" type="text" placeholder="请填写您的真实姓名" ></p>
             </li>
-           <li>
+           <li style="height:45px">
                
                <p></p>
                <div id="region">
-               <select name="sheng" id="s1"></select>
-               <select name="shi" id="s2"></select>
-               <select name="qu" id="s3"></select>
+               <select name="sheng" id="s1" style="background:white"></select>
+               <select name="shi" id="s2" style="background:white"></select>
+               <select name="qu" id="s3" style="background:white"></select>
                </div>
                <script language="javascript">
 					new PCAS("sheng","shi","qu","","","");
