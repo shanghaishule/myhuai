@@ -4,23 +4,20 @@
 <include file="public:headtop" />
 <link type="text/css" rel="stylesheet" href="__STATIC__/weixin/css/home/shop1.css">
 <script type="text/javascript" src="__STATIC__/weixin/js/mlselection.js" charset="utf-8"></script>
-        
         <script type="text/javascript" src="__STATIC__/weixin/js/jquery_003.js" charset="utf-8"></script>
         <script type="text/javascript" src="__STATIC__/weixin/js/dialog.js" id="dialog_js" charset="utf-8"></script>
         <link href="__STATIC__/weixin/css/dialog.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="__STATIC__/weixin/js/jquery.js" id="dialog_js" charset="utf-8"></script>
+        <script type="text/javascript" src="__STATIC__/weixin/js/jquery_002.js" charset="utf-8"></script>
         <script type="text/javascript" language="javascript" src='__STATIC__/weixin/js/dizhi2.js'></script>
 		<script type="text/javascript" language="javascript" src='__STATIC__/weixin/js/diqu2.js'></script>
-		
-       
-
        <script type="text/javascript">
        $(function(){
        	$('#order_form').validate({
        		errorPlacement: function(error, element){
        			$(element).next("label").append(error);
        		},
-       		success       : function(label){
+       		success : function(label){
        			//label.addClass('validate_right').text('OK!');
        		},
        		onsubmit:true,// 是否在提交是验证
@@ -49,7 +46,6 @@
       
         <script>
         $(function(){
-
         	$('input[name=address_options]').change(function(){
         		if($(this).val()==0)
         		{
@@ -87,7 +83,6 @@
         		var address=  $.trim($('#address').val());
         		var phone_mob=  $.trim($('#phone_mob').val());
         		var sheng=  $.trim($('#s1').val());
-
         		if(consignee=='')
         		{
         			alert('请输入收货人姓名');
@@ -113,13 +108,13 @@
         			alert('请输入正确的手机号码');return false;
         		}
         	}
-        	$('#order_form').submit();
-
+        	//$('#order_form').submit();
+        	document.order_form.submit();
         }
         </script>
 </head>
 
-<body onload="setup()" >
+<body >
 <div class="index_head1">
 <div id="nav">
 	<ul class="navlist1">
@@ -139,9 +134,6 @@
     <!-- <h4 class="add_title"><a class="enter" href="javascript:void(0)">确认订单信息</a></h4> -->
     <div style=" background:#fff;  padding:10px 2px; overflow:hidden; margin-bottom:10px;">
         <h3 style="margin-bottom:10px;">收货地址</h3>
-        
-       
-         
        <form method="post"  action="{:U('order/pay',array('tokenTall'=>$tokenTall, 'showwxpaytitle'=>1))}" id="order_form" name="order_form" >
         <div>
           <input type="hidden" name="tabType" value="{$tabType}" />
@@ -159,8 +151,6 @@
 	            <input name="address_options" id="use_new_address" value="0"  type="radio">
 	            </li><li class="particular">使用新的收货地址</li>
 	        </ul>    
-
-
 <!-- 一开始不显示 -- begin -->
             <ul style="display: none;" class="fill_in_content" id="address_form">
             <li>
@@ -251,9 +241,10 @@
                  
         <li id="cart_item_{$vo.id}">
               <p class="goods_info">
-                  <span class="img"><a href="{:U('Item/index',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}" ><img src="{:$vo['img']}" height="100" width="100"></a></span>
+                   <input type="hidden" value="{$vo.id}" name="serId"/>
+                  <span class="img"><a <if condition="$tabType eq 0">href="{:U('Item/index',array('itemid'=>$vo['id'],'tokenTall'=>$tokenTall))}"<else />href="{:U('Item/index_book',array('itemid'=>$vo['id'],'tokenTall'=>$tokenTall))}"</if> ><img src="{:$vo['img']}" height="100" width="100"></a></span>
                   <span class="tit">
-                      <a href="{:U('Item/index',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}" >{$vo.name}</a><br>
+                      <a <if condition="$tabType eq 0">href="{:U('Item/index',array('itemid'=>$vo['id'],'tokenTall'=>$tokenTall))}"<else />href="{:U('Item/index_book',array('itemid'=>$vo['id'],'tokenTall'=>$tokenTall))}"</if> >{$vo.name}</a><br>
                      
                       <span>尺寸:{$vo.size}<span>&nbsp;颜色:{$vo.color}</span></span>
                       
@@ -281,7 +272,7 @@
               <p class="buy_info">
                   <span class="total">
                       <span>小计:</span>
-                      <span class="price2" id="item{$vo.id}_subtotal">¥<?php echo sprintf("%01.2f",$vo['num']*$vo['price']); ?></span>
+                      <span class="price2" id="item{$vo.id}_subtotal">¥<b class="sumP"><?php echo sprintf("%01.2f",$vo['num']*$vo['price']); ?></b></span>
                   </span>
               </p>
            </li>
@@ -303,18 +294,11 @@
 			<span style="font-size:13px; color:#3e4245;">给卖家的附言：</span>
             <textarea id="mymsg_{$vo_group.tokenTall}" name="mymsg_{$vo_group.tokenTall}" style="font-size:13px; color: lightgrey; width:97%;" placeholder="选填，可以告诉卖家您对商品的特殊需求，如个人喜好等"></textarea>
         </div>
-        <div style="font-size:13px; text-align:right;">
-   			 <span>店铺合计(含运费)：¥</span>
-   			 <span id="heji_{$vo_group.tokenTall}" style="color: red;"></span>
-        </div>
         </div>
     </volist>
     </ul>
     </div>
     </form>
-    
-    
-    
     <div class="buy_foot" id="by_id">
         <p class="goods_amount" id="gds_id">
             <span>总价：</span>
@@ -322,13 +306,10 @@
         </p>
         <p class="jiesuan_btn">
             <a onclick="ordertj();" class="btn">提交订单</a>
-            
         </p>
         <p class="jiesuan_btn">
            <a href="{:U('shopcart/index')}" class="btn" id="backcart">返回购物车</a>
-            
         </p>
-        
     </div>
     
    <!--   <div class="make_sure">
@@ -354,43 +335,9 @@
     function set_free()
     {
 		var ordersum = 0;
-		$("select[id^='free_'] option:selected").each(function(){
-			//alert($(this).parent().attr("id"));
-			var tokenTall = $(this).parent().attr("id").substr(5);
-			//alert(tokenTall);
-
-			//alert($(this).val());  //alert($(this).text());
-			//获得选中的项目的val，即运费。
-			var free_style = $(this).val();
-			var free_fee = '0';
-			if(free_style != '0'){
-				free_fee = $(this).attr("val");
-			}
-			$("#freefee_"+tokenTall).val(free_fee);
-			
-			
-			var xiaoji_sum = 0;
-			$("span[id^='xiaoji_"+tokenTall+"_']").each(function(){
-				var itemid = $(this).attr("id").substr(7);
-				//alert(itemid);
-				//计算每个商品的小计金额
-				var gd_sum = parseFloat($('#gdprice_'+itemid).text()) * parseFloat($('#gdnum_'+itemid).text());
-				//alert(gd_sum);
-				//小计赋值
-				$(this).text(gd_sum.toFixed(2));
-				
-				xiaoji_sum = parseFloat(xiaoji_sum) + parseFloat(gd_sum);
-			});
-			
-			//店铺合计
-			var shopsum = 0;
-			shopsum = parseFloat(free_fee) + parseFloat(xiaoji_sum);
-			$('#heji_'+tokenTall).html(shopsum.toFixed(2));
-			
-			//订单累计
-			ordersum = parseFloat(ordersum) + parseFloat(shopsum);
-			
-		});
+        $(".sumP").each(function(){
+        	ordersum+= parseInt($(this).text());
+        });
 		//订单总价赋值
 		$('#order_amount2').html(ordersum.toFixed(2));
     }

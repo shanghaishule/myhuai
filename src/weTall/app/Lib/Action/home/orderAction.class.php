@@ -223,6 +223,7 @@ class orderAction extends userbaseAction {
 			$this->redirect($_SERVER['HTTP_REFERER']);
 		}
 		//dump($arr);die;
+		$this->assign('sumPrice',$item['price']);
 		$this->assign('address_list', $address_list);
 		$this->assign('allinfo',$arr);
 		$this->assign("tabType",'1');
@@ -237,7 +238,7 @@ class orderAction extends userbaseAction {
 
 		//header("content-Type: text/html; charset=Utf-8");
 	
-		if(IS_POST && count($_SESSION['cart'])>0)//
+		if(IS_POST )//
 		{
 			import('Think.ORG.Cart');// 导入购物车类
 			$cart=new Cart();
@@ -284,10 +285,29 @@ class orderAction extends userbaseAction {
 				$addr['address']=$address['sheng'].$address['shi'].$address['qu'].$address['address'];//地址
 			}
 			//收货地址end
-	
+			$reserveDate = $this->_post('reserveDate');//预约时间
+			
+	      if( count($_SESSION['cart'])>0  && $reserveDate==''){
 			//把购物车的商品按商家分组
-			$result = $this->cart_by_group();
-				
+			 $result = $this->cart_by_group();
+	       }else{
+	       	 $result = array();
+	       	 //查找店铺信息
+	       	   $shopInfo = M("wecha_shop")->field("tokenTall,name,credit,headurl,HaveReal")->where(array("tokenTall"=>$tokenTall))->find();
+	       	    $serItem = M("service")->field("id,name,price,img")->where(array("id"=>$this->_post("serId")))->find();
+	       	    if(is_array($serItem)){
+	       	    	$serItem['num'] = 1;
+	       	    	$serItem['size'] = '0';
+	       	    	$serItem['color'] = '无';	       	    	
+	       	    	$serItem['tokenTall'] = $tokenTall;	       	    	
+	       	    	$serItem['free'] = '1';	       	    	
+	       	    	$serItem['pingyou'] = '0.00';	       	    	
+	       	    	$serItem['kuaidi'] = '0.00';	       	    	
+	       	    	$serItem['ems'] = '0.00';	       	    	
+	       	    }
+	       	    $shopInfo['item'][] =$serItem;
+	       	   $result[$tokenTall]= $shopInfo;
+	       }	
 			//header("content-Type: text/html; charset=Utf-8");
 			//dump($result);exit;
 	
@@ -332,7 +352,6 @@ class orderAction extends userbaseAction {
 				$data['freetype'] = $freetype;//配送方式
 				$data['freeprice'] = $free_sum;//配送金额
 				$data['tokenTall']=$key;
-				$reserveDate = $this->_post('reserveDate');//预约时间
 				//dump($reserveDate);die;
 				if($reserveDate !=''){
 					$data['reserveDate'] = $reserveDate;
@@ -346,8 +365,9 @@ class orderAction extends userbaseAction {
 					$orders['orderId']=$dingdanhao;
 					foreach ($value['item'] as $item)
 					{
-						$item_goods->where('id='.$item['id'])->setDec('goods_stock',$item['num']);
-	
+						if(count($_SESSION['cart'])>0  && $reserveDate==''){
+							$item_goods->where('id='.$item['id'])->setDec('goods_stock',$item['num']);
+						}
 						$orders['itemId']=$item['id'];//商品ID
 						$orders['title']=$item['name'];//商品名称
 						$orders['img']=$item['img'];//商品图片

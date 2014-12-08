@@ -1,7 +1,6 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
 class shopcartAction extends frontendAction {
-	
 	public function _initialize() {
         parent::_initialize();
         import('Think.ORG.Cart');// 导入购物车类
