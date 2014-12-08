@@ -68,8 +68,6 @@ class Self_orderAction extends UserAction{
     	$where = array();
     	$where['name'] = array('like','%'.$keywords.'%');
     	$resService = M('service')->where($where)->select();
-    	dump(M('service')->getLastSql());
-    	dump($resService);die;
     	if($resService == null || empty($resService)){
     		$resService = $arr;
     	}else{
