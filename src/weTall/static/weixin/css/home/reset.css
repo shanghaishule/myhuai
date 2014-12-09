@@ -55,6 +55,8 @@ input, button, select, textarea {
 /*	-webkit-appearance: none;*/
 	border-radius: 0;
 }
+#click_yanzheng,#newadd_1, input{-webkit-appearance: none;}
+.btn input{-webkit-appearance: none;}
 li {
 	list-style: none;
 }
