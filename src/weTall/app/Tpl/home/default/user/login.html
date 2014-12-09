@@ -14,7 +14,21 @@
 
 <body>
 
+<div class="index_head1">
+<div id="nav">
+	<ul class="navlist1">
+		<li id="a_0">
+		   <a href="javascript:history.go(-1)"><div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div></a>
+         </li>
+        <li  id="a_1">
+    						<div style="">
 
+										<p>登录注册</p>
+				              </div>
+        </li>
+    </ul>
+ </div>
+</div>
 <script type="text/javascript">
 $(function(){	
     $('#login_form').validate({
@@ -83,7 +97,7 @@ $(function(){
             <label></label>
             <label id="login_text"></label>
             <ul>
-        <li id="click_yanzheng"><input style="background: #006835;-webkit-appearance: none;"name="Submit" value="登陆" class="enter" type="submit" id="login_btn_id"></li>
+        <li id="click_yanzheng"><input style="background: #006835;-webkit-appearance: none;"name="Submit" value="立即登陆" class="enter" type="submit" id="login_btn_id"></li>
         <li id="intime_reg"><a href="{:U('user/register', array('tokenTall'=>$tokenTall))}" title="立即注册">
         <input name="Submit" style="background:red;;border:none" value="立即注册" class="login_btn"id="login_btn_id1" title="立即注册" ></a></li>
         </ul>

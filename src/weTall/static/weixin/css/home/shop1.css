@@ -1140,6 +1140,8 @@ z-index: 890;
 .buy-color{margin-left:20px;}
 .handle button_aaa{margin:center;}
 
+/*top固定*/
+.index_head1{position:fixed;left:0;bottom:0}
 /**下拉刷新**/
 #wrapper {
 	position:absolute;
