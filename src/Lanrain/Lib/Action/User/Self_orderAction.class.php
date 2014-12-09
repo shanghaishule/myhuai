@@ -35,7 +35,7 @@ class Self_orderAction extends UserAction{
 			    }
 	        }
 		}
-		//dump($res);die;
+		dump($res);die;
 		echo json_encode($res);
 	}
 	
