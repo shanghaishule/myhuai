@@ -5,7 +5,6 @@ class Self_orderAction extends UserAction{
 		parent::_initialize();
 		$this->_mod = M('category');
 	}
-	
 	public function index(){
 		$where["parentid"]= 0;
 		$res = $this->_mod->where($where)->order("level ASC")->select();
@@ -35,7 +34,7 @@ class Self_orderAction extends UserAction{
 			    }
 	        }
 		}
-		//dump($res);die;
+		dump($res);die;
 		echo json_encode($res);
 	}
 	
