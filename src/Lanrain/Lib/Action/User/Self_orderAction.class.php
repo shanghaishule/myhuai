@@ -178,5 +178,6 @@ class Self_orderAction extends UserAction{
     	$area = $Ip->getlocation('112.124.112.21'); // 获取某个IP地址所在的位置
     	dump($area);
     }
+    
 }
 ?>
