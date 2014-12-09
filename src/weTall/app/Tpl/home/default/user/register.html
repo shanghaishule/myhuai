@@ -99,7 +99,9 @@ var codeLength = 6;//验证码长度
 function sendMessage() {  
     curCount = count;  
     var phone=$("#user_name").val();//手机号码  
-    if(phone != ""){  
+    //有没有错误
+    var error = $(".error").text();
+    if(phone != "" && error == '' || error == null){  
         //产生验证码  
         for (var i = 0; i < codeLength; i++) {  
             code += parseInt(Math.random() * 9).toString();  
@@ -128,7 +130,7 @@ function sendMessage() {
         });          
         
     }else{  
-        alert("手机号码不能为空！");  
+        //alert("手机号码不能为空！");  
     }  
 }  
 //timer处理函数  
