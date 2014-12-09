@@ -72,10 +72,10 @@ $(function(){
     			//function a(){location.href=decodeURIComponent("%2Findex.php%3Fapp%3Dmemberbuy%26store_id%3D9");}
     			function a(){
     				//location.href=data.url;
+    				 history.back();
     				//window.history.go(-1);
     			    //window.location.reload();
     			    //alert(data.url);
-    			    location.href="<?php echo $_SERVER['HTTP_REFERER'];?>";
     			}
     			setTimeout(a,1000);
     		} else {
