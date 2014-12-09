@@ -34,7 +34,7 @@ class Self_orderAction extends UserAction{
 			    }
 	        }
 		}
-		dump($res);die;
+		//dump($res);die;
 		echo json_encode($res);
 	}
 	
@@ -47,6 +47,7 @@ class Self_orderAction extends UserAction{
 		}else{
 			foreach ($resService as $key => $val){
 				$resService[$key]['source'] = 'service';//给每个item加标识，区分商品，服务，资讯
+				$resService[$key]['e'] = array();
 			}
 		}
 		$resArticle = M('article_new')->where(array("cate_id"=>$cate_id))->select();
@@ -55,6 +56,7 @@ class Self_orderAction extends UserAction{
 		}else{
 			foreach ($resArticle as $key => $val){
 				$resArticle[$key]['source'] = 'article_new';
+				$resArticle[$key]['e']=array();
 			}
 		}
 		return array_merge($resService,$resArticle);
