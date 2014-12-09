@@ -7,8 +7,10 @@ class Member_userAction extends UserAction{
 	}
 	
 	public function index(){
+		$tokenTall = $this->getTokenTall();
 		$lists = $this->_mod->field("id,username,phone,registerTime")->where("status = 1")->select();
 		$this->assign("list",$this->getMemberInfo($lists));
+		$this->assign("tokenTall",$tokenTall);
 		$this->display();
 	}
 	
@@ -98,7 +100,7 @@ class Member_userAction extends UserAction{
 			$this->display();
 		}
 	}
-	
+/*	
 	//消费记录
 	public function buyHistory(){
 		$id = $this->_get('id','intval');
@@ -110,6 +112,7 @@ class Member_userAction extends UserAction{
 		}
 		$this->display();
 	}
+	*/
 	
 	//导出会员信息
 	public function exportMember(){
