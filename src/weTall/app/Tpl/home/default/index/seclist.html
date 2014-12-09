@@ -24,13 +24,7 @@
 <div class="body" >
 <!--<img src="__STATIC__/weixin/images/home/index3.png" style="width:100%;position:fixed;left:0;top:0">-->
 <!--头部-->
-
 <include file="public:head_1" />
-
-
-
-
-
        <!--         
     幻灯片管理
     -->
@@ -79,8 +73,7 @@
 				<ul class="ofh ul_list">
 					<volist name="res" id="con" mod="2" empty="没有数据">
 					<li>
-						<a id="<eq name='mod' value='0'>ofh1<else />ofh2</eq>"
-							href="{$con.link}">
+						<a id="<eq name='mod' value='0'>ofh1<else />ofh2</eq>" <if condition="$con.outlinkurl eq ''">href="{$con.link}"<else />href="{$con.outlinkurl}"</if>>
 								<div class="content1"
 									style="background: url({$con.picurl}) no-repeat right; background-size: 50px 50px;">{$con.catname}</div>
 						</a>

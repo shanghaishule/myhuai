@@ -91,8 +91,7 @@
 			<nav>
 				<ul class="nav_links box">
 					<volist name="serArr" id="serArr" mod="2">
-					<li><a
-						href="{:U('index/seclist',array('catid'=>$serArr['id']))}"> <span
+					<li><a <if condition="$serArr['outlinkurl'] eq ''">href="{:U('index/seclist',array('catid'=>$serArr['id']))}"<else />href="{$serArr['outlinkurl']}"</if>> <span
 							class="top4"
 							style="background-image: url({$serArr.picurl}); background-size: 100% 100%;"></span>
 							<b>{$serArr.catname}</b>
@@ -109,8 +108,7 @@
 				<ul class="ofh ul_list">
 					<?php $index=48;?>
 					<volist name="tuijian['parrTag']" id="con" mod="2">
-					<li><a id="<eq name='mod' value='0'>ofh1<else />ofh2</eq>"
-						href="{$con.link}">
+					<li><a id="<eq name='mod' value='0'>ofh1<else />ofh2</eq>" <if condition="$con.link eq ''">href="{$con.outlinkurl}"<else />href="{$con.outlinkurl}"</if>>
 							<div class="content1"
 								style="background: url({$con.picurl}) no-repeat right; background-size: 50px 50px;">{$con.catname}</div>
 					</a></li>
@@ -318,9 +316,7 @@
 				url : window.shareData.sendFriendLink,
 				to : to
 			};
-			$
-					.post(
-							'/index.php?g=Wap&m=Share&a=shareData&token=ipwhoy1414718223&wecha_id=ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+			$.post('/index.php?g=Wap&m=Share&a=shareData&token=ipwhoy1414718223&wecha_id=ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
 							submitData, function(data) {
 							}, 'json')
 		}

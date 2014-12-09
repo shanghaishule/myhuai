@@ -455,6 +455,7 @@ class indexAction extends frontendAction {
    	   }
    	   //dump($tuijianArticle);die;
    	   $this->assign("flash",$flash);
+   	   //dump($arr);die;
    	   $this->assign("serArr",$serArr);
    	   $this->assign("tuijian",$arr);
    	   $this->assign("tuijianItem",$tuijianItem);
