@@ -116,7 +116,13 @@ class Self_orderAction extends UserAction{
     		$data['add_time'] = time();
     		$dataD['orderId'] = $dingdanhao;
     		$dataD['itemId'] = $this->_post('Item_id');
-    		$dataD['item_source'] = $this->_post('ItemSource');
+    		$itemTab = $this->_post('ItemSource');
+    		if($itemTab == 'service'){
+    			$dataD['item_source'] = 1;
+    		}
+    		if($itemTab == 'article_new'){
+    			$dataD['item_source'] = 2;
+    		}
     		$dataD['title'] = $this->_post('Item_name');
     		$dataD['img'] = $this->_post('Item_img');
     		$dataD['price'] = $this->_post('Item_price');
