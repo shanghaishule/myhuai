@@ -109,7 +109,7 @@ function sendMessage() {
         
         //设置button效果，开始计时  
         $("#login_btn_id").attr("disabled", "true");  
-        $("#login_btn_id").val("请在" + curCount + "秒内输入验证码");  
+        $("#login_btn_id").val("请" + curCount + "秒内输入");  
         InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次  
         //向后台发送处理数据  
         $.ajax({  
@@ -158,13 +158,13 @@ function SetRemainTime() {
         <div id="border_p" style="border-bottom:1px solid #ccc;display:block;height:45px">
         <span style="float:left;padding-top: 16px">验证码</span>
         <input id="yanzheng" name="checkCode" placeholder="六位验证码" class="text width10" type="text" >
-        <input value="获取验证码" style="background:#006835;border:none;width:39%;float:left;margin-top:9px;margin-left:%;overflow:hidden"  class="login_btn" id="login_btn_id" type="button" onclick="sendMessage()">
+        <input value="获取验证码" style="-webkit-appearance: none;background:#006835;border:none;width:39%;float:left;margin-top:9px;margin-left:%;overflow:hidden"  class="login_btn" id="login_btn_id" type="button" onclick="sendMessage()">
         </div>
         
 
         <ul style="clear:both">
        <!--   <li id="click_yanzheng"><input value="获取验证码" style="background:#006835;border:none"  class="login_btn" id="login_btn_id" type="button" onclick="sendMessage()"></li>-->
-        <li id="intime_reg"><input name="Submit" style="background:red;;border:none" value="立即注册" class="login_btn"id="login_btn_id1" title="立即注册" type="submit"></li>
+        <li id="intime_reg"><input name="Submit" style="background:red;-webkit-appearance: none;border:none" value="立即注册" class="login_btn"id="login_btn_id1" title="立即注册" type="submit"></li>
  </ul>
        <!--   <ul>
         <li id="click_yanzheng"><input value="获取验证码" style="background:#006835;border:none"  class="login_btn" id="login_btn_id" type="button" onclick="sendMessage()"></li>
