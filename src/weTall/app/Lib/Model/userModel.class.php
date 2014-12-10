@@ -13,7 +13,7 @@ class userModel extends Model
 
     protected $_auto = array(
         array('password','md5',1,'function'), //密码加密
-        array('reg_time','time',1,'function'), //注册时间
+        array('registerTime','time',1,'function'), //注册时间
         array('reg_ip','get_client_ip',1,'function'), //注册IP
     );
 

@@ -22,7 +22,7 @@ function btnDespose(type){
 <th>收货人&电话</th>
 <th>支付&配送</th>
 <th>下单&付款时间</th>
-<th style=" width:100px;" class="norightborder">操作</th>
+<th>消费金额</th>
 </tr>
 </thead>
 <volist name="list" id="val">
@@ -34,12 +34,6 @@ function btnDespose(type){
 <td align="center"><b><if condition="$val.freetype eq 0">卖家包邮<elseif condition="$val.freetype eq 1"/>平邮<elseif condition="$val.freetype eq 2"/>快递<elseif condition="$val.freetype eq 3"/>ems<else /></if></b></td>
 <td align="center"><if condition="$val.add_time neq ''">{lanrain:$val.add_time|date='Y-m-d H:i:s',###}</if></td>
 <td align="center">{lanrain:$val.sumPrice}</td>
-<td align="center" >
-	<a href="{lanrain::U('Member_user/edit',array('id'=>$val['id']))}">编辑</a>
-	<a href="javascript:drop_confirm('你确定要删除吗？', '{lanrain::U('Member_user/del',array('id'=>$val['id']))}');">删除</a>
-	<a class="red" href="{lanrain::U('Member_user/resetPassword',array('id'=>$val['id']))}">重置密码</a>
-	<if condition="$val.address neq ''"><a class="red" href="{lanrain::U('Member_user/buyHistory',array('id'=>$val['id']))}">消费记录</a></if>
-</td>
 </tr>
 </volist>
 </table>

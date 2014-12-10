@@ -58,10 +58,14 @@ class Wetall_orderAction extends UserAction{
 		}else{
 			//兼容URL传参
 			$get_status = $this->_get('status');
+			$get_uid = $this->_get('uid');
 			if ($get_status == "") {
 				$map['status'] = array('neq', 0);
 			}else{
 				$map['status'] = $get_status;
+			}
+			if($get_uid != ''){
+				$map['userId'] =$get_uid ;
 			}
 			$search['status'] = $get_status;
 			

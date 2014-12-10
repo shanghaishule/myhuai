@@ -108,7 +108,7 @@
 				<ul class="ofh ul_list">
 					<?php $index=48;?>
 					<volist name="tuijian['parrTag']" id="con" mod="2">
-					<li><a id="<eq name='mod' value='0'>ofh1<else />ofh2</eq>" <if condition="$con.link eq ''">href="{$con.outlinkurl}"<else />href="{$con.outlinkurl}"</if>>
+					<li><a id="<eq name='mod' value='0'>ofh1<else />ofh2</eq>" <if condition="$con.outlinkurl eq ''">href="{$con.link}"<else />href="{$con.outlinkurl}"</if>>
 							<div class="content1"
 								style="background: url({$con.picurl}) no-repeat right; background-size: 50px 50px;">{$con.catname}</div>
 					</a></li>
