@@ -62,12 +62,9 @@ class itemAction extends frontendAction {
         $condi['cate_id'] = $item['cate_id'];
         $condi['id'] = array('neq',$id);
         $recommendRes = $item_mod->field("id,img,title,price,zb_price")->where($condi)->limit(6)->select();
-        
         $this->assign("recommendRes",$recommendRes);
-        
         $this->assign('countSize', $countSize);
         $this->assign('countColor', $countColor);
-
         $this->assign('item', $item);
         $this->assign('img_list', $img_list);
         $this->assign('tokenTall', $tokenTall);
@@ -98,7 +95,6 @@ class itemAction extends frontendAction {
     	$recommendRes = $mod->field("id,img,name,price,zb_price")->where($condi)->limit(4)->select();
     	
     	$this->assign("recommendRes",$recommendRes);
-    	
     	$this->assign('item', $item);
     	$this->assign('img_list', $img_list);    	
 
@@ -178,6 +174,7 @@ class itemAction extends frontendAction {
                 $data['status'] = 0;
                 break;
         }
+        
         $data['info'] = $check_result['content'];
         $data['uid'] = $this->visitor->info['id'];
         $data['uname'] = $this->visitor->info['username'];
@@ -350,7 +347,6 @@ class itemAction extends frontendAction {
     	$this->display();
     }
 
-    /*end*/
     /**
      * 删除商品
      */
