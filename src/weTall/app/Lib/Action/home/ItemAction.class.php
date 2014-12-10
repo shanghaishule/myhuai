@@ -328,6 +328,7 @@ class itemAction extends frontendAction {
             $this->ajaxReturn(1, L('unlike_failed'));
         }
     }
+    
     /*显示页面*/
     public function house_book(){
     	$this->display();
@@ -374,5 +375,5 @@ class itemAction extends frontendAction {
             }
         }
     }
-
+  
 }
