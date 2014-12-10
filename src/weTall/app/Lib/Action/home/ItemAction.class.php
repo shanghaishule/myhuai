@@ -87,11 +87,9 @@ class itemAction extends frontendAction {
     	$id = $this->_get("itemid","trim,intval");
     	!$id && $this->_404();
     	$tokenTall = $this->getTokenTall();
-    	
     	$mod = M("service");
     	$item = $mod->field("id,cate_id,name,price,zb_price,img,status,info")->where("id = %d",$id)->find();
     	!$item && $this->_404();
-
     	$img_list = M('item_service_img')->field('url')->where(array('item_id' => $id))->order('id ASC')->select();
     	
     	//相关产品
@@ -114,10 +112,7 @@ class itemAction extends frontendAction {
     	$tokenTall = $this->getTokenTall();    	
     	$res = M("article_new")->field("id,name,img,info,cate_id")->where(array("id"=>$id))->find();
     	!$res && $this->_404();
-    	
     	$img_list = M('item_article_img')->field('url')->where(array('item_id' => $id))->order('id ASC')->select();
-    	 
-    	
     	//相关产品
     	$condi['cate_id'] = $res['cate_id'];
     	$condi['id'] = array('neq',$id);
@@ -329,12 +324,29 @@ class itemAction extends frontendAction {
         }
     }
     
-    /*显示页面*/
+    /*显示页面,房屋租赁*/
     public function house_book(){
+    	$id = $this->_get("itemid","trim,intval");
+    	!$id && $this->_404();
+    	$tokenTall = $this->getTokenTall();
+    	$res = M("house")->where(array("id"=>$id))->find();
+    	!$res && $this->_404();    	
+    	$img_list = M('house_img')->field('url')->where(array('item_id' => $id))->order('id ASC')->select();
+    	$this->assign('item', $res);
+    	$this->assign('img_list', $img_list);
     	$this->display();
     }
     
+    //护工服务
     public function hugong_book(){
+    	$id = $this->_get("itemid","trim,intval");
+    	!$id && $this->_404();
+    	$tokenTall = $this->getTokenTall();
+    	$res = M("hugong")->where(array("id"=>$id))->find();
+    	!$res && $this->_404();    	
+    	$img_list = M('hugong_img')->field('url')->where(array('item_id' => $id))->order('id ASC')->select();
+    	$this->assign('item', $res);
+    	$this->assign('img_list', $img_list);
     	$this->display();
     }
 

@@ -1,0 +1,88 @@
+<include file="Public:head"/>
+<script>
+function btnDespose(type){
+	this.form2.action = "/index.php?g=User&m=Hugong&a="+type;
+	this.form2.submit();
+}
+</script>
+<div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
+<div class="cLineC" style="line-height: 32px;">
+	<a href="{lanrain::U('Hugong/edit')}" class="btnGrayS vm bigbtn fl" >添加护工信息</a>
+</div>	
+<div class="msgWrap form">
+<div class="bdrcontent">
+<div id="div_ptype">
+<form name="form2" id="form2" action="" method="post">
+<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+<thead>
+<tr>
+<th style="width:21px"><input type="checkbox" name="selAll" id="selAll" />全选</th>
+<th>标题</th>
+<th>图片</th>
+<th>薪资</th>
+<th>工作年限</th>
+<th>性别</th>
+<th>年龄</th>
+<th>籍贯</th>
+<th>学历</th>
+<th>添加时间</th>
+<th>更新时间</th>
+<th style=" width:100px;" class="norightborder">操作</th>
+</tr>
+</thead>
+<volist name="list" id="val">
+<tr>
+<td align="center"><input type="checkbox" name="sel[]" id="sel_list_{lanrain:$val.id}" value="{lanrain:$val.id}"/></td>
+<td align="center">{lanrain:$val.title}</td>
+<td align="center"><div class="cateimg"><img src="{lanrain:$val.pic}" class="cateimg_small" /><img src="{lanrain:$val.pic}" class="cateimg_big"  /></div></td>
+<td align="center">{lanrain:$val.compensation}元/月</td>
+<td align="center"><b>{lanrain:$val.experience}</b></td>
+<td align="center"><if condition="$val['sex'] eq 0">男<else />女</if></td> 
+<td align="center"><b>{lanrain:$val.age}</b></td>
+<td align="center"><b>{lanrain:$val.city}</b></td>
+<td align="center"><b>{lanrain:$val.education}</b></td>
+<td align="center">{lanrain:$val.addTime|date='Y-m-d H:i:s',###}</td>
+<td align="center">{lanrain:$val.updateTime|date='Y-m-d H:i:s',###}</td>
+<td align="center" >
+	<a href="{lanrain::U('Hugong/edit',array('id'=>$val['id']))}">编辑</a>
+	<a href="javascript:drop_confirm('你确定要删除吗？', '{lanrain::U('Hugong/del',array('id'=>$val['id']))}');">删除</a>
+	<a href="{lanrain::U('Hugong/updateT',array('id'=>$val['id']))}"><b class="red">更新</b></a>
+</td>
+</tr>
+</volist>
+</table>
+</form>
+</div>
+</div>
+<div class="footactions" style="padding-left:10px">
+   <table>
+   		<thead>
+   			<tr>
+   				<th>
+   				  <a class="btnGrayS vm smallbtn" href="javascript:btnDespose('delAll')">所选删除</a>
+   				  <a class="btnGrayS vm smallbtn" href="javascript:btnDespose('updateAll')">所选更新</a>
+   				</th>
+   			</tr>
+   		</thead>
+   </table>
+</div>
+<div class="footactions" style="padding-left:10px">
+	<div class="pages">{lanrain:$page}</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$("#selAll").click(function(){
+	   $("input[name='sel[]']").each(function(){
+		   if (this.checked) {
+               this.checked = false;
+           }
+           else {
+               this.checked = true;
+           }
+	   });
+	});
+});
+</script>
+<include file="Public:footer"/>
