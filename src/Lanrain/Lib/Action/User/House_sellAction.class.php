@@ -29,7 +29,7 @@ class House_sellAction extends UserAction{
 			}
 			
 			//必须上传图片
-			if (empty($_POST['pic'])){
+			if (empty($_POST['img'])){
 				$this->error('请上传商品主图。');
 			}
 			if (! empty($_POST['img1'])) {
