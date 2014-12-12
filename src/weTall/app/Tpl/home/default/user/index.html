@@ -44,15 +44,17 @@ border:1px solid #CCC;
        <div class="logout"><a href="{:U('user/logout')}">注销</a> <!-- | <a href="{:U('user/favi')}">我的收藏</a> --></div>
        <div class="my_address"><a href="{:U('user/address', array('tokenTall'=>$tokenTall))}">收货地址管理</a></div>
    <ul class="buyer_stat">
-          <li class="btn_1  "><a href="{:U('user/index',array('status'=>1,'tokenTall'=>$tokenTall))}">
-          <p>1</p><p>待付款</p></a>
-          <span><p>1</p><p>待付款</p></span></li>        
-          <li class="btn_2  "><a href="{:U('user/index',array('status'=>2,'tokenTall'=>$tokenTall))}">
-           <p>1</p><p>待发货</p></a><span> <p>1</p><p>待发货</p></span></li>
-          <li class="btn_3 "><a href="{:U('user/index',array('status'=>3,'tokenTall'=>$tokenTall))}">
-           <p>1</p><p>待收货</p></a><span> <p>1</p><p>待收货</p></span></li>
-          <li class="btn_4 "><a href="{:U('user/index',array('status'=>4,'tokenTall'=>$tokenTall))}">
-           <p>1</p><p>已完成</p></a><span> <p>1</p><p>已完成</p></span></li>
+
+          <li class="btn_1 <if condition='$status eq 1'>active</if> "><a href="{:U('user/index',array('status'=>1,'tokenTall'=>$tokenTall))}">
+          <p>{$daiPay}</p><p>待付款</p></a>
+          <span><p>{$daiPay}</p><p>待付款</p></span></li>        
+          <li class="btn_2 <if condition='$status eq 2'>active</if> "><a href="{:U('user/index',array('status'=>2,'tokenTall'=>$tokenTall))}">
+           <p>{$daiSend}</p><p>待发货</p></a><span> <p>{$daiSend}</p><p>待发货</p></span></li>
+          <li class="btn_3 <if condition='$status eq 3'>active</if>"><a href="{:U('user/index',array('status'=>3,'tokenTall'=>$tokenTall))}">
+           <p>{$daiRes}</p><p>待收货</p></a><span> <p>{$daiRes}</p><p>待收货</p></span></li>
+          <li class="btn_4 <if condition='$status eq 4'>active</if>"><a href="{:U('user/index',array('status'=>4,'tokenTall'=>$tokenTall))}">
+           <p>{$daiFinish}</p><p>已完成</p></a><span> <p>{$daiFinish}</p><p>已完成</p></span></li>
+
     </ul>
     </div>
     
@@ -65,6 +67,7 @@ border:1px solid #CCC;
 	                }
 	            });
 	    });
+	    
 	//xxl start    	    
 	function addcomments(){	
 	        alert(1);
@@ -86,11 +89,11 @@ border:1px solid #CCC;
                     		<div style="float:left;display:imline;margin-top:5px;width:100%;">
                     			<ul>
                     				<li> <p class="ware_text"><a <if condition="$item['item_source'] eq 0">href="{:U('Item/index',array('itemid'=>$item['itemId'],'tokenTall'=>$tokenTall))}"<elseif condition="$item['item_source'] eq 2"/>href="{:U('Item/index_phone',array('itemid'=>$item['itemId'],'tokenTall'=>$tokenTall))}"<elseif condition="$item['item_source'] eq 1"/>href="{:U('Item/index_book',array('itemid'=>$item['itemId'],'tokenTall'=>$tokenTall))}"<else />href="{:U('index/index')}"</if>>{$item.title}</a><br><span class="attr"></span></p></li>
-                    				<li><span class="buy-size">大小:{$item.size}</span><span class="buy-color">颜色: {$item.color}</span></li>
+                    				<li><span class="buy-size">型号:{$item.size}</span><span class="buy-color">颜色: {$item.color}</span></li>
                     				<li class="price"><span class="buy-price">价格: ¥{$item.price}</span><span class="buy-num">数量: {$item.quantity}</span></li>
                     			</ul>
                     		</div>
-                    		<div style=";display:imline;;">
+                    		<div style=";display:imline;">
                     		<if condition="$vo.status eq 4">
 	                          <span>
 	                         		<a class="button_aaa" style="color: red;border: none;font-size: 16px;padding-left: 0px;" href="{:U('user/comments',array('item'=>$item))}" >添加评论</a> 

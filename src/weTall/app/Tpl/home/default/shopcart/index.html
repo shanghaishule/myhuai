@@ -62,7 +62,7 @@ $(function(){
                   <span class="img"><a href="{:U('Item/index',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}" ><img src="{:$vo['img']}" height="100" width="100"></a></span>
                   <span class="tit">
                       <a href="{:U('Item/index',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}" >{$vo.name}</a><br>
-                      <span>尺寸:{$vo.size}<span>&nbsp;颜色:{$vo.color}</span></span>
+                      <span>型号:{$vo.size}<span>&nbsp;颜色:{$vo.color}</span></span>
                       <br>
                       <span>                      	 
                        	   <a href="javascript:minus();"> <img src="__STATIC__/weixin/images/subtract.gif" onClick="decrease_quantity({$vo.id});" alt="decrease" style="vertical-align: middle;width=:16px"></a> 

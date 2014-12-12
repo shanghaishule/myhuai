@@ -574,12 +574,24 @@ class indexAction extends frontendAction {
    	   $this->assign("res",$res);
        $this->display();
    }
-   public function houselist2(){
-	   	$this->display();
+   public function houselist(){
+        $res = M('house_sell')->order("updateTime Desc")->select();
+        foreach ($res as $key => $val){
+        	$res[$key]['link'] = U("Item/house_book",array("itemid"=>$val['id']));
+        }
+        dump($res);die;
+        $this->assign("res",$res);
+	   	$this->display('thdlist');
    }
    
-   public function hugonglist2(){
-	   	$this->display();
+   public function hugonglist(){
+   	$res = M('hugong')->order("updateTime Desc")->select();
+   	foreach ($res as $key => $val){
+   		$res[$key]['link'] = U("Item/hugong_book",array("itemid"=>$val['id']));
+   	}
+   	dump($res);die;
+   	$this->assign("res",$res);
+   	$this->display('thdlist');   	
    }
    
    //搜索

@@ -48,7 +48,7 @@ class shopcartAction extends frontendAction {
     	
     	$goodId= $this->_post('goodId', 'intval');//商品ID
     	$quantity=$this->_post('quantity', 'intval');//购买数量
-    	$size= $this->_post('size', 'intval');//大小
+    	$size= $this->_post('size', 'trim');//大小
     	$color=$this->_post('color', 'trim');//颜色
     	   
     	$item=M('item')->field('id,title,img,price,goods_stock,tokenTall,free,pingyou,kuaidi,ems')->find($goodId);
@@ -83,7 +83,7 @@ class shopcartAction extends frontendAction {
     	$cart=new Cart();
     	$goodId= $this->_post('goodId', 'intval');//商品ID
     	$quantity=$this->_post('quantity', 'intval');//购买数量
-    	$size= $this->_post('size', 'intval');//大小
+    	$size= $this->_post('size', 'trim');//大小
     	$color=$this->_post('color', 'trim');//颜色
 
     	$item=M('item')->field('id,title,img,price,goods_stock,tokenTall,free,pingyou,kuaidi,ems')->find($goodId);
