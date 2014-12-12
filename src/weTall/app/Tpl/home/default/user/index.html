@@ -44,14 +44,14 @@ border:1px solid #CCC;
        <div class="logout"><a href="{:U('user/logout')}">注销</a> <!-- | <a href="{:U('user/favi')}">我的收藏</a> --></div>
        <div class="my_address"><a href="{:U('user/address', array('tokenTall'=>$tokenTall))}">收货地址管理</a></div>
    <ul class="buyer_stat">
-          <li class="btn_1 <if condition='$status eq 1'>active</if> "><a href="{:U('user/index',array('status'=>1,'tokenTall'=>$tokenTall))}">
+          <li class="btn_1  "><a href="{:U('user/index',array('status'=>1,'tokenTall'=>$tokenTall))}">
           <p>1</p><p>待付款</p></a>
           <span><p>1</p><p>待付款</p></span></li>        
-          <li class="btn_2 <if condition='$status eq 2'>active</if> "><a href="{:U('user/index',array('status'=>2,'tokenTall'=>$tokenTall))}">
+          <li class="btn_2  "><a href="{:U('user/index',array('status'=>2,'tokenTall'=>$tokenTall))}">
            <p>1</p><p>待发货</p></a><span> <p>1</p><p>待发货</p></span></li>
-          <li class="btn_3 <if condition='$status eq 3'>active</if>"><a href="{:U('user/index',array('status'=>3,'tokenTall'=>$tokenTall))}">
+          <li class="btn_3 "><a href="{:U('user/index',array('status'=>3,'tokenTall'=>$tokenTall))}">
            <p>1</p><p>待收货</p></a><span> <p>1</p><p>待收货</p></span></li>
-          <li class="btn_4 <if condition='$status eq 4'>active</if>"><a href="{:U('user/index',array('status'=>4,'tokenTall'=>$tokenTall))}">
+          <li class="btn_4 "><a href="{:U('user/index',array('status'=>4,'tokenTall'=>$tokenTall))}">
            <p>1</p><p>已完成</p></a><span> <p>1</p><p>已完成</p></span></li>
     </ul>
     </div>
