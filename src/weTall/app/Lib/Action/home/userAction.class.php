@@ -267,7 +267,7 @@ class userAction extends userbaseAction {
        $this->assign('item_orders',$item_orders);
        $this->assign('status',$status);
        $this->assign('tokenTall',$tokenTall);
-       $this->assign("daiPay",daiPay);
+       $this->assign("daiPay",$daiPay);
        $this->assign("daiSend",$daiSend);
        $this->assign("daiRes",$daiRes);
        $this->assign("daiFinish",$daiFinish);
