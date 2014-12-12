@@ -212,7 +212,7 @@ class orderAction extends userbaseAction {
 		$item = M("service")->field("id,name,price,img")->find($goodId);
 		if(is_array($item)){
 			$item['num'] = 1;
-			$item['size'] = '0';
+			$item['size'] = '无';
 			$item['color'] = '无';
 			$item['reserveDate'] = $reserveDate;
 			$arr = array();
@@ -297,7 +297,7 @@ class orderAction extends userbaseAction {
 	       	    $serItem = M("service")->field("id,name,price,img")->where(array("id"=>$this->_post("serId")))->find();
 	       	    if(is_array($serItem)){
 	       	    	$serItem['num'] = 1;
-	       	    	$serItem['size'] = '0';
+	       	    	$serItem['size'] = '无';
 	       	    	$serItem['color'] = '无';	       	    	
 	       	    	$serItem['tokenTall'] = $tokenTall;	       	    	
 	       	    	$serItem['free'] = '1';	       	    	

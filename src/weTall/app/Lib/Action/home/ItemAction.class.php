@@ -62,12 +62,9 @@ class itemAction extends frontendAction {
         $condi['cate_id'] = $item['cate_id'];
         $condi['id'] = array('neq',$id);
         $recommendRes = $item_mod->field("id,img,title,price,zb_price")->where($condi)->limit(6)->select();
-        
         $this->assign("recommendRes",$recommendRes);
-        
         $this->assign('countSize', $countSize);
         $this->assign('countColor', $countColor);
-
         $this->assign('item', $item);
         $this->assign('img_list', $img_list);
         $this->assign('tokenTall', $tokenTall);
@@ -87,11 +84,9 @@ class itemAction extends frontendAction {
     	$id = $this->_get("itemid","trim,intval");
     	!$id && $this->_404();
     	$tokenTall = $this->getTokenTall();
-    	
     	$mod = M("service");
     	$item = $mod->field("id,cate_id,name,price,zb_price,img,status,info")->where("id = %d",$id)->find();
     	!$item && $this->_404();
-
     	$img_list = M('item_service_img')->field('url')->where(array('item_id' => $id))->order('id ASC')->select();
     	
     	//相关产品
@@ -100,7 +95,6 @@ class itemAction extends frontendAction {
     	$recommendRes = $mod->field("id,img,name,price,zb_price")->where($condi)->limit(4)->select();
     	
     	$this->assign("recommendRes",$recommendRes);
-    	
     	$this->assign('item', $item);
     	$this->assign('img_list', $img_list);    	
 
@@ -114,10 +108,7 @@ class itemAction extends frontendAction {
     	$tokenTall = $this->getTokenTall();    	
     	$res = M("article_new")->field("id,name,img,info,cate_id")->where(array("id"=>$id))->find();
     	!$res && $this->_404();
-    	
     	$img_list = M('item_article_img')->field('url')->where(array('item_id' => $id))->order('id ASC')->select();
-    	 
-    	
     	//相关产品
     	$condi['cate_id'] = $res['cate_id'];
     	$condi['id'] = array('neq',$id);
@@ -183,6 +174,7 @@ class itemAction extends frontendAction {
                 $data['status'] = 0;
                 break;
         }
+        
         $data['info'] = $check_result['content'];
         $data['uid'] = $this->visitor->info['id'];
         $data['uname'] = $this->visitor->info['username'];
@@ -329,16 +321,32 @@ class itemAction extends frontendAction {
         }
     }
     
-    /*显示页面*/
+    /*显示页面,房屋租赁*/
     public function house_book(){
+    	$id = $this->_get("itemid","trim,intval");
+    	!$id && $this->_404();
+    	$tokenTall = $this->getTokenTall();
+    	$res = M("house")->where(array("id"=>$id))->find();
+    	!$res && $this->_404();    	
+    	$img_list = M('house_img')->field('url')->where(array('item_id' => $id))->order('id ASC')->select();
+    	$this->assign('item', $res);
+    	$this->assign('img_list', $img_list);
     	$this->display();
     }
     
+    //护工服务
     public function hugong_book(){
+    	$id = $this->_get("itemid","trim,intval");
+    	!$id && $this->_404();
+    	$tokenTall = $this->getTokenTall();
+    	$res = M("hugong")->where(array("id"=>$id))->find();
+    	!$res && $this->_404();    	
+    	$img_list = M('hugong_img')->field('url')->where(array('item_id' => $id))->order('id ASC')->select();
+    	$this->assign('item', $res);
+    	$this->assign('img_list', $img_list);
     	$this->display();
     }
 
-    /*end*/
     /**
      * 删除商品
      */

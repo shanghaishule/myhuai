@@ -239,38 +239,32 @@
              <div class="rate">
               <!-- <h2 class="ware_title"><span class="fontColor3">沪爱价¥{$item.price}</span></h2> -->
                <!--<p class="letter1" style=";">周边价：{$item.zb_price}</p> -->
-                <h2 class="ware_title">房子很好{$item.title}<!-- <span class="letter2" style="">已卖出：{$item.buy_num}件</span> --></h2>       	
+                <h2 class="ware_title">{$item.title}<!-- <span class="letter2" style="">已卖出：{$item.buy_num}件</span> --></h2>       	
                 <!-- detail list start -->
         <ul class="attr_info fang fang_new">
     <li>租金： <span class="pri">
     <span class="pri"><strong
-            class="fontColor3">沪爱价¥100{$item.price}</strong> 元/月
+            class="fontColor3">{$item.price}</strong> 元/月
                                     
                             </span>
    </li>
    
 
-                <li>支付：<span>押二付二</span></li>
-                        <li>位置：<a href=''>虹口</a> - <a href=''>临平路</a><i class="map_ico" onclick="$.infodetail.detail_map('31.2612850', '121.4976903', '临平路', ;"></i>        </li>
-                <li>小区：<span class="btn_Price mxq_but"><i class="ico"></i>香港丽园</span></li>
-                <li>户型：<span>1室1厅1卫</span></li>
-                <li>面积：<span>25㎡&nbsp;&nbsp;</span></li>
-                <li>装修：<span>精装修</span></li>
-                <li>朝向：<span>南</span></li>
-                <li>类型：<span>公寓</span></li>
-                                <li>楼层：<span>2/2层</span></li>
+                <li>支付：<span>{$item.payType}</span></li>
+                        <li>位置：<a href=''>{$item.position}</a> - <a href=''>临平路</a><i class="map_ico" onclick="$.infodetail.detail_map('31.2612850', '121.4976903', '临平路', ;"></i>        </li>
+                <li>小区：<span class="btn_Price mxq_but"><i class="ico"></i>{$item.houseName}</span></li>
+                <li>户型：<span>{$item.houseType}</span></li>
+                <li>面积：<span>{$item.area}&nbsp;&nbsp;</span></li>
+                <li>装修：<span>{$item.decoration}</span></li>
+                <li>朝向：<span>{$item.direction}</span></li>
+                <li>类型：<span>{$item.type}</span></li>
+                                <li>楼层：<span>{$item.floor}</span></li>
     
 </ul>
         <!-- detail list end -->
-                
-              
-                
 			</div>
             <div class="handle">
-
-           
-		  <!--book -->
-		
+		  <!--book -->	
 <script type="text/javascript">
 $(function(){
 	$('#beginTime').date();
@@ -287,20 +281,11 @@ $(function(){
 	
 	<div class="lie"><input id="endTime" class="kbtn" /></div>
 </div>
-                    
-                    </li>
-                    
+                    </li>  
+                </ul>                   
 		 </div>
-               
-                
-                
             <div class="shop_bottom">
             <ul class="ware_btn">
-                <div style="display:none;" class="ware_cen">
-                	
-                    
-                    <div class="ware_cen_bottom"></div>
-                </div>
                 	<li id="intime_shopping"><a href="javascript:void(0)" onclick="javascript:buy_now();" title="立即购买" class="buy-now enter">立即付款</a></li>                
                 	<li id="addin_car"><a href="tel:15900998149">电话预约</a></li>
             </ul>
@@ -357,6 +342,13 @@ $(function(){
     <div class="clear"></div>
 </div>
 <div class="space"></div>
-
+<script src="__STATIC__/LazyLoad/js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+			$("img").lazyload({
+				effect : "fadeIn"
+			});
+		});
+	</script>
 </body>
 </html>
