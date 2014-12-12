@@ -255,10 +255,22 @@ class userAction extends userbaseAction {
 	      		$item_orders[$key]['items'][] = $items;
 	      	}
         }
+        //待付款商品总数
+        $daiPay = $item_order->order('id desc')->where(array('status'=>1,userId=>$this->visitor->info['id']))->count();
+        //待发货
+        $daiSend = $item_order->order('id desc')->where(array('status'=>2,userId=>$this->visitor->info['id']))->count();
+        //待收货
+        $daiRes = $item_order->order('id desc')->where(array('status'=>3,userId=>$this->visitor->info['id']))->count();
+        //已完成
+        $daiFinish = $item_order->order('id desc')->where(array('status'=>4,userId=>$this->visitor->info['id']))->count();
        //dump($item_orders);die;
        $this->assign('item_orders',$item_orders);
        $this->assign('status',$status);
        $this->assign('tokenTall',$tokenTall);
+       $this->assign("daiPay",daiPay);
+       $this->assign("daiSend",$daiSend);
+       $this->assign("daiRes",$daiRes);
+       $this->assign("daiFinish",$daiFinish);
        $this->_config_seo();
        $this->display();
     }
