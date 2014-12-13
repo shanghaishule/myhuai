@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="public:headtop" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>商家登入-{$page_seo.title}</title>
+
+<script type="text/javascript" src="__STATIC__/weixin/js/index.js"></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/touchslider.js" charset="utf-8"></script>
+<script charset="utf-8" type="text/javascript" src="__STATIC__/weixin/js/jquery_002.js"></script></head>
+
+<body>
+
+
+<script type="text/javascript">
+$(function(){	
+    $('#login_form').validate({
+        errorPlacement: function(error, element){
+            $(element).next("label").append(error); 
+        },
+        success : function(label){
+            //label.addClass('validate_right').text('OK!');
+        },
+        onkeyup : true,
+        rules : {
+            user_name : {
+                required : true,
+				remote   : "{:U('shangjia/ajaxCheckuser')}"
+            },
+            password : {
+                required : true
+            },
+          		
+        },
+        messages : {
+            user_name : {
+                required : '您必须提供一个用户名',
+				remote   : '用户名不存在！'
+            },
+            password  : {
+                required : '您必须提供一个密码'
+            }
+        }
+}); 
+});
+</script>
+
+<div id="content" class="bg_white">
+    <form method="post" id="login_form" class="reg_1">
+            <p>用户名：<input  name="user_name" id="user_name" class="text width5" placeholder="手机号" type="text"></p>
+            <label></label>
+            <p>密　码：<input  name="password" id="password" class="text width5" placeholder="密 码" type="password"></p>
+            <label></label>
+            <label id="login_text"></label>
+            <ul>
+        <li id="click_yanzheng"><input style="background: #006835"name="Submit" value="登陆" class="enter" type="submit" id="login_btn_id"></li>
+        <li id="click_yanzheng"><input style="background: #006835"name="Submit" value="重置密码" class="enter" type="button" id="login_btn_id"></li>
+        </ul>
+        
+    </form>
+</div>
+
+<include file="public:footer" />
+
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="public:headtop" />
+<title>商家中心</title>
+<script charset="utf-8" type="text/javascript" src="__STATIC__/weixin/js/dialog.js" id="dialog_js"></script>
+<link href="__STATIC__/weixin/css/dialog.css" rel="stylesheet" type="text/css">
+<script charset="utf-8" type="text/javascript" src="__STATIC__/weixin/js/jquery_003.js"></script>
+<script charset="utf-8" type="text/javascript" src="__STATIC__/weixin/js/zh-CN.js"></script>
+<script charset="utf-8" type="text/javascript" src="__STATIC__/weixin/js/jquery_002.js"></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/jquery.css">
+<style>
+.button_aaa
+{
+color:#666;
+font-size: 12px; 
+padding: 5px;
+border:1px solid #CCC;
+
+}
+</style>
+</head>
+
+<body>
+<div class="index_head1">
+<div id="nav">
+	<ul class="navlist1">
+		<li id="a_0">
+		  <a href="javascript:history.go(-1)" > <div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div></a>
+         </li>
+        <li  id="a_1">
+    						<div style="">
+
+										<p>商家中心</p>
+				              </div>
+        </li>
+    </ul>
+ </div>
+</div>
+<div class="content">
+    <div class="membertop"  style="background-image:url(__STATIC__/weixin/images/home/mempic.png);background-size:100% 100%;">
+       <div class="my_name" style="height:40px; padding-left:5px;"><a>{$visitor.username}</a></div>
+       <div class="logout"><a href="{:U('shangjia/logout')}">注销</a></div>
+       
+   <ul class="buyer_stat">
+          <li class="btn_1 <if condition='$status eq 1'>active</if> "><a href="{:U('shangjia/index',array('status'=>1,'tokenTall'=>$tokenTall))}">
+          <p>1</p><p>待付款</p></a>
+          <span><p>1</p><p>待付款</p></span></li>        
+          <li class="btn_2 <if condition='$status eq 2'>active</if> "><a href="{:U('shangjia/index',array('status'=>2,'tokenTall'=>$tokenTall))}">
+           <p>1</p><p>待发货</p></a><span> <p>1</p><p>待发货</p></span></li>
+          <li class="btn_3 <if condition='$status eq 3'>active</if>"><a href="{:U('shangjia/index',array('status'=>3,'tokenTall'=>$tokenTall))}">
+           <p>1</p><p>待收货</p></a><span> <p>1</p><p>待收货</p></span></li>
+          <li class="btn_4 <if condition='$status eq 4'>active</if>"><a href="{:U('shangjia/index',array('status'=>4,'tokenTall'=>$tokenTall))}">
+           <p>1</p><p>已完成</p></a><span> <p>1</p><p>已完成</p></span></li>
+    </ul>
+    </div>
+    
+	<script type="text/javascript">
+	    $(function(){
+	    $(".buyer_stat > li a").each(function() {
+	                href="http://store.weiapps.cn/"+$(this).attr("href");
+	                if(window.location.href==href){
+	                    $(this).parent("li").addClass("active");
+	                }
+	            });
+	    });
+	</script>
+    <div class="wrap">
+        <div class="public">
+            <notempty name="item_orders">
+            <volist name='item_orders' id='vo' >
+            	<div class="order_form">
+                    <p class="num">订单号: {$vo.orderId}</p>
+                    <volist name='vo.items' id='item' >
+                    
+                    <div style="clear:both;border-bottom:1px solid #f1f0f5">
+                    	<div style="float:left;display:inline;width:30%;padding:5px 0px 5px 5px"> <span style="/*margin-left:20px*/"><p class="ware_pic"><a href="{:U('Item/index',array('id'=>$item['itemId'],'tokenTall'=>$tokenTall))}" ><img src="{:$item['img']}" height="80" width="80"></a></p></div>
+                    	<div style="float:left;display:inline;width:65%">
+                    		<div style="float:left;display:imline;margin-top:5px;width:100%;">
+                    			<ul>
+                    				<li> <p class="ware_text"><a href="{:U('Item/index',array('id'=>$item['itemId'],'tokenTall'=>$tokenTall))}">{$item.title}</a><br><span class="attr"></span></p></li>
+                    				<li><span class="buy-size">大小:{$item.size}</span><span class="buy-color">颜色: {$item.color}</span></li>
+                    				<li class="price"><span class="buy-price">价格: ¥{$item.price}</span><span class="buy-num">数量: {$item.quantity}</span></li>
+                    			</ul>
+                    		</div>
+                    	</div>
+                    	<div style="clear:both;"></div>
+                    
+                    </div>
+                  
+ 	                              
+                    </volist>
+                    <div class="clear"></div>
+                    <div class="foot" style="padding-left: 5px">
+                        <p class="time">{$vo.add_time|date='Y-m-d H:i:s',###}</p>
+                         <div class="handle"  style="margin-top:1px">
+                            <div> <b id="order118_order_amount" style="color:red;">¥{$vo.order_sumPrice}&nbsp;&nbsp;</b></div>
+                            <div style="float:left;float: right;padding-right: 4%;padding-top: 5px">
+                            <switch name="vo.status" >
+	                        <case value="1"><!--待付款 -->
+	                           <a class="button_aaa" href="{:U('order/checkOrder',array('orderId'=>$vo['orderId'],'status'=>$status,'tokenTall'=>$tokenTall))}" >查看订单</a>
+	                        </case>
+	                        <case value="2"><!--待发货 -->
+	                           <a class="button_aaa" href="{:U('order/checkOrder',array('orderId'=>$vo['orderId'],'status'=>$status,'tokenTall'=>$tokenTall))}" >查看订单</a>
+	                        </case>
+	                        <case value="3"><!-- 待收货 -->
+	                           <a class="button_aaa" href="{:U('order/checkOrder',array('orderId'=>$vo['orderId'],'status'=>$status,'tokenTall'=>$tokenTall))}" >查看订单</a>	                           
+	                        </case>
+	                        <default />
+	                           <a class="button_aaa" href="{:U('order/checkOrder',array('orderId'=>$vo['orderId'],'status'=>$status,'tokenTall'=>$tokenTall))}" >查看订单</a>
+	                    	</switch>
+	                   </div>
+                        </div>
+                    </div>
+            	</div>
+            </volist>
+            <else/>
+            <div class="order_form member_no_records" style="text-align: center;padding: 5px;">
+                <span>没有符合条件的记录</span>
+            </div>
+            </notempty>
+
+            <div class="order_form_page">
+                <div class="page"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="wrap_bottom"></div>
+    </div>
+    <div class="wrap_line margin1" style="display:none;">
+        <div class="public_index">
+            <div class="information_index">
+                <div class="awoke">
+目前还没有订单
+                </div>
+            </div>
+        </div>
+        <div class="wrap_bottom"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+<include file="public:footer" />
+<script type="text/javascript">
+		window.shareData = {
+			"moduleName" : "Index",
+			"moduleID" : '0',
+			"imgUrl" : "http://m.hajk.com.cn/weTall/static/weixin/images/home/mlogo.png",
+			"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+			"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+			"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+			"tTitle" : "欢迎关注沪爱健康",
+			"tContent" : "专业让健康更简单 沪爱健康   "
+		};
+	</script>
+	<script>
+		document.addEventListener('WeixinJSBridgeReady',
+				function onBridgeReady() {
+					WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+						shareHandle('friend');
+						WeixinJSBridge.invoke('sendAppMessage', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('send_msg', res.err_msg);
+						})
+					});
+
+					WeixinJSBridge.on('menu:share:timeline', function(argv) {
+						shareHandle('frineds');
+						WeixinJSBridge.invoke('shareTimeline', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('timeline', res.err_msg);
+						});
+					});
+
+					WeixinJSBridge.on('menu:share:weibo', function(argv) {
+						shareHandle('weibo');
+						WeixinJSBridge.invoke('shareWeibo', {
+							"content" : window.shareData.tContent,
+							"url" : window.shareData.sendFriendLink,
+						}, function(res) {
+							_report('weibo', res.err_msg);
+						});
+					});
+				}, false)
+
+		function shareHandle(to) {
+			var submitData = {
+				module : window.shareData.moduleName,
+				moduleid : window.shareData.moduleID,
+				token : 'ipwhoy1414718223',
+				wecha_id : 'ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+				url : window.shareData.sendFriendLink,
+				to : to
+			};
+			$
+					.post(
+							'/index.php?g=Wap&m=Share&a=shareData&token=ipwhoy1414718223&wecha_id=ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+							submitData, function(data) {
+							}, 'json')
+		}
+	</script>
+	<script>
+	$(function() {
+		$(".ul_list").each(function(){
+			$(this).find("ol").last().remove();
+		});
+	});
+</script>
+</body>
+</html>
