@@ -331,11 +331,16 @@ class userAction extends userbaseAction {
             $passport = $this->_user_server();
             $result = $passport->edit($this->visitor->info['id'], $oldpassword, array('password'=>$password));
             if ($result) {
-                $msg = array('status'=>1, 'info'=>L('edit_password_success'));
+               // $msg = array('status'=>1, 'info'=>L('edit_password_success'));
+               $this->error(L('edit_password_success'),U('user/logout'));
             } else {
-                $msg = array('status'=>0, 'info'=>$passport->get_error());
+                //$msg = array('status'=>0, 'info'=>$passport->get_error());
+                $this->error($passport->get_error());
             }
-            $this->assign('msg', $msg);
+           // $this->assign('msg', $msg);
+            //header('Content-Type:text/html;charset=utf-8');
+           // dump($msg);die;
+           
         }
         $this->_config_seo();
         $this->display();
