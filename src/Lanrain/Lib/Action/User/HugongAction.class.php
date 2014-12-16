@@ -28,7 +28,6 @@ class HugongAction extends UserAction{
 			if (false === $data = $this->_mod->create()) {
 				$this->error($this->_mod->getError());
 			}
-			
 			//必须上传图片
 			if (empty($_POST['img'])){
 				$this->error('请上传商品主图。');
