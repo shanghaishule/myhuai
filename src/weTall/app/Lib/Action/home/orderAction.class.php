@@ -180,6 +180,8 @@ class orderAction extends userbaseAction {
 				
 			//header("content-Type: text/html; charset=Utf-8");
 			//dump($result);exit;
+			$hosA = M('order_address')->select();
+			$this->assign('hosA',$hosA);			
 			$this->assign('allinfo',$result);
 			$this->assign("tabType",'0');
 			import('Think.ORG.Cart');// 导入购物车类
@@ -223,6 +225,8 @@ class orderAction extends userbaseAction {
 			$this->redirect($_SERVER['HTTP_REFERER']);
 		}
 		//dump($arr);die;
+		$hosA = M('order_address')->select();
+		$this->assign('hosA',$hosA);
 		$this->assign('sumPrice',$item['price']);
 		$this->assign('address_list', $address_list);
 		$this->assign('allinfo',$arr);
@@ -255,16 +259,18 @@ class orderAction extends userbaseAction {
 			if($address_options==0)
 			{
 				$consignee=$this->_post('consignee','trim');//真实姓名
-				$sheng=$this->_post('sheng','trim');//省
-				$shi=$this->_post('shi','trim');//市
-				$qu=$this->_post('qu','trim');//区
+				//$sheng=$this->_post('sheng','trim');//省
+				//$shi=$this->_post('shi','trim');//市
+				//$qu=$this->_post('qu','trim');//区
+				$yiyuan = $this->_post('hosAddress','trim');//医院名称
 				$address=$this->_post('address','trim');//详细地址
 				$phone_mob=$this->_post('phone_mob','trim');//电话号码
 				$save_address=$this->_post('save_address','trim');//是否保存地址
 	
 				$addr['address_name']=$consignee;//收货人姓名
 				$addr['mobile']=$phone_mob;//电话号码
-				$addr['address']=$sheng.$shi.$qu.$address;//地址
+				//$addr['address']=$sheng.$shi.$qu.$address;//地址
+				$addr['address']=$yiyuan.$address;//地址
 	
 				if($save_address)//保存地址
 				{
@@ -272,17 +278,18 @@ class orderAction extends userbaseAction {
 					$add_address['consignee']=$consignee;
 					$add_address['address']=$address;
 					$add_address['mobile']=$phone_mob;
-					$add_address['sheng']=$sheng;
-					$add_address['shi']=$shi;
-					$add_address['qu']=$qu;
-			   
+					//$add_address['sheng']=$sheng;
+					//$add_address['shi']=$shi;
+					//$add_address['qu']=$qu;
+			        $add_address['hosAddress'] = $yiyuan;
 					$user_address->data($add_address)->add();
 				}
 			}else{
 				$address= $user_address->where("uid='".$this->visitor->info['id']."'")->find($address_options);//取到地址
 				$addr['address_name']=$address['consignee'];//收货人姓名
 				$addr['mobile']=$address['mobile'];//电话号码
-				$addr['address']=$address['sheng'].$address['shi'].$address['qu'].$address['address'];//地址
+				//$addr['address']=$address['sheng'].$address['shi'].$address['qu'].$address['address'];//地址
+				$addr['address']=$add_address['hosAddress'].$address['address'];//地址
 			}
 			//收货地址end
 			$reserveDate = $this->_post('reserveDate');//预约时间

@@ -97,17 +97,19 @@ class userAction extends userbaseAction {
 	    	$user_address = M('user_address');
 	    	
 	    	$consignee= $this->_post('consignee', 'trim');
-	    	$sheng= $this->_post('sheng', 'trim');
-	    	$shi= $this->_post('shi', 'trim');
-	    	$qu= $this->_post('qu', 'trim');
+	    	//$sheng= $this->_post('sheng', 'trim');
+	    	//$shi= $this->_post('shi', 'trim');
+	    	//$qu= $this->_post('qu', 'trim');
+	    	$hosAddress = $this->_post("hosAddress","trim");
 	    	$address= $this->_post('address', 'trim');
 	    	$phone_mob= $this->_post('phone_mob', 'trim');
 	    	
 	    	$data['uid']=$this->visitor->info['id'];
 	    	$data['consignee']=$consignee;
-	        $data['sheng']=$sheng;
-	    	$data['shi']=$shi;
-	    	$data['qu']=$qu;
+	       // $data['sheng']=$sheng;
+	    	//$data['shi']=$shi;
+	    	//$data['qu']=$qu;
+	    	$data['hosAddress'] = $hosAddress;
 	    	$data['address']=$address;
 	    	$data['mobile']=$phone_mob;
     	
@@ -118,6 +120,8 @@ class userAction extends userbaseAction {
 	        	$this->redirect('user/address',array('tokenTall'=>$tokenTall));
 	        }
     	}
+    	$hosA = M('order_address')->select();
+    	$this->assign('hosA',$hosA);
     	$this->assign('tokenTall',$tokenTall);
     	$this->display();
     }
@@ -421,6 +425,8 @@ class userAction extends userbaseAction {
         $id = $this->_get('id', 'intval');
         $info = $user_address_mod->find($id);
         $this->assign('info', $info);
+        $hosA = M('order_address')->select();
+        $this->assign('hosA',$hosA);
         //取商家token值，取不到则默认为空
         $tokenTall = $this->getTokenTall();
         $this->assign('tokenTall',$tokenTall);
@@ -449,9 +455,10 @@ class userAction extends userbaseAction {
             $address = $this->_post('address', 'trim');
          	//   $zip = $this->_post('zip', 'trim');
 	        $mobile = $this->_post('phone_mob', 'trim');
-	        $sheng = $this->_post('sheng', 'trim');
-	        $shi = $this->_post('shi', 'trim');
-	        $qu = $this->_post('qu', 'trim');
+	      //  $sheng = $this->_post('sheng', 'trim');
+	        //$shi = $this->_post('shi', 'trim');
+	        //$qu = $this->_post('qu', 'trim');
+	        $hosAddress = $this->_post('hosAddress','trim');
             $id = $this->_post('id', 'intval');
             if ($id) {
                 $result = $user_address_mod->where(array('id'=>$id, 'uid'=>$this->visitor->info['id']))->save(array(
@@ -459,9 +466,7 @@ class userAction extends userbaseAction {
                     'address' => $address,
                     // 'zip' => $zip,
                     'mobile' => $mobile,
-                    'sheng' => $sheng,
-                    'shi' => $shi,
-                    'qu' => $qu,
+                    'hosAddress' => $hosAddress
                 ));
                 if ($result) {
                     $msg = array('status'=>1, 'info'=>L('edit_success'));
