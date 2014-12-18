@@ -198,15 +198,6 @@ margin-top: 7px;border-radius:2px"><a href="tel:4006555899" >电话预约</a></l
 	 <!-- 返回顶部结束 -->
 <div class="space"></div>
 <div class="space"></div>
-<script src="__STATIC__/LazyLoad/js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>	
-<script>
-	$(function() {
-		$("img").lazyload({
-			effect : "fadeIn"
-		});
-		$('#endTime').date({theme:"datetime"});
-	});
-</script>
 <script type="text/javascript">
 window.shareData = {
 		"moduleName" : "Index",
@@ -277,5 +268,14 @@ window.shareData = {
 							}, 'json')
 		}
 	</script>
+<script src="__STATIC__/LazyLoad/js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>	
+<script>
+	$(function() {
+		$("img").lazyload({
+			effect : "fadeIn"
+		});
+		$('#endTime').date({theme:"datetime"});
+	});
+</script>	
 </body>
 </html>
