@@ -33,15 +33,10 @@ class SaleStatAction extends UserAction{
 						'totalamt_online'=>$totalamt_online
 				)
 		);
-		$count = M()->Table("tp_item_order a,tp_order_detail b,tp_item c,tp_business d,tp_category e,tp_service f")->field('b.title,b.img,SUM(b.quantity) sumQ,b.price,SUM(b.price*b.quantity) amt, d.b_name,e.catname')->group('b.title')->where("(a.orderId=b.orderId 
+		$count = M()->Table("tp_item_order a,tp_order_detail b,tp_item c,tp_business d,tp_category e,tp_service f")->field('b.title,b.img,SUM(b.quantity) sumQ,b.price,SUM(b.price*b.quantity) amt, d.b_name,e.catname')->where("a.orderId=b.orderId 
 		and a.`status`=4 
 		and FROM_UNIXTIME(a.add_time,'%m/%d/%Y')=DATE_FORMAT(now(),'%m/%d/%Y') 
-		and b.itemId=c.id
-		and c.isBusiness=d.id and c.cate_id = e.id) OR (a.orderId=b.orderId 
-		and a.`status`=4 
-		and FROM_UNIXTIME(a.add_time,'%m/%d/%Y')=DATE_FORMAT(now(),'%m/%d/%Y')
-		and b.itemId=f.id
-		and f.business_id=d.id and f.cate_id = e.id)")->count();    //计算总数
+		and ((b.itemId=c.id and c.isBusiness=d.id and c.cate_id = e.id) or (b.itemId = f.id and f.business_id = d.id and f.cate_id = e.id))")->group('b.title')->count(); //计算总数
 		//dump($count);die;
 		$p = new Page ( $count, 10 );//每页显示10条
 		/*$order_detail=M()->query("
@@ -54,15 +49,10 @@ class SaleStatAction extends UserAction{
 		and c.isBusiness=d.id
 		order by SUM(b.price*b.quantity) desc");
 		*/
-		$order_detail = M()->Table("tp_item_order a,tp_order_detail b,tp_item c,tp_business d,tp_category e,tp_service f")->field('b.title,b.img,SUM(b.quantity) sumQ,b.price,SUM(b.price*b.quantity) amt, d.b_name,e.catname')->group('b.title')->where("(a.orderId=b.orderId 
+		$order_detail = M()->Table("tp_item_order a,tp_order_detail b,tp_item c,tp_business d,tp_category e,tp_service f")->field('b.title,b.img,SUM(b.quantity) sumQ,b.price,SUM(b.price*b.quantity) amt, d.b_name,e.catname')->where("a.orderId=b.orderId 
 		and a.`status`=4 
 		and FROM_UNIXTIME(a.add_time,'%m/%d/%Y')=DATE_FORMAT(now(),'%m/%d/%Y') 
-		and b.itemId=c.id
-		and c.isBusiness=d.id and c.cate_id = e.id) OR (a.orderId=b.orderId 
-		and a.`status`=4 
-		and FROM_UNIXTIME(a.add_time,'%m/%d/%Y')=DATE_FORMAT(now(),'%m/%d/%Y')
-		and b.itemId=f.id
-		and f.business_id=d.id and f.cate_id = e.id)")->order('amt DESC')->limit($p->firstRow.','.$p->listRows)->select();
+		and ((b.itemId=c.id and d.id=c.isBusiness and e.id = c.cate_id) or (b.itemId = f.id and d.id= f.business_id and e.id = f.cate_id))")->group('b.title')->order('amt DESC')->limit($p->firstRow.','.$p->listRows)->select();
 		$show       = $p->show();// 分页显示输出
 		$this->assign('page',$show);// 赋值分页输出
 		$this->assign('order_detail',$order_detail);//订单商品信息
