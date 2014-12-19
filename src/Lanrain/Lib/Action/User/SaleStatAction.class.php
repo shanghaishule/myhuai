@@ -38,7 +38,7 @@ class SaleStatAction extends UserAction{
 		and FROM_UNIXTIME(a.add_time,'%m/%d/%Y')=DATE_FORMAT(now(),'%m/%d/%Y') 
 		and b.itemId=c.id
 		and c.isBusiness=d.id")->count();    //计算总数
-		dump($count);die;
+		//dump($count);die;
 		$p = new Page ( $count, 5 );
 		$order_detail=M()->query("
 		select b.title,b.img,b.quantity,SUM(b.price*b.quantity) amt, d.b_name 
