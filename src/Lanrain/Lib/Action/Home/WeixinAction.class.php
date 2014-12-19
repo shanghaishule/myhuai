@@ -9,13 +9,12 @@ class WeixinAction extends Action
     {
         $this->token = $this->_get('token');
         $weixin      = new Wechat($this->token);
-        $data  = $weixin->request();
+        $data        = $weixin->request();
         $this->data  = $weixin->request();
         $this->my    = C('site_my');
         list($content, $type) = $this->reply($data);
 		$weixin->response($content, $type);
     }
-    
     private function reply($data)
     {
         if ('CLICK' == $data['Event']) {
@@ -542,15 +541,9 @@ class WeixinAction extends Action
                     if ($back) {
                         $img_db->where($idsWhere)->setInc('click');
                     }
-					/*
                     return array(
                         $return,
                         'news'
-                    );
-					*/
-					return array(
-                        '欢迎加入，我们将为您提供更多的资讯和服务！',
-                        'text'
                     );
                     break;
                 case 'Host':
@@ -779,7 +772,9 @@ class WeixinAction extends Action
     }
     function shouye($name)
     {
-        $home = M('home')->where(array( 'token' =>$this->token))->find();
+        $home = M('Home')->where(array(
+            'token' => $this->token
+        ))->find();
         if ($home == false) {
             return array(
                 '商家未做首页配置，请稍后再试',
@@ -787,7 +782,7 @@ class WeixinAction extends Action
             );
         } else {
             if ($home['apiurl'] == false) { 
-            	$url = rtrim(C('site_url'), '/') . '/index.php?g=Wap&m=Index&a=index&token='. $this->token .'&wecha_id='.$this->data['FromUserName'];
+            	$url = rtrim(C('site_url'), '/') . '/index.php?g=Home&m=Shop&a=index&token='. $this->token .'&wecha_id='.$this->data['FromUserName'];
             } else {
                 $url = $home['apiurl'].'&wecha_id='.$this->data['FromUserName'];
             }
