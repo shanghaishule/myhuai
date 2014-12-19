@@ -15,6 +15,7 @@ class WeixinAction extends Action
         list($content, $type) = $this->reply($data);
 		$weixin->response($content, $type);
     }
+    
     private function reply($data)
     {
         if ('CLICK' == $data['Event']) {
