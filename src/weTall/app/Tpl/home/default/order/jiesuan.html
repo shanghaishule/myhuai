@@ -88,11 +88,12 @@
         			alert('请输入收货人姓名');
         			return false;
         		}
+        	/*
         		if(sheng=='')
         		{
         			alert('请选择所在地区');return false;
         		}
-
+        	*/
         		if(address=='')
         		{
         			alert('请输入详细地址');
@@ -141,7 +142,7 @@
 	        <volist name='address_list' id='vo' >
 	        <ul class="receive_add address_item selected_address">
 	            <li class="radio"><input id="address_{$vo.id}" checked="checked"  name="address_options" value="{$vo.id}" type="radio"></li>
-	            <li class="particular">{$vo.sheng}&nbsp;{$vo.shi}&nbsp;{$vo.qu}&nbsp;{$vo.address}</li>
+	            <li class="particular">{$vo.hosAddress}&nbsp;{$vo.address}</li>
 	            <li class="name">收货人姓名: {$vo.consignee}</li>
 	            <li class="mobile">手机号码:{$vo.mobile}</li>
 	        </ul>
@@ -161,17 +162,24 @@
                
                <p></p>
                <div id="region">
-               <select name="sheng" id="s1" style="background:white"></select>
+               <!-- <select name="sheng" id="s1" style="background:white"></select>
                <select name="shi" id="s2" style="background:white"></select>
-               <select name="qu" id="s3" style="background:white"></select>
+               <select name="qu" id="s3" style="background:white"></select> -->
+                <select name="hosAddress">
+	                <volist name="hosA" id="hos">
+	                	<option value="{$hos.name}">{$hos.name}</option>
+	                </volist>
+                </select>
                 </div>
+              <!-- -
                 <script language="javascript">
 					new PCAS("sheng","shi","qu","","","");
 			    </script>
+			   -->  
                 <p></p>
             </li>
             <li>
-                <p><input value="" name="address" id="address"  placeholder="详细地址不必重复填写地区" class="text width1" type="text"></p>
+                <p><input value="" name="address" id="address"  placeholder="详细地址不必重复填写医院名称" class="text width1" type="text"></p>
             </li>
             <li>
                 <p><input value="" id="phone_mob" name="phone_mob" placeholder="手机号码" class="text" type="text"></p>
@@ -179,7 +187,7 @@
                 <p class="title">&nbsp;</p>
                 <p>
                     <label>
-                        <input value="1" id="save_address" name="save_address" type="checkbox">&nbsp;点击添加新增地址
+                        <input value="1" id="save_address" name="save_address" type="checkbox">&nbsp;保存为默认地址
                     </label>
                 </p>
            
@@ -201,13 +209,20 @@
                
                <p></p>
                <div id="region">
-               <select name="sheng" id="s1" style="background:white"></select>
-               <select name="shi" id="s2" style="background:white"></select>
-               <select name="qu" id="s3" style="background:white"></select>
+		             <!--  <select name="sheng" id="s1" style="background:white"></select>
+		               <select name="shi" id="s2" style="background:white"></select>
+		               <select name="qu" id="s3" style="background:white"></select>
+                     -->
+               <select name="hosAddress">
+                <volist name="hosA" id="hos">
+                	<option value="{$hos.name}">{$hos.name}</option>
+                </volist>
+               </select>
                </div>
+               <!--  
                <script language="javascript">
 					new PCAS("sheng","shi","qu","","","");
-			   </script>
+			   </script> -->
                <p></p>
             </li>
             <li>
@@ -247,22 +262,13 @@
                       <a <if condition="$tabType eq 0">href="{:U('Item/index',array('itemid'=>$vo['id'],'tokenTall'=>$tokenTall))}"<else />href="{:U('Item/index_book',array('itemid'=>$vo['id'],'tokenTall'=>$tokenTall))}"</if> >{$vo.name}</a><br>
                      
                       <span>型号:{$vo.size}<span>&nbsp;颜色:{$vo.color}</span></span>
-                      
                       <br>
-                    
-                       
                       <span>数量：</span><span class="price1" id="gdnum_{$vo.tokenTall}_{$vo.id}">{$vo.num}</span><br>
-                      
-                      
                   </span>
                   
                   <span class="tit titadd">
                      
-                      <span></span><span class="price1">¥{$vo.price}</span><br>
-                      
-                      <br>
-                      <br>
-                      
+                      <span></span><span class="price1">¥{$vo.price}</span><br><br><br>
                   </span>
                   <if condition="$vo.reserveDate neq ''">
                   <p class="yuyue">预约时间：{$vo.reserveDate}</p>

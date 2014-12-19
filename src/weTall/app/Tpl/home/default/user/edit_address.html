@@ -68,10 +68,6 @@ $(function(){
             consignee : {
                 required : '请填写收货人姓名. '
             },
-            sheng : {
-                required : '请选择所在地区. '
-             
-            },
             address   : {
                 required : '请填写详细地址. '
             },
@@ -102,14 +98,22 @@ function hide_error(){
                     <label class="field_message"><span class="field_notice"></span></label>
                 </li>
                 <li style="width:100%">
+            		<!-- 
             		<select name="sheng" id="s1" style="width:30%;background:white"></select>
 					<select name="shi" id="s2" style="width:30%;background:white"></select>
 					<select name="qu" id="s3" style="width:30%;background:white"></select>
+                    -->
+	               <select name="hosAddress">
+	                <volist name="hosA" id="hos">
+	                	<option value="{$hos.name}" <if condition="$hos['name'] eq $info.hosAddress">selected</if>>{$hos.name}</option>
+	                </volist>
+	               </select>					
                 </li>
+                <!-- 
                 <script language="javascript">
 					new PCAS("sheng","shi","qu","{$info.sheng}","{$info.shi}","{$info.qu}");
 				</script>
-                
+                 -->
                 <li>
                     <input value="{$info.address}" class="text width_normal" name="address" placeholder="不必重复填写地区" type="text"><label class="field_message"><span class="field_notice"></span></label>
                 </li>

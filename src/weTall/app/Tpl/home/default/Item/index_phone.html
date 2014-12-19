@@ -2,32 +2,18 @@
 <html>
 <head>
 <include file="public:headtop" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<link href="__STATIC__/weixin/css/home/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__STATIC__/weixin/js/home/jquery-1.9.1.js" ></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/date.js" ></script>
 </head>
 <body style="background:#f1f0f5">
 	<include file="public:head" />
-	
 	<div class="s_bottom"></div>
 	<script type="text/javascript">
 		$(function(){
 			$("div.module_special .wrap .major ul.list li:last-child").addClass("remove_bottom_line");
 		});
-		var active=0,
-			as=document.getElementById('pagenavi').getElementsByTagName('a');
-			
-		for(var i=0;i<as.length;i++){
-			(function(){
-				var j=i;
-				as[i].onclick=function(){
-					t2.slide(j);
-					return false;
-				}
-			})();
-		}
-		var t2=new TouchSlider({id:'sliderlist', speed:600, timeout:6000, before:function(index){
-				as[active].className='';
-				active=index;
-				as[active].className='active';
-			}});
 	</script>
 
 <div id="content">
@@ -49,13 +35,6 @@
 			}
 		 
 		}
-
-		$(document).ready(function(){
-			$(".group1").colorbox({rel:'group1',width:"100%",height:"100%"});
-			$("#item_comments").hide();
-			$("#sheet1").css('border-right','1px solid #ddd');
-			
-		});
 		
 	</script>
     <div class="ware_info">
@@ -198,17 +177,6 @@ margin-top: 7px;border-radius:2px"><a href="tel:4006555899" >电话预约</a></l
 	 <!-- 返回顶部结束 -->
 <div class="space"></div>
 <div class="space"></div>
-<script src="__STATIC__/LazyLoad/js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>	
-<script>
-	$(function() {
-		$("img").lazyload({
-			effect : "fadeIn"
-		});
-		$(function(){
-			$('#endTime').date({theme:"datetime"});
-		});
-	});
-</script>
 <script type="text/javascript">
 window.shareData = {
 		"moduleName" : "Index",
@@ -279,5 +247,14 @@ window.shareData = {
 							}, 'json')
 		}
 	</script>
+<script src="__STATIC__/LazyLoad/js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>	
+<script>
+	$(function() {
+		$("img").lazyload({
+			effect : "fadeIn"
+		});
+		$('#endTime').date({theme:"datetime"});
+	});
+</script>	
 </body>
 </html>

@@ -8,6 +8,7 @@ class HugongAction extends UserAction{
 	public function index(){
 		$tokenTall = $this->getTokenTall();
 		$map = array();
+		$map['uid'] = session("uid");
 		$mod = $this->_mod;
 		!empty($mod) && $this->_list($mod, $map);
 		$this->assign("tokenTall",$tokenTall);
@@ -27,7 +28,6 @@ class HugongAction extends UserAction{
 			if (false === $data = $this->_mod->create()) {
 				$this->error($this->_mod->getError());
 			}
-			
 			//必须上传图片
 			if (empty($_POST['img'])){
 				$this->error('请上传商品主图。');
@@ -50,7 +50,7 @@ class HugongAction extends UserAction{
 			if (! empty($_POST['img5'])) {
 				$imgs[] = $_POST['img5'];
 			}			
-
+            
 			$data['tokenTall'] = $tokenTall;
 			$data['info'] = str_replace("src=",'src="/weTall/static/LazyLoad/js/grey.gif" data-original=',$data['info']);
 			//dump($data);exit;	
@@ -73,6 +73,7 @@ class HugongAction extends UserAction{
 					}
 			} else {
 				//新增
+				$data['uid'] = session("uid");
 				$data['addTime'] = time();
 				$data['updateTime'] = time();
 				$result = $this->_mod->add($data);
@@ -96,7 +97,7 @@ class HugongAction extends UserAction{
 		else {
 			if ($id) {
 				$myaction = "编辑";
-				$info = $this->_mod->where(array('id'=>$id))->find();
+				$info = $this->_mod->where(array('id'=>$id,'uid'=>session('uid')))->find();
 				$info['info'] = str_replace('src="/weTall/static/LazyLoad/js/grey.gif" data-original=',"src=", $info['info']);
 				$imgDetail = M("hugong_img")->where(array("item_id"=>$id))->order("id ASC")->select();
 				$index = 1;
@@ -120,7 +121,7 @@ class HugongAction extends UserAction{
 	public function del()
 	{
 		$id = $this->_get('id');
-		$item = $this->_mod->where(array('id'=>$id))->find();
+		$item = $this->_mod->where(array('id'=>$id,'uid'=>session('uid')))->find();
 		if ($item) {
 			$this->_mod->where(array('id'=>$item['id']))->delete();
 			$this->success('删除成功！');
@@ -152,7 +153,7 @@ class HugongAction extends UserAction{
 	//更新单条信息
 	public function updateT(){
 		$id = $this->_get('id');
-		$item = $this->_mod->where(array('id'=>$id))->find();
+		$item = $this->_mod->where(array('id'=>$id,'uid'=>session('uid')))->find();
 		if ($item) {
 			$data['updateTime'] =  time();
 			$this->_mod->where(array('id'=>$item['id']))->save($data);

@@ -22,7 +22,6 @@
          </li>
         <li  id="a_1">
     						<div style="">
-
 										<p>登录注册</p>
 				              </div>
         </li>
@@ -90,7 +89,7 @@ $(function(){
 </script>
 
 <div id="content" class="bg_white">
-    <form method="post " id="login_form" class="reg_1">
+    <form method="post" id="login_form" class="reg_1">
             <p>用户名：<input  name="user_name" id="user_name" class="text width5" placeholder="手机号" type="text"></p>
             <label></label>
             <p>密　码：<input  name="password" id="password" class="text width5" placeholder="密 码" type="password"></p>
@@ -100,6 +99,7 @@ $(function(){
         <li id="click_yanzheng"><input style="background: #006835;-webkit-appearance: none;"name="Submit" value="立即登陆" class="enter" type="submit" id="login_btn_id"></li>
         <li id="intime_reg"><a href="{:U('user/register', array('tokenTall'=>$tokenTall))}" title="立即注册">
         <input name="Submit" style="background:red;;border:none" value="立即注册" class="login_btn"id="login_btn_id1" title="立即注册" ></a></li>
+        <li><a href="{:U('shangjia/login', array('tokenTall'=>$tokenTall))}">商家登录</a></li>
         </ul>
             
             <a href="#" class="clew" style="display:none;">忘记密码？</a>

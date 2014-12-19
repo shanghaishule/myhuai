@@ -33,25 +33,24 @@ class SaleStatAction extends UserAction{
 						'totalamt_online'=>$totalamt_online
 				)
 		);
-		
-			
-$order_detail=M()->query("
-select b.title,b.img,b.quantity,SUM(b.price*b.quantity) amt, d.b_name 
-from tp_item_order a, tp_order_detail b, tp_item c, tp_business d 
-where a.orderId=b.orderId 
-and a.`status`=4 
-and DATE_FORMAT(a.add_time,'%m/%d/%Y')=date_format(now(),'%m/%d/%Y') 
-and b.itemId=c.id 
-and c.isBusiness=d.id
-order by SUM(b.price*b.quantity) desc
-");
-		
+		$count = M()->Table("tp_item_order a,tp_order_detail b,tp_item c,tp_business d")->where("a.orderId=b.orderId 
+		and a.`status`=4 
+		and FROM_UNIXTIME(a.add_time,'%m/%d/%Y')=DATE_FORMAT(now(),'%m/%d/%Y') 
+		and b.itemId=c.id
+		and c.isBusiness=d.id")->count();    //计算总数
+		//dump($count);die;
+		$p = new Page ( $count, 5 );
+		$order_detail=M()->query("
+		select b.title,b.img,b.quantity,SUM(b.price*b.quantity) amt, d.b_name 
+		from tp_item_order a, tp_order_detail b, tp_item c, tp_business d 
+		where a.orderId=b.orderId 
+		and a.`status`=4 
+		and FROM_UNIXTIME(a.add_time,'%m/%d/%Y')=DATE_FORMAT(now(),'%m/%d/%Y') 
+		and b.itemId=c.id
+		and c.isBusiness=d.id
+		order by SUM(b.price*b.quantity) desc limit $p->firstRow,$p->listRows");
 		$this->assign('order_detail',$order_detail);//订单商品信息
-		
-		
 		$this->display();
-			
-		
 	}
 }
 ?>

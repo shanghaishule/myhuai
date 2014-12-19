@@ -2,7 +2,7 @@
 <html>
 <head>
 <include file="public:headtop" />
-<title>个人中心</title>
+<title>商家中心</title>
 <script charset="utf-8" type="text/javascript" src="__STATIC__/weixin/js/dialog.js" id="dialog_js"></script>
 <link href="__STATIC__/weixin/css/dialog.css" rel="stylesheet" type="text/css">
 <script charset="utf-8" type="text/javascript" src="__STATIC__/weixin/js/jquery_003.js"></script>
@@ -18,7 +18,6 @@ padding: 5px;
 border:1px solid #CCC;
 
 }
-/*.button_aaa:visited {color: white;}*/  /* 已访问的链接 */
 </style>
 </head>
 
@@ -32,7 +31,7 @@ border:1px solid #CCC;
         <li  id="a_1">
     						<div style="">
 
-										<p>个人中心</p>
+										<p>商家中心</p>
 				              </div>
         </li>
     </ul>
@@ -41,20 +40,18 @@ border:1px solid #CCC;
 <div class="content">
     <div class="membertop"  style="background-image:url(__STATIC__/weixin/images/home/mempic.png);background-size:100% 100%;">
        <div class="my_name" style="height:40px; padding-left:5px;"><a>{$visitor.username}</a></div>
-       <div class="logout"><a href="{:U('user/logout')}">注销</a> <!-- | <a href="{:U('user/favi')}">我的收藏</a> --></div>
-       <div class="my_address"><a href="{:U('user/address', array('tokenTall'=>$tokenTall))}">收货地址管理</a> | <a href="{:U('user/password', array('tokenTall'=>$tokenTall))}">修改密码</a></div>
+       <div class="logout"><a href="{:U('shangjia/logout')}">注销</a></div>
+       
    <ul class="buyer_stat">
-
-          <li class="btn_1 <if condition='$status eq 1'>active</if> "><a href="{:U('user/index',array('status'=>1,'tokenTall'=>$tokenTall))}">
-          <p>{$daiPay}</p><p>待付款</p></a>
-          <span><p>{$daiPay}</p><p>待付款</p></span></li>        
-          <li class="btn_2 <if condition='$status eq 2'>active</if> "><a href="{:U('user/index',array('status'=>2,'tokenTall'=>$tokenTall))}">
-           <p>{$daiSend}</p><p>待发货</p></a><span> <p>{$daiSend}</p><p>待发货</p></span></li>
-          <li class="btn_3 <if condition='$status eq 3'>active</if>"><a href="{:U('user/index',array('status'=>3,'tokenTall'=>$tokenTall))}">
-           <p>{$daiRes}</p><p>待收货</p></a><span> <p>{$daiRes}</p><p>待收货</p></span></li>
-          <li class="btn_4 <if condition='$status eq 4'>active</if>"><a href="{:U('user/index',array('status'=>4,'tokenTall'=>$tokenTall))}">
-           <p>{$daiFinish}</p><p>已完成</p></a><span> <p>{$daiFinish}</p><p>已完成</p></span></li>
-
+          <li class="btn_1 <if condition='$status eq 1'>active</if> "><a href="{:U('shangjia/index',array('status'=>1,'tokenTall'=>$tokenTall))}">
+          <p>1</p><p>待付款</p></a>
+          <span><p>1</p><p>待付款</p></span></li>        
+          <li class="btn_2 <if condition='$status eq 2'>active</if> "><a href="{:U('shangjia/index',array('status'=>2,'tokenTall'=>$tokenTall))}">
+           <p>1</p><p>待发货</p></a><span> <p>1</p><p>待发货</p></span></li>
+          <li class="btn_3 <if condition='$status eq 3'>active</if>"><a href="{:U('shangjia/index',array('status'=>3,'tokenTall'=>$tokenTall))}">
+           <p>1</p><p>待收货</p></a><span> <p>1</p><p>待收货</p></span></li>
+          <li class="btn_4 <if condition='$status eq 4'>active</if>"><a href="{:U('shangjia/index',array('status'=>4,'tokenTall'=>$tokenTall))}">
+           <p>1</p><p>已完成</p></a><span> <p>1</p><p>已完成</p></span></li>
     </ul>
     </div>
     
@@ -67,14 +64,7 @@ border:1px solid #CCC;
 	                }
 	            });
 	    });
-	    
-	//xxl start    	    
-	function addcomments(){	
-	        alert(1);
-		location.href=':U('user/comments',array('item_id'=>144))}';
-	}
-	//xxl end   http://www.ttiantian.com/weTall/index.php?m=user&a=index&status=4&tokenTall=qcjnep1401844607
-    </script>
+	</script>
     <div class="wrap">
         <div class="public">
             <notempty name="item_orders">
@@ -84,27 +74,21 @@ border:1px solid #CCC;
                     <volist name='vo.items' id='item' >
                     
                     <div style="clear:both;border-bottom:1px solid #f1f0f5">
-                    	<div style="float:left;display:inline;width:30%;padding:5px 0px 5px 5px"> <span style="/*margin-left:20px*/"><p class="ware_pic"><a <if condition="$item['item_source'] eq 0">href="{:U('Item/index',array('itemid'=>$item['itemId'],'tokenTall'=>$tokenTall))}"<else />href="{:U('Item/index_book',array('itemid'=>$item['itemId'],'tokenTall'=>$tokenTall))}"</if>><img src="{:$item['img']}" height="80" width="80"></a></p></div>
+                    	<div style="float:left;display:inline;width:30%;padding:5px 0px 5px 5px"> <span style="/*margin-left:20px*/"><p class="ware_pic"><a href="{:U('Item/index',array('id'=>$item['itemId'],'tokenTall'=>$tokenTall))}" ><img src="{:$item['img']}" height="80" width="80"></a></p></div>
                     	<div style="float:left;display:inline;width:65%">
                     		<div style="float:left;display:imline;margin-top:5px;width:100%;">
                     			<ul>
-                    				<li> <p class="ware_text"><a <if condition="$item['item_source'] eq 0">href="{:U('Item/index',array('itemid'=>$item['itemId'],'tokenTall'=>$tokenTall))}"<elseif condition="$item['item_source'] eq 2"/>href="{:U('Item/index_phone',array('itemid'=>$item['itemId'],'tokenTall'=>$tokenTall))}"<elseif condition="$item['item_source'] eq 1"/>href="{:U('Item/index_book',array('itemid'=>$item['itemId'],'tokenTall'=>$tokenTall))}"<else />href="{:U('index/index')}"</if>>{$item.title}</a><br><span class="attr"></span></p></li>
-                    				<li><span class="buy-size">型号:{$item.size}</span><span class="buy-color">颜色: {$item.color}</span></li>
+                    				<li> <p class="ware_text"><a href="{:U('Item/index',array('id'=>$item['itemId'],'tokenTall'=>$tokenTall))}">{$item.title}</a><br><span class="attr"></span></p></li>
+                    				<li><span class="buy-size">大小:{$item.size}</span><span class="buy-color">颜色: {$item.color}</span></li>
                     				<li class="price"><span class="buy-price">价格: ¥{$item.price}</span><span class="buy-num">数量: {$item.quantity}</span></li>
                     			</ul>
-                    		</div>
-                    		<div style=";display:imline;">
-                    		<if condition="$vo.status eq 4">
-	                          <span>
-	                         		<a class="button_aaa" style="color: red;border: none;font-size: 16px;padding-left: 0px;" href="{:U('user/comments',array('item'=>$item))}" >添加评论</a> 
-	                          </span>                       
-                        </if> 
                     		</div>
                     	</div>
                     	<div style="clear:both;"></div>
                     
                     </div>
-                               
+                  
+ 	                              
                     </volist>
                     <div class="clear"></div>
                     <div class="foot" style="padding-left: 5px">
@@ -114,23 +98,17 @@ border:1px solid #CCC;
                             <div style="float:left;float: right;padding-right: 4%;padding-top: 5px">
                             <switch name="vo.status" >
 	                        <case value="1"><!--待付款 -->
-	                           <a class="button_aaa" href="{:U('order/pay',array('orderId'=>$vo['orderId'],'tokenTall'=>$tokenTall, 'showwxpaytitle'=>1))}" id="order118_action_pay" class="btn">立即付款</a>
-	                           <a class="button_aaa" href="{:U('order/cancelOrder',array('orderId'=>$vo['orderId'],'tokenTall'=>$tokenTall))}" id="order118_action_cancel"> 取消订单</a>
 	                           <a class="button_aaa" href="{:U('order/checkOrder',array('orderId'=>$vo['orderId'],'status'=>$status,'tokenTall'=>$tokenTall))}" >查看订单</a>
 	                        </case>
 	                        <case value="2"><!--待发货 -->
 	                           <a class="button_aaa" href="{:U('order/checkOrder',array('orderId'=>$vo['orderId'],'status'=>$status,'tokenTall'=>$tokenTall))}" >查看订单</a>
 	                        </case>
 	                        <case value="3"><!-- 待收货 -->
-	                           <a class="button_aaa" href="{:U('order/confirmOrder',array('orderId'=>$vo['orderId'],'status'=>$status,'tokenTall'=>$tokenTall))}" id="order118_action_confirm" >确认收货</a>
 	                           <a class="button_aaa" href="{:U('order/checkOrder',array('orderId'=>$vo['orderId'],'status'=>$status,'tokenTall'=>$tokenTall))}" >查看订单</a>	                           
 	                        </case>
 	                        <default />
-	                        
 	                           <a class="button_aaa" href="{:U('order/checkOrder',array('orderId'=>$vo['orderId'],'status'=>$status,'tokenTall'=>$tokenTall))}" >查看订单</a>
-
-	                        
-	                    </switch>
+	                    	</switch>
 	                   </div>
                         </div>
                     </div>
@@ -153,7 +131,7 @@ border:1px solid #CCC;
         <div class="public_index">
             <div class="information_index">
                 <div class="awoke">
-您目前还没有已生成的订单<br>去<a href="#">首页</a>，挑选喜爱的医疗商品吧。
+目前还没有订单
                 </div>
             </div>
         </div>

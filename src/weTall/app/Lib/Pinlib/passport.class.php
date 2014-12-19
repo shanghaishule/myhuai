@@ -117,7 +117,7 @@ class passport
      * 本地用户编辑
      */
     private function _local_edit($uid, $data) {
-        isset($data['password']) && $data['password'] = md5($data['password']);
+        isset($data['password']) && $data['password'] = $data['password'];
         M('user')->where(array('id'=>$uid))->save($data);
         return true;
     }
