@@ -9,7 +9,7 @@ class WeixinAction extends Action
     {
         $this->token = $this->_get('token');
         $weixin      = new Wechat($this->token);
-        $data        = $weixin->request();
+        $data  = $weixin->request();
         $this->data  = $weixin->request();
         $this->my    = C('site_my');
         list($content, $type) = $this->reply($data);
