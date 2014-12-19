@@ -778,7 +778,7 @@ class WeixinAction extends Action
     }
     function shouye($name)
     {
-        $home = M('Home')->where(array(
+        $home = M('home')->where(array(
             'token' => $this->token
         ))->find();
         if ($home == false) {

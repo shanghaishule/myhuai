@@ -43,13 +43,15 @@
 <table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
 <thead>
 <tr>
-<th colspan="5">销售统计分析</th>
+<th colspan="7">销售统计分析</th>
 </tr>
 </thead>
 <tr>
 <th>项目图片</th>
-<th>项目名称</th>
+<th style="width:383px;">项目名称</th>
+<th>所属分类</th>
 <th>销售数量</th>
+<th>产品单价</th>
 <th>销售金额</th>
 <th>所属商家</th>
 </tr>
@@ -57,7 +59,9 @@
 <tr>
 <td align="center"><div class="cateimg"><img src="{lanrain:$vo.img}" class="cateimg_small"  /><img src="{lanrain:$vo.img}" class="cateimg_big"  /></div></td>
 <td align="center">{lanrain:$vo.title}</td>
-<td align="center">{lanrain:$vo.quantity}</td>
+<td align="center">{lanrain:$vo.catname}</td>
+<td align="center">{lanrain:$vo.sumQ}</td>
+<td align="center">{lanrain:$vo.price}</td>
 <td align="center" class="red">¥{lanrain:$vo.amt}</td>
 <td align="center">{lanrain:$vo.b_name}</td>
 </tr>
