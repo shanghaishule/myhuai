@@ -779,9 +779,7 @@ class WeixinAction extends Action
     }
     function shouye($name)
     {
-        $home = M('home')->where(array(
-            'token' => $this->token
-        ))->find();
+        $home = M('home')->where(array( 'token' =>$this->token))->find();
         if ($home == false) {
             return array(
                 '商家未做首页配置，请稍后再试',
