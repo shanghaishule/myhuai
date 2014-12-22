@@ -215,7 +215,7 @@ class ArticleAction extends UserAction{
 		$id = $this->_get('id');
 		$item = $this->_mod->where(array('id'=>$id))->find();
 		if ($item) {
-			M('item_img')->where(array('item_id'=>$item['id']))->delete();
+			M('item_article_img')->where(array('item_id'=>$item['id']))->delete();
 			$this->_mod->where(array('id'=>$item['id']))->delete();
 				
 			$this->success('删除成功！');
@@ -305,6 +305,7 @@ class ArticleAction extends UserAction{
 				$where = 'id='.$ids;
 			}
 			$flag = $this->_mod->where($where)->delete();
+			M('item_article_img')->where($where)->delete();
 			if(false !== $flag){
 				$this->success("删除成功".$flag."条!");
 			}else{
