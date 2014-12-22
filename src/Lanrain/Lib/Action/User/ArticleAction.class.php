@@ -57,8 +57,8 @@ class ArticleAction extends UserAction{
 			if (! empty($_POST['img5'])) {
 				$imgs[] = $_POST['img5'];
 			}
-			if (! empty($_POST['img5'])) {
-				$imgs[] = $_POST['img5'];
+			if (! empty($_POST['img6'])) {
+				$imgs[] = $_POST['img6'];
 			}			
 			if(isset($_POST['tuijian']))
 			{

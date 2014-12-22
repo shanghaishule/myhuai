@@ -59,8 +59,8 @@ class Wetall_itemAction extends UserAction{
 			if (! empty($_POST['img5'])) {
 				$imgs[] = $_POST['img5'];
 			}
-			if (! empty($_POST['img5'])) {
-				$imgs[] = $_POST['img5'];
+			if (! empty($_POST['img6'])) {
+				$imgs[] = $_POST['img6'];
 			}
 			
             $data['info'] = str_replace("src=",'src="/weTall/static/LazyLoad/js/grey.gif" data-original=',$data['info']);
