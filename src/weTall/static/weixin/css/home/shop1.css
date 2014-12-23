@@ -39,8 +39,25 @@ a{ text-decoration:none; color:#666;}
  * ******************** end initialize.css ***************
  * -------------------------------------------------------
  */
-
-
+/*fuzhen yuyue*/
+#rebook_form{;width: 97%;
+margin: 14px auto;}
+#rebook_table input{border:1px solid #ccc;width:100%;height:30px}
+.td_80{width:80%}
+#rebook_table .td_sex input{}
+#rebook_form .biaoti{color:#006835;font-size:18px;line-height: 26px;;color:#006835}
+#rebook_form .biaoti_span{color:red;font-size:13px}
+#rebook_table{width: 95%;
+margin: 0 auto;}
+#rebook_table tr{line-height: 43px;width:%}
+#rebook_table tr td.td_1{width:20%}
+#rebook_table tr td.td_sex{width:3%}
+#rebook_table tr td.td_sex_1 {padding-top: 14px;}
+#rebook_table tr td.select_item{width:50%}
+#rebook_table tr td.select_item #check_item{width:92%}
+.rebook_sub{width:100%}
+.rebook_sub a{display:block;width:60px;height:45px;}
+/*fuzhen yuyue*/
 .home_page_logo{background:url(../../../../images/logo.png) no-repeat 0 0;background-size: 140px 40px; height:40px;width:140px;}
 #shopname{border-bottom:1px solid #d9d9d9;border-left:1px solid #d9d9d9;}
 .dail{

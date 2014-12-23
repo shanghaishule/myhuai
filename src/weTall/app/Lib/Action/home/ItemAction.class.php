@@ -78,7 +78,10 @@ class itemAction extends frontendAction {
 
         $this->display();
     }
-    
+    public function rebook(){
+    	$this->display();
+    	
+    }
     //服务
     public function index_book(){
     	$id = $this->_get("itemid","trim,intval");
