@@ -33,10 +33,45 @@
 已成交总计 [<span class="red">￥{lanrain:$count.totalamt}</span>]
 今日成交总计 [<span class="red">￥{lanrain:$count.totalamt_today}</span>]
 在线支付总计 [<span class="red">￥{lanrain:$count.totalamt_online}</span>]
-
 </td>
 </tr>
 </table>
+</div>
+
+<div style="border:2px solid #ddd; background:#fff; border-radius:10px; padding:10px; overflow:hidden; margin:10px 0px;">
+	<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+		<thead>
+			<tr><th>条件搜索</th></tr>
+		</thead>
+		<tr>
+			<th style="padding-top:20px">
+				<form name="form1" id="form1" action="" method="post">
+						下单时间：
+						<input type="text" class="px" value="{lanrain:$startTime}" name="start_time" id="start_time" onClick="WdatePicker()" />                
+						到
+						<input type="text" class="px" value="{lanrain:$endTime}" name="end_time" id="end_time" onClick="WdatePicker()"  /> 
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<select name="business" id="business" style="height:30px;">
+							<option value="0">--所属商家{lanrain:$business}--</option>
+							<volist name="businessT" id="business">
+							<option value="{lanrain:$business.id}" <if condition="$businessId eq $business['id']">selected</if>>{lanrain:$business.b_name}</option>
+							</volist>
+						</select>&nbsp;&nbsp;&nbsp;&nbsp;
+						<select name="thCate" id="thCate" style="height:30px;">
+							<option value="0">--所属二级分类--</option>
+							<volist name="thCateT" id="thCate">
+							<option value="{lanrain:$thCate.id}" <if condition="$thCateId eq $thCate['id']">selected</if>>{lanrain:$thCate.catname}</option>
+							</volist>
+						</select>
+						<br />
+						<br />
+						<input name="keywords" placeholder="请输入商品名称或服务名称……" value="{lanrain:$keyword}" id="keywords" class="px" style="width:600px;height:30px;"/>
+						<br /><br />
+						<input type="button" name="btn" onClick="search()" id="btn" class="btnGreen" value="搜索" />								
+				</form>
+			</th>
+		</tr>
+	</table>
 </div>
 
 <div style="border:2px solid #ddd; background:#fff; border-radius:10px; padding:10px; overflow:hidden; margin:10px 0px;">
@@ -66,8 +101,30 @@
 <td align="center">{lanrain:$vo.b_name}</td>
 </tr>
 </volist>
+<tr>
+<td align="right" colspan="7">销售总额：<span class="red">￥{lanrain:$sumPrice}</span>&nbsp;&nbsp;&nbsp;&nbsp;在线支付金额：<span class="red">￥{lanrain:$online_sumPrice}</span></td>
+</tr>
 </table>
 </div>
 </div>
-
+<script>
+function search(){
+	    	   var startTime = $("#start_time").val();
+	    	   var endTime = $("#end_time").val();
+	    	   var business = $("#business").val();
+	    	   var thCate = $("#thCate").val();
+	    	   var keyword = $("#keywords").val();
+	    	   if(startTime == '' && endTime == '' && business == '0' && thCate == '0' && keyword == ''){
+	    		     return false;
+	    	   }
+	    	   if(startTime!= '' && endTime == ''){
+	    		     return false;
+	    	   }
+	    	   if(startTime== '' && endTime != ''){
+	    		     return false;
+	    	   }	 
+	    	   this.form1.action ="{lanrain::U('SaleStat/search')}";
+	    	   this.form1.submit();
+   }
+</script>
 <include file="Public:footer"/>
