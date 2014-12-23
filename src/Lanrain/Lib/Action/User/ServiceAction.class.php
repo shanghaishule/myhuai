@@ -58,8 +58,8 @@ class ServiceAction extends UserAction{
 			if (! empty($_POST['img5'])) {
 				$imgs[] = $_POST['img5'];
 			}
-			if (! empty($_POST['img5'])) {
-				$imgs[] = $_POST['img5'];
+			if (! empty($_POST['img6'])) {
+				$imgs[] = $_POST['img6'];
 			}
 			
 			if(isset($_POST['tuijian']))
@@ -219,7 +219,7 @@ class ServiceAction extends UserAction{
 		$id = $this->_get('id');
 		$item = $this->_mod->where(array('id'=>$id))->find();
 		if ($item) {
-			M('item_img')->where(array('item_id'=>$item['id']))->delete();
+			M('item_service_img')->where(array('item_id'=>$item['id']))->delete();
 			$this->_mod->where(array('id'=>$item['id']))->delete();
 				
 			$this->success('删除成功！');
@@ -330,6 +330,7 @@ class ServiceAction extends UserAction{
 				$where = 'id='.$ids;
 			}
 			$flag = $this->_mod->where($where)->delete();
+			M('item_service_img')->where($where)->delete();
 			if(false !== $flag){
 				$this->success("删除成功".$flag."条!");
 			}else{

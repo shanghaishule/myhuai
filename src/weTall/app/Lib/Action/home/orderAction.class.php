@@ -289,7 +289,7 @@ class orderAction extends userbaseAction {
 				$addr['address_name']=$address['consignee'];//收货人姓名
 				$addr['mobile']=$address['mobile'];//电话号码
 				//$addr['address']=$address['sheng'].$address['shi'].$address['qu'].$address['address'];//地址
-				$addr['address']=$add_address['hosAddress'].$address['address'];//地址
+				$addr['address']=$address['hosAddress'].$address['address'];//地址
 			}
 			//收货地址end
 			$reserveDate = $this->_post('reserveDate');//预约时间
