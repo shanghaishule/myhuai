@@ -42,11 +42,11 @@ a{ text-decoration:none; color:#666;}
 /*fuzhen yuyue*/
 #rebook_form{;width: 100%;
 margin: 14px auto;}
-#rebook_table input{border:1px solid #ccc;width:100%;height:30px}
+#rebook_table input{border:1px solid #ccc;width:100%;height:30px;-webkit-appearance:none}
 .td_80{width:80%}
 .td_65{width:65%}
 .td_33{width:33%}
-.td_18{width:18%}
+.td_18{width:18%;text-align:center}
 #rebook_table .td_sex input{}
 #rebook_form .biaoti{color:#006835;font-size:18px;line-height: 26px;;color:#006835}
 #rebook_form .biaoti_span{color:red;font-size:13px}
@@ -58,9 +58,11 @@ margin: 0 auto;}
 #rebook_table tr td.td_req{width:1%}
 #rebook_table tr td.td_req_01{width:18%}
 #rebook_table tr td.td_spec{text-align:center;}
-#rebook_table tr td.td_spec p}
-#rebook_table tr td.td_sex input{background:#006835}
-#rebook_table tr td.td_sex_1 {padding-top: 9px;}
+#rebook_table tr td.td_spec p{margin-left: 5px;
+background: #006835;
+color: white;}
+#rebook_table tr td.td_sex input{background:#006835;-webkit-appearance:none}
+#rebook_table tr td.td_sex_1 {padding-top: 7px;}
 input#rebook_sex{height:18px}
 input#rebook_vary{height:18px}
 input#rebook_ser{height:18px}
@@ -71,6 +73,7 @@ input#rebook_ser{height:18px}
 .td_time{width:29%}
 .td_time_01{width:33%}
 .rebook_block{background:white;padding:10px ;margin-top:10px}
+#rebook_btm{bottom:0px;height:45px;background:#ccc}
 /*fuzhen yuyue*/
 .home_page_logo{background:url(../../../../images/logo.png) no-repeat 0 0;background-size: 140px 40px; height:40px;width:140px;}
 #shopname{border-bottom:1px solid #d9d9d9;border-left:1px solid #d9d9d9;}
