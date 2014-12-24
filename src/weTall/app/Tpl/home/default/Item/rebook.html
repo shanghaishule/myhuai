@@ -74,7 +74,7 @@
 				   <table id="rebook_table"  border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
 	                   <td class="td_1">上传图片：</td>
-	                   <td></td>
+	                   <td><input type="file"  id="rebook_pic" name="rebook_pic" value="pic" ></td>
 	                 </tr>
 	                
 	                  <tr>
@@ -176,18 +176,18 @@
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
 	                  
-	                   <td class="td_18">预订往返票务: 
+	                   <td class="td_18"><p>预订往返票务 </p>
 						</td>
 						<td class="td_sex_1"> <input type="checkbox"  id="rebook_ser" name="rebook_ser" value="ticket" checked="checked">
 						</td>
 						
-						<td class="td_18">安排周边住宿: 
+						<td class="td_18"><p>安排周边住宿 </p>
 						</td>
 
 						<td class="td_sex_1">
 						<input type="checkbox" name="rebook_ser" id="rebook_ser" value="house">
 						</td>
-						<td class="td_18">交通接站服务: 
+						<td class="td_18"><p>交通接站服务 </p>
 						</td>
 
 						<td class="td_sex_1">
@@ -229,10 +229,10 @@
 	              </div>
                  <div class="ware_cen_bottom"></div>
              </div>
-            <ul class="ware_btn" style="padding:5px 0">
-            <li></li>
-            <li class="phone_book_1"><a <if condition="$item['status'] neq 0">href="tel:4006555899"<else />href="javascirpt:void(0)" id="grey"</if> class="reserveP">电话预约</a></li>
-                	<li id="intime_shopping"><a href="">立即提交</a></li>                
+            <ul class="rebook_btn" style="padding:5px 0">
+            <li class="pic_rebook"><div style=" margin: 0 auto;width:50px;height:34px;background:url(__STATIC__/weixin/images/home/littlelogo.png);background-size:100% 100%";></div></li>
+            <li class="phone_rebook"><a <if condition="$item['status'] neq 0">href="tel:4006555899"<else />href="javascirpt:void(0)" id="grey"</if> class="reserveP">电话预约</a></li>
+            <li class="intime_submit"><a href="">提交表单</a></li>                
                 	
             </ul>
             </div>
