@@ -10,7 +10,7 @@
 <script type="text/javascript" src="__STATIC__/weixin/js/home/iscroll.js" ></script>
 <link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/shop1.css" media="all">
 </head>
-<body style="background:#f1f1f1;-webkit-appearance:none">
+<body style="background:#f1f1f1;-webkit-appearance: none">
 	<div class="index_head1">
 <div id="nav">
 	<ul class="navlist1">
@@ -178,20 +178,20 @@
 	                  
 	                   <td class="td_18">预订往返票务: 
 						</td>
-						<td class="td_sex_1"> <input type="radio"  id="rebook_ser" name="rebook_ser" value="ticket" checked="checked">
+						<td class="td_sex_1"> <input type="checkbox"  id="rebook_ser" name="rebook_ser" value="ticket" checked="checked">
 						</td>
 						
 						<td class="td_18">安排周边住宿: 
 						</td>
 
 						<td class="td_sex_1">
-						<input type="radio" name="rebook_ser" id="rebook_ser" value="house">
+						<input type="checkbox" name="rebook_ser" id="rebook_ser" value="house">
 						</td>
 						<td class="td_18">交通接站服务: 
 						</td>
 
 						<td class="td_sex_1">
-						<input type="radio" name="rebook_ser"  id="rebook_ser" value="traffic">
+						<input type="checkbox" name="rebook_ser"  id="rebook_ser" value="traffic">
 						</td>
 	                 </tr>
 	                  </table>
@@ -219,9 +219,7 @@
 
 <div class="shop_bottom" id="rebook_btm">
 	             <div style="display:none;" class="ware_cen">
-	             	
-	                 <div class="ware_center">
-	                     
+	             	 <div class="ware_center">
 	                     <div class="ware_cen_btn">
 	                         <p class="ware_text_btn">
 	                             <a href="{:U('shopcart/index',array('tokenTall'=>$tokenTall))}"><input type="submit" onclick="#" value="查看购物车" name="" class="btn1"></a>
@@ -232,6 +230,7 @@
                  <div class="ware_cen_bottom"></div>
              </div>
             <ul class="ware_btn" style="padding:5px 0">
+            <li></li>
             <li class="phone_book_1"><a <if condition="$item['status'] neq 0">href="tel:4006555899"<else />href="javascirpt:void(0)" id="grey"</if> class="reserveP">电话预约</a></li>
                 	<li id="intime_shopping"><a href="">立即提交</a></li>                
                 	

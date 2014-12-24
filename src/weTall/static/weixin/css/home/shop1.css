@@ -42,7 +42,7 @@ a{ text-decoration:none; color:#666;}
 /*fuzhen yuyue*/
 #rebook_form{;width: 100%;
 margin: 14px auto;}
-#rebook_table input{border:1px solid #ccc;width:100%;height:30px;-webkit-appearance:none}
+#rebook_table input{border:1px solid #ccc;width:100%;height:30px;}
 .td_80{width:80%}
 .td_65{width:65%}
 .td_33{width:33%}
@@ -63,7 +63,7 @@ background: #006835;
 color: white;}
 #rebook_table tr td.td_sex input{background:#006835;width: 18px;}
 #rebook_table tr td.td_sex_1 {padding-top: 7px;}
-#rebook_table tr td.td_sex_1 input{width: 18px;border-radius:9px}
+#rebook_table tr td.td_sex_1 input{width:18px; }
 input#rebook_sex{height:18px}
 input#rebook_vary{height:18px}
 input#rebook_ser{height:18px}
