@@ -10,7 +10,7 @@
 <script type="text/javascript" src="__STATIC__/weixin/js/home/iscroll.js" ></script>
 <link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/shop1.css" media="all">
 </head>
-<body style="background:white">
+<body style="background:#f1f1f1">
 	<div class="index_head1">
 <div id="nav">
 	<ul class="navlist1">
@@ -39,58 +39,58 @@
 		
     
        <form method="post" id="rebook_form" class="rebook_form_1">
-			   <div>
+			   <div class="rebook_block">
 				   <p class="biaoti">个人信息</p>
 				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
-	                   <td class="td_1">姓名:</td>
+	                   <td class="td_1">姓&nbsp;&nbsp;&nbsp;&nbsp;名:</td>
 	                   <td class="td_80"><input  name="rebook_name" id="rebook_name" class="text width5" placeholder="病人姓名" type="text"></td>
 	                 </tr>
 	                 </table>
 	                  <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
-	                   <td class="td_1">性别:</td>
+	                   <td class="td_1">性&nbsp;&nbsp;&nbsp;&nbsp;别:</td>
 	                   <td class="td_sex">男: 
 						</td>
-						<td class="td_sex_1"> <input type="radio" name="Sex" value="Male" checked="checked">
+						<td class="td_sex_1"> <input type="radio" name="Sex" value="Male" id="rebook_sex"checked="checked">
 						</td>
 						<td class="td_sex">女: 
 						</td>
 
 						<td class="td_sex_1">
-						<input type="radio" name="Sex" value="Female">
+						<input type="radio" id="rebook_sex" name="Sex" value="Female">
 						</td>
 	                 </tr>
 	                  </table>
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
-	                   <td class="td_1">手机:</td>
+	                   <td class="td_1">手&nbsp;&nbsp;&nbsp;&nbsp;机:</td>
 	                   <td class="td_80"><input  name="rebook_phone" id="rebook_phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
 	                 </tr>
 	                </table>
 			   </div>
-			   <div>
+			   <div class="rebook_block">
 				   <p class="biaoti">简要病史<span class="biaoti_span">（可电话咨询）</span> </p>
 				   <table id="rebook_table"  border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
-	                   <td class="td_1">点击上图片</td>
+	                   <td class="td_1">上传图片：</td>
 	                   <td></td>
 	                 </tr>
 	                
 	                  <tr>
-	                   <td class="td_1">文字描述</td>
-	                   <td><textarea name="reinform" class="retextarea" style="height:150px;width:100%;border:1px solid #ccc" id="reinfo" placeholder="请填写需要检查的项目……"></textarea>
+	                   <td class="td_1"><p>文字描述：</p></td>
+	                   <td><textarea name="reinform" class="retextarea" style="height:70px;width:100%;border:1px solid #ccc" id="reinfo" placeholder="请填写需要检查的项目……"></textarea>
 	                   </td>
 	                 </tr>
 	                 
 	                </table>
 			   </div>
-			   <div>
+			   <div class="rebook_block">
 				   <p class="biaoti">预约信息</p>
 				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
-	                   <td class="td_1">要求复诊时间</td>
-	                   <td class="td_80">
+	                   <td class="td_33">要求复诊时间:</td>
+	                   <td class="td_65">
 	                       <div class="book_online">
 		                       <div id="book_online">
 					                 <div class="demo">
@@ -103,9 +103,9 @@
 	                 </tr>
 	                 <tr>
 	                   
-	                   <td class="td_time">计划来院时间<br>
+	                   <td class="">计划来院时间:<br>
 	                   </td>
-	                   <td class="td_time_01"><div class="book_online">
+	                   <td class=""><div class="book_online">
 		                     
 					                  
 					                  <div id="book_online">
@@ -124,30 +124,30 @@
 	                 </table>
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
-	                   <td class="td_1">有无住院要求:</td>
-	                   <td class="td_sex">有: 
+	                   <td class="td_33">有无住院要求:</td>
+	                   <td class="td_req">有: 
 						</td>
-						<td class="td_sex_1"> <input type="radio" name="Sex" value="Male" checked="checked">
+						<td class="td_sex_1"> <input type="radio" name="rebook_req"id="rebook_vary" value="yes" checked="checked">
 						</td>
-						<td class="td_sex">无: 
-						</td>
-
-						<td class="td_sex_1">
-						<input type="radio" name="Sex" value="Female">
-						</td>
-						<td class="td_sex">不确定: 
+						<td class="td_req">无: 
 						</td>
 
 						<td class="td_sex_1">
-						<input type="radio" name="Sex" value="Female">
+						<input type="radio" name="rebook_req" value="no" id="rebook_vary" >
+						</td>
+						<td class="td_req_01 ">不确定: 
+						</td>
+
+						<td class="td_sex_1">
+						<input type="radio" name="rebook_req" value="unsure" id="rebook_vary" >
 						</td>
 	                 </tr>
 	                  </table>
 	                 
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
-			                 <tr>
-						                   <td class="td_1">检查项目</td>
-						                   <td class="select_item"><select name="check_item" class="check_item_1" id="check_item" >
+			                 <tr style="line-height: 39px;">
+						                   <td class="td_33">预约检查项目</td>
+						                   <td class=""><select name="check_item" class="check_item_1" id="check_item" >
 													<option value="volvo" selected="selected">磁共振</option>
 													<option value="saab">胃镜</option>
 													<option value="fiat" >肠镜</option>
@@ -163,34 +163,38 @@
 	                 </table>
 	                  <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 			                 <tr>
-						                   <td class="td_1">检查项目</td>
+						                   <td class="td_33">拟请会诊专家</td>
 						                   <td class="select_item"><input  name="rebook_exper" id="rebook_exper" class="text width5" placeholder="填写专家名" type="text">
 										 </td>
-										 <td class="td_1">查看知名专家</td>
+										 <td class="td_spec"><p>查看知名专家</p></td>
 			                 </tr>
 	                 </table>
+	                 
+	                 </div>
+	                  <div class="rebook_block">
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
 	                  
-	                   <td class="td_sex">预订往返票务: 
+	                   <td class="td_18">预订往返票务: 
 						</td>
-						<td class="td_sex_1"> <input type="radio" name="Sex" value="Male" checked="checked">
+						<td class="td_sex_1"> <input type="radio"  id="rebook_ser" name="rebook_ser" value="ticket" checked="checked">
 						</td>
 						
-						<td class="td_sex">安排周边住宿: 
+						<td class="td_18">安排周边住宿: 
 						</td>
 
 						<td class="td_sex_1">
-						<input type="radio" name="Sex" value="Female">
+						<input type="radio" name="rebook_ser" id="rebook_ser" value="house">
 						</td>
-						<td class="td_sex">交通接站服务: 
+						<td class="td_18">交通接站服务: 
 						</td>
 
 						<td class="td_sex_1">
-						<input type="radio" name="Sex" value="Female">
+						<input type="radio" name="rebook_se"  id="rebook_ser" value="traffic">
 						</td>
 	                 </tr>
 	                  </table>
+	                  </div>
 	                
 					          <div style="text-align:center;margin-top:10px;color:red">
 					          <p>(出院病人我们会在复诊前六至七天以短信方式提醒您)</p>
