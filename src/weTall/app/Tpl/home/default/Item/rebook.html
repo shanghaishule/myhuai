@@ -20,7 +20,7 @@
         <li  id="a_1">
     						<div style="">
 
-										<p>医院检查项目提前预约平台</p>
+										<p>复诊检查项目预约平台</p>
 				              </div>
         </li>
     </ul>
@@ -70,88 +70,7 @@
 	                </table>
 			   </div>
 			   <div>
-				   <p class="biaoti">预约信息</p>
-				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
-	                  <tr>
-	                   <td class="td_1">时间</td>
-	                   <td class="td_80">
-	                       <div class="book_online">
-		                       <div id="book_online">
-					                 <div class="demo">
-									   <div class="lie"><input id="endTime" style="border: 1px solid #ccc" name="reserveDate" class="kbtn" /></div>
-								     </div>
-					             </div>
-					           </div>
-						 <div id="datePlugin"></div>
-						</td>
-	                 </tr>
-	                 </table>
-	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
-	                 <tr>
-	                   <td class="td_1">检查项目</td>
-	                   <td class="select_item"><select name="check_item" class="check_item_1" id="check_item" >
-								<option value="volvo" selected="selected">磁共振</option>
-								<option value="saab">胃镜</option>
-								<option value="fiat" >肠镜</option>
-								<option value="audi">动态心电图</option>
-								<option value="fiat" >肌电图</option>
-								<option value="audi">心脏彩超</option>
-								<option value="audi">CT</option>
-								<option value="audi">24h动态血压</option>
-								<option value="audi">PET-CT</option>
-								</select>
-					 </td>
-	                 
-	                   <td  class="">拟请会诊专家</td>
-	                  
-	                 </tr>
-	                 </table>
-	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
-	                 <tr>
-	                   <td class="td_time">上次住院时间<span>（未住院可不填）</span></td>
-	                   <td><div class="book_online">
-		                     
-					                  
-					                  <div id="book_online_3">
-					                 <div class="demo">
-									<div class="lie"><input id="endTime" style="border: 1px solid #ccc" name="reserveDate" class="kbtn" /></div>
-								    </div>
-					                  
-					                  </div>
-					                  
-						 </div>
-						  <div id="datePlugin"></div>
-						  </td>
-	                   
-	                 </tr>
-	                 <tr>
-	                   
-	                   <td class="td_time">上次出院时间<span>（或检查时间）</span>
-	                   </td>
-	                   <td><div class="book_online">
-		                     
-					                  
-					                  <div id="book_online_2">
-					                 <div class="demo">
-									<div class="lie"><input id="endTime" style="border: 1px solid #ccc" name="reserveDate" class="kbtn" /></div>
-								    </div>
-					                  
-					                  </div>
-					                  
-						 </div>
-						  <div id="datePlugin"></div>
-						 </td>
-	                 </tr>
-	                
-	                 
-	                 
-	          </table>
-					          <div style="text-align:center;margin-top:10px;color:red">
-					          <p>(出院病人我们会在复诊前六至七天以短信方式提醒您)</p>
-					          </div>
-	         </div>
-	         <div>
-				   <p class="biaoti">看病信息<span class="biaoti_span">（医院开出的复诊检查单）</span></p>
+				   <p class="biaoti">简要病史<span class="biaoti_span">（可电话咨询）</span> </p>
 				   <table id="rebook_table"  border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
 	                   <td class="td_1">点击上图片</td>
@@ -166,6 +85,118 @@
 	                 
 	                </table>
 			   </div>
+			   <div>
+				   <p class="biaoti">预约信息</p>
+				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+	                   <td class="td_1">要求复诊时间</td>
+	                   <td class="td_80">
+	                       <div class="book_online">
+		                       <div id="book_online">
+					                 <div class="demo">
+									   <div class="lie"><input id="endTime" style="border: 1px solid #ccc" name="reserveDate" class="kbtn" /></div>
+								     </div>
+					             </div>
+					           </div>
+						 <div id="datePlugin"></div>
+						</td>
+	                 </tr>
+	                 <tr>
+	                   
+	                   <td class="td_time">计划来院时间<br>
+	                   </td>
+	                   <td class="td_time_01"><div class="book_online">
+		                     
+					                  
+					                  <div id="book_online">
+					                 <div class="demo">
+									<div class="lie"><input id="endTime" style="border: 1px solid #ccc" name="reserveDate" class="kbtn" /></div>
+								    </div>
+					                  
+					                  </div>
+					                  
+						 </div>
+						  <div id="datePlugin"></div>
+						 </td>
+	                
+	                
+	                  </tr>
+	                 </table>
+	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                 <tr>
+	                   <td class="td_1">有无住院要求:</td>
+	                   <td class="td_sex">有: 
+						</td>
+						<td class="td_sex_1"> <input type="radio" name="Sex" value="Male" checked="checked">
+						</td>
+						<td class="td_sex">无: 
+						</td>
+
+						<td class="td_sex_1">
+						<input type="radio" name="Sex" value="Female">
+						</td>
+						<td class="td_sex">不确定: 
+						</td>
+
+						<td class="td_sex_1">
+						<input type="radio" name="Sex" value="Female">
+						</td>
+	                 </tr>
+	                  </table>
+	                 
+	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+			                 <tr>
+						                   <td class="td_1">检查项目</td>
+						                   <td class="select_item"><select name="check_item" class="check_item_1" id="check_item" >
+													<option value="volvo" selected="selected">磁共振</option>
+													<option value="saab">胃镜</option>
+													<option value="fiat" >肠镜</option>
+													<option value="audi">动态心电图</option>
+													<option value="fiat" >肌电图</option>
+													<option value="audi">心脏彩超</option>
+													<option value="audi">CT</option>
+													<option value="audi">24h动态血压</option>
+													<option value="audi">PET-CT</option>
+													</select>
+										 </td>
+			                 </tr>
+	                 </table>
+	                  <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+			                 <tr>
+						                   <td class="td_1">检查项目</td>
+						                   <td class="select_item"><input  name="rebook_exper" id="rebook_exper" class="text width5" placeholder="填写专家名" type="text">
+										 </td>
+										 <td class="td_1">查看知名专家</td>
+			                 </tr>
+	                 </table>
+	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                 <tr>
+	                  
+	                   <td class="td_sex">预订往返票务: 
+						</td>
+						<td class="td_sex_1"> <input type="radio" name="Sex" value="Male" checked="checked">
+						</td>
+						
+						<td class="td_sex">安排周边住宿: 
+						</td>
+
+						<td class="td_sex_1">
+						<input type="radio" name="Sex" value="Female">
+						</td>
+						<td class="td_sex">交通接站服务: 
+						</td>
+
+						<td class="td_sex_1">
+						<input type="radio" name="Sex" value="Female">
+						</td>
+	                 </tr>
+	                  </table>
+	                
+					          <div style="text-align:center;margin-top:10px;color:red">
+					          <p>(出院病人我们会在复诊前六至七天以短信方式提醒您)</p>
+					          </div>
+	         </div>
+	         
 			   <div>
 				   
 			   </div>
