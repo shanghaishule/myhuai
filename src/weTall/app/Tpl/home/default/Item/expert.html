@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/shop1.css" media="all">
 </head>
 <body style="background:#f1f1f1;-webkit-appearance: none">
+<div class="saixuan">
 	<div class="index_head1">
 <div id="nav">
 	<ul class="navlist1">
@@ -27,28 +28,7 @@
  </div>
 </div>
 	
-	<div class="s_bottom"></div>
-	<script type="text/javascript">
-		$(function(){
-			$("div.module_special .wrap .major ul.list li:last-child").addClass("remove_bottom_line");
-		});
-	</script>
-
-<div id="content1">
-	<div style="padding: 7.5px;background:white">
-							<form action="{:U('index/searchlist')}" method="post" name="search">
-								<input name="keywords" type="text" id="keyw"
-									style="width: 65%; height: 30px; border: 1px solid #cdcdcd; font-size: 1.3em; color: #cccccc; padding-left: 12%"
-									placeholder="搜索专家" /> <input onClick="if($('#keyw').val() == '')return false;" type="submit"
-									style="width: 20%; background: none; border:none; color: #262626; font-size: 1.1em"
-									name="Submit" value="搜索">
-							</form>
-						</div>
-		
-    
-      
-        <div class="saixuan">
-			   <div class="rebookinfo_block" style="margin-top:5px">
+			   <div class="rebookinfo_block" style="margin-top:px">
 				  
 				   <table id="rebookinfo_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
@@ -169,8 +149,29 @@
 		
 				   
 
+	
+	<div class="s_bottom"></div>
+	<script type="text/javascript">
+		$(function(){
+			$("div.module_special .wrap .major ul.list li:last-child").addClass("remove_bottom_line");
+		});
+	</script>
 
-<div class="module_special tbr" style="margin-top: 58px">
+<div id="content1">
+	<div style="padding: 7.5px;background:white;margin-top:77px">
+							<form action="{:U('index/searchlist')}" method="post" name="search">
+								<input name="keywords" type="text" id="keyw"
+									style="width: 65%; height: 30px; border: 1px solid #cdcdcd; font-size: 1.3em; color: #cccccc; padding-left: 12%"
+									placeholder="搜索专家" /> <input onClick="if($('#keyw').val() == '')return false;" type="submit"
+									style="width: 20%; background: none; border:none; color: #262626; font-size: 1.1em"
+									name="Submit" value="搜索">
+							</form>
+						</div>
+		
+    
+      
+        
+<div class="module_special tbr" >
         <div class="wrap">
             <div class="wrap_child">
                 <div class="major_1">
@@ -404,7 +405,15 @@
         </div>
     </div>
   
-
+<div class="shop_bottom" id="rebook_btm">
+	             
+            <ul class="rebook_btn" style="padding:5px 0">
+            <li class="pic_rebook"><div style=" margin: 0 auto;width:50px;height:34px;background:url(__STATIC__/weixin/images/home/littlelogo.png);background-size:100% 100%";></div></li>
+            <li class="phone_rebook"><a <if condition="$item['status'] neq 0">href="tel:4006555899"<else />href="javascirpt:void(0)" id="grey"</if> class="reserveP">电话咨询</a></li>
+            <li class="intime_submit"><a href="">立即预约</a></li>                
+                	
+            </ul>
+            </div>
         
 <script type="text/javascript">
 window.shareData = {

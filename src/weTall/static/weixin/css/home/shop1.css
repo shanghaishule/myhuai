@@ -74,8 +74,8 @@ input#rebook_ser{height:18px}
 .rebook_sub a{display:block;width:60px;height:45px;}
 .td_time{width:29%}
 .td_time_01{width:33%}
-td.td_exper{width:24%;margin-left:1%;;text-align:center;height:45px}
-td.td_exper p{width:99%;height:45px;line-height:45px;background:white}
+td.td_exper{width:24%;margin-left:1%;;text-align:center;height:30px}
+td.td_exper p{width:99%;height:30px;line-height:30px;background:white}
 td.exper_phone{height: 35px;width: 35px;
 }
 td.exper_comment{height: 20px;
