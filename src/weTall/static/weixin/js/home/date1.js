@@ -238,7 +238,7 @@
         }
         function addTimeStyle(){
             $("#datePage").css("height","380px");
-            $("#datePage").css("top","20px");
+            $("#datePage").css("top","360px");
             $("#yearwrapper").css("position","absolute");
             $("#yearwrapper").css("bottom","200px");
             $("#monthwrapper").css("position","absolute");
