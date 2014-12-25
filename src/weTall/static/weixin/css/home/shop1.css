@@ -86,7 +86,7 @@ width: 20px;}
 td.exper_name{width:100%}
 td.exper_name p{color:#262626;font-size:16px;}
 
-span.exper_level{color:#262626;font-size:8px;}
+span.exper_level{color:#262626;font-size:10px;}
 td.exper_money{width:22%}
 td.exper_apart{width: 38%;}
 td.exper_apart span{padding:3px;background:#006835;color:white;}
@@ -95,6 +95,7 @@ td.exper_time p{margin-top: -14px;color:#262626}
 #advan p {color:#262626}
 #advan{width:80%}
 .select_exper{background:white}
+.saixuan{z-index:1000;position:fixed;width:100%;left:0}
 #advan p span{color:#ccc}
 #exper_table{margin-bottom:5px}
 td.exper_timedetail{width: 45%;}
@@ -102,7 +103,7 @@ td.exper_timedetail p{color:#ccc}
 td.exper_comnum
 td.exper_likenum
 .select_exper{background:white;}
-.select_exper ul li{height:25px;line-height: 25px;
+.select_exper ul li{height:35px;line-height: 35px;
 border-bottom: 1px solid #f1f1f1;
 width: 90%;
 margin: auto;}
