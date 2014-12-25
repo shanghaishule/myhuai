@@ -78,9 +78,14 @@ class itemAction extends frontendAction {
 
         $this->display();
     }
+    //复诊
     public function rebook(){
     	$this->display();
     	
+    }
+    public function rebookinfo(){
+    	$this->display();
+    	 
     }
     //服务
     public function index_book(){

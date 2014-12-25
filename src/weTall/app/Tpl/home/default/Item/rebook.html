@@ -20,7 +20,7 @@
         <li  id="a_1">
     						<div style="">
 
-										<p>复诊检查项目预约平台</p>
+										<p style="font-size: 16px">复诊检查项目预约平台</p>
 				              </div>
         </li>
     </ul>
@@ -74,11 +74,22 @@
 				   <table id="rebook_table"  border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
 	                   <td class="td_1">上传图片：</td>
-	                   <td><input type="file"  id="rebook_pic" name="rebook_pic" value="pic" ></td>
+	                   <td>
+			                   <div class="shark-review" style="width:100%;height:30px;border:1px;position:relative;float:left;margin-left:5%;">
+						            <img src="__STATIC__/weixin/images/home/camera.png" style="position:relative;z-index:1;marign-left:30%" width="30px" height="30px"/>
+							        <input  name="my_img" id="my_img" onchange="valtext()" type="file" style="position:absolute;top:0px;left:0px;z-index:2;opacity: 0;" /><br/>
+							        
+						        </div>
+				        </td>
+				        <td class="td">
+				        <input type="text" name="img_name" id="img_name" style="background:transparent;border:0px solid white;color:#ccc;height:20px;font-size:7px;font-family:'宋体'" 
+							        placeholder="请上传出院小结图片" autofocus x-webkit-speech value="{$math_data.my_img}" />
+							        </td>
 	                 </tr>
-	                
+	                 </table>
+	                <table id="rebook_table"  border="0" cellspacing="0" cellpadding="0" style="margin-top: 8px;">
 	                  <tr>
-	                   <td class="td_1"><p>文字描述：</p></td>
+	                   <td class="td_1"><p class="td_p">文字描述：</p></td>
 	                   <td><textarea name="reinform" class="retextarea" style="height:70px;width:100%;border:1px solid #ccc" id="reinfo" placeholder="请填写需要检查的项目……"></textarea>
 	                   </td>
 	                 </tr>
@@ -172,7 +183,7 @@
 	                 
 	                 </div>
 	                  <div class="rebook_block">
-	                  <p class="biaoti">贴心服务</p>
+	                  <p class="biaoti" style="padding-bottom:5px">贴心服务</p>
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
 	                  
@@ -209,8 +220,10 @@
 			 
     </div>
     
-    <div class="reimg">
-    <p class="biaoti" style="padding-left:10px">推荐服务</p>
+    <div class="rebook_block" style="margin-top: 5px;background:white">
+    <p class="biaoti" style=";padding-bottom:;font-size: 18px;
+line-height: 26px;
+color: #006835">推荐服务</p>
     <img src="__STATIC__/weixin/images/home/otherbook.jpg" style="width:100%;">
     
     </div>
@@ -218,17 +231,7 @@
 <div class="space"></div>
 
 <div class="shop_bottom" id="rebook_btm">
-	             <div style="display:none;" class="ware_cen">
-	             	 <div class="ware_center">
-	                     <div class="ware_cen_btn">
-	                         <p class="ware_text_btn">
-	                             <a href="{:U('shopcart/index',array('tokenTall'=>$tokenTall))}"><input type="submit" onclick="#" value="查看购物车" name="" class="btn1"></a>
-	                            <a href="{:U('book/allcate',array('tokenTall'=>$tokenTall))}"> <input type="submit" onclick="$('.ware_cen').css({'display':'none'});" value="继续挑选商品" name="" class="btn2"></a>
-	                         </p>
-	                     </div>
-	              </div>
-                 <div class="ware_cen_bottom"></div>
-             </div>
+	             
             <ul class="rebook_btn" style="padding:5px 0">
             <li class="pic_rebook"><div style=" margin: 0 auto;width:50px;height:34px;background:url(__STATIC__/weixin/images/home/littlelogo.png);background-size:100% 100%";></div></li>
             <li class="phone_rebook"><a <if condition="$item['status'] neq 0">href="tel:4006555899"<else />href="javascirpt:void(0)" id="grey"</if> class="reserveP">电话预约</a></li>

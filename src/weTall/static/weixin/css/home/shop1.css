@@ -74,6 +74,7 @@ input#rebook_ser{height:18px}
 .rebook_sub a{display:block;width:60px;height:45px;}
 .td_time{width:29%}
 .td_time_01{width:33%}
+p.td_p{margin-top:-55px}
 .rebook_block{background:white;padding:10px ;margin-top:10px}
 #rebook_btm{bottom:0px;height:45px;background:#ccc}
 input#rebook_pic{border:none}
@@ -86,7 +87,11 @@ text-align: center;
 background: #006835;
 color: white;
 border-radius: 5px;}
-
+.file-box{ position:relative;width:340px}
+.txt{ height:22px; border:1px solid #cdcdcd; width:180px;}
+.btn{ background-color:#FFF; border:1px solid #CDCDCD;height:24px; width:70px;}
+.file{ position:absolute; top:0; right:80px; height:24px; filter:alpha(opacity:0);opacity: 0;width:260px }
+.upFileBtn{width:76%}
 li.intime_submit{width:37%;margin-left:2%}
 li.intime_submit a {font-size: 15px;
 line-height: 36px;
@@ -95,6 +100,8 @@ text-align: center;
 background:red;
 color: white;
 border-radius: 5px;}
+td.td_info{width:33.333%;margin-left:1px}
+td.td_info a{display:block;width:99%}
 li.pic_rebook{margin-left:2%;width:60px;height:40px;text-align:center;background:white;border-radius: 5px;padding-top:1px}
 /*fuzhen yuyue*/
 .home_page_logo{background:url(../../../../images/logo.png) no-repeat 0 0;background-size: 140px 40px; height:40px;width:140px;}
