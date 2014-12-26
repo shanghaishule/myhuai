@@ -235,7 +235,7 @@
 						                   <td class="td_33">拟请会诊专家:</td>
 						                   <td class="select_item"><input  name="rebook_exper" id="rebook_exper" class="text width5" placeholder="填写专家名" type="text">
 										 </td>
-										 <td class="td_spec"><p>查看知名专家</p></td>
+										 <td class="td_spec"><a href="{:U('Item/expert')}"><p>查看知名专家</p></a></td>
 			                 </tr>
 	                 </table>
 	                 
@@ -282,7 +282,10 @@
     <p class="biaoti" style=";padding-bottom:;font-size: 18px;
 line-height: 26px;
 color: #006835">推荐服务</p>
-    <img src="__STATIC__/weixin/images/home/otherbook.jpg" style="width:100%;">
+    <img  data-original="__STATIC__/weixin/images/home/yy01.jpg" width="100%" height="100%" src="__STATIC__/LazyLoad/js/grey.gif"/>
+    <img  data-original="__STATIC__/weixin/images/home/yy02.jpg" width="100%" height="100%" src="__STATIC__/LazyLoad/js/grey.gif"/>
+    <img  data-original="__STATIC__/weixin/images/home/yy03.jpg" width="100%" height="100%" src="__STATIC__/LazyLoad/js/grey.gif"/>
+   <img  data-original="__STATIC__/weixin/images/home/yy04.jpg" width="100%" height="100%" src="__STATIC__/LazyLoad/js/grey.gif"/>
     
     </div>
 
@@ -374,7 +377,7 @@ window.shareData = {
 		$("img").lazyload({
 			effect : "fadeIn"
 		});
-		$('#endTime').date({theme:"datetime"});
+		
 	});
 </script>
 </body>

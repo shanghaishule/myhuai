@@ -91,6 +91,18 @@ class itemAction extends frontendAction {
     	$this->display();
     
     }
+    public function rebookcase(){
+    	$this->display();
+    
+    }
+    public function rebookdoubt(){
+    	$this->display();
+    
+    }
+    public function rebookstep(){
+    	$this->display();
+    
+    }
     //服务
     public function index_book(){
     	$id = $this->_get("itemid","trim,intval");
