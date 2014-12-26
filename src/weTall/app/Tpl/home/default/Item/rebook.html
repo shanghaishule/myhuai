@@ -158,7 +158,53 @@
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 			                 <tr style="line-height: 39px;">
 						                   <td class="td_33">预约检查项目:</td>
-						                   <td class=""><select name="check_item" class="check_item_1" id="check_item" >
+						                   <td class="">
+						                        <div class="select_checkBox"> 
+																<div class="chartQuota"> 
+																<p> 
+																<a href="javascript:;" hidefocus="true" title="检查项目"><span>点击选择检查项目</span> 
+																<b></b> 
+																</a> 
+																</p> 
+																 
+																</div><br> 
+																<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_01"> 
+																<ul> 
+																<li class=""><input type="checkbox" value="1"><span>磁共振</span> 
+																</li> 
+																<li class=""><input type="checkbox" value="1"><span>CT</span> 
+																</li> 
+																<li class=""><input type="checkbox" value="1"><span>PET-CT</span> 
+																</li> 
+																<li class=""><input type="checkbox" value="1"><span>胃镜</span> 
+																</li> 
+																<li class=""><input type="checkbox" value="1"><span>肠镜</span> 
+																</li> 
+																<li class=""><input type="checkbox" value="1"><span>心脏彩超</span> 
+																</li> 
+																<li class=""><input type="checkbox" value="1"><span>24h动态心电</span> 
+																</li> 
+																<li class=""><input type="checkbox" value="1"><span>24h动态血压</span> 
+																</li> 
+																</ul> 
+																<p> 
+																<a href="javascript:;" title="确定" hidefocus="true" class="a_0">确定</a><a
+																href="javascript:;" title="取消" hidefocus="true" class="a_1">取消</a> 
+																</p> 
+																</div> 
+																</div>
+																<script type="text/javascript"> 
+																$(function(){ 
+																$(".select_checkBox").hover(function(){ 
+																$(".chartOptionsFlowTrend").css("display","inline-block"); 
+																},function(){ 
+																$(".chartOptionsFlowTrend").css("display","none"); 
+																}); 
+																}); 
+																</script>
+						                   
+						                   
+						                   <!--  <select name="check_item" class="check_item_1" id="check_item" >
 													<option value="volvo" selected="selected">磁共振</option>
 													<option value="saab">胃镜</option>
 													<option value="fiat" >肠镜</option>
@@ -169,6 +215,7 @@
 													<option value="audi">24h动态血压</option>
 													<option value="audi">PET-CT</option>
 													</select>
+													-->
 										 </td>
 			                 </tr>
 	                 </table>

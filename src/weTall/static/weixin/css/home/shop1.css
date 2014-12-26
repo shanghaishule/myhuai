@@ -138,6 +138,95 @@ border-radius: 5px;}
 td.td_info{width:33.333%;margin-left:1px}
 td.td_info a{display:block;width:99%}
 li.pic_rebook{margin-left:2%;width:60px;height:40px;text-align:center;background:white;border-radius: 5px;padding-top:1px}
+
+
+.select_checkBox{ 
+border:0px solid red; 
+position: relative; 
+display:inline-block; 
+ 
+ 
+} 
+.chartQuota{ 
+height:23px; 
+float:left; 
+display:inline-block; 
+border:0px solid black; 
+position: relative; 
+} 
+ 
+.chartOptionsFlowTrend{ 
+z-index:300; 
+background-color:white; 
+border:1px solid gray; 
+display:none; 
+position: absolute; 
+left:0px; 
+top:23px; 
+width:300px; 
+} 
+.chartOptionsFlowTrend ul{ 
+float:left; 
+padding: 0px; 
+margin: 5px; 
+	width:100%
+} 
+.chartOptionsFlowTrend li{ 
+/* float:left; */
+display:block; 
+position: relative; 
+left:0px; 
+margin: 0px; 
+clear:both; 
+}
+.chartOptionsFlowTrend ul li input{width:30%}
+#chartOptionsFlowTrend_01 ul li input{width:30%}
+.chartOptionsFlowTrend li *{ 
+float:left; 
+} 
+a:-webkit-any-link { 
+color: -webkit-link; 
+text-decoration: underline; 
+cursor: auto; 
+} 
+.chartQuota p a { 
+float: left; 
+height: 21px; 
+outline: 0 none; 
+border: 1px solid #ccc; 
+line-height: 22px; 
+padding: 0 5px; 
+overflow: hidden; 
+background: white; 
+color: #006835; 
+text-decoration: none; 
+} 
+ 
+.chartQuota p { 
+margin:0px; 
+folat:left; 
+overflow: hidden; 
+height: 23px; 
+line-height:24px; 
+display: inline-block; 
+} 
+.chartOptionsFlowTrend p { 
+height: 23px; 
+line-height: 23px; 
+overflow: hidden; 
+position: relative; 
+z-index: 2; 
+background: #fefbf7; 
+padding-top: 0px; 
+display: inline-block; 
+} 
+.chartOptionsFlowTrend p a { 
+border: 1px solid #fff; 
+margin-left: 15px; 
+color: #2e91da; 
+} 
+
+
 /*fuzhen yuyue*/
 .home_page_logo{background:url(../../../../images/logo.png) no-repeat 0 0;background-size: 140px 40px; height:40px;width:140px;}
 #shopname{border-bottom:1px solid #d9d9d9;border-left:1px solid #d9d9d9;}
