@@ -213,7 +213,7 @@
 		               <select name="shi" id="s2" style="background:white"></select>
 		               <select name="qu" id="s3" style="background:white"></select>
                      -->
-               <select name="hosAddress">
+               <select name="hosAddress" style="color:black;width:60%">
                 <volist name="hosA" id="hos">
                 	<option value="{$hos.name}">{$hos.name}</option>
                 </volist>
@@ -311,10 +311,10 @@
            <strong class="fontsize3" id="order_amount">¥<font id='order_amount2'></font></strong>
         </p>
         <p class="jiesuan_btn">
-            <a onclick="ordertj();" class="btn">提交订单</a>
+            <a onclick="ordertj();" class="btn" style="width: 98%;">提交订单</a>
         </p>
         <p class="jiesuan_btn">
-           <a href="{:U('shopcart/index')}" class="btn" id="backcart">返回购物车</a>
+           <a href="{:U('shopcart/index')}" class="btn" id="backcart" style="width: 98%;">返回购物车</a>
         </p>
     </div>
     

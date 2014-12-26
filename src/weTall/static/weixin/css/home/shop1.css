@@ -74,7 +74,7 @@ input#rebook_ser{height:18px}
 .rebook_sub a{display:block;width:60px;height:45px;}
 .td_time{width:29%}
 .td_time_01{width:33%}
-td.td_exper{width:24%;margin-left:1%;;text-align:center;height:30px}
+td.td_exper{width:24%;border-left: 1px solid #ccc;;text-align:center;height:30px}
 td.td_exper p{width:99%;height:30px;line-height:30px;background:white}
 td.exper_phone{height: 35px;width: 35px;
 }
@@ -292,13 +292,14 @@ p.yuyue{padding-top: 5px;}
 #content .buy_foot a span{ text-decoration:none; color:#fff; text-indent:-2000px;}
 #content .cart_list li span.tit input{width: 28px;height: 16px;padding: 2px;color:#868686;text-align: center;line-height: 14px;font-size: 12px;}
 #content .buy_foot p.jiesuan_btn a img{display: none;}
-#content .buy_foot p.jiesuan_btn a{border-radius: 2px; color:white;display: block;height: 31px;line-height: 32px;font-size: 17px;border: 0;background:red;text-align: center;text-decoration: none;-webkit-appearance: none;}
+#content .buy_foot p.jiesuan_btn a{border-radius: 2px; color:white;display: block;height: 31px;line-height: 32px;font-size: 17px;border: 0;background:red;text-align: center;text-decoration: none;-webkit-appearance: none;width:98%}
 #content .buy_foot p#gds_id{width:28%;margin-left:2%;font-size:12px}
 #content .buy_foot p.jiesuan_btn a#backcart{background:#006835;;margin-left:2%}
 #content #by_id{bottom:0px}
 #save_address{width: 20px;
 height: 20px;
 background: #006835}
+.
 /*登陆*/
 .bg_white{background:white;margin-top:50px}
 .bg_white ul{margin-top:20px} 

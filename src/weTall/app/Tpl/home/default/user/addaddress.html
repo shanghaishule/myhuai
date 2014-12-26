@@ -120,7 +120,7 @@ function hide_error(){
 						new PCAS("sheng","shi","qu","","","");
 					</script>
 					 -->
-	               <select name="hosAddress">
+	               <select name="hosAddress" style="width:60%;">
 	                <volist name="hosA" id="hos">
 	                	<option value="{$hos.name}" <if condition="$hos['name'] eq $info.hosAddress">selected</if>>{$hos.name}</option>
 	                </volist>
