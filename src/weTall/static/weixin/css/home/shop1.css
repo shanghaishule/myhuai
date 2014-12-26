@@ -163,7 +163,7 @@ display:none;
 position: absolute; 
 left:0px; 
 top:23px; 
-width:300px; 
+width:150px; 
 } 
 .chartOptionsFlowTrend ul{ 
 float:left; 
@@ -185,9 +185,7 @@ clear:both;
 float:left; 
 } 
 a:-webkit-any-link { 
-color: -webkit-link; 
-text-decoration: underline; 
-cursor: auto; 
+
 } 
 .chartQuota p a { 
 float: left; 
