@@ -657,6 +657,7 @@ class indexAction extends frontendAction {
    		}
    	}
    	// dump($arr);die;
+   	
    		
    	//判断被推荐的分类是否有子级，对应添加不同的链接
    	foreach($arr as $keys => $vals){
@@ -706,5 +707,10 @@ class indexAction extends frontendAction {
    		}
    	}
    	return $arr;   	
+   }
+   //复诊预约
+   public function rebook(){
+   	 
+   	$this->display();
    }
 }

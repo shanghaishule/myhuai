@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+        <title>沪爱健康</title>
+        <!--<base href=".">--><base href=".">
+        <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+<link href="__STATIC__/weixin/css/home/cate23_0.css" rel="stylesheet" type="text/css">
+        
+<link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/shop1.css" media="all">
+<script type="text/javascript" src="__STATIC__/weixin/js/home/jquery-1.9.1.js" ></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/date.js" ></script>
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;">
+    <!--背景音乐-->
+<div class="body" >
+
+<!--头部-->
+<div class="index_head1">
+<div id="nav">
+	<ul class="navlist1">
+		<li id="a_0">
+		   <a href="javascript:history.go(-1)"><div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div></a>
+         </li>
+        <li  id="a_1">
+    						<div style="">
+
+										<p>医院检查项目提前预约平台</p>
+				              </div>
+        </li>
+    </ul>
+ </div>
+</div>
+       <!--         
+    幻灯片管理
+    -->
+    
+	<section>
+        
+        <div class="seccontent" >
+			<div  id="rebook_content">
+			 <form method="post" id="rebook_form" class="rebook_form_1">
+			   <div>
+				   <p class="biaoti">个人信息</p>
+				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+	                   <td class="td_1">姓名:</td>
+	                   <td class="td_80%"><input  name="rebook_name" id="rebook_name" class="text width5" placeholder="病人姓名" type="text"></td>
+	                 </tr>
+	                 <tr>
+	                   <td class="td_1">性别:</td>
+	                   <td class="td_sex">男: 
+								<input type="radio" name="Sex" value="Male" checked="checked">
+						</td>
+
+						<td class="td_sex">
+						女: 
+						  <input type="radio" name="Sex" value="Female">
+						</td>
+	                 </tr>
+	                 <tr>
+	                   <td class="td_1">手机:</td>
+	                   <td class="td_80%"><input  name="rebook_phone" id="rebook_phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
+	                 </tr>
+	                </table>
+			   </div>
+			   <div>
+				   <p class="biaoti">预约信息</p>
+				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+	                   <td class="td_1">时间</td>
+	                   <td class="td_80%">
+	                   <div class="book_online">
+		                      <ul >
+					                  <li id="book_online_1" >选择时间:</li>
+					                  <li id="book_online_2">
+					                 <div class="demo">
+									<div class="lie"><input id="endTime" style="border: 1px solid #ccc" name="reserveDate" class="kbtn" /></div>
+								    </div>
+					                  
+					                  </li>
+					          </ul>          
+						 </div>
+						 <div id="datePlugin"></div>
+						</td>
+	                 </tr>
+	                 <tr>
+	                   <td class="td_1">检查项目</td>
+	                   <td class="td_sex"></td>
+	                 
+	                   <td  class="td_sex">拟请会诊专家</td>
+	                  
+	                 </tr>
+	                 <tr>
+	                   <td class="td_time">上次住院时间<span>（未住院可不填）</span></td>
+	                   <td></td>
+	                   
+	                 </tr>
+	                 <tr>
+	                   
+	                   <td class="td_time">上次出院时间<span>（或检查时间）</span>
+	                   </td>
+	                   <td></td>
+	                 </tr>
+	                
+	                 
+	                 
+	          </table>
+	          <p>(出院病人我们会在复诊前六至七天以短信方式提醒您)</p>
+	         </div>
+	         <div>
+				   <p class="biaoti">看病信息<span class="biaoti_span">（医院开出的复诊检查单）</span></p>
+				   <table id="rebook_table"  border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+	                   <td class="td_1">点击上图片</td>
+	                   <td></td>
+	                 </tr>
+	                
+	                  <tr>
+	                   <td class="td_1">文字描述</td>
+	                   <td></td>
+	                 </tr>
+	                 
+	                </table>
+			   </div>
+			   <div>
+				   
+			   </div>
+			 
+			 
+			 </form>
+				
+			</div>
+        </div>
+		
+		</section>
+		<div class="space"></div>
+		<section>
+			<include file="public:footer" />
+		</section>	
+<div class="copyright" style="text-align:center;padding:10px 0">
+</div>
+</div>
+<script>
+function displayit(n){
+	for(i=0;i<4;i++){
+		if(i==n){
+			var id='menu_list'+n;
+			if(document.getElementById(id).style.display=='none'){
+				document.getElementById(id).style.display='';
+				document.getElementById("plug-wrap").style.display='';
+			}else{
+				document.getElementById(id).style.display='none';
+				document.getElementById("plug-wrap").style.display='none';
+			}
+		}else{
+			if($('#menu_list'+i)){
+				$('#menu_list'+i).css('display','none');
+			}
+		}
+	}
+}
+function closeall(){
+	var count = document.getElementById("top_menu").getElementsByTagName("ul").length;
+	for(i=0;i<count;i++){
+		document.getElementById("top_menu").getElementsByTagName("ul").item(i).style.display='none';
+	}
+	document.getElementById("plug-wrap").style.display='none';
+}
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+	WeixinJSBridge.call('hideToolbar');
+});
+</script> 
+    	<script type="text/javascript">
+    	window.shareData = {
+    			"moduleName" : "Index",
+    			"moduleID" : '0',
+    			"imgUrl" : "http://m.hajk.com.cn/weTall/static/weixin/images/home/mlogo.png",
+    			"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+    			"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+    			"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+    			"tTitle" : "欢迎关注沪爱健康",
+    			"tContent" : "专业让健康更简单 沪爱健康   "
+    		};
+	</script>
+	<script>
+		document.addEventListener('WeixinJSBridgeReady',
+				function onBridgeReady() {
+					WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+						shareHandle('friend');
+						WeixinJSBridge.invoke('sendAppMessage', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('send_msg', res.err_msg);
+						})
+					});
+
+					WeixinJSBridge.on('menu:share:timeline', function(argv) {
+						shareHandle('frineds');
+						WeixinJSBridge.invoke('shareTimeline', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('timeline', res.err_msg);
+						});
+					});
+
+					WeixinJSBridge.on('menu:share:weibo', function(argv) {
+						shareHandle('weibo');
+						WeixinJSBridge.invoke('shareWeibo', {
+							"content" : window.shareData.tContent,
+							"url" : window.shareData.sendFriendLink,
+						}, function(res) {
+							_report('weibo', res.err_msg);
+						});
+					});
+				}, false)
+
+		function shareHandle(to) {
+			var submitData = {
+				module : window.shareData.moduleName,
+				moduleid : window.shareData.moduleID,
+				token : 'ipwhoy1414718223',
+				wecha_id : 'ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+				url : window.shareData.sendFriendLink,
+				to : to
+			};
+			$
+					.post(
+							'/index.php?g=Wap&m=Share&a=shareData&token=ipwhoy1414718223&wecha_id=ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+							submitData, function(data) {
+							}, 'json')
+		}
+	</script>
+	<script>
+	$(function() {
+		$(".ul_list").each(function(){
+			$(this).find("ol").last().remove();
+		});
+		$('#endTime').date({theme:"datetime"});
+	});
+</script></body></html>

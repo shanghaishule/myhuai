@@ -1,0 +1,497 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<include file="public:headtop" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<script charset="utf-8" src="__STATIC__/weixin/js/colorbox.js" type="text/javascript"></script>
+<link href="__STATIC__/weixin/css/home/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__STATIC__/weixin/js/home/jquery-1.9.1.js" ></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/date1.js" ></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/iscroll.js" ></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/shop1.css" media="all">
+</head>
+<body style="background:#f1f1f1;-webkit-appearance: none">
+<div class="saixuan">
+	<div class="index_head1">
+<div id="nav">
+	<ul class="navlist1">
+		<li id="a_0">
+		   <a href="javascript:history.go(-1)"><div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div></a>
+         </li>
+        <li  id="a_1">
+    						<div style="">
+
+										<p style="font-size: 16px">专家会诊</p>
+				              </div>
+        </li>
+    </ul>
+ </div>
+</div>
+	
+			   <div class="rebookinfo_block" style="margin-top:px">
+				  
+				   <table id="rebookinfo_table" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+		                   <td class="td_exper" id="td_exper_01">
+		                 <p>  全部</p>
+	                       </td>
+	                       <td class="td_exper" id="td_exper_02">
+	                       <p> 医院</p>
+	                       </td>
+	                       <td class="td_exper" id="td_exper_03">
+	                     <p>   科室</p>
+	                       </td>
+	                       <td class="td_exper" id="td_exper_04">
+	                       <p> 资历</p>
+	                       </td>
+	                  </tr>
+	                 </table>
+	                  
+			   </div>
+			   <div class="select_exper">
+						  <ul class="listUl2" style="display:none">
+						        <li>上海长海医院</li>
+						    	<li>上海东方肝胆外科医院</li>
+						    </ul>
+						    <ul class="listUl3" style="display:none">
+						        <li>肝胆科</li>
+						        <li>消化内科</li>
+						    	<li>泌尿外科</li>
+						    	<li>胸心外科</li>
+						    	<li>烧伤外科</li>
+						    	<li>中医医院</li>
+						    	<li>胸心外科</li>
+						    	<li>心血管内科</li>
+						    	<li>烧伤外科</li>
+						    </ul>
+						    <ul class="listUl4" style="display:none">
+						        <li>主任医师</li>
+						        <li>副主任医师</li>
+						    </ul>
+				 </div>
+				 </div>
+			             <script>
+			             	//点击后判断ul是否隐藏
+								$(function(){
+									
+									//点击后判断ul是否隐藏
+									$("#td_exper_01 p").click(function(){
+										
+											$(".select_exper ul").hide()
+									});
+									//选中某个内容后赋值给p标签，并隐藏ul列表
+									
+								});
+								</script>
+			             
+			              <script>
+			             	//点击后判断ul是否隐藏
+								$(function(){
+									
+									//点击后判断ul是否隐藏
+									$("#td_exper_02 p").click(function(){
+										var ul = $(".listUl2");
+										if(ul.css("display")=="none"){
+											ul.slideDown(200);
+										}else{
+											ul.slideUp(200);
+										}
+									});
+									//选中某个内容后赋值给p标签，并隐藏ul列表
+									$(".listUl2 li").click(function(){
+										var txt = $(this).text();
+										$("#td_exper_02 p").html(txt);
+										$(".listUl2").hide();
+									});
+								});
+								</script>
+								<script>
+								$(function(){
+									
+									//点击后判断ul是否隐藏
+									$("#td_exper_03 p").click(function(){
+										var ul = $(".listUl3");
+										if(ul.css("display")=="none"){
+											ul.slideDown(200);
+										}else{
+											ul.slideUp(200);
+										}
+									});
+									//选中某个内容后赋值给p标签，并隐藏ul列表
+									$(".listUl3 li").click(function(){
+										var txt = $(this).text();
+										$("#td_exper_03 p").html(txt);
+										$(".listUl3").hide();
+									});
+								});
+								</script>
+								<script>
+								$(function(){
+									
+									//点击后判断ul是否隐藏
+									$("#td_exper_04 p").click(function(){
+										var ul = $(".listUl4");
+										if(ul.css("display")=="none"){
+											ul.slideDown(200);
+										}else{
+											ul.slideUp(200);
+										}
+									});
+									//选中某个内容后赋值给p标签，并隐藏ul列表
+									$(".listUl4 li").click(function(){
+										var txt = $(this).text();
+										$("#td_exper_04 p").html(txt);
+										$(".listUl4").hide();
+									});
+								});
+								</script>
+			   
+		
+				   
+
+	
+	<div class="s_bottom"></div>
+	<script type="text/javascript">
+		$(function(){
+			$("div.module_special .wrap .major ul.list li:last-child").addClass("remove_bottom_line");
+		});
+	</script>
+
+<div id="content1">
+	<div style="padding: 7.5px;background:white;margin-top:77px">
+							<form action="{:U('index/searchlist')}" method="post" name="search">
+								<input name="keywords" type="text" id="keyw"
+									style="width: 65%; height: 30px; border: 1px solid #cdcdcd; font-size: 1.3em; color: #cccccc; padding-left: 12%"
+									placeholder="搜索专家" /> <input onClick="if($('#keyw').val() == '')return false;" type="submit"
+									style="width: 20%; background: none; border:none; color: #262626; font-size: 1.1em"
+									name="Submit" value="搜索">
+							</form>
+						</div>
+		
+   
+        
+<div class="module_special tbr" >
+        <div class="wrap">
+            <div class="wrap_child">
+                <div class="major_1">
+                     <ul class="list">
+                     
+	                     <li>
+	                     <a href="">
+	                     <div>
+	                     <div class="pic" id="pic_1" style="width:24%;">
+	                     	<div id="thdpic" style="height:110px;width:80px"> 
+	                     	   <img data-original="" width="100%" height="100%" src="__STATIC__/LazyLoad/js/grey.gif" />
+	                     	</div>
+	                     </div>
+	                     <div class="good_content" id="good_content_1" style="width:73%;margin-top: 3px;">
+	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
+		                      <tr>
+					                   <td class="exper_name" id="">
+					                      <p>  吴孟超<span class="exper_level">（院士、主任医师）</span></p>
+				                       </td>
+				             </tr>
+	                    </table>
+	                    <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
+		                      <tr>
+					                   <td class="exper_apart" id="">
+					                      <p><span>  长海医院骨科</span></p>
+				                       </td>
+				                       <td class="exper_money" id="">
+				                           <p>会诊费：500元 </p>
+				                      </td>
+				                       
+				             </tr>
+	                    </table>
+	                     
+						
+	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+		                   <td class="exper_time" id="">
+		                      <p>  门诊时间：</p>
+	                       </td>
+	                       <td class="exper_timedetail" id="">
+	                           <p> 周一上午9-10点</p>
+	                           <p> 周一上午9-10点</p>
+	                       </td>
+	                       <td class="exper_phone" id="">
+				                          <a href="tel:4006555899" style="display:block;width:35px;height:35px"> <img data-original="" width="35" height="35" src="__STATIC__/weixin/images/home/experphone.png" /></a>
+				                      </td>
+	                  </tr>
+	                 </table>
+	                 
+	                 <div id="advan">
+	                 	<p> 擅长： <span>谷歌可垃圾算快乐都费劲啊快来接电费卡拉就是打开了房间爱快乐圣诞节分</span></p>	
+	                 	
+	                 </div>	
+	                 <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+		                   <td class="exper_comment" id="">
+		                       <img data-original="" width="100%" height="100%" src="__STATIC__/weixin/images/home/expercomment.png" />
+	                       </td>
+	                       <td class="exper_comnum" id="">
+	                           <p> （20）</p>
+	                        </td>
+	                        <td class="exper_like" id="">
+	                            <img data-original="" width="100%" height="100%" src="__STATIC__/weixin/images/home/experlike.png" />
+	                        </td>
+	                        <td class="exper_likenum" id="">
+	                           <p> （20）</p>
+	                        </td>
+	                  </tr>
+	                 </table>		 
+	                 	 </div>
+	                 	 </div>
+	                     </li>
+					
+					 </ul>
+                </div>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="wrap_child">
+                <div class="major_1">
+                     <ul class="list">
+                     
+	                     <li>
+	                     <a href="">
+	                     <div>
+	                     <div class="pic" id="pic_1" style="width:24%;">
+	                     	<div id="thdpic" style="height:110px;width:80px"> 
+	                     	   <img data-original="" width="100%" height="100%" src="__STATIC__/LazyLoad/js/grey.gif" />
+	                     	</div>
+	                     </div>
+	                     <div class="good_content" id="good_content_1" style="width:73%;margin-top: 3px;">
+	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
+		                      <tr>
+					                   <td class="exper_name" id="">
+					                      <p>  吴孟超<span class="exper_level">（院士、主任医师）</span></p>
+				                       </td>
+				             </tr>
+	                    </table>
+	                    <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
+		                      <tr>
+					                   <td class="exper_apart" id="">
+					                      <p><span>  长海医院骨科</span></p>
+				                       </td>
+				                       <td class="exper_money" id="">
+				                           <p>会诊费：500元 </p>
+				                      </td>
+				                       
+				             </tr>
+	                    </table>
+	                     
+						
+	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+		                   <td class="exper_time" id="">
+		                      <p>  门诊时间：</p>
+	                       </td>
+	                       <td class="exper_timedetail" id="">
+	                           <p> 周一上午9-10点</p>
+	                           <p> 周一上午9-10点</p>
+	                       </td>
+	                       <td class="exper_phone" id="">
+				                          <a href="tel:4006555899" style="display:block;width:35px;height:35px"> <img data-original="" width="35" height="35" src="__STATIC__/weixin/images/home/experphone.png" /></a>
+				                      </td>
+	                  </tr>
+	                 </table>
+	                 
+	                 <div id="advan">
+	                 	<p> 擅长： <span>谷歌可垃圾算快乐都费劲啊快来接电费卡拉就是打开了房间爱快乐圣诞节分</span></p>	
+	                 	
+	                 </div>	
+	                 <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+		                   <td class="exper_comment" id="">
+		                       <img data-original="" width="100%" height="100%" src="__STATIC__/weixin/images/home/expercomment.png" />
+	                       </td>
+	                       <td class="exper_comnum" id="">
+	                           <p> （20）</p>
+	                        </td>
+	                        <td class="exper_like" id="">
+	                            <img data-original="" width="100%" height="100%" src="__STATIC__/weixin/images/home/experlike.png" />
+	                        </td>
+	                        <td class="exper_likenum" id="">
+	                           <p> （20）</p>
+	                        </td>
+	                  </tr>
+	                 </table>		 
+	                 	 </div>
+	                 	 </div>
+	                     </li>
+					
+					 </ul>
+                </div>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="wrap_child">
+                <div class="major_1">
+                     <ul class="list">
+                     
+	                     <li>
+	                     <a href="">
+	                     <div>
+	                     <div class="pic" id="pic_1" style="width:24%;">
+	                     	<div id="thdpic" style="height:110px;width:80px"> 
+	                     	   <img data-original="" width="100%" height="100%" src="__STATIC__/LazyLoad/js/grey.gif" />
+	                     	</div>
+	                     </div>
+	                     <div class="good_content" id="good_content_1" style="width:73%;margin-top: 3px;">
+	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
+		                      <tr>
+					                   <td class="exper_name" id="">
+					                      <p>  吴孟超<span class="exper_level">（院士、主任医师）</span></p>
+				                       </td>
+				             </tr>
+	                    </table>
+	                    <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
+		                      <tr>
+					                   <td class="exper_apart" id="">
+					                      <p><span>  长海医院骨科</span></p>
+				                       </td>
+				                       <td class="exper_money" id="">
+				                           <p>会诊费：500元 </p>
+				                      </td>
+				                       
+				             </tr>
+	                    </table>
+	                     
+						
+	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+		                   <td class="exper_time" id="">
+		                      <p>  门诊时间：</p>
+	                       </td>
+	                       <td class="exper_timedetail" id="">
+	                           <p> 周一上午9-10点</p>
+	                           <p> 周一上午9-10点</p>
+	                       </td>
+	                       <td class="exper_phone" id="">
+				                          <a href="tel:4006555899" style="display:block;width:35px;height:35px"> <img data-original="" width="35" height="35" src="__STATIC__/weixin/images/home/experphone.png" /></a>
+				                      </td>
+	                  </tr>
+	                 </table>
+	                 
+	                 <div id="advan">
+	                 	<p> 擅长： <span>谷歌可垃圾算快乐都费劲啊快来接电费卡拉就是打开了房间爱快乐圣诞节分</span></p>	
+	                 	
+	                 </div>	
+	                 <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+		                   <td class="exper_comment" id="">
+		                       <img data-original="" width="100%" height="100%" src="__STATIC__/weixin/images/home/expercomment.png" />
+	                       </td>
+	                       <td class="exper_comnum" id="">
+	                           <p> （20）</p>
+	                        </td>
+	                        <td class="exper_like" id="">
+	                            <img data-original="" width="100%" height="100%" src="__STATIC__/weixin/images/home/experlike.png" />
+	                        </td>
+	                        <td class="exper_likenum" id="">
+	                           <p> （20）</p>
+	                        </td>
+	                  </tr>
+	                 </table>		 
+	                 	 </div>
+	                 	 </div>
+	                     </li>
+					
+					 </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+<div class="shop_bottom" id="rebook_btm">
+	             
+            <ul class="rebook_btn" style="padding:5px 0">
+            <li class="pic_rebook"><div style=" margin: 0 auto;width:50px;height:34px;background:url(__STATIC__/weixin/images/home/littlelogo.png);background-size:100% 100%";></div></li>
+            <li class="phone_rebook"><a <if condition="$item['status'] neq 0">href="tel:4006555899"<else />href="javascirpt:void(0)" id="grey"</if> class="reserveP">电话咨询</a></li>
+            <li class="intime_submit"><a href="">立即预约</a></li>                
+                	
+            </ul>
+            </div>
+        
+<script type="text/javascript">
+window.shareData = {
+		"moduleName" : "Index",
+		"moduleID" : '0',
+		"imgUrl" : "http://m.hajk.com.cn/weTall/static/weixin/images/home/mlogo.png",
+		"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+		"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+		"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+		"tTitle" : "欢迎关注沪爱健康",
+		"tContent" : "专业让健康更简单 沪爱健康   "
+	};
+	</script>
+	<script>
+		document.addEventListener('WeixinJSBridgeReady',
+				function onBridgeReady() {
+					WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+						shareHandle('friend');
+						WeixinJSBridge.invoke('sendAppMessage', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('send_msg', res.err_msg);
+						})
+					});
+
+					WeixinJSBridge.on('menu:share:timeline', function(argv) {
+						shareHandle('frineds');
+						WeixinJSBridge.invoke('shareTimeline', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('timeline', res.err_msg);
+						});
+					});
+
+					WeixinJSBridge.on('menu:share:weibo', function(argv) {
+						shareHandle('weibo');
+						WeixinJSBridge.invoke('shareWeibo', {
+							"content" : window.shareData.tContent,
+							"url" : window.shareData.sendFriendLink,
+						}, function(res) {
+							_report('weibo', res.err_msg);
+						});
+					});
+				}, false)
+
+		function shareHandle(to) {
+			var submitData = {
+				module : window.shareData.moduleName,
+				moduleid : window.shareData.moduleID,
+				token : 'ipwhoy1414718223',
+				wecha_id : 'ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+				url : window.shareData.sendFriendLink,
+				to : to
+			};
+			$
+					.post(
+							'/index.php?g=Wap&m=Share&a=shareData&token=ipwhoy1414718223&wecha_id=ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+							submitData, function(data) {
+							}, 'json')
+		}
+	</script>
+<script src="__STATIC__/LazyLoad/js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>	
+<script>
+	$(function() {
+		$("img").lazyload({
+			effect : "fadeIn"
+		});
+		$('#endTime').date({theme:"datetime"});
+	});
+</script>
+</body>
+</html>

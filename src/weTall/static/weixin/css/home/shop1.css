@@ -25,7 +25,7 @@ phone_book_1z@charset "utf-8";
  */
 
 body {font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3"; line-height:1.6; background:#f6f6f6; }
-html,body { min-width: 320px; max-width:640px; margin:0 auto;background:#f1f0f5 }
+html,body { min-width: 320px; max-width:640px; margin:0 auto;background:#f1f0f5 ;-webkit-appearance:none}
 h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dt, dd, li, body, form, input, button, img, cite, strong, em, table, td, th { padding:0; margin:0; }
 h1, h2, h3, h4, h5, h6 { font-size: 15px;}
 hr{border:1px solid #D9D9D9;}
@@ -39,8 +39,193 @@ a{ text-decoration:none; color:#666;}
  * ******************** end initialize.css ***************
  * -------------------------------------------------------
  */
+/*fuzhen yuyue*/
+#rebook_form{;width: 100%;
+margin: 14px auto;}
+#rebook_table input{border:1px solid #ccc;width:100%;height:30px;}
+.td_80{width:80%}
+.td_65{width:65%}
+.td_33{width:33%}
+.td_18{width:18%;text-align:center}
+.td_18 p{line-height: 17px}
+#rebook_table .td_sex input{}
+#rebook_form .biaoti{color:#006835;font-size:18px;line-height: 26px;;color:#006835}
+#rebook_form .biaoti_span{color:red;font-size:13px}
+#rebook_table{width: 95%;
+margin: 0 auto;}
+#rebook_table tr{line-height: 28px;width:%}
+#rebook_table tr td.td_1{width:30%}
+#rebook_table tr td.td_sex{width:11%}
+#rebook_table tr td.td_req{width:1%}
+#rebook_table tr td.td_req_01{width:18%}
+#rebook_table tr td.td_spec{text-align:center;}
+#rebook_table tr td.td_spec p{margin-left: 5px;
+background: #006835;
+color: white;}
+#rebook_table tr td.td_sex input{background:#006835;width: 18px;}
+#rebook_table tr td.td_sex_1 {padding-top: 7px;}
+#rebook_table tr td.td_sex_1 input{width:18px; }
+input#rebook_sex{height:18px}
+input#rebook_vary{height:18px}
+input#rebook_ser{height:18px}
+#rebook_table tr td.select_item{width:33%}
+#check_item{width:100%;;height:30px}
+.rebook_sub{width:100%}
+.rebook_sub a{display:block;width:60px;height:45px;}
+.td_time{width:29%}
+.td_time_01{width:33%}
+td.td_exper{width:24%;margin-left:1%;;text-align:center;height:30px}
+td.td_exper p{width:99%;height:30px;line-height:30px;background:white}
+td.exper_phone{height: 35px;width: 35px;
+}
+td.exper_comment{height: 20px;
+width: 20px;
+}
+td.exper_like{height: 20px;
+width: 20px;}
+td.exper_name{width:100%}
+td.exper_name p{color:#262626;font-size:16px;}
+
+span.exper_level{color:#262626;font-size:10px;}
+td.exper_money{width:22%}
+td.exper_apart{width: 38%;}
+td.exper_apart span{padding:3px;background:#006835;color:white;}
+td.exper_time{width: 28%;color:#ccc}
+td.exper_time p{margin-top: -14px;color:#262626}
+#advan p {color:#262626}
+#advan{width:80%}
+.select_exper{background:white}
+.saixuan{z-index:1000;position:fixed;width:100%;left:0}
+#advan p span{color:#ccc}
+#exper_table{margin-bottom:5px}
+td.exper_timedetail{width: 45%;}
+td.exper_timedetail p{color:#ccc}
+td.exper_comnum
+td.exper_likenum
+.select_exper{background:white;}
+.select_exper ul li{height:35px;line-height: 35px;
+border-bottom: 1px solid #f1f1f1;
+width: 90%;
+margin: auto;}
+.select_exper ul{border-bottom: 1px solid #006835;}
+.rebookinfo_block{border-bottom: 1px solid #f1f1f1;border-top: 1px solid #f1f1f1}
+p.td_p{margin-top:-55px}
+.rebook_block{background:white;padding:10px ;margin-top:10px}
+#rebook_btm{bottom:0px;height:45px;background:#ccc}
+input#rebook_pic{border:none}
+ul.rebook_btn li{float:left;height:36px}
+li.phone_rebook{width:37%;margin-left:2%}
+li.phone_rebook a{font-size: 15px;
+line-height: 36px;
+display: block;
+text-align: center;
+background: #006835;
+color: white;
+border-radius: 5px;}
+.file-box{ position:relative;width:340px}
+.txt{ height:22px; border:1px solid #cdcdcd; width:180px;}
+.btn{ background-color:#FFF; border:1px solid #CDCDCD;height:24px; width:70px;}
+.file{ position:absolute; top:0; right:80px; height:24px; filter:alpha(opacity:0);opacity: 0;width:260px }
+.upFileBtn{width:76%}
+li.intime_submit{width:37%;margin-left:2%}
+li.intime_submit a {font-size: 15px;
+line-height: 36px;
+display: block;
+text-align: center;
+background:red;
+color: white;
+border-radius: 5px;}
+td.td_info{width:33.333%;margin-left:1px}
+td.td_info a{display:block;width:99%}
+li.pic_rebook{margin-left:2%;width:60px;height:40px;text-align:center;background:white;border-radius: 5px;padding-top:1px}
 
 
+.select_checkBox{ 
+border:0px solid red; 
+position: relative; 
+display:inline-block; 
+ 
+ 
+} 
+.chartQuota{ 
+height:23px; 
+float:left; 
+display:inline-block; 
+border:0px solid black; 
+position: relative; 
+} 
+ 
+.chartOptionsFlowTrend{ 
+z-index:300; 
+background-color:white; 
+border:1px solid gray; 
+display:none; 
+position: absolute; 
+left:0px; 
+top:23px; 
+width:150px; 
+} 
+.chartOptionsFlowTrend ul{ 
+float:left; 
+padding: 0px; 
+margin: 5px; 
+	width:100%
+} 
+.chartOptionsFlowTrend li{ 
+/* float:left; */
+display:block; 
+position: relative; 
+left:0px; 
+margin: 0px; 
+clear:both; 
+}
+.chartOptionsFlowTrend ul li input{width:30%}
+#chartOptionsFlowTrend_01 ul li input{width:30%}
+.chartOptionsFlowTrend li *{ 
+float:left; 
+} 
+a:-webkit-any-link { 
+
+} 
+.chartQuota p a { 
+float: left; 
+height: 21px; 
+outline: 0 none; 
+border: 1px solid #ccc; 
+line-height: 22px; 
+padding: 0 5px; 
+overflow: hidden; 
+background: white; 
+color: #006835; 
+text-decoration: none; 
+} 
+ 
+.chartQuota p { 
+margin:0px; 
+folat:left; 
+overflow: hidden; 
+height: 23px; 
+line-height:24px; 
+display: inline-block; 
+} 
+.chartOptionsFlowTrend p { 
+height: 23px; 
+line-height: 23px; 
+overflow: hidden; 
+position: relative; 
+z-index: 2; 
+background: #fefbf7; 
+padding-top: 0px; 
+display: inline-block; 
+} 
+.chartOptionsFlowTrend p a { 
+border: 1px solid #fff; 
+margin-left: 15px; 
+color: #2e91da; 
+} 
+
+
+/*fuzhen yuyue*/
 .home_page_logo{background:url(../../../../images/logo.png) no-repeat 0 0;background-size: 140px 40px; height:40px;width:140px;}
 #shopname{border-bottom:1px solid #d9d9d9;border-left:1px solid #d9d9d9;}
 .dail{
