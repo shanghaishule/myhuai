@@ -111,7 +111,7 @@ margin: auto;}
 .rebookinfo_block{border-bottom: 1px solid #f1f1f1;border-top: 1px solid #f1f1f1}
 p.td_p{margin-top:-55px}
 .rebook_block{background:white;padding:10px ;margin-top:10px}
-#rebook_btm{bottom:0px;height:45px;background:#ccc}
+#rebook_btm{bottom:0px;height:45px;background:white;opacity:1}
 #rebook_btm ul li.phone_rebook a{background: url(/weTall/static/weixin/images/home/anniugreen.png) no-repeat 0 0;
 background-size:100% 100%;width: 125px;
 height: 36px;}
