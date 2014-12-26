@@ -74,8 +74,8 @@ input#rebook_ser{height:18px}
 .rebook_sub a{display:block;width:60px;height:45px;}
 .td_time{width:29%}
 .td_time_01{width:33%}
-td.td_exper{width:24%;border-left: 1px solid #ccc;;text-align:center;height:30px}
-td.td_exper p{width:99%;height:30px;line-height:30px;background:white}
+td.td_exper{width:24%;border-left: 1px solid #ccc;;text-align:center;height:30px;background: white}
+td.td_exper p{width:%;height:30px;line-height:30px;background:white}
 td.exper_phone{height: 35px;width: 35px;
 }
 td.exper_comment{height: 20px;
@@ -300,7 +300,7 @@ p.yuyue{padding-top: 5px;}
 height: 20px;
 background: #006835}
 .rbdoubt{with:100%}
-.rbdountdetail{width:99%;margin:auto;background:white;margin-top:10px;padding:5px}
+.rbdountdetail{width:98%;margin:auto;background:white;margin-top:10px;padding:5px 0}
 .rbdountdetail p{line-height: 33px;color: #006835;}
 .rbdountdetail h1 span{color:#5d5d5d}
 /*登陆*/

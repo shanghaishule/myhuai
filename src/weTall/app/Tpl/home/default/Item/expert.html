@@ -36,13 +36,16 @@
 		                 <p>  全部</p>
 	                       </td>
 	                       <td class="td_exper" id="td_exper_02">
-	                       <p> 医院</p>
+	                       医院
+	                       <img src="__STATIC__/weixin/images/home/xiala.png" width="16%"/>
 	                       </td>
 	                       <td class="td_exper" id="td_exper_03">
-	                     <p>   科室</p>
+	                     科室
+	                     <img src="__STATIC__/weixin/images/home/xiala.png" width="16%"/>
 	                       </td>
 	                       <td class="td_exper" id="td_exper_04">
-	                       <p> 资历</p>
+	                        资历
+	                       <img src="__STATIC__/weixin/images/home/xiala.png" width="16%"/>
 	                       </td>
 	                  </tr>
 	                 </table>
@@ -75,7 +78,7 @@
 								$(function(){
 									
 									//点击后判断ul是否隐藏
-									$("#td_exper_01 p").click(function(){
+									$("#td_exper_01").click(function(){
 										
 											$(".select_exper ul").hide()
 									});
@@ -89,7 +92,7 @@
 								$(function(){
 									
 									//点击后判断ul是否隐藏
-									$("#td_exper_02 p").click(function(){
+									$("#td_exper_02 ").click(function(){
 										var ul = $(".listUl2");
 										if(ul.css("display")=="none"){
 											ul.slideDown(200);
@@ -100,7 +103,7 @@
 									//选中某个内容后赋值给p标签，并隐藏ul列表
 									$(".listUl2 li").click(function(){
 										var txt = $(this).text();
-										$("#td_exper_02 p").html(txt);
+										$("#td_exper_02").html(txt);
 										$(".listUl2").hide();
 									});
 								});
@@ -109,7 +112,7 @@
 								$(function(){
 									
 									//点击后判断ul是否隐藏
-									$("#td_exper_03 p").click(function(){
+									$("#td_exper_03 ").click(function(){
 										var ul = $(".listUl3");
 										if(ul.css("display")=="none"){
 											ul.slideDown(200);
@@ -120,7 +123,7 @@
 									//选中某个内容后赋值给p标签，并隐藏ul列表
 									$(".listUl3 li").click(function(){
 										var txt = $(this).text();
-										$("#td_exper_03 p").html(txt);
+										$("#td_exper_03 ").html(txt);
 										$(".listUl3").hide();
 									});
 								});
@@ -129,7 +132,7 @@
 								$(function(){
 									
 									//点击后判断ul是否隐藏
-									$("#td_exper_04 p").click(function(){
+									$("#td_exper_04").click(function(){
 										var ul = $(".listUl4");
 										if(ul.css("display")=="none"){
 											ul.slideDown(200);
@@ -140,7 +143,7 @@
 									//选中某个内容后赋值给p标签，并隐藏ul列表
 									$(".listUl4 li").click(function(){
 										var txt = $(this).text();
-										$("#td_exper_04 p").html(txt);
+										$("#td_exper_04").html(txt);
 										$(".listUl4").hide();
 									});
 								});
@@ -157,8 +160,8 @@
 		});
 	</script>
 
-<div id="content1">
-	<div style="padding: 7.5px;background:white;margin-top:78px">
+<div id="content1" style="background:white;margin-top:78px">
+	<div style="padding: 7.5px;background:white;">
 							<form action="{:U('index/searchlist')}" method="post" name="search">
 								<input name="keywords" type="text" id="keyw"
 									style="width: 65%; height: 30px; border: 1px solid #cdcdcd; font-size: 1.3em; color: #cccccc; padding-left: 12%"
