@@ -154,7 +154,7 @@ display:inline-block;
 border:0px solid black; 
 position: relative; 
 } 
- 
+#chartOptionsFlowTrend_01 a.a_0{color:#006835} 
 .chartOptionsFlowTrend{ 
 z-index:300; 
 background-color:white; 
@@ -201,7 +201,7 @@ text-decoration: none;
 } 
  
 .chartQuota p { 
-margin:0px; 
+margin-top:8px; 
 folat:left; 
 overflow: hidden; 
 height: 23px; 
