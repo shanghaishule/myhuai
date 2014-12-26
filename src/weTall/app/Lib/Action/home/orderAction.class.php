@@ -621,8 +621,7 @@ class orderAction extends userbaseAction {
 				$this->send_tel_mail();
 				//xxl end
 				$this->success('货到付款，保存成功！',U('user/index',array('status'=>2)));
-				
-				
+
 			}
 			elseif (3 == $payment_id)
 			{
