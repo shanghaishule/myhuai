@@ -115,6 +115,9 @@ p.td_p{margin-top:-55px}
 #rebook_btm ul li.phone_rebook a{background: url(/weTall/static/weixin/images/home/anniugreen.png) no-repeat 0 0;
 background-size:100% 100%;width: 125px;
 height: 36px;}
+a#rebook_sub{background: url(/weTall/static/weixin/images/home/intimesub.png) no-repeat 0 0;
+background-size:100% 100%;width: 125px;
+height: 36px;}
 #rebook_btm ul li.intime_submit a{background: url(/weTall/static/weixin/images/home/anniured.png) no-repeat 0 0;
 background-size:100% 100%;width: 124px;
 height: 36px;}
