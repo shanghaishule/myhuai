@@ -131,7 +131,7 @@ text-align: center;
 background: #006835
 color: white;
 border-radius: 5px;}
-#rebook_btm ul li{margin:auto}
+#rebook_btm ul li a{margin:auto}
 
 .file-box{ position:relative;width:340px}
 .txt{ height:22px; border:1px solid #cdcdcd; width:180px;}
