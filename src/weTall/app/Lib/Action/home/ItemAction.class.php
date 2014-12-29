@@ -80,8 +80,23 @@ class itemAction extends frontendAction {
     }
     //复诊
     public function rebook(){
+    	header("Content-type:text/html;charset=utf-8");
+    	if(IS_POST){
+    		$Uninum = time();
+    		$filepath = $_SERVER['DOCUMENT_ROOT']."/Uploads/items/images/";//图片保存的路径目录
+    		if(!is_dir($filepath)){
+    			mkdir($filepath,0777, true);
+    		}
+    		$file_type = explode(".",$_POST['img_name']);
+    		//dump($file_type);die;
+    		$filename = $Uninum.'.'.$file_type[1]; //生成文件名
+    		if(!move_uploaded_file($_FILES["my_img"]["tmp_name"],$filepath.$filename)){
+    			 echo '移动失败';
+    		}
+    		$data['upd_path'] = '/Uploads/items/images/'.$filename;
+    		dump($data['upd_path']);die;
+    	}
     	$this->display();
-    	
     }
     public function rebookinfo(){
     	$this->display();
@@ -407,5 +422,4 @@ class itemAction extends frontendAction {
             }
         }
     }
-  
 }
