@@ -41,7 +41,7 @@ class WeixinAction extends Action
                     '%' . $data['keyword'] . '%'
                 );
                 $like['token']   = $this->token;
-                $back            = M('Img')->field('id,text,pic,url,title')->limit(9)->order('id desc')->where($like)->select();
+                $back  = M('Img')->field('id,text,pic,url,title')->limit(9)->order('id desc')->where($like)->select();
                 foreach ($back as $keya => $infot) {
                     if ($infot['url'] != false) {
                         $url = $infot['url'];
@@ -783,7 +783,7 @@ class WeixinAction extends Action
             );
         } else {
             if ($home['apiurl'] == false) { 
-            	$url = rtrim(C('site_url'), '/') . '/index.php?g=Home&m=index&a=index&token='. $this->token .'&wecha_id='.$this->data['FromUserName'];
+            	$url = rtrim(C('site_url'), '/') . 'weTall/index.php?g=Home&m=index&a=index&token='. $this->token .'&wecha_id='.$this->data['FromUserName'];
             } else {
                 $url = $home['apiurl'].'&wecha_id='.$this->data['FromUserName'];
             }
