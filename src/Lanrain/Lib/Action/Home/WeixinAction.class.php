@@ -783,7 +783,7 @@ class WeixinAction extends Action
             );
         } else {
             if ($home['apiurl'] == false) { 
-            	$url = rtrim(C('site_url'), '/') . '/index.php?g=Home&m=Shop&a=index&token='. $this->token .'&wecha_id='.$this->data['FromUserName'];
+            	$url = rtrim(C('site_url'), '/') . '/index.php?g=Home&m=index&a=index&token='. $this->token .'&wecha_id='.$this->data['FromUserName'];
             } else {
                 $url = $home['apiurl'].'&wecha_id='.$this->data['FromUserName'];
             }

@@ -1,0 +1,66 @@
+<include file="Public:head"/>
+<script>
+function btnDespose(type){
+	this.form2.action = "/index.php?g=User&m=Service&a="+type;
+	this.form2.submit();
+}
+</script>
+<div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
+<div class="msgWrap form">
+<div class="bdrcontent">
+<div id="div_ptype">
+<form name="form2" id="form2" action="" method="post">
+<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+<thead>
+<tr>
+<th>姓名</th>
+<th>性别</th>
+<th>电话</th>
+<th>简要病史</th>
+<th>病史描述</th>
+<th>来院时间</th>
+<th>复诊时间</th>
+<th>住院要求</th>
+<th>检查项目</th>
+<th>会诊专家</th>
+<th>贴心服务</th>
+<th>申请时间</th>
+<!-- -<th style=" width:100px;" class="norightborder">操作</th>- -->
+</tr>
+</thead>
+<volist name="list" id="val">
+<tr>
+<!-- -<td align="center"><input type="checkbox" name="sel[]" id="sel_list_{lanrain:$val.id}" value="{lanrain:$val.id}"/></td>- -->
+<td align="center">{lanrain:$val.name}</td>
+<td align="center"><if condition="$val.sex eq 0">男<else />女</if></td>
+<td align="center">{lanrain:$val.phone}</td>
+<td align="center"<div class="cateimg"><img src="{lanrain:$val.pic}" class="cateimg_small" /><img src="{lanrain:$val.pic}" class="cateimg_big"  /></div></td>
+<td align="center"><b>{lanrain:$val.info}</b></td>
+<td align="center"><b>{lanrain:$val.comeDate}</b></td>
+<td align="center"><b>{lanrain:$val.fuzhengDate}</b></td>
+<td align="center"><b><if condition="$val.zhuyuan eq 0">不需要<elseif condition="$val.zhuyuan eq 1" />需要<else />还不确定</if></b></td>
+<td align="center">{lanrain:$val.checkProject}</td> 
+<td align="center"><b>{lanrain:$val.zuanjia}</b></td>
+<td align="center"><b>{lanrain:$val.loveServer}</b></td>
+<td align="center">{lanrain:$val.addTime|date='Y-m-d H:i:s',###}</td>
+<!-- 
+<td align="center" >
+	<a href="{lanrain::U('Service/edit',array('id'=>$val['id']))}">编辑</a>
+	<a href="javascript:drop_confirm('你确定要删除吗？', '{lanrain::U('Service/del',array('id'=>$val['id']))}');">删除</a>
+	<a class="red" href="{lanrain::U('Service/TuijianDispose',array('id'=>$val['id']))}"><if condition="$val.tuijian eq 1">取消推荐<else />推荐</if></a>
+</td>
+ -->
+</tr>
+</volist>
+</table>
+</form>
+</div>
+</div>
+
+<div class="footactions" style="padding-left:10px">
+	<div class="pages">{lanrain:$page}</div>
+</div>
+</div>
+</div>
+
+<include file="Public:footer"/>

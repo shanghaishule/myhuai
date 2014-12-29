@@ -37,7 +37,33 @@
 			 $("#img_name").val(file_name);
 		}
 		function sub(){
-			this.form1.submit();
+			var name = $("#rebook_name").val();
+			var phone = $('#phone').val();
+			 var reg = /^0?1[358]\d{9}$/;
+
+			var pic = $('#img_name').val();
+			var info = $("#reinfo").val();
+			var fuzhengDate = $("#fuzhengTime").val();
+			var comeDate = $("#comeTime").val();
+			var checkProject = false;
+			$("input[name='checkProject[]']").each(function(){
+				   if(this.checked){
+					    checkProject = true;
+				   }
+			});
+			if(name != '' && phone != '' && fuzhengDate != '' && comeDate != '' && checkProject){
+				  if(pic != '' || info != '' ){
+						 if (!reg.test(phone)){
+						        alert('手机号码格式不正确');
+						        return false;
+						 }
+					    this.form1.submit();
+				  }else{
+					  alert("带*号必填");
+				  }
+			}else{
+				alert("带*号必填");
+			}
 		}
 	</script>
 
@@ -50,13 +76,13 @@
 				   <p class="biaoti">个人信息</p>
 				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
-	                   <td class="td_1">姓　　名:</td>
+	                   <td class="td_1">姓　　名<span class="red">*</span>:</td>
 	                   <td class="td_80"><input  name="name" id="rebook_name" class="text width5" placeholder="病人真实姓名" type="text"></td>
 	                 </tr>
 	                 </table>
 	                  <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
-	                   <td class="td_1">性　　别:</td>
+	                   <td class="td_1">性　　别<span class="red">*</span>:</td>
 	                   <td class="td_sex">男: 
 						</td>
 						<td class="td_sex_1"> <input type="radio" name="sex" value="0" id="rebook_sex"checked="checked">
@@ -65,20 +91,20 @@
 						</td>
 
 						<td class="td_sex_1">
-						<input type="radio" id="rebook_sex" name="Sex" value="1">
+						<input type="radio" id="rebook_sex" name="sex" value="1">
 						</td>
 	                 </tr>
 	                  </table>
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
-	                   <td class="td_1">手　　机:</td>
-	                   <td class="td_80"><input  name="rebook_phone" id="phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
+	                   <td class="td_1">手　　机<span class="red">*</span>:</td>
+	                   <td class="td_80"><input  onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" name="rebook_phone" id="phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
 	                 </tr>
 	                </table>
 			   </div>
 			   
 			   <div class="rebook_block">
-				   <p class="biaoti">简要病史<span class="biaoti_span">（可电话咨询）</span> </p>
+				   <p class="biaoti">简要病史<span class="biaoti_span">（可电话咨询）</span> <span class="red">*至少填其一</span></p>
 				   <table id="rebook_table"  border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
 	                   <td class="td_1">上传图片：</td>
@@ -107,7 +133,7 @@
 				   <p class="biaoti">预约信息</p>
 				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
-	                   <td class="td_33">要求复诊时间:</td>
+	                   <td class="td_33">要求复诊时间<span class="red">*</span>:</td>
 	                   <td class="td_65">
 	                       <div class="book_online">
 		                       <div id="book_online">
@@ -121,7 +147,7 @@
 	                 </tr>
 	                 <tr>
 	                   
-	                   <td class="">计划来院时间:<br>
+	                   <td class="">计划来院时间<span class="red">*</span>:<br>
 	                   </td>
 	                   <td class=""><div class="book_online">
 		                     
@@ -142,7 +168,7 @@
 	                 </table>
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
-	                   <td class="td_33">有无住院要求:</td>
+	                   <td class="td_33">有无住院要求<span class="red">*</span>:</td>
 	                   <td class="td_req">有: 
 						</td>
 						<td class="td_sex_1"> <input type="radio" name="zhuyuan"id="rebook_vary" value="1" checked="checked" />
@@ -164,7 +190,7 @@
 	                 
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 			                 <tr style="line-height: 39px;">
-						                   <td class="td_33">预约检查项目:</td>
+						                   <td class="td_33">预约检查项目<span class="red">*</span>:</td>
 						                   <td class="">
 						                        <div class="select_checkBox"> 
 																<div class="chartQuota"> 
@@ -207,8 +233,6 @@
 																			},function(){ 
 																			$(".chartOptionsFlowTrend").css("display","none"); 
 																		}); 
-																		
-																		
 																}); 
 																</script>
 																<script type="text/javascript"> 
@@ -237,8 +261,9 @@
 	                  <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 			                 <tr>
 						                   <td class="td_33">拟请会诊专家:</td>
-						                   <td class="select_item"><input  name="zuanjia" id="rebook_exper" class="text width5" placeholder="填写专家名" type="text">
-										 </td>
+						                   <td class="select_item">
+						                   	<input  name="zuanjia" id="rebook_exper" class="text width5" placeholder="填写专家名" type="text">
+										   </td>
 										 <td class="td_spec"><a href="{:U('Item/expert')}"><p>查看知名专家</p></a></td>
 			                 </tr>
 	                 </table>
@@ -248,23 +273,23 @@
 	                  <p class="biaoti" style="padding-bottom:5px">贴心服务</p>
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
-	                  
-	                   <td class="td_18"><p>预订往返票务 </p>
+	                   <td class="td_18">
+	                        <p>预订往返票务</p>
 						</td>
-						<td class="td_sex_1"> <input type="checkbox"  id="rebook_ser" name="loveServer[]" value="ticket" checked="checked" />
+						<td class="td_sex_1"> <input type="checkbox"  id="rebook_ser" name="loveServer[]" value="预订往返票务 " />
 						</td>
 						
 						<td class="td_18"><p>安排周边住宿 </p>
 						</td>
 
 						<td class="td_sex_1">
-						<input type="checkbox" name="rebook_ser" id="rebook_ser" value="loveServer[]" />
+						<input type="checkbox" name="loveServer[]" id="rebook_ser" value="安排周边住宿" />
 						</td>
 						<td class="td_18"><p>交通接站服务 </p>
 						</td>
 
 						<td class="td_sex_1">
-						<input type="checkbox" name="rebook_ser"  id="rebook_ser" value="loveServer[]" />
+						<input type="checkbox" name="loveServer[]"  id="rebook_ser" value="交通接站服务" />
 						</td>
 	                 </tr>
 	                  </table>
@@ -277,10 +302,11 @@
 	         
 			   <div>
 				   
-			   </div>		 
+			   </div>	
+			     </form>	 
     </div>
     
-    <div class="rebook_block" style="margin-top: 5px;background:white">
+            <div class="rebook_block" style="margin-top: 5px;background:white">
     <p class="biaoti" style=";padding-bottom:;font-size: 18px;
 line-height: 26px;
 color: #006835">推荐服务</p>
@@ -302,16 +328,12 @@ color: #006835">推荐服务</p>
 			                	
 	            </ul>
 	        </div>
-            </form>
-<<<<<<< HEAD
-	         </div>            
-=======
+          
             <style type="text/css">
             #rebook_btm ul li.phone_rebook a#rebook_sub{background: url(/weTall/static/weixin/images/home/intimesub.png) no-repeat 0 0;
-background-size:100% 100%;width: 125px;
-height: 36px;}
-</style>
->>>>>>> branch 'master' of https://github.com/shanghaishule/myhuai.git
+			background-size:100% 100%;width: 125px;
+			height: 36px;}
+			</style>
 <script type="text/javascript">
 window.shareData = {
 		"moduleName" : "Index",
