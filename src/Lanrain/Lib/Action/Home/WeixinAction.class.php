@@ -788,7 +788,6 @@ class WeixinAction extends Action
                 $url = $home['apiurl'].'&wecha_id='.$this->data['FromUserName'];
             }
         }
-		
         return array(
             array(
                 array(
