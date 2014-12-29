@@ -114,8 +114,9 @@ p.td_p{margin-top:-55px}
 #rebook_btm{bottom:0px;height:45px;background:white;opacity:1}
 #rebook_btm ul li.phone_rebook a{background: url(/weTall/static/weixin/images/home/anniugreen.png) no-repeat 0 0;
 background-size:100% 100%;width: 125px;
-height: 36px;}
-a#rebook_sub{background: url(/weTall/static/weixin/images/home/intimesub.png) no-repeat 0 0;
+height: 36px;
+margin: 0 auto}
+#rebook_btm ul li.intime_submit a#rebook_sub{background: url(/weTall/static/weixin/images/home/intimesub.png) no-repeat 0 0;
 background-size:100% 100%;width: 125px;
 height: 36px;}
 #rebook_btm ul li.intime_submit a{background: url(/weTall/static/weixin/images/home/anniured.png) no-repeat 0 0;
@@ -131,6 +132,7 @@ text-align: center;
 background: #006835
 color: white;
 border-radius: 5px;}
+#rebook_btm ul li a{margin:auto}
 
 .file-box{ position:relative;width:340px}
 .txt{ height:22px; border:1px solid #cdcdcd; width:180px;}
@@ -148,14 +150,10 @@ border-radius: 5px;}
 td.td_info{width:33.333%;margin-left:1px}
 td.td_info a{display:block;width:99%}
 li.pic_rebook{margin-left:2%;width:60px;height:40px;text-align:center;background:white;border-radius: 5px;padding-top:1px}
-
-
 .select_checkBox{ 
 border:0px solid red; 
 position: relative; 
 display:inline-block; 
- 
- 
 } 
 .chartQuota{ 
 height:23px; 
