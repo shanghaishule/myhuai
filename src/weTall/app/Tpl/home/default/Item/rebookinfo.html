@@ -38,9 +38,12 @@
 	   <div class="rebookinfo_block">
 				   <table id="rebookinfo_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
-	                   <td class="td_info"><a href="{:U('Item/rebookstep')}"><img src="__STATIC__/weixin/images/home/rediag1.jpg" style="width:100%;"/></a></td>
-	                   <td class="td_info"><a href="{:U('Item/rebookdoubt')}"><img src="__STATIC__/weixin/images/home/rediag2.jpg" style="width:100%;"/></a></td>
-	                   <td class="td_info"><a href="{:U('Item/rebookcase')}"><img src="__STATIC__/weixin/images/home/rediag3.png" style="width:100%;"/></a></td>
+	                   <td class="td_info"><a href="{:U('Item/rebookstep')}">
+	                   <img src="__STATIC__/weixin/images/home/rediag1.jpg" style="width:100%;"/></a></td>
+	                   <td class="td_info"><a href="{:U('Item/rebookdoubt')}">
+	                   <img src="__STATIC__/weixin/images/home/rediag2.jpg" style="width:100%;"/></a></td>
+	                   <td class="td_info"><a href="{:U('Item/rebookcase')}">
+	                   <img src="__STATIC__/weixin/images/home/rediag3.png" style="width:100%;"/></a></td>
 	                 </tr>
 	                 </table>
 	       </div>
@@ -53,7 +56,7 @@
 	             
             <ul class="rebook_btn" style="padding:5px 0">
 		            <li class="pic_rebook"><div style=" margin: 0 auto;width:50px;height:34px;background:url(__STATIC__/weixin/images/home/littlelogo.png);background-size:100% 100%";></div></li>
-		            <li class="phone_rebook"><a <if condition="$item['status'] neq 0">href="tel:4006555899"<else />href="javascirpt:void(0)" id="grey"</if> class="reserveP"></a></li>
+		            <li class="phone_rebook"><a href="tel:4006555899"></a></li>
 		            <li class="intime_submit"><a href="{:U('Item/rebook')}"></a></li>                
 		                	
             </ul>
