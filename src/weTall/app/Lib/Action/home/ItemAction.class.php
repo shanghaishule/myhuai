@@ -129,6 +129,7 @@ class itemAction extends frontendAction {
     	$this->display(); 
     }
     public function expert(){
+    	$this->searchInfo();
     	$mod = M('zhuanjia');
     	$list = $mod->select();
     	foreach ($list as $key => $val){
@@ -142,6 +143,66 @@ class itemAction extends frontendAction {
     	$this->assign('list',$list);
     	$this->display();
     
+    }
+    
+    public function searchInfo(){
+    	$this->assign('Hos_list',M('order_address')->select());
+    	$this->assign('Keshi_list',M('keshi')->select());
+    	$this->assign('Zhicheng_list',M('zhicheng')->select());
+    }
+    
+    public function search(){
+    	  $id = $this->_get('id','trim,intval');
+    	  $type = $this->_get('type','trim');
+    	  if(!id || !$type)$this->redirect("index/index");
+    	  
+    	  if($type == 'hos'){
+    	  	  $where['address_id'] = $id;
+    	  }else if($type == 'ks'){
+    	  	  $where['keshi_id'] = $id;
+    	  }else if($type == 'zc'){
+    	  	  $where['zhicheng_id'] = $id;
+    	  }else{
+    	  	  $where = "1 = 1";
+    	  }
+    	  $this->searchInfo();
+    	  $mod = M('zhuanjia');
+    	  $list = $mod->where($where)->select();
+    	  foreach ($list as $key => $val){
+    	  	$hos = M('order_address')->field("id,name")->where(array('id'=>$val['address_id']))->find();
+    	  	$keshi = M('keshi')->field("id,name")->where(array('id'=>$val['keshi_id']))->find();
+    	  	$zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$val['zhicheng_id']))->find();
+    	  	$list[$key]['hospital'] = $hos['name'];
+    	  	$list[$key]['keshi'] = $keshi['name'];
+    	  	$list[$key]['title'] = $zhicheng['name'];
+    	  }
+    	  
+    	  $this->assign('list',$list);
+    	  
+    	  $this->display("expert");
+    }
+    
+    public function searchlist(){
+        $keywords = $this->_post('keywords','trim');	
+        if($keywords == ''){
+        	$this->error("请输入专家姓名");
+        	exit;
+        }
+        $where['name'] = array("like","%".$keywords."%");
+        $this->searchInfo();
+        $mod = M('zhuanjia');
+        $list = $mod->where($where)->select();
+        foreach ($list as $key => $val){
+        	$hos = M('order_address')->field("id,name")->where(array('id'=>$val['address_id']))->find();
+        	$keshi = M('keshi')->field("id,name")->where(array('id'=>$val['keshi_id']))->find();
+        	$zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$val['zhicheng_id']))->find();
+        	$list[$key]['hospital'] = $hos['name'];
+        	$list[$key]['keshi'] = $keshi['name'];
+        	$list[$key]['title'] = $zhicheng['name'];
+        }
+        
+        $this->assign('list',$list);
+        $this->display("expert");        
     }
     public function rebookcase(){
     	$this->display();

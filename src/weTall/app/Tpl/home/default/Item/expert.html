@@ -33,7 +33,7 @@
 				   <table id="rebookinfo_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
 		                   <td class="td_exper" id="td_exper_01">
-		                 <p>  全部</p>
+		                 <p> <a href="{:U('Item/expert')}">全部</a></p>
 	                       </td>
 	                       <td class="td_exper" id="td_exper_02">
 	                       医院
@@ -53,23 +53,19 @@
 			   </div>
 			   <div class="select_exper">
 						  <ul class="listUl2" style="display:none">
-						        <li>上海长海医院</li>
-						    	<li>上海东方肝胆外科医院</li>
+						      <volist name="Hos_list" id="val">
+						           <li><a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'hos'))}">{$val.name}</a></li>
+						      </volist>  
 						    </ul>
 						    <ul class="listUl3" style="display:none">
-						        <li>肝胆科</li>
-						        <li>消化内科</li>
-						    	<li>泌尿外科</li>
-						    	<li>胸心外科</li>
-						    	<li>烧伤外科</li>
-						    	<li>中医医院</li>
-						    	<li>胸心外科</li>
-						    	<li>心血管内科</li>
-						    	<li>烧伤外科</li>
+						      <volist name="Keshi_list" id="val">
+						           <li><a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'ks'))}">{$val.name}</a></li>
+						      </volist>  
 						    </ul>
 						    <ul class="listUl4" style="display:none">
-						        <li>主任医师</li>
-						        <li>副主任医师</li>
+						      <volist name="Zhicheng_list" id="val">
+						           <li><a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'zc'))}">{$val.name}</a></li>
+						      </volist> 
 						    </ul>
 				 </div>
 				 </div>
@@ -79,7 +75,6 @@
 									
 									//点击后判断ul是否隐藏
 									$("#td_exper_01").click(function(){
-										
 											$(".select_exper ul").hide()
 									});
 									//选中某个内容后赋值给p标签，并隐藏ul列表
@@ -162,7 +157,7 @@
 
 <div id="content1" style=";margin-top:78px">
 	<div style="padding: 7.5px;background:white;">
-							<form action="{:U('index/searchlist')}" method="post" name="search">
+							<form action="{:U('Item/searchlist')}" method="post" name="search">
 								<input name="keywords" type="text" id="keyw"
 									style="width: 65%; height: 30px; border: 1px solid #cdcdcd; font-size: 1.3em; color: #cccccc; padding-left: 12%"
 									placeholder="搜索专家" /> <input onClick="if($('#keyw').val() == '')return false;" type="submit"
@@ -188,7 +183,7 @@
 	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
 		                      <tr>
 					                   <td class="exper_name" id="">
-					                      <p>{$val.name}<span class="exper_level">（{$val.zhicheng}）</span></p>
+					                      <p>{$val.name}<span class="exper_level">（{$val.title}）</span></p>
 				                       </td>
 				             </tr>
 	                    </table>
