@@ -21,7 +21,7 @@ class itemAction extends frontendAction {
         $item_mod = M('item');
         $item = $item_mod->field('id,cate_id,title,intro,price,zb_price,info,comments,add_time,goods_stock,buy_num,brand,size,color')->where(array('id' => $id, 'status' => 1))->find();
         !$item && $this->_404();
-    
+
         //大小
         $size = substr(trim($item['size']),0,1) == '|' ? explode('|', substr(trim($item['size']),1)) : explode('|', $item['size']);
         
