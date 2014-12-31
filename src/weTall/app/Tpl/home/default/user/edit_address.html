@@ -69,7 +69,7 @@ $(function(){
                 required : '请填写收货人姓名. '
             },
             address   : {
-                required : '请填写详细地址. '
+                required : '请填写楼号楼层房间号. '
             },
             phone_mob : {
                 required : '固定电话和手机请至少填写一项. ',
@@ -115,7 +115,7 @@ function hide_error(){
 				</script>
                  -->
                 <li>
-                    <input value="{$info.address}" class="text width_normal" name="address" placeholder="不必重复填写地区" type="text"><label class="field_message"><span class="field_notice"></span></label>
+                    <input value="{$info.address}" class="text width_normal" name="address" placeholder="填写楼号楼层房间号" type="text"><label class="field_message"><span class="field_notice"></span></label>
                 </li>
                 <li>
                     <input value="{$info.mobile}" class="text width_normal" name="phone_mob" placeholder="电话号码" type="text"><label class="field_message"><span class="field_notice"></span></label>
