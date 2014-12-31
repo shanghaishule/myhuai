@@ -326,11 +326,13 @@ class ServiceAction extends UserAction{
 		if($ids){
 			if(is_array($ids)){
 				$where = 'id in('.implode(',',$ids).')';
+				$cond = 'item_id in('.implode(',',$ids).')';
 			}else{
 				$where = 'id='.$ids;
+				$cond = 'item_id='.$ids;
 			}
 			$flag = $this->_mod->where($where)->delete();
-			M('item_service_img')->where($where)->delete();
+			M('item_service_img')->where($cond)->delete();
 			if(false !== $flag){
 				$this->success("删除成功".$flag."条!");
 			}else{

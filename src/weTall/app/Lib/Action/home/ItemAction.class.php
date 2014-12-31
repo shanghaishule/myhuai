@@ -130,6 +130,17 @@ class itemAction extends frontendAction {
     	$this->display(); 
     }
     public function expert(){
+    	$mod = M('zhuanjia');
+    	$list = $mod->select();
+    	foreach ($list as $key => $val){
+			   $hos = M('order_address')->field("id,name")->where(array('id'=>$val['address_id']))->find();
+			   $keshi = M('keshi')->field("id,name")->where(array('id'=>$val['keshi_id']))->find();
+			   $zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$val['zhicheng_id']))->find();
+			   $list[$key]['hospital'] = $hos['name'];
+			   $list[$key]['keshi'] = $keshi['name'];
+			   $list[$key]['title'] = $zhicheng['name'];
+    	}
+    	$this->assign('list',$list);
     	$this->display();
     
     }

@@ -169,18 +169,15 @@
 									style="width: 20%; background: none; border:none; color: #262626; font-size: 1.1em"
 									name="Submit" value="搜索">
 							</form>
-						</div>
+  </div>
 		
-   
-        
 <div class="module_special tbr" >
+      <volist name="list" id="val">
         <div class="wrap">
             <div class="wrap_child">
                 <div class="major_1">
                      <ul class="list">
-                     
 	                     <li>
-	                     <a href="">
 	                     <div>
 	                     <div class="pic" id="pic_1" style="width:24%;">
 	                     	<div id="thdpic" style="height:110px;width:80px"> 
@@ -191,17 +188,17 @@
 	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
 		                      <tr>
 					                   <td class="exper_name" id="">
-					                      <p>  吴孟超<span class="exper_level">（院士、主任医师）</span></p>
+					                      <p>{$val.name}<span class="exper_level">（{$val.zhicheng}）</span></p>
 				                       </td>
 				             </tr>
 	                    </table>
 	                    <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
 		                      <tr>
 					                   <td class="exper_apart" id="">
-					                      <p><span>  长海医院骨科</span></p>
+					                      <p><span>{$val.hospital}{$val.keshi}</span></p>
 				                       </td>
 				                       <td class="exper_money" id="">
-				                           <p>会诊费：500元 </p>
+				                           <p>会诊费：{$val.cost}元 </p>
 				                      </td>
 				                       
 				             </tr>
@@ -214,17 +211,20 @@
 		                      <p>  门诊时间：</p>
 	                       </td>
 	                       <td class="exper_timedetail" id="">
-	                           <p> 周一上午9-10点</p>
-	                           <p> 周一上午9-10点</p>
+	                           <if condition="$val.menzhenDate1 neq ''"><p> {$val.menzhenDate1}</p></if>
+	                           <if condition="$val.menzhenDate2 neq ''"><p> {$val.menzhenDate2}</p></if>
+	                           <if condition="$val.menzhenDate3 neq ''"><p> {$val.menzhenDate3}</p></if>
+	                           <if condition="$val.menzhenDate4 neq ''"><p> {$val.menzhenDate4}</p></if>
+	                           <if condition="$val.menzhenDate5 neq ''"><p> {$val.menzhenDate5}</p></if>
 	                       </td>
 	                       <td class="exper_phone" id="">
 				                          <a href="tel:4006555899" style="display:block;width:35px;height:35px"> <img data-original="" width="35" height="35" src="__STATIC__/weixin/images/home/experphone.png" /></a>
-				                      </td>
+				           </td>
 	                  </tr>
 	                 </table>
 	                 
 	                 <div id="advan">
-	                 	<p> 擅长： <span>谷歌可垃圾算快乐都费劲啊快来接电费卡拉就是打开了房间爱快乐圣诞节分</span></p>	
+	                 	<p> 擅长： <span>{$val.shanchang}</span></p>	
 	                 	
 	                 </div>	
 	                 <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
@@ -246,165 +246,12 @@
 	                 	 </div>
 	                 	 </div>
 	                     </li>
-					
 					 </ul>
                 </div>
             </div>
         </div>
-        <div class="wrap">
-            <div class="wrap_child">
-                <div class="major_1">
-                     <ul class="list">
-                     
-	                     <li>
-	                     <a href="">
-	                     <div>
-	                     <div class="pic" id="pic_1" style="width:24%;">
-	                     	<div id="thdpic" style="height:110px;width:80px"> 
-	                     	   <img data-original="" width="100%" height="100%" src="__STATIC__/LazyLoad/js/grey.gif" />
-	                     	</div>
-	                     </div>
-	                     <div class="good_content" id="good_content_1" style="width:73%;margin-top: 3px;">
-	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
-		                      <tr>
-					                   <td class="exper_name" id="">
-					                      <p>  吴孟超<span class="exper_level">（院士、主任医师）</span></p>
-				                       </td>
-				             </tr>
-	                    </table>
-	                    <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
-		                      <tr>
-					                   <td class="exper_apart" id="">
-					                      <p><span>  长海医院骨科</span></p>
-				                       </td>
-				                       <td class="exper_money" id="">
-				                           <p>会诊费：500元 </p>
-				                      </td>
-				                       
-				             </tr>
-	                    </table>
-	                     
-						
-	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
-	                  <tr>
-		                   <td class="exper_time" id="">
-		                      <p>  门诊时间：</p>
-	                       </td>
-	                       <td class="exper_timedetail" id="">
-	                           <p> 周一上午9-10点</p>
-	                           <p> 周一上午9-10点</p>
-	                       </td>
-	                       <td class="exper_phone" id="">
-				                          <a href="tel:4006555899" style="display:block;width:35px;height:35px"> <img data-original="" width="35" height="35" src="__STATIC__/weixin/images/home/experphone.png" /></a>
-				                      </td>
-	                  </tr>
-	                 </table>
-	                 
-	                 <div id="advan">
-	                 	<p> 擅长： <span>谷歌可垃圾算快乐都费劲啊快来接电费卡拉就是打开了房间爱快乐圣诞节分</span></p>	
-	                 	
-	                 </div>	
-	                 <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
-	                  <tr>
-		                   <td class="exper_comment" id="">
-		                       <img data-original="" width="100%" height="100%" src="__STATIC__/weixin/images/home/expercomment.png" />
-	                       </td>
-	                       <td class="exper_comnum" id="">
-	                           <p> （20）</p>
-	                        </td>
-	                        <td class="exper_like" id="">
-	                            <img data-original="" width="100%" height="100%" src="__STATIC__/weixin/images/home/experlike.png" />
-	                        </td>
-	                        <td class="exper_likenum" id="">
-	                           <p> （20）</p>
-	                        </td>
-	                  </tr>
-	                 </table>		 
-	                 	 </div>
-	                 	 </div>
-	                     </li>
-					
-					 </ul>
-                </div>
-            </div>
-        </div>
-        <div class="wrap">
-            <div class="wrap_child">
-                <div class="major_1">
-                     <ul class="list">
-                     
-	                     <li>
-	                     <a href="">
-	                     <div>
-	                     <div class="pic" id="pic_1" style="width:24%;">
-	                     	<div id="thdpic" style="height:110px;width:80px"> 
-	                     	   <img data-original="" width="100%" height="100%" src="__STATIC__/LazyLoad/js/grey.gif" />
-	                     	</div>
-	                     </div>
-	                     <div class="good_content" id="good_content_1" style="width:73%;margin-top: 3px;">
-	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
-		                      <tr>
-					                   <td class="exper_name" id="">
-					                      <p>  吴孟超<span class="exper_level">（院士、主任医师）</span></p>
-				                       </td>
-				             </tr>
-	                    </table>
-	                    <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
-		                      <tr>
-					                   <td class="exper_apart" id="">
-					                      <p><span>  长海医院骨科</span></p>
-				                       </td>
-				                       <td class="exper_money" id="">
-				                           <p>会诊费：500元 </p>
-				                      </td>
-				                       
-				             </tr>
-	                    </table>
-	                     
-						
-	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
-	                  <tr>
-		                   <td class="exper_time" id="">
-		                      <p>  门诊时间：</p>
-	                       </td>
-	                       <td class="exper_timedetail" id="">
-	                           <p> 周一上午9-10点</p>
-	                           <p> 周一上午9-10点</p>
-	                       </td>
-	                       <td class="exper_phone" id="">
-				                          <a href="tel:4006555899" style="display:block;width:35px;height:35px"> <img data-original="" width="35" height="35" src="__STATIC__/weixin/images/home/experphone.png" /></a>
-				                      </td>
-	                  </tr>
-	                 </table>
-	                 
-	                 <div id="advan">
-	                 	<p> 擅长： <span>谷歌可垃圾算快乐都费劲啊快来接电费卡拉就是打开了房间爱快乐圣诞节分</span></p>	
-	                 	
-	                 </div>	
-	                 <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
-	                  <tr>
-		                   <td class="exper_comment" id="">
-		                       <img data-original="" width="100%" height="100%" src="__STATIC__/weixin/images/home/expercomment.png" />
-	                       </td>
-	                       <td class="exper_comnum" id="">
-	                           <p> （20）</p>
-	                        </td>
-	                        <td class="exper_like" id="">
-	                            <img data-original="" width="100%" height="100%" src="__STATIC__/weixin/images/home/experlike.png" />
-	                        </td>
-	                        <td class="exper_likenum" id="">
-	                           <p> （20）</p>
-	                        </td>
-	                  </tr>
-	                 </table>		 
-	                 	 </div>
-	                 	 </div>
-	                     </li>
-					
-					 </ul>
-                </div>
-            </div>
-        </div>
+        </volist>
+        
     </div>
   
 
