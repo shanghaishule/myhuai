@@ -33,7 +33,6 @@ class itemAction extends frontendAction {
         $item['brand'] = $brand['name'];
         
         //商品相册
-
         $img_list = M('item_img')->field('url')->where(array('item_id' => $id))->order('id ASC')->select();
               
         $comments_list = M('comments')->where(array('item_id' => $id))->order('create_time desc')->select();
