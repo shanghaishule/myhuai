@@ -202,19 +202,22 @@ class itemAction extends frontendAction {
         }
         
         $this->assign('list',$list);
-        $this->display("expert");        
+        $this->display("expert");
     }
+    
+    //为专家点赞
+   public function add_love(){
+   		
+   }
+   
     public function rebookcase(){
     	$this->display();
-    
     }
     public function rebookdoubt(){
     	$this->display();
-    
     }
     public function rebookstep(){
     	$this->display();
-    
     }
     //服务
     public function index_book(){
