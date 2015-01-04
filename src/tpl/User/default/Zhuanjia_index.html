@@ -17,6 +17,7 @@ function btnDespose(type){
 <thead>
 <tr>
 <th style="width:21px"><input type="checkbox" name="selAll" id="selAll" />全选</th>
+<th>头像</th>
 <th>姓名</th>
 <th>职称</th>
 <th>电话</th>
@@ -31,6 +32,7 @@ function btnDespose(type){
 <volist name="list" id="val">
 <tr>
 <td align="center"><input type="checkbox" name="sel[]" id="sel_list_{lanrain:$val.id}" value="{lanrain:$val.id}"/></td>
+<td align="center"><div class="cateimg"><img src="{lanrain:$val.img}" class="cateimg_small" /><img src="{lanrain:$val.img}" class="cateimg_big"  /></div></td>
 <td align="center">{lanrain:$val.name}</td>
 <td align="center">{lanrain:$val.title}</td>
 <td align="center">{lanrain:$val.phone}</td>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>友好评论</title>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/jquery-1.9.1.js" ></script>
+<style>
+body{min-width:320px;max-width:640px;margin:0 auto;background-color:#f1f1f1;font-family: "黑体";position:relative;min-height:300px;padding-bottom:50px;}
+ul,li{margin:0;padding:0;}
+.comments-list li.comm-list{background-color:#ffffff;padding:16px;border-radius: 5px;
+border: 1px solid #ccc;margin-bottom:10px;}
+.comm-name-time ul li{width:50%;float:left;display:inline;text-align:left;}
+.comm-name-time ul li:last-child{text-align:right;}
+.comm-name-time ul{height:20px;color:#6e6e6e;font-size:13px;}
+.comments-content{margin: 0 4px;}
+li{list-style:none;}
+.comm-info{margin-top:10px;line-height:24px;}
+.comments-form{position:fixed;bottom:0;width:96%;border-top:1px solid #ccc;padding:7px 2%;background-color:#f1f1f1}
+input{height:20px;padding:0;}
+#user-comments{width:80%;border-radius:5px;padding-left:10px}
+#btn{width:10%;text-align:center;}
+</style>
+</head>
+<body>
+	<div class="comments-content">
+			<div class="comments-list">
+				<ul>
+					<li class="comm-list">
+						<div class="comm-name-time"><ul><li>186***461</li><li>1天前</li></ul></div>
+						<div class="comm-info">我也是醉了，我也是醉了我也是醉了，我也是醉了我也是醉了，我也是醉了我也是醉了，我也是醉了</div>
+					</li>
+					<li class="comm-list">
+						<div class="comm-name-time"><ul><li>186***461</li><li>1天前</li></ul></div>
+						<div class="comm-info">我也是醉了，我也是醉了我也是醉了，我也是醉了我也是醉了，我也是醉了我也是醉了，我也是醉了</div>
+					</li>
+					<li class="comm-list">
+						<div class="comm-name-time"><ul><li>186***461</li><li>1天前</li></ul></div>
+						<div class="comm-info">我也是醉了，我也是醉了我也是醉了，我也是醉了我也是醉了，我也是醉了我也是醉了，我也是醉了</div>
+					</li>										
+				</ul>
+			</div>
+	</div>
+	<div class="comments-form">
+		<form name="form1" id="form1" action="" method="post">
+			<input type="text" id="user-comments" name="user-comments" placeholder="说两句吧.."/>
+			<input type="submit" id="btn" onclick="if($('#user-comments').val() == ''){return false;}"  name="btn" value="发送 " />
+		</form>
+	</div>	
+</body>
+</html>
