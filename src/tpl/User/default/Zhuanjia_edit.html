@@ -9,6 +9,23 @@
 		var editor = K.editor({
 			allowFileManager:true
 		});
+		
+		K('#upload').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic').val(url);
+						}else{
+							K('#pic').val('__ROOT__'+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});		
+		
 		K.create('#info',{
 				uploadJson : '{lanrain::STATICS}/kindeditor/php/upload_json2.php',
 				afterBlur: function(){this.sync();}
@@ -45,7 +62,14 @@
 		<tr>
 			<th>电话：</th>
 			<td><input type="text" required onkeypress="intOnly()"  onblur="if(/\d{10}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" maxlength="11" class="px" name="phone" value="{lanrain:$info.phone}" style="width:500px"></td>
-		</tr>				
+		</tr>	
+		<tr>
+			<th>头像：</th>
+			<td>
+				<input type='text' class='px' id='pic' value='{lanrain:$info.img}' name='img' style='width:500px' readonly='readonly'><span class='ke-button-common' id='upload' style='margin-top: 3px;margin-left: 5px;'><input type='button' class='ke-button-common ke-button' value='上传'></span><br />
+				<span class="red">请上传250x350(px)的图片</span>
+			</td>
+		</tr>					
 		<tr>
 			<th>所属医院：</th>
 			<td class="all_category">

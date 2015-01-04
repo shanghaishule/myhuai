@@ -45,7 +45,11 @@ class ZhuanjiaAction extends UserAction{
 			if (false === $data = $this->_mod->create()) {
 				$this->error($this->_mod->getError());
 			}
-
+			//必须上传图片
+			if (empty($_POST['img'])){
+				$this->error('请上传专家头像。');
+			}
+			
 			if ($_POST['id'] != "") {
 					//编辑					
 					$result = $this->_mod->save($data);
