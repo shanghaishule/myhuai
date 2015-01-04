@@ -68,7 +68,7 @@
 		</tr>		
 		<tr>
 			<th>出诊费：</th>
-			<td class="all_category"><input type="number" onblur="if($(this).val()<1){$(this).val('1');}if(!isNaN($(this).val()))$(this).val('1')" required class="px" name="cost" value="{lanrain:$info.cost}" style="width:100px">元</td>
+			<td class="all_category"><input type="number" onblur="if($(this).val()<1){$(this).val('1');}if(isNaN($(this).val())){$(this).val('1');}" required class="px" name="cost" value="{lanrain:$info.cost}" style="width:100px">元</td>
 		</tr>
 		<tr>
 			<th>擅长：</th>
