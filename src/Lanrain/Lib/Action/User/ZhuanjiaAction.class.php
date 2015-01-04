@@ -72,13 +72,14 @@ class ZhuanjiaAction extends UserAction{
 			if ($id) {
 				$myaction = "编辑";
 				$info = $this->_mod->where(array('id'=>$id))->find();
-				$this->assign('Hos_list',M('order_address')->select());
-				$this->assign('Keshi_list',M('keshi')->select());
-				$this->assign('Zhicheng_list',M('zhicheng')->select());
 				$this->assign('info',$info);
 			}else{
 				$myaction = "新增";
 			}
+			$this->assign('Hos_list',M('order_address')->select());
+			$this->assign('Keshi_list',M('keshi')->select());
+			$this->assign('Zhicheng_list',M('zhicheng')->select());
+			
 			$this->assign('myaction',$myaction);
 			$this->display();
 		}
