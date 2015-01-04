@@ -44,7 +44,7 @@
 		</tr>	
 		<tr>
 			<th>电话：</th>
-			<td><input type="text" required onkeypress="intOnly()"  onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" maxlength="11" class="px" name="phone" value="{lanrain:$info.phone}" style="width:500px"></td>
+			<td><input type="text" required onkeypress="intOnly()"  onblur="if(/\d{10}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" maxlength="11" class="px" name="phone" value="{lanrain:$info.phone}" style="width:500px"></td>
 		</tr>				
 		<tr>
 			<th>所属医院：</th>
