@@ -1,16 +1,23 @@
 <?php
 
 class itemAction extends frontendAction {
-
+	public static $wordArr = array();
+	public static $content = "";
     public function _initialize() {
         parent::_initialize();
-        //访问者控制
-        if (!$this->visitor->is_login && in_array(ACTION_NAME, array('share_item', 'fetch_item', 'publish_item', 'like', 'unlike', 'delete', 'comment'))) {
-            IS_AJAX && $this->ajaxReturn(0, L('login_please'));
-            $this->redirect('user/login');
-        }
+        import('Think.ORG.SensitiveThesaurus');
+        $keywords = new SensitiveThesaurus();
+        self::$wordArr = $keywords->getKeywords();
     }
-
+    public function filter($content){
+    	if($content=="") return false;
+    	self::$content = $content;
+    	empty(self::$wordArr)?self::getWord():"";
+    	foreach ( self::$wordArr as $row){
+    		if (false !== strstr(self::$content,$row)) return false;
+    	}
+    	return true;
+    }
     /**
      * 商品详细页
      */
@@ -221,59 +228,65 @@ class itemAction extends frontendAction {
    
    //专家评论
    public function zhuanjiaComments(){
+   	//访问者控制
+   	if (!$this->visitor->is_login && in_array(ACTION_NAME, array('share_item', 'fetch_item', 'publish_item', 'like', 'unlike', 'delete', 'zhuanjiaComments'))) {
+   		$this->redirect('user/login');
+   	}
+   	$item_comment_mod = D('zhuanjia_comments');
    	if(IS_POST){
+   		$zid = $this->_post('zId','trim,intval');
+   		$userComments = $this->_post('userComments');
+   		//dump(session('user_info'));die;
+   		//dump($zid);die;
+   		if(!$zid || $userComments == ''){
+   			$this->error("评论失败！");
+   			exit;
+   		}
    		foreach ($_POST as $key=>$val) {
    			$_POST[$key] = Input::deleteHtmlTags($val);
    		}
    		$data = array();
-   		$data['item_id'] = $this->_post('id', 'intval');
-   		!$data['item_id'] && $this->ajaxReturn(0, L('invalid_item'));
-   		$data['info'] = $this->_post('content', 'trim');
-   		!$data['info'] && $this->ajaxReturn(0, L('please_input') . L('comment_content'));
    		//敏感词处理
-   		$check_result = D('badword')->check($data['info']);
-   		switch ($check_result['code']) {
-   			case 1: //禁用。直接返回
-   				$this->ajaxReturn(0, L('has_badword'));
-   				break;
-   			case 3: //需要审核
-   				$data['status'] = 0;
-   				break;
-   		}
-   		
-   		$data['info'] = $check_result['content'];
-   		$data['uid'] = $this->visitor->info['id'];
-   		$data['uname'] = $this->visitor->info['username'];
-   		
+       header("Content-type:text/html;charset=utf-8");
+   		if(false === $this->filter($userComments)){
+   		    $this->error("评论失败，包括敏感字！");
+   		    exit;
+   		 }
+   		//dump(self::$wordArr);die;
+   		$data['comments']= $userComments;
+   		$data['userId'] = $this->visitor->info['id'];
+   		$data['uName'] = $this->visitor->info['username'];
+   		$data['zhuanjia_id'] = $zid;
+   		$data['addTime'] = time();
    		//验证商品
-   		$item_mod = M('item');
-   		$item = $item_mod->field('id,uid,uname')->where(array('id' => $data['item_id'], 'status' => '1'))->find();
-   		!$item && $this->ajaxReturn(0, L('invalid_item'));
+   		$item_mod = M('zhuanjia');
+   		//$item = $item_mod->field('id,userId,uname')->where(array('id' => $data['item_id'], 'status' => '1'))->find();
+   		//!$item && $this->ajaxReturn(0, L('invalid_item'));
    		//写入评论
-   		$item_comment_mod = D('item_comment');
    		if (false === $item_comment_mod->create($data)) {
-   			$this->ajaxReturn(0, $item_comment_mod->getError());
+   			$this->error($item_comment_mod->getError());
    		}
    		$comment_id = $item_comment_mod->add();
    		if ($comment_id) {
-   			$this->assign('cmt_list', array(
-   					array(
-   							'uid' => $data['uid'],
-   							'uname' => $data['uname'],
-   							'info' => $data['info'],
-   							'add_time' => time(),
-   					)
-   			));
-   			$resp = $this->fetch('comment_list');
-   			$this->ajaxReturn(1, L('comment_success'), $resp);
+   			$this->success(('comment_success'));
    		} else {
-   			$this->ajaxReturn(0, L('comment_failed'));
+   			$this->error(L('comment_failed'));
    		}
-   		  		
    	}else{
+   		$zid = $this->_get('zId','trim,intval');
+   		if(!$zid){
+   			$this->error("参数错误！");
+   		}	
+   		
+   		$resp = $item_comment_mod->where(array('zhuanjia_id' => $zid))->order('addTime Desc')->select();
+   		foreach($resp as $key => $val){
+   			$resp[$key]['addTime'] = fdate($val['addTime']);
+   			$resp[$key]['uName'] = substr_replace($val['uName'],'*****', 3,5);
+   		}
+   		$this->assign('list',$resp);
+   		$this->assign("zid",$zid);
    		$this->display('comments');
    	}
-
   }
    
     public function rebookcase(){
@@ -589,4 +602,6 @@ class itemAction extends frontendAction {
             }
         }
     }
+    
+   
 }
