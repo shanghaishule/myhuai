@@ -21,7 +21,9 @@ class IndexAction extends BaseAction{
 		$this->display();
 	}
 	
-	
+	public function indexnew(){
+		$this->display();
+		}
 	public function test(){
 		require_once './Extend/PHPExcel_1.7.9/Classes/PHPExcel/IOFactory.php';
 		

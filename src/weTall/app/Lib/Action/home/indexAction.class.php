@@ -424,6 +424,10 @@ class indexAction extends frontendAction {
     	$this->display();
     }    
     	 
+    public function indexnew(){
+    	$this->display();
+    	
+    }
    public function index(){
    	   //顶部幻灯片
    	   $token = $this->getTokenTall();
