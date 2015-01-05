@@ -76,7 +76,7 @@
 									$(".td_exper").click(function() {
 										$(".listUl").hide();
 										var activeTab = $(this).attr("data-id");
-										$("listUl"+activeTab).fadeIn();
+										$("#listUl"+activeTab).slideDown(150);
 										return false;
 									});
 								});
