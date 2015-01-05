@@ -281,7 +281,6 @@ class itemAction extends userbaseAction {
    		}	
    		
    		$resp = $item_comment_mod->where(array('zhuanjia_id' => $zid))->order('addTime Desc')->select();
-   		
    		foreach($resp as $key => $val){
    			$resp[$key]['addTime'] = fdate($val['addTime']);
    			$resp[$key]['uName'] = substr_replace($val['uName'],'*****', 3,5);
