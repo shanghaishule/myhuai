@@ -177,8 +177,13 @@ body {
 #indexnew_nav1{height: 150px;
 margin-top: 0px;}
 .indexnew_li1{background:#e04316}
+#indexnew_nav1 li{width:50%}
+#indexnew_nav2 li{width:33.33%}
+#indexnew_nav1 .indexnew_li1 a{background:#e04316;color:white;height:130px;line-height: 16px;}
+#indexnew_nav1 .indexnew_li2 a{background:#8ad8de;color:white;height:130px;line-height: 16px;}
 .indexnew_li2{background:#8ad8de}
 #indexnew_nav2{margin-top:10px;height:95px}
+#indexnew_nav2 a{margin-top:px;height:80px;line-height: 10px;}
 #indexnew_con_start ul li{width:49.6%;margin-left:1px}
 /*indexnewend*/
 
