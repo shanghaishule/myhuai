@@ -173,6 +173,14 @@ body {
 .content_start {
 	margin-top: 10px
 }
+/*indexnew*/
+#indexnew_nav1{height: 150px;
+margin-top: 0px;}
+.indexnew_li1{background:#e04316}
+.indexnew_li2{background:#8ad8de}
+#indexnew_nav2{margin-top:10px;height:95px}
+#indexnew_con_start ul li{width:49.6%;margin-left:1px}
+/*indexnewend*/
 
 .content_start p {;
 	margin-bottom: 10px;
