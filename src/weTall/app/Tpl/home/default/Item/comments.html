@@ -26,24 +26,19 @@ input{height:20px;padding:0;}
 	<div class="comments-content">
 			<div class="comments-list">
 				<ul>
+					<volist name="list" id="list">
 					<li class="comm-list">
-						<div class="comm-name-time"><ul><li>186***461</li><li>1天前</li></ul></div>
-						<div class="comm-info">我也是醉了，我也是醉了我也是醉了，我也是醉了我也是醉了，我也是醉了我也是醉了，我也是醉了</div>
+						<div class="comm-name-time"><ul><li>{$list.uName}</li><li>{$list.addTime}</li></ul></div>
+						<div class="comm-info">{$list.comments}</div>
 					</li>
-					<li class="comm-list">
-						<div class="comm-name-time"><ul><li>186***461</li><li>1天前</li></ul></div>
-						<div class="comm-info">我也是醉了，我也是醉了我也是醉了，我也是醉了我也是醉了，我也是醉了我也是醉了，我也是醉了</div>
-					</li>
-					<li class="comm-list">
-						<div class="comm-name-time"><ul><li>186***461</li><li>1天前</li></ul></div>
-						<div class="comm-info">我也是醉了，我也是醉了我也是醉了，我也是醉了我也是醉了，我也是醉了我也是醉了，我也是醉了</div>
-					</li>										
+					</volist>									
 				</ul>
 			</div>
 	</div>
 	<div class="comments-form">
 		<form name="form1" id="form1" action="" method="post">
-			<input type="text" id="user-comments" name="user-comments" placeholder="说两句吧.."/>
+		    <input type="hidden" name="zId" value="{$zid}" />
+			<input type="text" id="user-comments" name="userComments" placeholder="说两句吧.."/>
 			<input type="submit" id="btn" onclick="if($('#user-comments').val() == ''){return false;}"  name="btn" value="发送 " />
 		</form>
 	</div>	
