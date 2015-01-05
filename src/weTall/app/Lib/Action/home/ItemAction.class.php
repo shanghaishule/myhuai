@@ -272,7 +272,6 @@ class itemAction extends frontendAction {
    		} else {
    			$this->error(L('comment_failed'));
    		}
-   		  		
    	}else{
    		$zid = $this->_get('zId','trim,intval');
    		if(!$zid){
