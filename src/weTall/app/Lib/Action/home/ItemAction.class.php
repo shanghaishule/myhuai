@@ -287,7 +287,6 @@ class itemAction extends frontendAction {
    		$this->assign("zid",$zid);
    		$this->display('comments');
    	}
-
   }
    
     public function rebookcase(){
