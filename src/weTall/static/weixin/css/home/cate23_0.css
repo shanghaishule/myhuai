@@ -188,6 +188,38 @@ margin-top: 0px;padding-top:0}
 #indexnew_nav2 a{margin-top:px;height:80px;line-height: 21px;}
 #indexnew_con_start ul li{width:49.6%;margin-left:1px}
 #indexnew_con_start ul li a div{font-size:13px;color:#444444}
+.rebook_block{background:white;padding:10px ;margin-top:10px}
+#rebook_btm{bottom:0px;height:45px;background:white;opacity:1}
+#rebook_btm ul li.phone_rebook a{background: #e04316;color:white;
+background-size:100% 100%;width: 100%;
+height: 36px;
+margin: 0 auto}
+#rebook_btm ul li.intime_submit a#rebook_sub{background: url(/weTall/static/weixin/images/home/intimesub.png) no-repeat 0 0;
+background-size:100% 100%;width: 125px;
+height: 36px;}
+#rebook_btm ul li.intime_submit a{background: url(/weTall/static/weixin/images/home/anniured.png) no-repeat 0 0;
+background-size:100% 100%;width: 124px;
+height: 36px;}
+input#rebook_pic{border:none}
+ul.rebook_btn li{float:left;height:36px}
+li.phone_rebook{width:76%;margin-left:12%}
+li.phone_rebook a{font-size: 15px;
+line-height: 36px;
+display: block;
+text-align: center;
+background: #006835
+color: white;
+border-radius: 5px;}
+#rebook_btm ul li a{margin:auto}
+li.intime_submit{width:37%;margin-left:2%}
+li.intime_submit a {font-size: 15px;
+line-height: 36px;
+display: block;
+text-align: center;
+background:red;
+color: white;
+border-radius: 5px;}
+#rebook_btm{bottom:0px;height:45px;background:white;opacity:1;position:fixed;width:100%}
 /*indexnewend*/
 
 .content_start p {;
