@@ -523,7 +523,8 @@ class orderAction extends userbaseAction {
 		if (M('alipay_biz')->where(array('tokenTall'=>$tokenTall))->find()){
 			$alipay_biz = "ok";
 		}
-		if (M('wxpay')->where(array('tokenTall'=>$tokenTall))->find()){
+		//if (M('wxpay')->where(array('tokenTall'=>$tokenTall))->find()){
+		if (M('wxpay')->find()){
 			$wxpay = "ok";
 		}
 		$this->assign('alipay_person', $alipay_person);
@@ -542,11 +543,12 @@ class orderAction extends userbaseAction {
 		
 		$wxPayHelper->setParameter("bank_type", "WX");
 		$wxPayHelper->setParameter("body", "BILL(NO:".$alldingdanhao.")");
-		$wxPayHelper->setParameter("partner", "1218886101");
+		$wxPayHelper->setParameter("partner", "1225508101");
 		$wxPayHelper->setParameter("out_trade_no", $alldingdanhao);
 		$wxPayHelper->setParameter("total_fee", "$all_order_price_100");
 		$wxPayHelper->setParameter("fee_type", "1");
-		$wxPayHelper->setParameter("notify_url", "http://www.kuyimap.com/weTall/wxpay/notify_url.php");
+		$wxPayHelper->setParameter("notify_url", "http://m.hajk.com.cn/weTall/wxpay/notify_url.php");
+		
 		$wxPayHelper->setParameter("spbill_create_ip", "127.0.0.1");
 		$wxPayHelper->setParameter("input_charset", "GBK");
 		

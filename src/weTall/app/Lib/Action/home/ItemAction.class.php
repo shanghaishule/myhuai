@@ -21,7 +21,7 @@ class itemAction extends frontendAction {
         $item_mod = M('item');
         $item = $item_mod->field('id,cate_id,title,intro,price,zb_price,info,comments,add_time,goods_stock,buy_num,brand,size,color')->where(array('id' => $id, 'status' => 1))->find();
         !$item && $this->_404();
-    
+
         //大小
         $size = substr(trim($item['size']),0,1) == '|' ? explode('|', substr(trim($item['size']),1)) : explode('|', $item['size']);
         
@@ -33,7 +33,6 @@ class itemAction extends frontendAction {
         $item['brand'] = $brand['name'];
         
         //商品相册
-
         $img_list = M('item_img')->field('url')->where(array('item_id' => $id))->order('id ASC')->select();
               
         $comments_list = M('comments')->where(array('item_id' => $id))->order('create_time desc')->select();
@@ -130,20 +129,161 @@ class itemAction extends frontendAction {
     	$this->display(); 
     }
     public function expert(){
+    	$this->searchInfo();
+    	$mod = M('zhuanjia');
+    	$list = $mod->select();
+    	foreach ($list as $key => $val){
+			   $hos = M('order_address')->field("id,name")->where(array('id'=>$val['address_id']))->find();
+			   $keshi = M('keshi')->field("id,name")->where(array('id'=>$val['keshi_id']))->find();
+			   $zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$val['zhicheng_id']))->find();
+			   $list[$key]['hospital'] = $hos['name'];
+			   $list[$key]['keshi'] = $keshi['name'];
+			   $list[$key]['title'] = $zhicheng['name'];
+    	}
+    	$this->assign('list',$list);
     	$this->display();
     
     }
+    
+    public function searchInfo(){
+    	$this->assign('Hos_list',M('order_address')->select());
+    	$this->assign('Keshi_list',M('keshi')->select());
+    	$this->assign('Zhicheng_list',M('zhicheng')->select());
+    }
+    
+    public function search(){
+    	  $id = $this->_get('id','trim,intval');
+    	  $type = $this->_get('type','trim');
+    	  if(!id || !$type)$this->redirect("index/index");
+    	  
+    	  if($type == 'hos'){
+    	  	  $where['address_id'] = $id;
+    	  }else if($type == 'ks'){
+    	  	  $where['keshi_id'] = $id;
+    	  }else if($type == 'zc'){
+    	  	  $where['zhicheng_id'] = $id;
+    	  }else{
+    	  	  $where = "1 = 1";
+    	  }
+    	  $this->searchInfo();
+    	  $mod = M('zhuanjia');
+    	  $list = $mod->where($where)->select();
+    	  foreach ($list as $key => $val){
+    	  	$hos = M('order_address')->field("id,name")->where(array('id'=>$val['address_id']))->find();
+    	  	$keshi = M('keshi')->field("id,name")->where(array('id'=>$val['keshi_id']))->find();
+    	  	$zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$val['zhicheng_id']))->find();
+    	  	$list[$key]['hospital'] = $hos['name'];
+    	  	$list[$key]['keshi'] = $keshi['name'];
+    	  	$list[$key]['title'] = $zhicheng['name'];
+    	  }
+    	  
+    	  $this->assign('list',$list);
+    	  
+    	  $this->display("expert");
+    }
+    
+    public function searchlist(){
+        $keywords = $this->_post('keywords','trim');	
+        if($keywords == ''){
+        	$this->error("请输入专家姓名");
+        	exit;
+        }
+        $where['name'] = array("like","%".$keywords."%");
+        $this->searchInfo();
+        $mod = M('zhuanjia');
+        $list = $mod->where($where)->select();
+        foreach ($list as $key => $val){
+        	$hos = M('order_address')->field("id,name")->where(array('id'=>$val['address_id']))->find();
+        	$keshi = M('keshi')->field("id,name")->where(array('id'=>$val['keshi_id']))->find();
+        	$zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$val['zhicheng_id']))->find();
+        	$list[$key]['hospital'] = $hos['name'];
+        	$list[$key]['keshi'] = $keshi['name'];
+        	$list[$key]['title'] = $zhicheng['name'];
+        }
+        
+        $this->assign('list',$list);
+        $this->display("expert");
+    }
+    
+    //为专家点赞
+   public function add_love(){
+   		$zhuanjiaId = $this->_post('type','trim,intval');
+   		if($zhuanjiaId == ''){
+   			echo '-1';
+   		}else{
+   			//cookie("flag","true",time()+315360000);
+   			$mod = M('zhuanjia');
+   			$mod->where(array('id'=>$zhuanjiaId))->setInc('likeNum');
+   			$count = $mod->field('likeNum')->where(array('id'=>$zhuanjiaId))->find();
+   			echo $count['likeNum'];
+   		}
+   }
+   
+   //专家评论
+   public function zhuanjiaComments(){
+   	if(IS_POST){
+   		foreach ($_POST as $key=>$val) {
+   			$_POST[$key] = Input::deleteHtmlTags($val);
+   		}
+   		$data = array();
+   		$data['item_id'] = $this->_post('id', 'intval');
+   		!$data['item_id'] && $this->ajaxReturn(0, L('invalid_item'));
+   		$data['info'] = $this->_post('content', 'trim');
+   		!$data['info'] && $this->ajaxReturn(0, L('please_input') . L('comment_content'));
+   		//敏感词处理
+   		$check_result = D('badword')->check($data['info']);
+   		switch ($check_result['code']) {
+   			case 1: //禁用。直接返回
+   				$this->ajaxReturn(0, L('has_badword'));
+   				break;
+   			case 3: //需要审核
+   				$data['status'] = 0;
+   				break;
+   		}
+   		
+   		$data['info'] = $check_result['content'];
+   		$data['uid'] = $this->visitor->info['id'];
+   		$data['uname'] = $this->visitor->info['username'];
+   		
+   		//验证商品
+   		$item_mod = M('item');
+   		$item = $item_mod->field('id,uid,uname')->where(array('id' => $data['item_id'], 'status' => '1'))->find();
+   		!$item && $this->ajaxReturn(0, L('invalid_item'));
+   		//写入评论
+   		$item_comment_mod = D('item_comment');
+   		if (false === $item_comment_mod->create($data)) {
+   			$this->ajaxReturn(0, $item_comment_mod->getError());
+   		}
+   		$comment_id = $item_comment_mod->add();
+   		if ($comment_id) {
+   			$this->assign('cmt_list', array(
+   					array(
+   							'uid' => $data['uid'],
+   							'uname' => $data['uname'],
+   							'info' => $data['info'],
+   							'add_time' => time(),
+   					)
+   			));
+   			$resp = $this->fetch('comment_list');
+   			$this->ajaxReturn(1, L('comment_success'), $resp);
+   		} else {
+   			$this->ajaxReturn(0, L('comment_failed'));
+   		}
+   		  		
+   	}else{
+   		$this->display('comments');
+   	}
+
+  }
+   
     public function rebookcase(){
     	$this->display();
-    
     }
     public function rebookdoubt(){
     	$this->display();
-    
     }
     public function rebookstep(){
     	$this->display();
-    
     }
     //服务
     public function index_book(){
