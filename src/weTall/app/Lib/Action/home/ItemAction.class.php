@@ -1,15 +1,10 @@
 <?php
 
-class itemAction extends userbaseAction {
+class itemAction extends frontendAction {
 	public static $wordArr = array();
 	public static $content = "";
     public function _initialize() {
         parent::_initialize();
-        //访问者控制
-        if (!$this->visitor->is_login && in_array(ACTION_NAME, array('share_item', 'fetch_item', 'publish_item', 'like', 'unlike', 'delete', 'comment'))) {
-            IS_AJAX && $this->ajaxReturn(0, L('login_please'));
-            $this->redirect('user/login');
-        }
         import('Think.ORG.SensitiveThesaurus');
         $keywords = new SensitiveThesaurus();
         self::$wordArr = $keywords->getKeywords();
@@ -233,6 +228,10 @@ class itemAction extends userbaseAction {
    
    //专家评论
    public function zhuanjiaComments(){
+   	//访问者控制
+   	if (!$this->visitor->is_login && in_array(ACTION_NAME, array('share_item', 'fetch_item', 'publish_item', 'like', 'unlike', 'delete', 'zhuanjiaComments'))) {
+   		$this->redirect('user/login');
+   	}
    	$item_comment_mod = D('zhuanjia_comments');
    	if(IS_POST){
    		$zid = $this->_post('zId','trim,intval');
@@ -285,7 +284,6 @@ class itemAction extends userbaseAction {
    			$resp[$key]['addTime'] = fdate($val['addTime']);
    			$resp[$key]['uName'] = substr_replace($val['uName'],'*****', 3,5);
    		}
-   		
    		$this->assign('list',$resp);
    		$this->assign("zid",$zid);
    		$this->display('comments');
