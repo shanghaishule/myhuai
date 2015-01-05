@@ -425,6 +425,13 @@ class indexAction extends frontendAction {
     }    
     	 
     public function indexnew(){
+    	$token = $this->getTokenTall();
+    	$cond['token'] = $token;
+    	$cond['type'] ="首页";
+    	$flash_pos = M("flash_pos")->where($cond)->find();
+    	$flash = M("flash")->where(array("pos"=>$flash_pos['id']))->select();
+    	//dump($tuijianArticle);die;
+    	$this->assign("flash",$flash);
     	$this->display();
     	
     }
