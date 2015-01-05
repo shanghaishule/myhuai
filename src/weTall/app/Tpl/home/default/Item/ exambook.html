@@ -1,0 +1,316 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<include file="public:headtop" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<script charset="utf-8" src="__STATIC__/weixin/js/colorbox.js" type="text/javascript"></script>
+<link href="__STATIC__/weixin/css/home/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__STATIC__/weixin/js/home/jquery-1.9.1.js" ></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/date1.js" ></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/iscroll.js" ></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/shop1.css" media="all">
+</head>
+<body style="background:#f1f1f1;-webkit-appearance: none">
+	<div class="index_head1">
+<div id="nav">
+	<ul class="navlist1">
+		<li id="a_0">
+		   <a href="javascript:history.go(-1)"><div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div></a>
+         </li>
+        <li  id="a_1">
+    						<div style="">
+
+										<p style="font-size: 16px">医院体检预约</p>
+				              </div>
+        </li>
+    </ul>
+ </div>
+</div>
+	
+	<div class="s_bottom"></div>
+	<script type="text/javascript">
+		$(function(){
+			$("div.module_special .wrap .major ul.list li:last-child").addClass("remove_bottom_line");
+		});
+		function valtext(obj){
+			var file_name = obj.value.match(/[^\\]*$/)[0];
+			 $("#img_name").val(file_name);
+		}
+		function sub(){
+			var name = $("#rebook_name").val();
+			var phone = $('#phone').val();
+			 var reg = /^0?1[358]\d{9}$/;
+
+			var pic = $('#img_name').val();
+			var info = $("#reinfo").val();
+			var fuzhengDate = $("#fuzhengTime").val();
+			var comeDate = $("#comeTime").val();
+			var checkProject = false;
+			$("input[name='checkProject[]']").each(function(){
+				   if(this.checked){
+					    checkProject = true;
+				   }
+			});
+			if(name != '' && phone != '' && fuzhengDate != '' && comeDate != '' && checkProject){
+				  if(pic != '' || info != '' ){
+						 if (!reg.test(phone)){
+						        alert('手机号码格式不正确');
+						        return false;
+						 }
+					    this.form1.submit();
+				  }else{
+					  alert("带*号必填");
+				  }
+			}else{
+				alert("带*号必填");
+			}
+		}
+	</script>
+
+<div id="content1">
+	
+		
+    
+       <form method="post" id="form1" name="form1" class="rebook_form_1" action="{:U('Item/rebook')}" enctype="multipart/form-data">
+			   <div class="rebook_block">
+				   <p class="biaoti">个人信息</p>
+				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+	                   <td class="td_1">姓　　名<span class="red">*</span>:</td>
+	                   <td class="td_80"><input  name="name" id="rebook_name" class="text width5" placeholder="病人真实姓名" type="text"></td>
+	                 </tr>
+	                 </table>
+	                  <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                 <tr>
+	                   <td class="td_1">性　　别<span class="red">*</span>:</td>
+	                   <td class="td_sex">男: 
+						</td>
+						<td class="td_sex_1"> <input type="radio" name="sex" value="0" id="rebook_sex"checked="checked">
+						</td>
+						<td class="td_sex">女: 
+						</td>
+
+						<td class="td_sex_1">
+						<input type="radio" id="rebook_sex" name="sex" value="1">
+						</td>
+	                 </tr>
+	                  </table>
+	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                 <tr>
+	                   <td class="td_1">手　　机<span class="red">*</span>:</td>
+	                   <td class="td_80"><input  onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" name="rebook_phone" id="phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
+	                 </tr>
+	                </table>
+			   </div>
+			   
+			   <div class="rebook_block">
+				   <p class="biaoti">体检项目<span class="biaoti_span">（可电话咨询）</span> <span class="red"></span></p>
+				   
+	                <table id="rebook_table"  border="0" cellspacing="0" cellpadding="0" style="margin-top: 8px;">
+	                  <tr>
+	                   <td class="td_1"><p class="td_p">文字描述：</p></td>
+	                   <td><textarea name="info" class="retextarea" style="height:70px;width:100%;border:1px solid #ccc" id="reinfo" placeholder="请填写需要检查的项目……"></textarea>
+	                   </td>
+	                 </tr>
+	                 
+	                </table>
+			   </div>
+			   <div class="rebook_block">
+				   <p class="biaoti">预约信息</p>
+				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+	                   <td class="td_33">要求体检时间<span class="red">*</span>:</td>
+	                   <td class="td_65">
+	                       <div class="book_online">
+		                       <div id="book_online">
+					                 <div class="demo">
+									   <div class="lie"><input id="fuzhengTime" style="border: 1px solid #ccc" name="fuzhengDate" class="kbtn" /></div>
+								     </div>
+					             </div>
+					           </div>
+						 <div id="datePlugin"></div>
+						</td>
+	                 </tr>
+	                 
+	                 </table>
+	                 
+	                 
+	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+			                 <tr style="line-height: 39px;">
+						                   <td class="td_33">预约检查项目<span class="red">*</span>:</td>
+						                   <td class="">
+						                        <div class="select_checkBox"> 
+																<div class="chartQuota"> 
+																<p> 
+																<a href="javascript:;" hidefocus="true" title="检查项目"><span>点击选择检查项目</span> 
+																<b></b> 
+																</a> 
+																</p> 
+																 
+																</div><br> 
+																<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_01"> 
+																		<ul> 
+																		<li class=""><input name="checkProject[]" type="checkbox" value="磁共振"><span>磁共振</span> 
+																		</li> 
+																		<li class=""><input name="checkProject[]" type="checkbox" value="CT"><span>CT</span> 
+																		</li> 
+																		<li class=""><input name="checkProject[]" type="checkbox" value="PET-CT"><span>PET-CT</span> 
+																		</li> 
+																		<li class=""><input name="checkProject[]" type="checkbox" value="胃镜"><span>胃镜</span> 
+																		</li> 
+																		<li class=""><input name="checkProject[]" type="checkbox" value="肠镜"><span>肠镜</span> 
+																		</li> 
+																		<li class=""><input name="checkProject[]" type="checkbox" value="心脏彩超"><span>心脏彩超</span> 
+																		</li> 
+																		<li class=""><input name="checkProject[]" type="checkbox" value="24h动态心电"><span>24h动态心电</span> 
+																		</li> 
+																		<li class=""><input name="checkProject[]" type="checkbox" value="24h动态血压"><span>24h动态血压</span> 
+																		</li> 
+																		</ul> 
+																<p> 
+																<a href="javascript:void(0)" title="确定" hidefocus="true" class="a_0">确定</a>
+																
+																</p> 
+																</div> 
+																</div>
+																<script type="text/javascript"> 
+																$(function(){ 
+																		$(".select_checkBox").hover(function(){ 
+																			$(".chartOptionsFlowTrend").css("display","inline-block"); 
+																			},function(){ 
+																			$(".chartOptionsFlowTrend").css("display","none"); 
+																		}); 
+																}); 
+																</script>
+																<script type="text/javascript"> 
+																$(function(){ 
+																		$(".a_0").hover(function(){ 
+																			$(".chartOptionsFlowTrend").css("display","none"); 
+																			}); 
+																}); 
+																</script>
+
+						                   <!--  <select name="check_item" class="check_item_1" id="check_item" >
+													<option value="volvo" selected="selected">磁共振</option>
+													<option value="saab">胃镜</option>
+													<option value="fiat" >肠镜</option>
+													<option value="audi">动态心电图</option>
+													<option value="fiat" >肌电图</option>
+													<option value="audi">心脏彩超</option>
+													<option value="audi">CT</option>
+													<option value="audi">24h动态血压</option>
+													<option value="audi">PET-CT</option>
+													</select>
+													-->
+										 </td>
+			                 </tr>
+	                 </table>
+	                 
+	                 
+	                 </div>
+	                  
+	         
+			   <div>
+				   
+			   </div>	
+			     </form>	 
+    </div>
+    
+            
+			<div class="space"></div>
+
+	       <div class="shop_bottom" id="rebook_btm">
+		             
+	            <ul class="rebook_btn" style="padding:5px 0">
+			            <li class="pic_rebook"><div style=" margin: 0 auto;width:50px;height:34px;background:url(__STATIC__/weixin/images/home/littlelogo.png);background-size:100% 100%";></div></li>
+			            <li class="phone_rebook"><a <if condition="$item['status'] neq 0">href="tel:4006555899"<else />href="javascirpt:void(0)" id="grey"</if> class="reserveP"></a></li>
+			            <li class="intime_submit"><a href="javascript:sub()" id="rebook_sub"></a></li>                
+			                	
+	            </ul>
+	        </div>
+          
+            <style type="text/css">
+            #rebook_btm ul li.phone_rebook a#rebook_sub{background: url(/weTall/static/weixin/images/home/intimesub.png) no-repeat 0 0;
+			background-size:100% 100%;width: 125px;
+			height: 36px;}
+			</style>
+<script type="text/javascript">
+window.shareData = {
+		"moduleName" : "Index",
+		"moduleID" : '0',
+		"imgUrl" : "http://m.hajk.com.cn/weTall/static/weixin/images/home/mlogo.png",
+		"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+		"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+		"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+		"tTitle" : "欢迎关注沪爱健康",
+		"tContent" : "专业让健康更简单 沪爱健康   "
+	};
+	</script>
+	<script>
+		document.addEventListener('WeixinJSBridgeReady',
+				function onBridgeReady() {
+					WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+						shareHandle('friend');
+						WeixinJSBridge.invoke('sendAppMessage', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('send_msg', res.err_msg);
+						})
+					});
+
+					WeixinJSBridge.on('menu:share:timeline', function(argv) {
+						shareHandle('frineds');
+						WeixinJSBridge.invoke('shareTimeline', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('timeline', res.err_msg);
+						});
+					});
+
+					WeixinJSBridge.on('menu:share:weibo', function(argv) {
+						shareHandle('weibo');
+						WeixinJSBridge.invoke('shareWeibo', {
+							"content" : window.shareData.tContent,
+							"url" : window.shareData.sendFriendLink,
+						}, function(res) {
+							_report('weibo', res.err_msg);
+						});
+					});
+				}, false)
+
+		function shareHandle(to) {
+			var submitData = {
+				module : window.shareData.moduleName,
+				moduleid : window.shareData.moduleID,
+				token : 'ipwhoy1414718223',
+				wecha_id : 'ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+				url : window.shareData.sendFriendLink,
+				to : to
+			};
+			$.post('/index.php?g=Wap&m=Share&a=shareData&token=ipwhoy1414718223&wecha_id=ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+							submitData, function(data) {
+							}, 'json')
+		}
+	</script>
+<script src="__STATIC__/LazyLoad/js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>	
+<script>
+	$(function() {
+		$("img").lazyload({
+			effect : "fadeIn"
+		});
+		$('#fuzhengTime').date({theme:"datetime"});
+		$('#comeTime').date({theme:"datetime"});
+	});
+</script>
+</body>
+</html>
