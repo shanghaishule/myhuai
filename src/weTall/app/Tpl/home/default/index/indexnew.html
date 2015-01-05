@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>沪爱健康</title>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="__STATIC__/weixin/css/home/cate23_0.css" rel="stylesheet"type="text/css">
+<link rel="stylesheet" type="text/css"href="__STATIC__/weixin/css/home/reset.css" media="all">
+<script type="text/javascript" src="__STATIC__/weixin/js/home/jQuery.js"></script>
+</head>
+<body>
+	<div class="body">
+	
+		<!--幻灯片管理-->
+		<div id="" style="-webkit-transform: translate3d(0, 0, 0); overflow: hidden">
+			<div id="banner_box" class="box_swipe" style="visibility: visible;">
+				<ul
+					style="list-style: none; width: 3200px; -webkit-transition: 0ms; transition: 0ms; -webkit-transform: translate3d(-1280px, 0px, 0px);">
+					<volist name="flash" id="info">
+					<li style="width: 640px; display: table-cell; vertical-align: top;">
+						<a href="{$info.url}"><img src="{$info.img}"
+							style="width: 100%;"></a>
+					</li>
+					</volist>
+				</ul>
+				<ol>
+					<volist name="flash" id="info">
+					<li <if condition="$i eq 1"> class="on"</if>></li>
+					</volist>
+				</ol>
+			</div>
+		</div>
+		<script>
+			$(function() {
+				new Swipe(document.getElementById('banner_box'), {
+					speed : 500,
+					auto : 3000,
+					callback : function() {
+						var lis = $(this.element).next("ol").children();
+						lis.removeClass("on").eq(this.index).addClass("on");
+					}
+				});
+			});
+		</script>
+		<br>
+		
+		<section>
+			<nav>
+				<ul class="nav_links box" id="indexnew_nav1">
+					<li>
+						<a href=""> 
+						   <span class="top4"style="background-image: url({$serArr.picurl}); background-size: 100% 100%;"></span>
+						   <b></b>
+						</a>
+					</li>
+					<li>
+						<a href=""> 
+						   <span class="top4"style="background-image: url({$serArr.picurl}); background-size: 100% 100%;"></span>
+						   <b></b>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			
+			<nav>
+				<ul class="nav_links box">
+					<li>
+						<a href=""> 
+						   <span class="top4"style="background-image: url({$serArr.picurl}); background-size: 100% 100%;"></span>
+						   <b></b>
+						</a>
+					</li>
+					<li>
+						<a href=""> 
+						   <span class="top4"style="background-image: url({$serArr.picurl}); background-size: 100% 100%;"></span>
+						   <b></b>
+						</a>
+					</li>
+					<li>
+						<a href=""> 
+						   <span class="top4"style="background-image: url({$serArr.picurl}); background-size: 100% 100%;"></span>
+						   <b></b>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			
+			
+			<div class="content_start">
+				
+				<ul class="ofh ul_list">
+					
+					<li>
+						<a id="" >
+								<div class="content1" style="background: url({$con.picurl}) no-repeat right; background-size: 50px 50px;">陪诊</div>
+						</a>
+					</li>
+					<li>
+						<a id="" >
+								<div class="content1" style="background: url({$con.picurl}) no-repeat right; background-size: 50px 50px;">手术安排</div>
+						</a>
+					</li>
+					<li>
+						<a id="" >
+								<div class="content1" style="background: url({$con.picurl}) no-repeat right; background-size: 50px 50px;">住院直通车</div>
+						</a>
+					</li>
+					<li>
+						<a id="" >
+								<div class="content1" style="background: url({$con.picurl}) no-repeat right; background-size: 50px 50px;">检查报告速取</div>
+						</a>
+					</li>
+					
+				</ul>
+			</div>
+			
+		</section>
+			<include file="public:footer" />
+		</section>
+  
+		
+	</div>
+	
+	
+	<script type="text/javascript">
+	window.shareData = {
+			"moduleName" : "Index",
+			"moduleID" : '0',
+			"imgUrl" : "http://m.hajk.com.cn/weTall/static/weixin/images/home/mlogo.png",
+			"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+			"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+			"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+			"tTitle" : "欢迎关注沪爱健康",
+			"tContent" : "专业让健康更简单 沪爱健康   "
+		};
+	</script>
+	<script>
+		document.addEventListener('WeixinJSBridgeReady',
+				function onBridgeReady() {
+					WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+						shareHandle('friend');
+						WeixinJSBridge.invoke('sendAppMessage', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('send_msg', res.err_msg);
+						})
+					});
+
+					WeixinJSBridge.on('menu:share:timeline', function(argv) {
+						shareHandle('frineds');
+						WeixinJSBridge.invoke('shareTimeline', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('timeline', res.err_msg);
+						});
+					});
+
+					WeixinJSBridge.on('menu:share:weibo', function(argv) {
+						shareHandle('weibo');
+						WeixinJSBridge.invoke('shareWeibo', {
+							"content" : window.shareData.tContent,
+							"url" : window.shareData.sendFriendLink,
+						}, function(res) {
+							_report('weibo', res.err_msg);
+						});
+					});
+				}, false)
+
+		function shareHandle(to) {
+			var submitData = {
+				module : window.shareData.moduleName,
+				moduleid : window.shareData.moduleID,
+				token : 'ipwhoy1414718223',
+				wecha_id : 'ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+				url : window.shareData.sendFriendLink,
+				to : to
+			};
+			$.post('/index.php?g=Wap&m=Share&a=shareData&token=ipwhoy1414718223&wecha_id=ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+							submitData, function(data) {
+							}, 'json')
+		}
+	</script>
+<script>
+	$(function() {
+		$(".ul_list").each(function(){
+			$(this).find("ol").last().remove();
+		});
+	});
+</script>
+<script src="__STATIC__/LazyLoad/js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+	$(function() {
+		$(".wrap_child img").lazyload({
+			effect : "fadeIn"
+		});
+	});
+</script>
+</body>
+</html>
