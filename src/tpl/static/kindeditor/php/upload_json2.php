@@ -78,7 +78,7 @@ if (empty($_FILES) === false) {
 		alert("上传文件失败。");
 	}
 	@chmod($file_path, 0644);
-	$file_url = '.'.$save_url.$new_file_name;
+	$file_url = $save_url.$new_file_name;//'.'.
 	header('Content-type: text/html; charset=UTF-8');
 	$json = new Services_JSON();
 	echo $json->encode(array('error' => 0,'url' => $file_url));
