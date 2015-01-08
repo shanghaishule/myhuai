@@ -570,6 +570,11 @@ class indexAction extends frontendAction {
    	   //dump($res);die;
    	   $this->assign("res",$res); 
    	   $this->assign("flash",$flash);
+   	   $seoTitle =  $this->_cat->field("catname")->where(array('id'=>$secCatid))->find();
+   	   $this->_config_seo(C('pin_seo_config.item'), array(
+   	   		'item_title' => $seoTitle['catname'],
+   	   		'item_intro' => '',
+   	   ));   	   
    	   $this->display();
    }
    public function thdcate(){//三级分类
