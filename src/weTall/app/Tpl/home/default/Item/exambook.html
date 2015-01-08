@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
 <include file="public:headtop" />
@@ -98,7 +98,7 @@
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
 	                   <td class="td_1">手　　机<span class="red">*</span>:</td>
-	                   <td class="td_80"><input  onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" name="rebook_phone" id="phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
+	                   <td class="td_80"><input  onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" name="rebook_phone" id="phone" maxlength="11" class="text width5" placeholder="病人或家属手机" type="tel"></td>
 	                 </tr>
 	                </table>
 			   </div>
@@ -310,6 +310,12 @@ window.shareData = {
 		});
 		$('#fuzhengTime').date({theme:"datetime"});
 		$('#comeTime').date({theme:"datetime"});
+		$(document).click(function(){
+			 $(".chartOptionsFlowTrend").click(function(){
+			 return;
+			 })
+			 $(".chartOptionsFlowTrend").hide();
+	    });		
 	});
 </script>
 </body>
