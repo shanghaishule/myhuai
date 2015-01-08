@@ -28,22 +28,22 @@
  </div>
 </div>
 	
-			   <div class="rebookinfo_block" style="margin-top:px">
+			   <div class="rebookinfo_block" style="">
 				  
 				   <table id="rebookinfo_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
-		                   <td class="td_exper" id="td_exper_01">
+		                   <td class="td_exper" id="td_exper_01" data-id="1">
 		                 <p> <a href="{:U('Item/expert')}">全部</a></p>
 	                       </td>
-	                       <td class="td_exper" id="td_exper_02">
+	                       <td class="td_exper" id="td_exper_02" data-id="2">
 	                       医院
 	                       <img src="__STATIC__/weixin/images/home/xiala.png" width="8%"/>
 	                       </td>
-	                       <td class="td_exper" id="td_exper_03">
+	                       <td class="td_exper" id="td_exper_03" data-id="3">
 	                     科室
 	                     <img src="__STATIC__/weixin/images/home/xiala.png" width="8%"/>
 	                       </td>
-	                       <td class="td_exper" id="td_exper_04">
+	                       <td class="td_exper" id="td_exper_04" data-id="4">
 	                        资历
 	                       <img src="__STATIC__/weixin/images/home/xiala.png" width="8%"/>
 	                       </td>
@@ -52,94 +52,32 @@
 	                  
 			   </div>
 			   <div class="select_exper">
-						  <ul class="listUl2" style="display:none">
+						    <ul id="listUl2" class="listUl" style="height:200px;overflow:auto">
 						      <volist name="Hos_list" id="val">
 						           <li><a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'hos'))}">{$val.name}</a></li>
 						      </volist>  
 						    </ul>
-						    <ul class="listUl3" style="display:none">
+						    <ul id="listUl3" class="listUl" style="height:200px;overflow:auto">
 						      <volist name="Keshi_list" id="val">
 						           <li><a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'ks'))}">{$val.name}</a></li>
 						      </volist>  
 						    </ul>
-						    <ul class="listUl4" style="display:none">
+						    <ul id="listUl4" class="listUl" style="height:200px;overflow:auto">
 						      <volist name="Zhicheng_list" id="val">
 						           <li><a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'zc'))}">{$val.name}</a></li>
 						      </volist> 
 						    </ul>
 				 </div>
 				 </div>
-			             <script>
-			             	//点击后判断ul是否隐藏
-								$(function(){
-									
-									//点击后判断ul是否隐藏
-									$("#td_exper_01").click(function(){
-											$(".select_exper ul").hide()
-									});
-									//选中某个内容后赋值给p标签，并隐藏ul列表
-									
-								});
-								</script>
-			             
-			              <script>
-			             	//点击后判断ul是否隐藏
-								$(function(){
-									
-									//点击后判断ul是否隐藏
-									$("#td_exper_02 ").click(function(){
-										var ul = $(".listUl2");
-										if(ul.css("display")=="none"){
-											ul.slideDown(150);
-										}else{
-											ul.slideUp(150);
-										}
-									});
-									//选中某个内容后赋值给p标签，并隐藏ul列表
-									$(".listUl2 li").click(function(){
-										var txt = $(this).text();
-										$("#td_exper_02").html(txt);
-										$(".listUl2").hide();
-									});
-								});
-								</script>
-								<script>
-								$(function(){
-									
-									//点击后判断ul是否隐藏
-									$("#td_exper_03 ").click(function(){
-										var ul = $(".listUl3");
-										if(ul.css("display")=="none"){
-											ul.slideDown(150);
-										}else{
-											ul.slideUp(150);
-										}
-									});
-									//选中某个内容后赋值给p标签，并隐藏ul列表
-									$(".listUl3 li").click(function(){
-										var txt = $(this).text();
-										$("#td_exper_03 ").html(txt);
-										$(".listUl3").hide();
-									});
-								});
-								</script>
-								<script>
-								$(function(){
-									
-									//点击后判断ul是否隐藏
-									$("#td_exper_04").click(function(){
-										var ul = $(".listUl4");
-										if(ul.css("display")=="none"){
-											ul.slideDown(150);
-										}else{
-											ul.slideUp(150);
-										}
-									});
-									//选中某个内容后赋值给p标签，并隐藏ul列表
-									$(".listUl4 li").click(function(){
-										var txt = $(this).text();
-										$("#td_exper_04").html(txt);
-										$(".listUl4").hide();
+							  <script>
+								$(function(){	
+									$(".listUl").hide();
+									//On Click Event
+									$(".td_exper").click(function() {
+										$(".listUl").hide();
+										var activeTab = $(this).attr("data-id");
+										$("#listUl"+activeTab).slideDown(150);
+										return false;
 									});
 								});
 								</script>
@@ -151,18 +89,19 @@
 		});
 	</script>
 
-<div id="content1" style=";margin-top:78px">
+<div id="content1" style=";margin-top:92px">
 	<div style="padding: 7.5px;background:white;">
 							<form action="{:U('Item/searchlist')}" method="post" name="search">
 								<input name="keywords" type="text" id="keyw"
-									style="width: 65%; height: 30px; border: 1px solid #cdcdcd; font-size: 1.3em; color: #cccccc; padding-left: 12%"
-									placeholder="搜索专家" /> <input onClick="if($('#keyw').val() == '')return false;" type="submit"
-									style="width: 20%; background: none; border:none; color: #262626; font-size: 1.1em"
+									style="width: 65%; height: 30px; background: none;border: 1px solid #cdcdcd; font-size: 1.3em; color: #cccccc; padding-left: 12%"
+									placeholder="搜索专家" />
+							 <input onClick="if($('#keyw').val() == '')return false;" type="submit"
+									style="width: 20%; background: none; height: 30px; border: 1px solid #cdcdcd;; color: #262626; font-size: 1.1em"
 									name="Submit" value="搜索">
 							</form>
   </div>
 		
-<div class="module_special tbr" >
+<div class="module_special tbr" style="margin-top:10px">
       <volist name="list" id="val">
         <div class="wrap">
             <div class="wrap_child">

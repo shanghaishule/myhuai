@@ -425,7 +425,43 @@ class indexAction extends frontendAction {
     }    
     	 
     public function indexnew(){
-    	$this->display();
+    	//顶部幻灯片
+   	   $token = $this->getTokenTall();
+   	   $cond['token'] = $token;
+   	   $cond['type'] ="首页";
+   	   $flash_pos = M("flash_pos")->where($cond)->find();
+   	   $flash = M("flash")->where(array("pos"=>$flash_pos['id']))->select();
+   	   //$where['tuijian'] = 1;
+   	   //四大服务
+   	   header("Content-type:text/html;charset=utf-8");
+   	   $serArr = $this->_cat->where("parentid = '0'")->order('level ASC')->limit(4)->select();
+   	   //推荐二级分类，是否有子级，有跳到thdcate(三级分类),没有跳到thdlist(列表，注：如果列表里只有一个商品或服务跳到详情页)
+       //dump($serArr);die();
+       $arr = $this->getArr("Y");
+   	   //dump($arr);die;
+   	   
+   	   //为我推荐模块
+   	   $tuijianItem = $this->_item->where(array('status'=>1,'tuijian'=>1))->select();
+   	   foreach($tuijianItem as $key => $val){
+   	   		$tuijianItem[$key]['link'] = U("Item/index",array("itemid"=>$val['id']));
+   	   }
+   	   $tuijianArticle = $this->_art->where(array('tuijian'=>1))->select();
+   	   foreach($tuijianArticle as $key => $val){
+   	   		$tuijianArticle[$key]['link'] = U("Item/index_phone",array("itemid"=>$val['id']));
+   	   }
+   	   $tuijianService = $this->_ser->where(array('tuijian'=>1))->select();
+   	   foreach($tuijianService as $key => $val){
+   	   		$tuijianService[$key]['link'] = U("Item/index_book",array("itemid"=>$val['id']));
+   	   }
+   	   //dump($tuijianArticle);die;
+   	   $this->assign("flash",$flash);
+   	   //dump($arr);die;
+   	   $this->assign("serArr",$serArr);
+   	   $this->assign("tuijian",$arr);
+   	   $this->assign("tuijianItem",$tuijianItem);
+   	   $this->assign("tuijianArticle",$tuijianArticle);
+   	   $this->assign("tuijianService",$tuijianService);
+   	   $this->display();
     	
     }
    public function index(){

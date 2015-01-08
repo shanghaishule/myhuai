@@ -9,14 +9,17 @@
 <meta name="format-detection" content="telephone=no">
 <link href="__STATIC__/weixin/css/home/cate23_0.css" rel="stylesheet"type="text/css">
 <link rel="stylesheet" type="text/css"href="__STATIC__/weixin/css/home/reset.css" media="all">
+
 <script type="text/javascript" src="__STATIC__/weixin/js/home/jQuery.js"></script>
+
+<script type="text/javascript" src="__STATIC__/weixin/js/home/swipe.js"></script>
 </head>
 <body>
-	<div class="body">
+	<div class="body newfz">
 	
 		<!--幻灯片管理-->
 		<div id="" style="-webkit-transform: translate3d(0, 0, 0); overflow: hidden">
-			<div id="banner_box" class="box_swipe" style="visibility: visible;">
+			<div id="banner_box" class="box_swipe" style="visibility: visible;height:none">
 				<ul
 					style="list-style: none; width: 3200px; -webkit-transition: 0ms; transition: 0ms; -webkit-transform: translate3d(-1280px, 0px, 0px);">
 					<volist name="flash" id="info">
@@ -47,46 +50,48 @@
 		</script>
 		<br>
 		
-		<section>
-			<nav>
+		<div style="margin-top: -15px">
+			<div>
 				<ul class="nav_links box" id="indexnew_nav1">
 					<li class="indexnew_li1">
-						<a href=""> 
-						   <span class="top4"style="background-image: url(__STATIC__/weixin/images/home/hugong.png); background-size: 100% 100%;"></span>
-						   <b></b>
+						<a href="{:U('Item/rebookinfo')}"> 
+						   <span class="top4"style="width:92px;height:84px;background-image: url(__STATIC__/weixin/images/home/newfz.png); background-size: 100% 100%;"></span>
+						   <b >医院复诊预约</b>
+						   <br>省时、省心、省钱
 						</a>
 					</li>
 					<li class="indexnew_li2">
-						<a href=""> 
-						   <span class="top4"style="background-image: url(__STATIC__/weixin/images/home/hugong.png); background-size: 100% 100%;"></span>
-						   <b></b>
+						<a href="{:U('Item/expert')}"> 
+						   <span class="top4"style="width:92px;height:84px;background-image: url(__STATIC__/weixin/images/home/newzj.png); background-size: 100% 100%;"></span>
+						   <b>知名专家预约</b>
+						   <br>权威专家
 						</a>
 					</li>
 				</ul>
-			</nav>
+			</div>
 			
-			<nav>
+			<div>
 				<ul class="nav_links box" id="indexnew_nav2">
 					<li>
-						<a href=""> 
-						   <span class="top4"style="background-image: url(__STATIC__/weixin/images/home/hugong.png); background-size: 100% 100%;"></span>
-						   <b></b>
+						<a href="http://m.hajk.com.cn/weTall/index.php?m=Item&a=index_phone&itemid=26"> 
+						   <span class="top4"style="width:60px;height:60px;background-image: url(__STATIC__/weixin/images/home/newyn.png); background-size: 100% 100%;"></span>
+						   <p>疑难重症会诊</p>
 						</a>
 					</li>
 					<li>
-						<a href=""> 
-						   <span class="top4"style="background-image: url(__STATIC__/weixin/images/home/hugong.png); background-size: 100% 100%;"></span>
-						   <b></b>
+						<a href="{:U('Item/exambook')}"> 
+						   <span class="top4"style="width:60px;height:60px;background-image: url(__STATIC__/weixin/images/home/newtj.png); background-size: 100% 100%;"></span>
+						   <p>体检项目预约</p>
 						</a>
 					</li>
 					<li>
-						<a href=""> 
-						   <span class="top4"style="background-image: url(__STATIC__/weixin/images/home/hugong.png); background-size: 100% 100%;"></span>
-						   <b></b>
+						<a href="http://m.hajk.com.cn/weTall/index.php?m=Item&a=index_phone&itemid=27"> 
+						   <span class="top4"style="width:60px;height:60px;background-image: url(__STATIC__/weixin/images/home/newpet.png); background-size: 100% 100%;"></span>
+						   <p>PET-CT预约</p>
 						</a>
 					</li>
 				</ul>
-			</nav>
+			</div>
 			
 			
 			<div class="content_start" id="indexnew_con_start">
@@ -94,34 +99,44 @@
 				<ul class="ofh ul_list">
 					
 					<li>
-						<a id="" >
-								<div class="content1" style="background: url(__STATIC__/weixin/images/home/hugong.png) no-repeat right; background-size: 50px 50px;">陪诊</div>
+						<a href="http://m.hajk.com.cn/weTall/index.php?m=Item&a=index_phone&itemid=30" id="" >
+								<div class="content1" style="background: url(__STATIC__/weixin/images/home/newpz.png) no-repeat right; background-size: 50px 50px;">陪诊</div>
 						</a>
 					</li>
 					<li>
-						<a id="" >
-								<div class="content1" style="background: url(__STATIC__/weixin/images/home/hugong.png) no-repeat right; background-size: 50px 50px;">手术安排</div>
+						<a  href="http://m.hajk.com.cn/weTall/index.php?m=Item&a=index_phone&itemid=31" id="" >
+								<div class="content1" style="background: url(__STATIC__/weixin/images/home/newss.png) no-repeat right; background-size: 50px 50px;">手术安排</div>
 						</a>
 					</li>
 					<li>
-						<a id="" >
-								<div class="content1" style="background: url(__STATIC__/weixin/images/home/hugong.png) no-repeat right; background-size: 50px 50px;">住院直通车</div>
+						<a href="http://m.hajk.com.cn/weTall/index.php?m=Item&a=index_phone&itemid=28" id="" >
+								<div class="content1" style="background: url(__STATIC__/weixin/images/home/newbc.png) no-repeat right; background-size: 50px 50px;">住院直通车</div>
 						</a>
 					</li>
 					<li>
-						<a id="" >
-								<div class="content1" style="background: url(__STATIC__/weixin/images/home/hugong.png) no-repeat right; background-size: 50px 50px;">检查报告速取</div>
+						<a href="http://m.hajk.com.cn/weTall/index.php?m=Item&a=index_phone&itemid=29"id="" >
+								<div class="content1" style="background: url(__STATIC__/weixin/images/home/newbg.png) no-repeat right; background-size: 50px 50px;">检查报告速取</div>
 						</a>
 					</li>
 					
 				</ul>
 			</div>
-			
-		</section>
-			<include file="public:footer" />
-		</section>
-  
-		
+			<div class="space"></div>
+
+	       <div class="shop_bottom" id="rebook_btm" style="">
+		             
+	            <ul class="rebook_btn" style="padding:5px 0">
+			            <!--  <li class="pic_rebook"><div style=" margin: 0 auto;width:50px;height:34px;background:url(__STATIC__/weixin/images/home/littlelogo.png);background-size:100% 100%";></div></li>
+			           
+			           
+			             <li class="intime_submit"><a href="javascript:sub()" id="rebook_sub"></a></li>   
+			              -->
+			              <li class="phone_rebook" id="phone_rebook_new"><a <if condition="$item['status'] neq 0">href="tel:4006555899"<else />href="javascirpt:void(0)" id="grey"</if> class="reserveP">电话咨询</a></li>
+			                         
+			                	
+	            </ul>
+	        </div>
+		</div>
 	</div>
 	
 	
@@ -130,9 +145,9 @@
 			"moduleName" : "Index",
 			"moduleID" : '0',
 			"imgUrl" : "http://m.hajk.com.cn/weTall/static/weixin/images/home/mlogo.png",
-			"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
-			"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
-			"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+			"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=indexnew",
+			"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=indexnew",
+			"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=indexnew",
 			"tTitle" : "欢迎关注沪爱健康",
 			"tContent" : "专业让健康更简单 沪爱健康   "
 		};
@@ -193,13 +208,7 @@
 							}, 'json')
 		}
 	</script>
-<script>
-	$(function() {
-		$(".ul_list").each(function(){
-			$(this).find("ol").last().remove();
-		});
-	});
-</script>
+
 <script src="__STATIC__/LazyLoad/js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
 	$(function() {
