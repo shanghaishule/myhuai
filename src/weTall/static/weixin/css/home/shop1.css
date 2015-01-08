@@ -169,9 +169,9 @@ background-color:white;
 border:1px solid gray; 
 display:none; 
 position: absolute; 
-left: -91px;
+left: -75px;
 top: -199px;
-width:300px; 
+width: 250px;
 } 
 .chartOptionsFlowTrend ul{ 
 float:left; 
