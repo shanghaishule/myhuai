@@ -142,7 +142,7 @@
 						                        <div class="select_checkBox"> 
 																<div class="chartQuota"> 
 																<p> 
-																<a href="javascript:;" hidefocus="true" title="检查项目"><span>点击选择检查项目</span> 
+																<a href="javascript:void(0);" id="hideOption" hidefocus="true" title="检查项目"><span>点击选择检查项目</span> 
 																<b></b> 
 																</a> 
 																</p> 
@@ -175,16 +175,14 @@
 																</div>
 																<script type="text/javascript"> 
 																$(function(){ 
-																		$(".select_checkBox").hover(function(){ 
-																			$(".chartOptionsFlowTrend").css("display","inline-block"); 
-																			},function(){ 
-																			$(".chartOptionsFlowTrend").css("display","none"); 
+																		$("#hideOption").click(function(){ 
+																			$(".chartOptionsFlowTrend").show(); 
 																		}); 
 																}); 
 																</script>
 																<script type="text/javascript"> 
 																$(function(){ 
-																		$(".a_0").hover(function(){ 
+																		$(".a_0").click(function(){ 
 																			$(".chartOptionsFlowTrend").css("display","none"); 
 																			}); 
 																}); 
