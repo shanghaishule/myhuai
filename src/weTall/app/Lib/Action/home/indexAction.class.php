@@ -597,6 +597,11 @@ class indexAction extends frontendAction {
 	   	   	$condi['cate_id'] = $val['id'];
 	   	   	$res[$key]["item"] = $this->getRes($where,$condi);
    	   } 
+   	   $seoTitle =  $this->_cat->field("catname")->where(array('id'=>$catid))->find();
+   	    $this->_config_seo(C('pin_seo_config.item'), array(
+    			'item_title' => $seoTitle['catname'],
+    			'item_intro' => '',
+    	));   	   
    	   //dump($res);die; 
    	   $this->assign("res",$res);
    	   $this->assign("flash",$flash);	   
@@ -606,11 +611,16 @@ class indexAction extends frontendAction {
    public function thdlist(){//没有三级，列出二级所有服务，商品，资讯
 	   	$catid = $this->_get("catid","trim,intval");
 	   	!$catid && $this->_404();
+	   	
 	   	$where["cate_id"] = $catid;
 	   	$where["status"] = 1;
 	   	$condi['cate_id'] = $catid;
         $res = $this->getRes($where,$condi);	   	   
-	   	//dump($res);die;
+   	   $seoTitle =  $this->_cat->field("catname")->where(array('id'=>$catid))->find();
+   	    $this->_config_seo(C('pin_seo_config.item'), array(
+    			'item_title' => $seoTitle['catname'],
+    			'item_intro' => '',
+    	)); 
    	   $this->assign("res",$res);
        $this->display();
    }
@@ -619,7 +629,6 @@ class indexAction extends frontendAction {
         foreach ($res as $key => $val){
         	$res[$key]['link'] = U("Item/house_book",array("itemid"=>$val['id']));
         }
-        dump($res);die;
         $this->assign("res",$res);
 	   	$this->display('thdlist');
    }
