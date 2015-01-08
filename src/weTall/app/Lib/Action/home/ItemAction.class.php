@@ -316,7 +316,10 @@ class itemAction extends frontendAction {
     	$this->assign("recommendRes",$recommendRes);
     	$this->assign('item', $item);
     	$this->assign('img_list', $img_list);    	
-
+    	$this->_config_seo(C('pin_seo_config.item'), array(
+    			'item_title' => $item['name'],
+    			'item_intro' => $item['into'],
+    	));
     	$this->display();
     }
     
@@ -332,11 +335,13 @@ class itemAction extends frontendAction {
     	$condi['cate_id'] = $res['cate_id'];
     	$condi['id'] = array('neq',$id);
     	$recommendRes = M("article_new")->field("id,img,name")->where($condi)->limit(4)->select();
-    	 
     	$this->assign("recommendRes",$recommendRes);
     	$this->assign('item', $res);
     	$this->assign('img_list', $img_list);
-    	 
+    	$this->_config_seo(C('pin_seo_config.item'), array(
+    			'item_title' => $res['name'],
+    			'item_intro' => $res['into'],
+    	));    	 
     	$this->display();
     }
     
