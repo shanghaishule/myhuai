@@ -447,7 +447,6 @@ class itemAction extends frontendAction {
                 $data['status'] = 0;
                 break;
         }
-        
         $data['info'] = $check_result['content'];
         $data['uid'] = $this->visitor->info['id'];
         $data['uname'] = $this->visitor->info['username'];
