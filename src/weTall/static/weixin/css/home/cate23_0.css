@@ -176,13 +176,13 @@ body {
 /*indexnew*/
 #indexnew_nav1{height: 150px;
 margin-top: 0px;padding-top:0}
-.indexnew_li1{background:#e04316;}
-#indexnew_nav1 li{width:50%}
+.indexnew_li1{background:white;}
+#indexnew_nav1 li{width:49.8%;border-left:1px solid #f1f1f1}
 #indexnew_nav2 li{width:33.33%}
-#indexnew_nav1 .indexnew_li1 a{background:#e04316;color:white;height:130px;line-height: 16px;padding-top: 10px}
+#indexnew_nav1 .indexnew_li1 a{background:white;color:black;height:130px;line-height: 16px;padding-top: 10px}
 #indexnew_nav1  a b{font-size:17px}
-#indexnew_nav1 .indexnew_li2 a{background:#8ad8de;color:white;height:130px;line-height: 16px;padding-top: 10px}
-.indexnew_li2{background:#8ad8de}
+#indexnew_nav1 .indexnew_li2 a{background:white;color:black;height:130px;line-height: 16px;padding-top: 10px}
+.indexnew_li2{background:white}
 #indexnew_nav2{margin-top:10px;height:95px;padding-top:5px}
 #indexnew_nav2 p{font-size:13px;color:#444}
 #indexnew_nav2 a{margin-top:px;height:80px;line-height: 21px;}
