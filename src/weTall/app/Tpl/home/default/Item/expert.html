@@ -33,7 +33,7 @@
 				   <table id="rebookinfo_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
 		                   <td class="td_exper" id="td_exper_01" data-id="1">
-		                 <p> <a href="{:U('Item/expert')}">全部</a></p>
+		                 <p> <a href="http://m.hajk.com.cn/weTall/index.php?m=Item&a=expert">全部</a></p>
 	                       </td>
 	                       <td class="td_exper" id="td_exper_02" data-id="2">
 	                       医院
@@ -54,17 +54,17 @@
 			   <div class="select_exper">
 						    <ul id="listUl2" class="listUl" style="height:200px;overflow:auto">
 						      <volist name="Hos_list" id="val">
-						           <li><a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'hos'))}">{$val.name}</a></li>
+						          <a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'hos'))}"> <li>{$val.name}</li></a>
 						      </volist>  
 						    </ul>
 						    <ul id="listUl3" class="listUl" style="height:200px;overflow:auto">
 						      <volist name="Keshi_list" id="val">
-						           <li><a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'ks'))}">{$val.name}</a></li>
+						           <a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'ks'))}"><li>{$val.name}</li></a>
 						      </volist>  
 						    </ul>
 						    <ul id="listUl4" class="listUl" style="height:200px;overflow:auto">
 						      <volist name="Zhicheng_list" id="val">
-						           <li><a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'zc'))}">{$val.name}</a></li>
+						          <a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'zc'))}"> <li>{$val.name}</li></a>
 						      </volist> 
 						    </ul>
 				 </div>
