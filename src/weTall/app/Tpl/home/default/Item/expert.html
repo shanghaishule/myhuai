@@ -54,17 +54,17 @@
 			   <div class="select_exper">
 						    <ul id="listUl2" class="listUl" style="height:200px;overflow:auto">
 						      <volist name="Hos_list" id="val">
-						           <li><a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'hos'))}">{$val.name}</a></li>
+						          <a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'hos'))}"> <li>{$val.name}</li></a>
 						      </volist>  
 						    </ul>
 						    <ul id="listUl3" class="listUl" style="height:200px;overflow:auto">
 						      <volist name="Keshi_list" id="val">
-						           <li><a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'ks'))}">{$val.name}</a></li>
+						           <a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'ks'))}"><li>{$val.name}</li></a>
 						      </volist>  
 						    </ul>
 						    <ul id="listUl4" class="listUl" style="height:200px;overflow:auto">
 						      <volist name="Zhicheng_list" id="val">
-						           <li><a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'zc'))}">{$val.name}</a></li>
+						          <a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'zc'))}"> <li>{$val.name}</li></a>
 						      </volist> 
 						    </ul>
 				 </div>
