@@ -39,28 +39,21 @@
 		function sub(){
 			var name = $("#rebook_name").val();
 			var phone = $('#phone').val();
-			 var reg = /^0?1[358]\d{9}$/;
+		    var reg = /^0?1[358]\d{9}$/;
 
-			var pic = $('#img_name').val();
-			var info = $("#reinfo").val();
 			var fuzhengDate = $("#fuzhengTime").val();
-			var comeDate = $("#comeTime").val();
 			var checkProject = false;
-			$("input[name='checkProject[]']").each(function(){
+			$("input[name='checkP[]']").each(function(){
 				   if(this.checked){
 					    checkProject = true;
 				   }
 			});
 			if(name != '' && phone != '' && fuzhengDate != ''  && checkProject){
-				  if(pic != '' || info != '' ){
 						 if (!reg.test(phone)){
 						        alert('手机号码格式不正确');
 						        return false;
 						 }
 					    this.form1.submit();
-				  }else{
-					  alert("带*号必填");
-				  }
 			}else{
 				alert("带*号必填");
 			}
@@ -69,9 +62,7 @@
 
 <div id="content1">
 	
-		
-    
-       <form method="post" id="form1" name="form1" class="rebook_form_1" action="{:U('Item/rebook')}" enctype="multipart/form-data">
+       <form method="post" id="form1" name="form1" class="rebook_form_1" action="">
 			   <div class="rebook_block">
 				   <p class="biaoti">个人信息</p>
 				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
@@ -98,7 +89,7 @@
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
 	                   <td class="td_1">手　　机<span class="red">*</span>:</td>
-	                   <td class="td_80"><input  onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" name="rebook_phone" id="phone" maxlength="11" class="text width5" placeholder="病人或家属手机" type="tel"></td>
+	                   <td class="td_80"><input  onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" name="phone" id="phone" maxlength="11" class="text width5" placeholder="病人或家属手机" type="tel"></td>
 	                 </tr>
 	                </table>
 			   </div>
@@ -120,21 +111,21 @@
 																</div><br> 
 																<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_01"> 
 																		<ul> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="磁共振"><span>磁共振</span> 
+																		<li class=""><input name="checkP[]" type="checkbox" value="磁共振"><span>磁共振</span> 
 																		</li> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="CT"><span>CT</span> 
+																		<li class=""><input name="checkP[]" type="checkbox" value="CT"><span>CT</span> 
 																		</li> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="PET-CT"><span>PET-CT</span> 
+																		<li class=""><input name="checkP[]" type="checkbox" value="PET-CT"><span>PET-CT</span> 
 																		</li> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="胃镜"><span>胃镜</span> 
+																		<li class=""><input name="checkP[]" type="checkbox" value="胃镜"><span>胃镜</span> 
 																		</li> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="肠镜"><span>肠镜</span> 
+																		<li class=""><input name="checkP[]" type="checkbox" value="肠镜"><span>肠镜</span> 
 																		</li> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="心脏彩超"><span>心脏彩超</span> 
+																		<li class=""><input name="checkP[]" type="checkbox" value="心脏彩超"><span>心脏彩超</span> 
 																		</li> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="24h动态心电"><span>24h动态心电</span> 
+																		<li class=""><input name="checkP[]" type="checkbox" value="24h动态心电"><span>24h动态心电</span> 
 																		</li> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="24h动态血压"><span>24h动态血压</span> 
+																		<li class=""><input name="checkP[]" type="checkbox" value="24h动态血压"><span>24h动态血压</span> 
 																		</li> 
 																		</ul> 
 																<p> 
@@ -157,26 +148,13 @@
 																			}); 
 																}); 
 																</script>
-
-						                   <!--  <select name="check_item" class="check_item_1" id="check_item" >
-													<option value="volvo" selected="selected">磁共振</option>
-													<option value="saab">胃镜</option>
-													<option value="fiat" >肠镜</option>
-													<option value="audi">动态心电图</option>
-													<option value="fiat" >肌电图</option>
-													<option value="audi">心脏彩超</option>
-													<option value="audi">CT</option>
-													<option value="audi">24h动态血压</option>
-													<option value="audi">PET-CT</option>
-													</select>
-													-->
 										 </td>
 			                 </tr>
 	                 </table>
 	                <table id="rebook_table"  border="0" cellspacing="0" cellpadding="0" style="margin-top: 8px;">
 	                  <tr>
 	                   <td class="td_1"><p class="td_p">文字描述：</p></td>
-	                   <td><textarea name="info" class="retextarea" style="height:70px;width:100%;border:1px solid #ccc" id="reinfo" placeholder="请填写需要检查的项目……"></textarea>
+	                   <td><textarea name="detail" class="retextarea" style="height:70px;width:100%;border:1px solid #ccc" id="reinfo" placeholder="请填写需要检查的项目……"></textarea>
 	                   </td>
 	                 </tr>
 	                 
@@ -191,39 +169,26 @@
 	                       <div class="book_online">
 		                       <div id="book_online">
 					                 <div class="demo">
-									   <div class="lie"><input id="fuzhengTime" style="border: 1px solid #ccc" name="fuzhengDate" class="kbtn" /></div>
+									   <div class="lie"><input id="fuzhengTime" style="border: 1px solid #ccc" name="advanceDate" class="kbtn" /></div>
 								     </div>
 					             </div>
 					           </div>
 						 <div id="datePlugin"></div>
 						</td>
 	                 </tr>
-	                 
 	                 </table>
-	                 
-	                 
-	                
-	                 
-	                 
 	                 </div>
-	                  
-	         
 			   <div>
-				   
 			   </div>	
 			     </form>	 
     </div>
     
-            
-			<div class="space"></div>
-
+		  <div class="space"></div>
 	       <div class="shop_bottom" id="rebook_btm">
-		             
 	            <ul class="rebook_btn" style="padding:5px 0">
 			            <li class="pic_rebook"><div style=" margin: 0 auto;width:50px;height:34px;background:url(__STATIC__/weixin/images/home/littlelogo.png);background-size:100% 100%";></div></li>
 			            <li class="phone_rebook"><a <if condition="$item['status'] neq 0">href="tel:4006555899"<else />href="javascirpt:void(0)" id="grey"</if> class="reserveP"></a></li>
 			            <li class="intime_submit"><a href="javascript:sub()" id="rebook_sub"></a></li>                
-			                	
 	            </ul>
 	        </div>
           

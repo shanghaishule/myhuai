@@ -89,44 +89,18 @@ class itemAction extends frontendAction {
     public function exambook(){
     	header("Content-type:text/html;charset=utf-8");
     	if(IS_POST){
-    		//姓名
-    		$data['name'] = $this->_post('name','trim');
-    		//性别
-    		$data['sex'] = $this->_post('sex','intval');
-    		//电话
-    		$data['phone'] = $this->_post('rebook_phone','trim');
-    		//图片
-    		$Uninum = time();
-    		$filepath = $_SERVER['DOCUMENT_ROOT']."/Uploads/items/images/";//图片保存的路径目录
-    		if(!is_dir($filepath)){
-    			mkdir($filepath,0777, true);
+    		$advance = M('tijian');
+    		if(false === $data = $advance->create()){
+    			$this->error($advance->getError());
     		}
-    		$file_type = explode(".",$_POST['img_name']);
-    		//dump($file_type);die;
-    		$filename = $Uninum.'.'.$file_type[1]; //生成文件名
-    		move_uploaded_file($_FILES["my_img"]["tmp_name"],$filepath.$filename);
-    		$data['pic'] = '/Uploads/items/images/'.$filename;
-    		//详细
-    		$data['info'] = $this->_post('info');
-    		//复诊时间
-    		$data['fuzhengDate'] = $this->_post('fuzhengDate');
-    		$data['comeDate'] = $this->_post('comeDate');
-    		//是否住院
-    		$data['zhuyuan'] = $this->_post('zhuyuan','intval,trim');
     		//检查项目
-    		$data['checkProject'] = implode('|',$_POST['checkProject']);
-    		//专家
-    		$data['zuanjia'] = $this->_post('zuanjia','trim');
-    		//贴心服务
-    		$data['loveServer'] = implode('|',$_POST['loveServer']);
+    		$data['checkProject'] = implode('|',$_POST['checkP']);
     		//添加时间
     		$data['addTime'] = time();
-    		$advance = M('advance');
-    
     		if(false !== $advance->add($data)){
-    			$this->success("您的预约已提交成功！",U('index/index'));
+    			$this->success("您的体检项目预约已提交成功！<br />请等待审核！",U('index/index'));
     		}else{
-    			$this->error("您的预约提交失败！");
+    			$this->error("您的体检项目预约提交失败！");
     		}
     
     	}else{
