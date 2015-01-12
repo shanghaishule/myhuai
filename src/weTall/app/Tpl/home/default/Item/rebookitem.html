@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<include file="public:headtop" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<script charset="utf-8" src="__STATIC__/weixin/js/colorbox.js" type="text/javascript"></script>
+<link href="__STATIC__/weixin/css/home/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__STATIC__/weixin/js/home/jquery-1.9.1.js" ></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/date1.js" ></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/iscroll.js" ></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/shop1.css" media="all">
+</head>
+<body style="background:#f1f1f1;-webkit-appearance: none">
+	<div class="index_head1">
+<div id="nav">
+	<ul class="navlist1">
+		<li id="a_0">
+		   <a href="javascript:history.go(-1)"><div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div></a>
+         </li>
+        <li  id="a_1">
+    						<div style="">
+
+										<p style="font-size: 16px">服务声明</p>
+				              </div>
+        </li>
+    </ul>
+ </div>
+</div>
+	
+	<div class="s_bottom"></div>
+	<script type="text/javascript">
+		$(function(){
+			$("div.module_special .wrap .major ul.list li:last-child").addClass("remove_bottom_line");
+		});
+	</script>
+
+<div id="content1">
+	   
+			   <div class="rebookinfo">
+			     <div class="rbdoubt">
+				  <div class="rbdountdetail">
+				    <p>一：服务条款</p>
+				    <h>欢迎使用沪爱“医院复诊好帮手”，以下简称复诊好帮手。您在使用复诊好帮手前，请仔细阅读本原则，如果您对本原则的任何条款表示异议，您可以选择不使用复诊好帮手，您使用复诊好帮手，则意味着您将自愿遵守以下原则，并完全服从于复诊好帮手的统一管理。
+                       <br>一、复诊好帮手基于医院的科室或医生、复诊好帮手提供平台的一项服务
+二、复诊好帮手广大患者提供了一个便捷的渠道，可以通过网络等形式提交病情信息给沪爱，沪爱通过网络看到这些信息，并给予相应指导，所有指导均由相关医生给出，与复诊好帮手无关。
+三、患者所有的病情信息均自行提供，需要确保录入或者上传信息及时、准确，医生将完全根据患者提供的信息做出指导和建议，如果患者提供的信息有误，造成的任何后果自行承担。
+四、在服务过程中，所有需要复诊的项目均是由患者根据自己的病情所要求的，沪爱不会额外增加复诊项目。
+五、患者提供的所有信息，其个人隐私内容不会向除患者本人和随访医生之外的任何第三方公开。
+复诊好帮手不会向任何人出售或出借您的个人信息，除非事先得到您的许可。
+　　●为服务用户的目的，复诊好帮手可能通过使用您的个人信息，向您提供服务，包括但不限于向您发出活动和服务信息等。
+　　●复诊好帮手承诺：非经法律程序或经您的许可不会泄露您的个人信息（如姓名、肖像、身份证号、电话、住址等）。
+　　●您在复诊好帮手平台上寻求医疗帮助，与医生一起产生的全部内容，将视为用户、医生、复诊好帮手平台三方所共有，
+　　●如果您需要将三方共有的病情咨询设置为隐私内容，可向医生提出申请，医生同意后方可由复诊好帮手管理员设为隐私。
+九、复诊好帮手对以上内容拥有最终解释权。
+
+				    </h>
+				 </div>
+				 
+			</div>
+			   </div>
+<div class="space"></div> 
+      <div class="shop_bottom" id="rebook_btm">
+	             
+            <ul class="rebook_btn" style="padding:5px 0">
+		            <li class="pic_rebook"><div style=" margin: 0 auto;width:50px;height:34px;background:url(__STATIC__/weixin/images/home/littlelogo.png);background-size:100% 100%";></div></li>
+		            <li class="phone_rebook"><a href="tel:4006555899"></a></li>
+		            <li class="intime_submit"><a href="{:U('Item/rebook')}"></a></li>                
+		                	
+            </ul>
+        </div>
+          
+<script type="text/javascript">
+window.shareData = {
+		"moduleName" : "Index",
+		"moduleID" : '0',
+		"imgUrl" : "http://m.hajk.com.cn/weTall/static/weixin/images/home/mlogo.png",
+		"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+		"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+		"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+		"tTitle" : "欢迎关注沪爱健康",
+		"tContent" : "专业让健康更简单 沪爱健康   "
+	};
+	</script>
+	<script>
+		document.addEventListener('WeixinJSBridgeReady',
+				function onBridgeReady() {
+					WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+						shareHandle('friend');
+						WeixinJSBridge.invoke('sendAppMessage', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('send_msg', res.err_msg);
+						})
+					});
+
+					WeixinJSBridge.on('menu:share:timeline', function(argv) {
+						shareHandle('frineds');
+						WeixinJSBridge.invoke('shareTimeline', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('timeline', res.err_msg);
+						});
+					});
+
+					WeixinJSBridge.on('menu:share:weibo', function(argv) {
+						shareHandle('weibo');
+						WeixinJSBridge.invoke('shareWeibo', {
+							"content" : window.shareData.tContent,
+							"url" : window.shareData.sendFriendLink,
+						}, function(res) {
+							_report('weibo', res.err_msg);
+						});
+					});
+				}, false)
+
+		function shareHandle(to) {
+			var submitData = {
+				module : window.shareData.moduleName,
+				moduleid : window.shareData.moduleID,
+				token : 'ipwhoy1414718223',
+				wecha_id : 'ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+				url : window.shareData.sendFriendLink,
+				to : to
+			};
+			$
+					.post(
+							'/index.php?g=Wap&m=Share&a=shareData&token=ipwhoy1414718223&wecha_id=ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+							submitData, function(data) {
+							}, 'json')
+		}
+	</script>
+<script src="__STATIC__/LazyLoad/js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>	
+<script>
+	$(function() {
+		$("img").lazyload({
+			effect : "fadeIn"
+		});
+		$('#endTime').date({theme:"datetime"});
+	});
+</script>
+</body>
+</html>
