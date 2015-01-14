@@ -204,7 +204,7 @@ width:100%
 #chartOptionsFlowTrend_01 li.tuijan p{padding-left:15%;color: #ccc;background:white;
 font-size: 12px;}
 .chartOptionsFlowTrend ul li input{width:30%}
-#chartOptionsFlowTrend_01 ul li input{width:30%}
+#chartOptionsFlowTrend_01 ul li input{width:30%;outline: none}
 .chartOptionsFlowTrend li *{ 
 float:left; 
 } 
