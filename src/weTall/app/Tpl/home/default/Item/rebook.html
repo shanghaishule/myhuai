@@ -188,76 +188,7 @@
 	                 </tr>
 	                  </table>
 	                 
-	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
-			                 <tr style="line-height: 39px;">
-						                   <td class="td_33">预约检查项目<span class="red">*</span>:</td>
-						                   <td class="">
-						                        <div class="select_checkBox"> 
-																<div class="chartQuota"> 
-																<p> 
-																<a href="javascript:;" hidefocus="true" title="检查项目"><span>点击选择检查项目</span> 
-																<b></b> 
-																</a> 
-																</p> 
-																 
-																</div><br> 
-																<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_01"> 
-																		<ul> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="磁共振"><span>磁共振</span> 
-																		</li> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="CT"><span>CT</span> 
-																		</li> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="PET-CT"><span>PET-CT</span> 
-																		</li> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="胃镜"><span>胃镜</span> 
-																		</li> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="肠镜"><span>肠镜</span> 
-																		</li> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="心脏彩超"><span>心脏彩超</span> 
-																		</li> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="24h动态心电"><span>24h动态心电</span> 
-																		</li> 
-																		<li class=""><input name="checkProject[]" type="checkbox" value="24h动态血压"><span>24h动态血压</span> 
-																		</li> 
-																		</ul> 
-																<p> 
-																<a href="javascript:void(0)" title="确定" hidefocus="true" class="a_0">确定</a>
-																
-																</p> 
-																</div> 
-																</div>
-																<script type="text/javascript"> 
-																$(function(){ 
-																		$(".select_checkBox").hover(function(){ 
-																			$(".chartOptionsFlowTrend").css("display","inline-block"); 
-																			},function(){ 
-																			$(".chartOptionsFlowTrend").css("display","none"); 
-																		}); 
-																}); 
-																</script>
-																<script type="text/javascript"> 
-																$(function(){ 
-																		$(".a_0").hover(function(){ 
-																			$(".chartOptionsFlowTrend").css("display","none"); 
-																			}); 
-																}); 
-																</script>
-
-						                   <!--  <select name="check_item" class="check_item_1" id="check_item" >
-													<option value="volvo" selected="selected">磁共振</option>
-													<option value="saab">胃镜</option>
-													<option value="fiat" >肠镜</option>
-													<option value="audi">动态心电图</option>
-													<option value="fiat" >肌电图</option>
-													<option value="audi">心脏彩超</option>
-													<option value="audi">CT</option>
-													<option value="audi">24h动态血压</option>
-													<option value="audi">PET-CT</option>
-													</select>
-													-->
-										 </td>
-			                 </tr>
-	                 </table>
+	                 
 	                  <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 			                 <tr>
 						                   <td class="td_33">拟请会诊专家:</td>
@@ -269,8 +200,142 @@
 	                 </table>
 	                 
 	                 </div>
+	                 
+	                 <div class="rebook_block">
+	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+			                 <tr style="line-height: 39px;">
+						                   <td class="td_33">预约检查项目<span class="red">*</span><span class="fuzhentishi">(以下数字为服务费用/元)</span></td>
+						                   <td class="">
+						                 </td>
+			                 </tr>
+	                 </table>
+	                 <div class="select_checkBox"> 
+															<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_01"> 
+																		<ul> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="磁共振"><span>磁共振</span><span class="choosemoney">&nbsp;300</span>  </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="CT"><span>CT</span><span class="choosemoney">&nbsp;300</span>  </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="PET-CT"><span>PET-CT</span> <span class="choosemoney">&nbsp;500</span> </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="胃镜"><span>胃镜</span> <span class="choosemoney">&nbsp;300</span> </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="肠镜"><span>肠镜</span> <span class="choosemoney">&nbsp;300</span> </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="肠镜"><span>喉镜</span> <span class="choosemoney">&nbsp;300</span> </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="心脏彩超"><span>心脏彩超</span> <span class="choosemoney">&nbsp;300</span> </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="24h动态心电"><span>24h动态心电</span> <span class="choosemoney">&nbsp;300</span> </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="24h动态血压"><span>24h动态血压</span><span class="choosemoney">&nbsp;300</span>  </label>
+																		</li>
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="24h动态血压"><span>血液</span><span class="choosemoney">&nbsp;100</span>  </label>
+																		</li>
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="24h动态血压"><span>B超</span><span class="choosemoney">&nbsp;100</span>  </label>
+																		</li> 
+																		</ul> 
+																
+																</div> 
+																
+																</div>
+	                 </div>
+	                <div class="rebook_block"> 
+	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+			                 <tr style="line-height: 39px;">
+						                   <td class="td_33">推荐服务<span class="fuzhentishi">(以下数字为服务费用/元)</span></td>
+						        </tr>
+						   </table>
+	                 <div class="select_checkBox"> 
+																
+																
+																<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_01"> 
+																		<ul> 
+																		<li class="tuijan">
+																			
+																					 <label><input name="checkProject[]" type="checkbox" value="健康助手全程陪同|300" />
+																					   <span  class="choosemhead">健康助手全程陪同</span><span class="choosemoney">&nbsp;300</span> </label>
+																					   <p>为病人提供全程陪同指引等服务</p>
+																					
+																		</li> 
+																		<li class="tuijan">
+																			
+																					 <label><input name="checkProject[]" type="checkbox" value="速取检查报告|100" />
+																					   <span class="choosemhead">速取检查报告</span><span class="choosemoney">&nbsp;100</span> </label>
+																					  <p>为病人提前取影像、病理等检查报告</p>
+																					
+																		</li> 
+																		<li class="tuijan">
+																			
+																					 <label><input name="checkProject[]" type="checkbox" value="及时会诊|500" />
+																					   <span class="choosemhead">及时会诊</span><span class="choosemoney">&nbsp;500</span> </label>
+																					   <p>取完片子后能够及时为您安排专家会诊</p>
+																					
+																		</li>  
+																		<li class="tuijan">
+																			
+																					 <label><input name="checkProject[]" type="checkbox" value="预约住院|1200" />
+																					   <span class="choosemhead">预约住院</span><span class="choosemoney">&nbsp;1200</span> </label>
+																					   <p>如需住院我们帮您提前预约</p>
+																					
+																		</li> 
+																		
+																		
+																		</ul> 
+																
+																</div> 
+																
+																</div>
+								</div>
+								<div class="rebook_block"> 
+	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+			                 <tr style="line-height: 39px;">
+						                   <td class="td_33">套餐服务<span class="fuzhentishi">(以下数字为服务费用/元)</span></td>
+						        </tr>
+						   </table>
+	                 <div class="select_checkBox"> 
+																
+																 
+																<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_01"> 
+																		<ul> 
+																		<li class="tuijan">
+																			
+																					 <label><input name="checkProject[]" type="checkbox" value="套餐一：预约检查项目（一项）|300" />
+																					   <span class="choosemhead">套餐一：预约检查项目（一项）</span><span class="choosemoney">&nbsp;300</span> </label>
+																					   <p>提前预约各类检查项目，注：不提供人员陪同</p>
+																					
+																		</li> 
+																		<li class="tuijan">
+																			
+																					 <label><input name="checkProject[]" type="checkbox" value="套餐二：预约检查项目（两项及以上|500" />
+																					   <span class="choosemhead">套餐二：预约检查项目（两项及以上）</span><span class="choosemoney">&nbsp;500</span> </label>
+																					  <p>提前预约各类检查项目，注：不提供人员陪同</p>
+																					
+																		</li> 
+																		<li class="tuijan">
+																			
+																					 <label><input name="checkProject[]" type="checkbox" value="套餐三：预约+陪诊+速取检查报告|800" />
+																					   <span class="choosemhead">套餐三：预约+陪诊+速取检查报告</span><span class="choosemoney">&nbsp;800</span> </label>
+																					   <p>提前预约全程陪同及提前取报告</p>
+																					
+																		</li>  
+																		<li class="tuijan">
+																			
+																					 <label><input name="checkProject[]" type="checkbox" value="预约住院|1200" />
+																					   <span class="choosemhead">套餐四：预约+陪诊+速取检查报告+及时会诊</span><span class="choosemoney">&nbsp;1100</span> </label>
+																					   <p>提前预约全程陪同及提前取报告及时专家会诊</p>
+																					
+																		</li> 
+																		
+																		
+																		</ul> 
+																
+																</div> 
+																
+																</div>
+								</div>
 	                  <div class="rebook_block">
-	                  <p class="biaoti" style="padding-bottom:5px">贴心服务</p>
+	                  <p class="biaoti" style="padding-bottom:5px">贴心服务:<span class="fuzhentishi">(免费)</span></p>
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
 	                   <td class="td_18">
@@ -285,7 +350,7 @@
 						<td class="td_sex_1">
 						<input type="checkbox" name="loveServer[]" id="rebook_ser" value="安排周边住宿" />
 						</td>
-						<td class="td_18"><p>交通接站服务 </p>
+						<td class="td_18"><p>交通指引服务 </p>
 						</td>
 
 						<td class="td_sex_1">
@@ -306,19 +371,15 @@
 			     </form>	 
     </div>
     
-            <div class="rebook_block" style="margin-top: 5px;background:white">
-    <p class="biaoti" style=";padding-bottom:;font-size: 18px;
-line-height: 26px;
-color: #006835">推荐服务</p>
-    <img  data-original="__STATIC__/weixin/images/home/yy01.jpg" width="100%"  src="__STATIC__/LazyLoad/js/grey.gif"/>
-    <img  data-original="__STATIC__/weixin/images/home/yy02.jpg" width="100%"  src="__STATIC__/LazyLoad/js/grey.gif"/>
-    <img  data-original="__STATIC__/weixin/images/home/yy03.jpg" width="100%"  src="__STATIC__/LazyLoad/js/grey.gif"/>
-   <img  data-original="__STATIC__/weixin/images/home/yy04.jpg" width="100%"  src="__STATIC__/LazyLoad/js/grey.gif"/>
-    
-    </div>
+            
 
 			<div class="space"></div>
-
+			<div class="space"></div>
+          <div class="shop_bottom" id="rebook_btm_02" >
+		             
+	            <p style="color:rgb(242, 80, 80);padding-top: 15px;text-align: right;width: 93%;">总服务费：2000</p>
+	            
+	        </div>
 	       <div class="shop_bottom" id="rebook_btm">
 		             
 	            <ul class="rebook_btn" style="padding:5px 0">
@@ -339,9 +400,9 @@ window.shareData = {
 		"moduleName" : "Index",
 		"moduleID" : '0',
 		"imgUrl" : "http://m.hajk.com.cn/weTall/static/weixin/images/home/mlogo.png",
-		"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
-		"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
-		"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+		"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=indexnew",
+		"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=indexnew",
+		"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=indexnew",
 		"tTitle" : "欢迎关注沪爱健康",
 		"tContent" : "专业让健康更简单 沪爱健康   "
 	};

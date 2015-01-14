@@ -166,18 +166,17 @@ position: relative;
 .chartOptionsFlowTrend{ 
 z-index:300; 
 background-color:white; 
-border:1px solid gray; 
-display:none; 
-position: absolute; 
-left: -75px;
-top: -170px;
-width: 250px;
-} 
+
+width: 100%;
+}
+.choosemhead{display: inline-block;
+width: 69%;}
+.choosemoney{color:rgb(242, 80, 80);font-size:12px}
 .chartOptionsFlowTrend ul{ 
 float:left; 
 padding: 0px; 
-margin: 5px; 
-	width:100%
+margin: px; 
+width:100%;
 } 
 .chartOptionsFlowTrend li{ 
 float:left;
@@ -185,7 +184,25 @@ display:inline;
 display:block; 
 .position: relative; 
 width:50%;
+	line-height: 23px;
 }
+.chartOptionsFlowTrend li input{ margin-top:1px;width:18px;height:18px}
+.fuzhentishi{color: #444;
+font-size: 12px;}
+.chartOptionsFlowTrend li label{ 
+
+width:100%;
+}
+.chartOptionsFlowTrend li.tuijan{ 
+float:left;
+display:inline;
+display:block; 
+.position: relative; 
+width:100%
+}
+#chartOptionsFlowTrend_01 li.tuijan input{width:15%}
+#chartOptionsFlowTrend_01 li.tuijan p{padding-left:15%;color: #ccc;background:white;
+font-size: 12px;}
 .chartOptionsFlowTrend ul li input{width:30%}
 #chartOptionsFlowTrend_01 ul li input{width:30%}
 .chartOptionsFlowTrend li *{ 
@@ -216,16 +233,19 @@ line-height:24px;
 display: inline-block; 
 } 
 .chartOptionsFlowTrend p { 
-height: 23px; 
+height: px; 
 line-height: 23px; 
 overflow: hidden; 
 position: relative; 
-z-index: 2; 
+z-index:; 
 background: #fefbf7; 
 padding-top: 0px; 
 display: inline-block; 
-	width:100%;text-align:center;
-} 
+	width:80%;;
+}
+#rebook_btm_02{height: 45px;
+width: 100%;
+background: #f1f1f1;}
 .chartOptionsFlowTrend p a { 
 border: 1px solid #fff; 
 margin-left: 15px; 
