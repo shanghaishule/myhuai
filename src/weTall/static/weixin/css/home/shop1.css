@@ -207,12 +207,19 @@ display:block;
 .position: relative; 
 width:100%
 }
-input[type="button"], input[type="submit"], input[type="reset"], input[type="checkbox"] {
+ input[type="checkbox"]{
 
 -webkit-appearance: none;
-	
-  background:url(/weTall/static/weixin/images/home/dagou.png);
+ background:url(/weTall/static/weixin/images/home/dagou.png);
   background-size:100% 100%;
+	outline: none
+
+}
+input[type="button"], input[type="submit"], input[type="radio"], input[type="text"]{
+
+-webkit-appearance: none;
+ 
+	outline: none
 
 }
 input[type="checkbox"]:checked {
@@ -222,7 +229,7 @@ textarea {  -webkit-appearance: none;}
 #chartOptionsFlowTrend_01 li.tuijan input{}
 #chartOptionsFlowTrend_01 li.tuijan p{padding-left:15%;color: #ccc;background:white;
 font-size: 12px;}
-.chartOptionsFlowTrend ul li input{width:18px;height:18px;background-size:100% 100%;vertical-align: middle;}
+.chartOptionsFlowTrend ul li input{width:20px;height:20px;background-size:100% 100%;vertical-align: middle;}
 #chartOptionsFlowTrend_01 ul li input{;outline: none}
 .chartOptionsFlowTrend li *{ 
 float:left; 
