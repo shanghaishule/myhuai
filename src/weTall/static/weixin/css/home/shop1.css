@@ -42,7 +42,7 @@ a{ text-decoration:none; color:#666;}
 /*fuzhen yuyue*/
 #rebook_form{;width: 100%;
 margin: 14px auto;}
-#rebook_table input{border:1px solid #ccc;width:100%;height:30px;}
+#rebook_table input{width:100%;height:30px;}
 .td_80{width:80%}
 .td_65{width:65%}
 .td_33{width:35%}
@@ -161,7 +161,8 @@ float:left;
 display:inline-block; 
 border:0px solid black; 
 position: relative; 
-} 
+}
+#rebook_ser{width:18px;height:18px;backround-size:100% 100%;}
 #chartOptionsFlowTrend_01 a.a_0{color:#006835} 
 .chartOptionsFlowTrend{ 
 z-index:300; 
@@ -170,21 +171,27 @@ background-color:white;
 width: 100%;
 }
 .choosemhead{display: inline-block;
-width: 69%;}
+width: 69%;
+padding-left:10px}
+.choosemhead_01{display: inline-block;
+
+padding-left:10px}
 .choosemoney{color:rgb(242, 80, 80);font-size:12px}
 .chartOptionsFlowTrend ul{ 
 float:left; 
 padding: 0px; 
-margin: px; 
-width:100%;
-} 
+
+width: 95%;
+margin-left: 2.5%;
+}
+
 .chartOptionsFlowTrend li{ 
 float:left;
 display:inline;
 display:block; 
-.position: relative; 
+position: relative; 
 width:50%;
-	line-height: 23px;
+line-height: 26px;
 }
 .chartOptionsFlowTrend li input{ margin-top:1px;width:18px;height:18px}
 .fuzhentishi{color: #444;
@@ -200,11 +207,23 @@ display:block;
 .position: relative; 
 width:100%
 }
-#chartOptionsFlowTrend_01 li.tuijan input{width:15%}
+input[type="button"], input[type="submit"], input[type="reset"], input[type="checkbox"] {
+
+-webkit-appearance: none;
+	
+  background:url(/weTall/static/weixin/images/home/dagou.png);
+  background-size:100% 100%;
+
+}
+input[type="checkbox"]:checked {
+  background:url(/weTall/static/weixin/images/home/blue.png);background-size:100% 100%;
+}
+textarea {  -webkit-appearance: none;}   
+#chartOptionsFlowTrend_01 li.tuijan input{}
 #chartOptionsFlowTrend_01 li.tuijan p{padding-left:15%;color: #ccc;background:white;
 font-size: 12px;}
-.chartOptionsFlowTrend ul li input{width:30%}
-#chartOptionsFlowTrend_01 ul li input{width:30%;outline: none}
+.chartOptionsFlowTrend ul li input{width:18px;height:18px;background-size:100% 100%;vertical-align: middle;}
+#chartOptionsFlowTrend_01 ul li input{;outline: none}
 .chartOptionsFlowTrend li *{ 
 float:left; 
 } 
