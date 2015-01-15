@@ -68,13 +68,10 @@
 	</script>
 
 <div id="content1">
-	
-		
-    
        <form method="post" id="form1" name="form1" class="rebook_form_1" action="{:U('Item/rebook')}" enctype="multipart/form-data">
 			   <div class="rebook_block">
-				   <p class="biaoti">个人信息</p>
-				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+				    <p class="biaoti">个人信息</p>
+				    <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
 	                   <td class="td_1">姓　　名<span class="red">*</span>:</td>
 	                   <td class="td_80"><input  name="name" id="rebook_name" class="text width5" placeholder="病人真实姓名" type="text"></td>
@@ -98,7 +95,7 @@
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
 	                   <td class="td_1">手　　机<span class="red">*</span>:</td>
-	                   <td class="td_80"><input  onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" name="rebook_phone" id="phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
+	                   <td class="td_80"><input onkeypress="intOnly()" onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}"  name="phone" maxlength="11"  id="phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
 	                 </tr>
 	                </table>
 			   </div>
@@ -249,28 +246,28 @@
 																		<ul> 
 																		<li class="tuijan">
 																			
-																					 <label><input name="checkProject[]" type="checkbox" value="健康助手全程陪同|300" />
+																					 <label><input name="tuijianProject[]" type="checkbox" value="健康助手全程陪同|300" />
 																					   <span  class="choosemhead">健康助手全程陪同</span><span class="choosemoney">&nbsp;300</span> </label>
 																					   <p>为病人提供全程陪同指引等服务</p>
 																					
 																		</li> 
 																		<li class="tuijan">
 																			
-																					 <label><input name="checkProject[]" type="checkbox" value="速取检查报告|100" />
+																					 <label><input name="tuijianProject[]" type="checkbox" value="速取检查报告|100" />
 																					   <span class="choosemhead">速取检查报告</span><span class="choosemoney">&nbsp;100</span> </label>
 																					  <p>为病人提前取影像、病理等检查报告</p>
 																					
 																		</li> 
 																		<li class="tuijan">
 																			
-																					 <label><input name="checkProject[]" type="checkbox" value="及时会诊|500" />
+																					 <label><input name="tuijianProject[]" type="checkbox" value="及时会诊|500" />
 																					   <span class="choosemhead">及时会诊</span><span class="choosemoney">&nbsp;500</span> </label>
 																					   <p>取完片子后能够及时为您安排专家会诊</p>
 																					
 																		</li>  
 																		<li class="tuijan">
 																			
-																					 <label><input name="checkProject[]" type="checkbox" value="预约住院|1200" />
+																					 <label><input name="tuijianProject[]" type="checkbox" value="预约住院|1200" />
 																					   <span class="choosemhead">预约住院</span><span class="choosemoney">&nbsp;1200</span> </label>
 																					   <p>如需住院我们帮您提前预约</p>
 																					
@@ -294,28 +291,28 @@
 																		<ul> 
 																		<li class="tuijan">
 																			
-																					 <label><input name="checkProject[]" type="checkbox" id ="taocan" value="套餐一：预约检查项目（一项）|300" />
+																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐一：预约检查项目（一项）|300" />
 																					   <span class="choosemhead">套餐一：预约检查项目（一项）</span><span class="choosemoney">&nbsp;300</span> </label>
 																					   <p>提前预约各类检查项目，注：不提供人员陪同</p>
 																					
 																		</li> 
 																		<li class="tuijan">
 																			
-																					 <label><input name="checkProject[]" type="checkbox" id ="taocan" value="套餐二：预约检查项目（两项及以上|500" />
+																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐二：预约检查项目（两项及以上|500" />
 																					   <span class="choosemhead">套餐二：预约检查项目（两项及以上）</span><span class="choosemoney">&nbsp;500</span> </label>
 																					  <p>提前预约各类检查项目，注：不提供人员陪同</p>
 																					
 																		</li> 
 																		<li class="tuijan">
 																			
-																					 <label><input name="checkProject[]" type="checkbox" id ="taocan" value="套餐三：预约+陪诊+速取检查报告|800" />
+																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐三：预约+陪诊+速取检查报告|800" />
 																					   <span class="choosemhead">套餐三：预约+陪诊+速取检查报告</span><span class="choosemoney">&nbsp;800</span> </label>
 																					   <p>提前预约全程陪同及提前取报告</p>
 																					
 																		</li>  
 																		<li class="tuijan">
 																			
-																					 <label><input name="checkProject[]" type="checkbox" id ="taocan" value="预约住院|1100" />
+																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐四：预约+陪诊+速取检查报告+及时会诊|1100" />
 																					   <span class="choosemhead">套餐四：预约+陪诊+速取检查报告+及时会诊</span><span class="choosemoney">&nbsp;1100</span> </label>
 																					   <p>提前预约全程陪同及提前取报告及时专家会诊</p>
 																					
@@ -341,6 +338,7 @@
 						<td class="td_sex_1">
 						<label>交通指引服务<input type="checkbox" name="loveServer[]"  id="rebook_ser" value="交通接站服务" /></label>
 						</td>
+						
 	                 </tr>
 	                  </table>
 	                  </div>
@@ -352,7 +350,8 @@
 	         
 			   <div>
 				   
-			   </div>	
+			   </div>
+			   <input type="hidden" name="sumPrice" id="sumPrice" value="0.00"/>	
 			     </form>	 
     </div>
     
@@ -360,10 +359,8 @@
 
 			<div class="space"></div>
 			<div class="space"></div>
-          <div class="shop_bottom" id="rebook_btm_02" >
-		             
-	            <p style="color:rgb(242, 80, 80);padding-top: 15px;text-align: right;width: 93%;">总服务费：<span id="sumPrice">0.00</span></p>
-	            
+           <div class="shop_bottom" id="rebook_btm_02" >
+	            <p style="color:rgb(242, 80, 80);padding-top: 15px;text-align: right;width: 93%;">总服务费：<span id="sumP">0.00</span></p>
 	        </div>
 	       <div class="shop_bottom" id="rebook_btm">
 		             
@@ -475,7 +472,8 @@ window.shareData = {
         			var price=this.value;
         			var arrs=price.split("|");
         			//alert(arrs[1]);return false;
-        			$('#sumPrice').text(parseInt(arrs[1]).toFixed(2));              	
+        			$('#sumPrice').val(parseInt(arrs[1]).toFixed(2));
+        			$('#sumP').text(parseInt(arrs[1]).toFixed(2));
                 }else{
                 	this.checked = false;
                 	alert("请先选择预约项目！");
@@ -494,7 +492,8 @@ window.shareData = {
 					     yuyuePrice += parseInt(sPrice[1]);
 				   }				
 			});			
-			$('#sumPrice').text(yuyuePrice.toFixed(2));
+			$('#sumPrice').val(yuyuePrice.toFixed(2));
+			$('#sumP').text(yuyuePrice.toFixed(2));
 		}
 
 	});
@@ -531,9 +530,9 @@ window.shareData = {
 	function setPrice(obj,price){
 		if(obj.checked==true){
 			 /*alert(arrs[1]);*/
-			 var sumPrice=(parseInt($("#sumPrice").text()) +parseInt(price)).toFixed(2);
-			 $("#sumPrice").text(sumPrice);
-			 //alert(sumPrice);
+			 var sumPrice=(parseInt($("#sumPrice").val()) +parseInt(price)).toFixed(2);
+			 $("#sumPrice").val(sumPrice);
+			 $('#sumP').text(sumPrice);
 		}else{
 			    //至少选择一项预约项目
 			    var isSel = false;
@@ -543,17 +542,29 @@ window.shareData = {
 			    	   }
 			    });
 			    if(isSel){
-					 var sumPrice=(parseInt($("#sumPrice").text())-parseInt(price)).toFixed(2);
-					 $("#sumPrice").text(sumPrice);	
+					 var sumPrice=(parseInt($("#sumPrice").val())-parseInt(price)).toFixed(2);
+					 $("#sumPrice").val(sumPrice);
+					 $('#sumP').text(sumPrice);
 			    }else{
 			    	  alert("您至少得选择一项预约项目！");
 			    	  obj.checked = true;
 			    }	 
 			}		
 	}
-	
 	});
 	
+</script>
+<script type="text/javascript">
+//只允许输入数字,左右移动键,删除键,回车键
+//author:larger
+function intOnly(){
+var codeNum=event.keyCode;
+if(codeNum==8||codeNum==37||codeNum==39||(codeNum>=48&&codeNum<=57)){
+  event.returnValue=codeNum;
+}else{
+  event.returnValue=false;
+}
+}
 </script>
 </body>
 </html>

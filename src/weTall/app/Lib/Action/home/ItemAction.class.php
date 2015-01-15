@@ -111,42 +111,35 @@ class itemAction extends frontendAction {
     public function rebook(){
     	header("Content-type:text/html;charset=utf-8");
     	if(IS_POST){
-    		//姓名
-    		$data['name'] = $this->_post('name','trim');
-    		//性别
-    		$data['sex'] = $this->_post('sex','intval');
-    		//电话
-    		$data['phone'] = $this->_post('rebook_phone','trim');
-    		//图片
-    		$Uninum = time();
-    		$filepath = $_SERVER['DOCUMENT_ROOT']."/Uploads/items/images/";//图片保存的路径目录
-    		if(!is_dir($filepath)){
-    			mkdir($filepath,0777, true);
+    		$advance = M('fuzhen_advance');
+    		if(false == $data= $advance->create()){
+            	    $this->error($advance->getError());
+            }
+    		if($_POST['img_name'] != ''){
+	    		//图片
+	    		$Uninum = time();
+	    		$filepath = $_SERVER['DOCUMENT_ROOT']."/Uploads/items/images/";//图片保存的路径目录
+	    		if(!is_dir($filepath)){
+	    			mkdir($filepath,0777, true);
+	    		}
+	    		$file_type = explode(".",$_POST['img_name']);
+	    		//dump($file_type);die;
+	    		$filename = $Uninum.'.'.$file_type[1]; //生成文件名
+	    		move_uploaded_file($_FILES["my_img"]["tmp_name"],$filepath.$filename);
+	    		$data['pic'] = '/Uploads/items/images/'.$filename;
     		}
-    		$file_type = explode(".",$_POST['img_name']);
-    		//dump($file_type);die;
-    		$filename = $Uninum.'.'.$file_type[1]; //生成文件名
-    		move_uploaded_file($_FILES["my_img"]["tmp_name"],$filepath.$filename);
-    		$data['pic'] = '/Uploads/items/images/'.$filename;
-    		//详细
-    		$data['info'] = $this->_post('info');
-    		//复诊时间
-    		$data['fuzhengDate'] = $this->_post('fuzhengDate');
-    		$data['comeDate'] = $this->_post('comeDate');
-    		//是否住院
-    		$data['zhuyuan'] = $this->_post('zhuyuan','intval,trim');
     		//检查项目
-    		$data['checkProject'] = implode('|',$_POST['checkProject']);
+    		$data['checkProject'] = implode('&nbsp;&nbsp;,&nbsp;&nbsp;',$_POST['checkProject']);
     		//专家
-    		$data['zuanjia'] = $this->_post('zuanjia','trim');
+    		$data['tuijianProject'] = implode('&nbsp;&nbsp;,&nbsp;&nbsp;',$_POST['tuijianProject']);
+    		$data['taocanProject'] = $this->_post('taocanProject','trim');
     		//贴心服务
-    		$data['loveServer'] = implode('|',$_POST['loveServer']);
+    		$data['loveServer'] = implode('&nbsp;&nbsp;,&nbsp;&nbsp;',$_POST['loveServer']);
     		//添加时间
     		$data['addTime'] = time();
-    		$advance = M('advance');
-    		
+    		//dump($data);die;
     		if(false !== $advance->add($data)){
-    			   $this->success("您的预约已提交成功！",U('index/index'));
+    			   $this->success("您的预约已提交成功！",U('user/index'));
     		}else{
     			   $this->error("您的预约提交失败！");
     		}

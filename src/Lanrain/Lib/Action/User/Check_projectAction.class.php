@@ -2,7 +2,7 @@
 class Check_projectAction extends UserAction{
 	public function _initialize() {
 		parent::_initialize();
-		$this->_mod = D('advance');
+		$this->_mod = D('fuzhen_advance');
 	}
 	
 	public function index(){

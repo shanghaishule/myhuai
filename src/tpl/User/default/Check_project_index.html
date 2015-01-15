@@ -21,9 +21,12 @@ function btnDespose(type){
 <th>来院时间</th>
 <th>复诊时间</th>
 <th>住院要求</th>
-<th>检查项目</th>
+<th>基础项目</th>
+<th>推荐项目</th>
+<th>套餐</th>
 <th>会诊专家</th>
 <th>贴心服务</th>
+<th>总价</th>
 <th>申请时间</th>
 <!-- -<th style=" width:100px;" class="norightborder">操作</th>- -->
 </tr>
@@ -34,14 +37,17 @@ function btnDespose(type){
 <td align="center">{lanrain:$val.name}</td>
 <td align="center"><if condition="$val.sex eq 0">男<else />女</if></td>
 <td align="center">{lanrain:$val.phone}</td>
-<td align="center"<div class="cateimg"><img src="{lanrain:$val.pic}" class="cateimg_small" /><img src="{lanrain:$val.pic}" class="cateimg_big"  /></div></td>
+<td align="center"><div class="cateimg"><img src="{lanrain:$val.pic}" class="cateimg_small" /><img src="{lanrain:$val.pic}" class="cateimg_big"  /></div></td>
 <td align="center"><b>{lanrain:$val.info}</b></td>
 <td align="center"><b>{lanrain:$val.comeDate}</b></td>
 <td align="center"><b>{lanrain:$val.fuzhengDate}</b></td>
 <td align="center"><b><if condition="$val.zhuyuan eq 0">不需要<elseif condition="$val.zhuyuan eq 1" />需要<else />还不确定</if></b></td>
 <td align="center">{lanrain:$val.checkProject}</td> 
+<td align="center">{lanrain:$val.tuijianProject}</td> 
+<td align="center">{lanrain:$val.taocanProject}</td> 
 <td align="center"><b>{lanrain:$val.zuanjia}</b></td>
 <td align="center"><b>{lanrain:$val.loveServer}</b></td>
+<td align="center"><b>{lanrain:$val.sumPrice}</b></td>
 <td align="center">{lanrain:$val.addTime|date='Y-m-d H:i:s',###}</td>
 <!-- 
 <td align="center" >
