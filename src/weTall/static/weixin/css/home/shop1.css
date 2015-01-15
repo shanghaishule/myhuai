@@ -93,7 +93,7 @@ td.exper_apart span{padding:3px;background:#006835;color:white;}
 td.exper_time{width: 28%;color:#ccc}
 td.exper_time p{margin-top: -14px;color:#262626}
 #advan p {color:#262626}
-#advan{width:80%}
+#advan{width:95%}
 .select_exper{background:white}
 .saixuan{z-index:1000;position:fixed;width:100%;left:0}
 #advan p span{color:#ccc}
@@ -748,7 +748,7 @@ padding-left: 5px;}
 
 /*shouye*/
 .major_1 .list {overflow: hidden; display:block; }
-.major_1 .list li { /*margin:2%;*/margin-bottom:1px;background:white; width:100%; float:left;/*border:1px solid #c5c5c5;*/  text-align:center; background:#fff;}
+.major_1 .list li { /*margin:2%;*/margin-bottom:5px;background:white; width:100%; float:left;/*border:1px solid #c5c5c5;*/  text-align:center; background:#fff;}
 .major_1 .list li span.show_good{display: none;}
 .major_1 .pic {margin:3px; text-align:center; width:30%;/* height:300px;*/float:left}
 .major_1 #pic_1 {margin:3px; text-align:center; width:35%;/* height:300px;*/float:left}
