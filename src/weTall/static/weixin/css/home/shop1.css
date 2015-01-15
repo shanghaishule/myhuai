@@ -74,7 +74,7 @@ input#rebook_ser{height:22px}
 .rebook_sub a{display:block;width:60px;height:45px;}
 .td_time{width:29%}
 .td_time_01{width:33%}
-td.td_exper{width:24%;border-left: 1px solid #ccc;;text-align:center;height:45px;background: white}
+td.td_exper{width:19.8%;border-left: 1px solid #ccc;;text-align:center;height:45px;background: white}
 td.td_exper p{width:%;height:30px;line-height:30px;background:white}
 td.exper_phone{height: 35px;width: 35px;
 }
@@ -85,13 +85,13 @@ td.exper_like{height: 20px;
 width: 20px;}
 td.exper_name{width:100%}
 td.exper_name p{color:#262626;font-size:16px;}
-
+#menzhentime input{width:22px;height:22px}
 span.exper_level{color:#262626;font-size:10px;}
 td.exper_money{width:22%}
 td.exper_apart{width: 38%;}
 td.exper_apart span{padding:3px;background:#006835;color:white;}
 td.exper_time{width: 28%;color:#ccc}
-td.exper_time p{margin-top: -14px;color:#262626}
+td.exper_time p{;color:#262626}
 #advan p {color:#262626}
 #advan{width:95%}
 .select_exper{background:white}
@@ -147,7 +147,7 @@ text-align: center;
 background:red;
 color: white;
 border-radius: 5px;}
-td.td_info{width:33.333%;margin-left:1px}
+td.td_info{width:24.9%;margin-left:1px}
 td.td_info a{display:block;width:99%}
 li.pic_rebook{margin-left:2%;width:60px;height:40px;text-align:center;background:white;border-radius: 5px;padding-top:1px}
 .select_checkBox{ 

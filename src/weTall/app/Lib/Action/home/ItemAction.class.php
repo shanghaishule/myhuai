@@ -161,6 +161,12 @@ class itemAction extends frontendAction {
     public function rebookitem(){
     	$this->display();
     }
+    public function rebookinvite(){
+    	$this->display();
+    }
+    public function rebooknum(){
+    	$this->display();
+    }
     public function expert(){
     	$this->searchInfo();
     	$mod = M('zhuanjia');
