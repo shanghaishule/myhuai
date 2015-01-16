@@ -126,7 +126,66 @@
 	                 
 	                </table>
 			   </div>
-			   
+			   <div class="rebook_block"> 
+	                  <p class="biaoti">套餐服务<span class="fuzhentishi">(以下数字为服务费用/元)</span></p>
+						        </tr>
+						   </table>
+	                 <div class="select_checkBox"> 
+																
+																		<script>
+																			$(function(){	
+																				$(".acontent").hide();
+																				//On Click Event
+																				$(".flip").click(function() {
+																					$(this).next('.acontent').slideDown("fast");
+																				});
+																				//上拉
+																				$(".accup").click(function() {
+																					$(this).parent('.acontent').slideUp("fast");
+																				});
+																			});
+																			</script>
+																<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_02"> 
+																		<ul> 
+																		<li class="tuijan">
+																			 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐一：标准套餐|980" />
+																					   <span class="choosemhead">套餐一：标准套餐</span><span class="choosemoney">&nbsp;980</span> </label>
+																					  <div style="background:white;width:100%">
+																					   <p  class="flip" style="">点击查看套餐详情</p>
+																					   <div class="acontent" >
+																						   <p  class="" style="">1）	A类专家门诊预约安排</p>
+																						   <p  class="" style="">2）	就诊当天全程陪同，协助办理取号、缴费，协助就诊、检查、取药等服务</p>
+																						   <p  class="" style="">3）	一个月内取药、拿报告等后续服务</p>
+																						  <p  class="accup" style="color:#006835">点击上拉</p>
+																					   </div>
+																					   </div>
+																		</li> 
+																		<li class="tuijan">
+																			
+																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐二：高端套餐|980" />
+																					   <span class="choosemhead">套餐二：高端套餐</span><span class="choosemoney">&nbsp;980</span> </label>
+																					   <div style="background:white;width:100%">
+																					   <p  class="flip" style="">点击查看套餐详情</p>
+																					   <div class="acontent" >
+																						   <p  class="" style="">1）	专家门诊预约安排</p>
+																						   <p  class="" style="">2）	诊前注意事项提示</p>
+																						   <p  class="" style="">3）	私人医学助理整理就医资料</p>
+																						   <p  class="" style="">4）	专人机场车站接送</p>
+																						   <p  class="" style="">5）	就诊当天全程陪同，协助办理取号、缴费，协助就诊、检查、取药等服务</p>
+																						   <p  class="" style="">6）	两个月内取药、拿报告等后续服务</p>
+																						   <p  class="" style="">7）	半年私人医生助理后续治疗跟踪指导</p>
+																					     <p  class="accup" style="color:#006835;">点击上拉</p>
+																					   </div>
+																					   </div>
+																					
+																		</li> 
+																		
+																		</ul> 
+																
+																</div> 
+																
+																</div>
+								</div>
 	                 
 								
 	                  <div class="rebook_block">
@@ -278,9 +337,7 @@ window.shareData = {
         			//alert(arrs[1]);return false;
         			$('#sumPrice').val(parseInt(arrs[1]).toFixed(2));
         			$('#sumP').text(parseInt(arrs[1]).toFixed(2));
-                }else{
-                	this.checked = false;
-                	alert("请先选择预约项目！");
+                }
                 }
 		}else{
 			var yuyuePrice = 0;

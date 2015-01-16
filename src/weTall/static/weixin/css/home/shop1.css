@@ -63,7 +63,7 @@ margin: 0 auto;}
 background: #006835;
 color: white;}
 #rebook_table tr td.td_sex input{background:#006835;width: 18px;}
-#rebook_table tr td.td_sex_1 {padding-top: px;}
+#rebook_table tr td.td_sex_1 {text-align: center}
 #rebook_table tr td.td_sex_1 input{width:22px; }
 input#rebook_sex{height:22px}
 input#rebook_vary{height:22px}
@@ -230,7 +230,7 @@ input[type="radio"]:checked,input[type="checkbox"]:checked {
 }
 textarea {  -webkit-appearance: none;}   
 #chartOptionsFlowTrend_01 li.tuijan input{}
-#chartOptionsFlowTrend_01 li.tuijan p{padding-left:9%;color: #828282;background:white;
+#chartOptionsFlowTrend_01 li.tuijan p{padding-left:10%;color: #828282;background:white;
 font-size: 12px;}
 .chartOptionsFlowTrend ul li input{width:22px;height:22px;background-size:100% 100%;}
 #chartOptionsFlowTrend_01 ul li input{;outline: none}
@@ -267,10 +267,12 @@ line-height: 23px;
 overflow: hidden; 
 position: relative; 
 z-index:; 
-background: #fefbf7; 
+background: white; 
 padding-top: 0px; 
 display: inline-block; 
 	width:80%;;
+	padding-left: 10%;
+color: #828282;
 }
 #rebook_btm_02{height: 45px;
 width: 100%;
