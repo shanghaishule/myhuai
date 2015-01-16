@@ -55,7 +55,6 @@ class BackAction extends BaseAction{
 	
 	protected function _list($model, $map = array(), $sort_by='', $order_by='', $field_list='*', $pagesize=10)
 	{
-		
 		//排序
 		$mod_pk = $model->getPk();
 	
@@ -84,6 +83,7 @@ class BackAction extends BaseAction{
 			$pager = new Page($count, $pagesize);
 		}
 		$select = $model->field($field_list)->where($map)->order($sort . ' ' . $order);
+		
 		$this->list_relation && $select->relation(true);
 		if ($pagesize) {
 			$select->limit($pager->firstRow.','.$pager->listRows);

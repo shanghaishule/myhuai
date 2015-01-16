@@ -87,7 +87,7 @@ class UserAction extends BaseAction{
 	}
 	
 	protected function _list($model, $map = array(), $sort_by='', $order_by='', $field_list='*', $pagesize=20)
-    {
+    {   
         //排序
         $mod_pk = $model->getPk();
       
@@ -115,6 +115,7 @@ class UserAction extends BaseAction{
             $count = $model->where($map)->count($mod_pk);
             $pager = new Page($count, $pagesize);
         }
+        
         $select = $model->field($field_list)->where($map)->order($sort . ' ' . $order);
         $this->list_relation && $select->relation(true);
         if ($pagesize) {
