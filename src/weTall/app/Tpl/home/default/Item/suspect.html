@@ -1,0 +1,570 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<include file="public:headtop" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<script charset="utf-8" src="__STATIC__/weixin/js/colorbox.js" type="text/javascript"></script>
+<link href="__STATIC__/weixin/css/home/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__STATIC__/weixin/js/home/jquery-1.9.1.js" ></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/date1.js" ></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/iscroll.js" ></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/shop1.css" media="all">
+</head>
+<body style="background:#f1f1f1;-webkit-appearance: none">
+	<div class="index_head1">
+<div id="nav">
+	<ul class="navlist1">
+		<li id="a_0">
+		   <a href="javascript:history.go(-1)"><div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div></a>
+         </li>
+        <li  id="a_1">
+    						<div style="">
+
+										<p style="font-size: 16px">疑难重症会诊 </p>
+				              </div>
+        </li>
+    </ul>
+ </div>
+</div>
+	
+	<div class="s_bottom"></div>
+	<script type="text/javascript">
+		$(function(){
+			$("div.module_special .wrap .major ul.list li:last-child").addClass("remove_bottom_line");
+		});
+		function valtext(obj){
+			var file_name = obj.value.match(/[^\\]*$/)[0];
+			 $("#img_name").val(file_name);
+		}
+		function sub(){
+			var name = $("#rebook_name").val();
+			var phone = $('#phone').val();
+			 var reg = /^0?1[358]\d{9}$/;
+
+			var pic = $('#img_name').val();
+			var info = $("#reinfo").val();
+			var fuzhengDate = $("#fuzhengTime").val();
+			var comeDate = $("#comeTime").val();
+			var checkProject = false;
+			$("input[name='checkProject[]']").each(function(){
+				   if(this.checked){
+					    checkProject = true;
+				   }
+			});
+			if(name != '' && phone != '' && fuzhengDate != '' && comeDate != '' && checkProject){
+				  if(pic != '' || info != '' ){
+						 if (!reg.test(phone)){
+						        alert('手机号码格式不正确');
+						        return false;
+						 }
+					    this.form1.submit();
+				  }else{
+					  alert("带*号必填");
+				  }
+			}else{
+				alert("带*号必填");
+			}
+		}
+	</script>
+
+<div id="content1">
+       <form method="post" id="form1" name="form1" class="rebook_form_1" action="{:U('Item/rebook')}" enctype="multipart/form-data">
+			   <div class="rebook_block">
+				    <p class="biaoti">个人信息</p>
+				    <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+	                   <td class="td_1">姓　　名<span class="red">*</span>:</td>
+	                   <td class="td_80"><input  name="name" id="rebook_name" class="text width5" placeholder="病人真实姓名" type="text"></td>
+	                 </tr>
+	                 </table>
+	                  <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                 <tr style="line-height: 33px;">
+	                   <td class="td_1">性　　别<span class="red">*</span>:</td>
+	                   <td class="td_sex">男: 
+						</td>
+						<td class="td_sex_1"> <input type="radio" name="sex" value="0" id="rebook_sex"checked="checked">
+						</td>
+						<td class="td_sex">女: 
+						</td>
+
+						<td class="td_sex_1">
+						<input type="radio" id="rebook_sex" name="sex" value="1">
+						</td>
+	                 </tr>
+	                  </table>
+	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                 <tr>
+	                   <td class="td_1">手　　机<span class="red">*</span>:</td>
+	                   <td class="td_80"><input onkeypress="intOnly()" onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}"  name="phone" maxlength="11"  id="phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
+	                 </tr>
+	                </table>
+			   </div>
+			   
+			   <div class="rebook_block">
+				   <p class="biaoti">简要病史<span class="biaoti_span">（可电话咨询）</span> <span class="red">*至少填其一</span></p>
+				   <table id="rebook_table"  border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+	                   <td class="td_1">上传图片：</td>
+	                   <td width="40px">
+			                   <div class="shark-review" style="width:100%;height:30px;border:1px;position:relative;float:left;margin-left:5%;">
+						            <img src="__STATIC__/weixin/images/home/camera.png" style="position:relative;z-index:1;marign-left:30%" width="30px" height="30px"/>
+							        <input  name="my_img" id="my_img" onchange="valtext(this)" type="file" style="position:absolute;top:0px;left:0px;z-index:2;opacity: 0;text-indent:-100px" /><br/>
+						        </div>
+				        </td>
+				        <td class="td">
+				        <input type="text" name="img_name" id="img_name" style="background:transparent;border:0px solid white;color:#757373;height:20px;font-size:14px;font-family:'宋体'" 
+							        placeholder="请上传出院小结图片" autofocus x-webkit-speech value="{$math_data.my_img}"  readonly=true/>
+							        </td>
+	                 </tr>
+	                 </table>
+	                <table id="rebook_table"  border="0" cellspacing="0" cellpadding="0" style="margin-top: 8px;">
+	                  <tr>
+	                   <td class="td_1"><p class="td_p">文字描述：</p></td>
+	                   <td><textarea name="info" class="retextarea" style="height:70px;width:100%;border:1px solid #ccc" id="reinfo" placeholder="请填写需要检查的项目……"></textarea>
+	                   </td>
+	                 </tr>
+	                 
+	                </table>
+			   </div>
+			   <div class="rebook_block">
+				   <p class="biaoti">预约信息</p>
+				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+	                   <td class="td_33">要求复诊时间<span class="red">*</span>:</td>
+	                   <td class="td_65">
+	                       <div class="book_online">
+		                       <div id="book_online">
+					                 <div class="demo">
+									   <div class="lie"><input id="fuzhengTime" style="border: 1px solid #ccc" name="fuzhengDate" class="kbtn" /></div>
+								     </div>
+					             </div>
+					           </div>
+						 <div id="datePlugin"></div>
+						</td>
+	                 </tr>
+	                 <tr>
+	                   
+	                   <td class="">计划来院时间<span class="red">*</span>:<br>
+	                   </td>
+	                   <td class=""><div class="book_online">
+		                     
+					                  
+					                  <div id="book_online">
+					                 <div class="demo">
+									<div class="lie"><input id="comeTime" style="border: 1px solid #ccc" name="comeDate" class="kbtn" /></div>
+								    </div>
+					                  
+					                  </div>
+					                  
+						 </div>
+						  <div id="datePlugin"></div>
+						 </td>
+	                
+	                
+	                  </tr>
+	                 </table>
+	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                 <tr style="line-height: 33px;">
+	                   <td class="td_33">有无住院要求<span class="red">*</span>:</td>
+	                   <td class="td_req">有: 
+						</td>
+						<td class="td_sex_1"> <input type="radio" name="zhuyuan"id="rebook_vary" value="1" checked="checked" />
+						</td>
+						<td class="td_req">无: 
+						</td>
+
+						<td class="td_sex_1">
+						<input type="radio" name="zhuyuan" value="0" id="rebook_vary" />
+						</td>
+						<td class="td_req_01 ">不确定: 
+						</td>
+
+						<td class="td_sex_1">
+						<input type="radio" name="zhuyuan" value="2" id="rebook_vary" />
+						</td>
+	                 </tr>
+	                  </table>
+	                 
+	                 
+	                  <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+			                 <tr>
+						                   <td class="td_33">拟请会诊专家:</td>
+						                   <td class="select_item">
+						                   	<input  name="zuanjia" id="rebook_exper" class="text width5" placeholder="填写专家名" type="text">
+										   </td>
+										 <td class="td_spec"><a href="{:U('Item/expert')}"><p>查看知名专家</p></a></td>
+			                 </tr>
+	                 </table>
+	                 
+	                 </div>
+	                 
+	                 <div class="rebook_block">
+	                   <p class="biaoti">预约检查项目<span class="red">*</span><span class="fuzhentishi">(以下数字为服务费用/元)</span></td>
+						                   <td class="">
+						                 </td>
+			                 </tr>
+	                 </table>
+	                 <div class="select_checkBox"> 
+															<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_00"> 
+																		<ul> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="磁共振|300"><span class="choosemhead_01">磁共振</span><span class="choosemoney">&nbsp;300</span>  </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="CT|300"><span class="choosemhead_01">CT</span><span class="choosemoney">&nbsp;300</span>  </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="PET-CT|500"><span class="choosemhead_01">PET-CT</span> <span class="choosemoney">&nbsp;500</span> </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="胃镜|300"><span class="choosemhead_01">胃镜</span> <span class="choosemoney">&nbsp;300</span> </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="肠镜|300"><span class="choosemhead_01">肠镜</span> <span class="choosemoney">&nbsp;300</span> </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="肠镜|300"><span class="choosemhead_01">喉镜</span> <span class="choosemoney">&nbsp;300</span> </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="心脏彩超|300"><span class="choosemhead_01">心脏彩超</span> <span class="choosemoney">&nbsp;300</span> </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="24h动态心电|300"><span class="choosemhead_01">24h动态心电</span> <span class="choosemoney">&nbsp;300</span> </label>
+																		</li> 
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="24h动态血压|300"><span class="choosemhead_01">24h动态血压</span><span class="choosemoney">&nbsp;300</span>  </label>
+																		</li>
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="血液|100"><span class="choosemhead_01">血液</span><span class="choosemoney">&nbsp;100</span>  </label>
+																		</li>
+																		<li class=""><label><input name="checkProject[]" type="checkbox" value="B超|100"><span class="choosemhead_01">B超</span><span class="choosemoney">&nbsp;100</span>  </label>
+																		</li> 
+																		</ul> 
+																
+															</div> 
+																
+							</div>
+	                 </div>
+	                <div class="rebook_block"> 
+	                 <p class="biaoti">推荐服务<span class="fuzhentishi">(以下数字为服务费用/元)</span></p>
+						        </tr>
+						   </table>
+	                 <div class="select_checkBox"> 
+																
+																
+																<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_01"> 
+																		<ul> 
+																		<li class="tuijan">
+																			
+																					 <label><input name="tuijianProject[]" type="checkbox" value="健康助手全程陪同|300" />
+																					   <span  class="choosemhead">健康助手全程陪同</span><span class="choosemoney">&nbsp;300</span> </label>
+																					   <p>为病人提供全程陪同指引等服务</p>
+																					
+																		</li> 
+																		<li class="tuijan">
+																			
+																					 <label><input name="tuijianProject[]" type="checkbox" value="速取检查报告|100" />
+																					   <span class="choosemhead">速取检查报告</span><span class="choosemoney">&nbsp;100</span> </label>
+																					  <p>为病人提前取影像、病理等检查报告</p>
+																					
+																		</li> 
+																		<li class="tuijan">
+																			
+																					 <label><input name="tuijianProject[]" type="checkbox" value="及时会诊|500" />
+																					   <span class="choosemhead">及时会诊</span><span class="choosemoney">&nbsp;500</span> </label>
+																					   <p>取完片子后能够及时为您安排专家会诊</p>
+																					
+																		</li>  
+																		<li class="tuijan">
+																			
+																					 <label><input name="tuijianProject[]" type="checkbox" value="预约住院|1200" />
+																					   <span class="choosemhead">预约住院</span><span class="choosemoney">&nbsp;1200</span> </label>
+																					   <p>如需住院我们帮您提前预约</p>
+																					
+																		</li> 
+																		
+																		
+																		</ul> 
+																
+																</div> 
+																
+																</div>
+								</div>
+								<div class="rebook_block"> 
+	                  <p class="biaoti">套餐服务<span class="fuzhentishi">(以下数字为服务费用/元)</span></p>
+						        </tr>
+						   </table>
+	                 <div class="select_checkBox"> 
+																
+																 
+																<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_02"> 
+																		<ul> 
+																		<li class="tuijan">
+																			
+																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐一：预约检查项目（一项）|300" />
+																					   <span class="choosemhead">套餐一：预约检查项目（一项）</span><span class="choosemoney">&nbsp;300</span> </label>
+																					   <p>提前预约各类检查项目，注：不提供人员陪同</p>
+																					
+																		</li> 
+																		<li class="tuijan">
+																			
+																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐二：预约检查项目（两项及以上|500" />
+																					   <span class="choosemhead">套餐二：预约检查项目（两项及以上）</span><span class="choosemoney">&nbsp;500</span> </label>
+																					  <p>提前预约各类检查项目，注：不提供人员陪同</p>
+																					
+																		</li> 
+																		<li class="tuijan">
+																			
+																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐三：预约+陪诊+速取检查报告|800" />
+																					   <span class="choosemhead">套餐三：预约+陪诊+速取检查报告</span><span class="choosemoney">&nbsp;800</span> </label>
+																					   <p>提前预约全程陪同及提前取报告</p>
+																					
+																		</li>  
+																		<li class="tuijan">
+																			
+																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐四：预约+陪诊+速取检查报告+及时会诊|1100" />
+																					   <span class="choosemhead">套餐四：预约+陪诊+速取检查报告+及时会诊</span><span class="choosemoney">&nbsp;1100</span> </label>
+																					   <p>提前预约全程陪同及提前取报告及时专家会诊</p>
+																					
+																		</li> 
+																		
+																		
+																		</ul> 
+																
+																</div> 
+																
+																</div>
+								</div>
+	                  <div class="rebook_block">
+	                  <p class="biaoti" style="padding-bottom:5px">贴心服务:<span class="fuzhentishi">(免费)</span></p>
+	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                 <tr>
+						<td class="td_sex_1">  <label>预订往返票务<input type="checkbox"  id="rebook_ser" name="loveServer[]" value="预订往返票务 " /></label>
+						</td> 
+
+						<td class="td_sex_1">
+						<label>安排周边住宿<input type="checkbox" name="loveServer[]" id="rebook_ser" value="安排周边住宿" /></label>
+
+						<td class="td_sex_1">
+						<label>交通指引服务<input type="checkbox" name="loveServer[]"  id="rebook_ser" value="交通接站服务" /></label>
+						</td>
+						
+	                 </tr>
+	                  </table>
+	                  </div>
+	                
+					         <!--   <div style="text-align:center;margin-top:10px;color:red">
+					          <p>(出院病人我们会在复诊前六至七天以短信方式提醒您)</p>
+					          </div>-->
+
+	         
+			   <div>
+				   
+			   </div>
+			   <input type="hidden" name="sumPrice" id="sumPrice" value="0.00"/>	
+			     </form>	 
+    </div>
+    
+            
+
+			<div class="space"></div>
+			<div class="space"></div>
+           <div class="shop_bottom" id="rebook_btm_02" >
+	            <p style="color:rgb(242, 80, 80);padding-top: 15px;text-align: right;width: 93%;">总服务费：<span id="sumP">0.00</span></p>
+	        </div>
+	       <div class="shop_bottom" id="rebook_btm">
+		             
+	            <ul class="rebook_btn" style="padding:5px 0">
+			            <li class="pic_rebook"><div style=" margin: 0 auto;width:50px;height:34px;background:url(__STATIC__/weixin/images/home/littlelogo.png);background-size:100% 100%";></div></li>
+			            <li class="phone_rebook"><a <if condition="$item['status'] neq 0">href="tel:4006555899"<else />href="javascirpt:void(0)" id="grey"</if> class="reserveP"></a></li>
+			            <li class="intime_submit"><a href="javascript:sub()" id="rebook_sub"></a></li>                
+			                	
+	            </ul>
+	        </div>
+          
+            <style type="text/css">
+            #rebook_btm ul li.phone_rebook a#rebook_sub{background: url(/weTall/static/weixin/images/home/intimesub.png) no-repeat 0 0;
+			background-size:100% 100%;width: 125px;
+			height: 36px;}
+			</style>
+<script type="text/javascript">
+window.shareData = {
+		"moduleName" : "Index",
+		"moduleID" : '0',
+		"imgUrl" : "http://m.hajk.com.cn/weTall/static/weixin/images/home/mlogo.png",
+		"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=indexnew",
+		"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=indexnew",
+		"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=indexnew",
+		"tTitle" : "欢迎关注沪爱健康",
+		"tContent" : "专业让健康更简单 沪爱健康   "
+	};
+	</script>
+	<script>
+		document.addEventListener('WeixinJSBridgeReady',
+				function onBridgeReady() {
+					WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+						shareHandle('friend');
+						WeixinJSBridge.invoke('sendAppMessage', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('send_msg', res.err_msg);
+						})
+					});
+
+					WeixinJSBridge.on('menu:share:timeline', function(argv) {
+						shareHandle('frineds');
+						WeixinJSBridge.invoke('shareTimeline', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('timeline', res.err_msg);
+						});
+					});
+
+					WeixinJSBridge.on('menu:share:weibo', function(argv) {
+						shareHandle('weibo');
+						WeixinJSBridge.invoke('shareWeibo', {
+							"content" : window.shareData.tContent,
+							"url" : window.shareData.sendFriendLink,
+						}, function(res) {
+							_report('weibo', res.err_msg);
+						});
+					});
+				}, false)
+
+		function shareHandle(to) {
+			var submitData = {
+				module : window.shareData.moduleName,
+				moduleid : window.shareData.moduleID,
+				token : 'ipwhoy1414718223',
+				wecha_id : 'ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+				url : window.shareData.sendFriendLink,
+				to : to
+			};
+			$.post('/index.php?g=Wap&m=Share&a=shareData&token=ipwhoy1414718223&wecha_id=ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+							submitData, function(data) {
+							}, 'json')
+		}
+	</script>
+<script src="__STATIC__/LazyLoad/js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>	
+<script>
+	$(function() {
+		$("img").lazyload({
+			effect : "fadeIn"
+		});
+		$('#fuzhengTime').date({theme:"datetime"});
+		$('#comeTime').date({theme:"datetime"});
+		
+	$("#chartOptionsFlowTrend_02 input").click(function(){
+		//setFalse();
+		if(this.checked==true){
+			  var flagT = false;
+				$("#chartOptionsFlowTrend_00 input").each(function(index,docEle){
+					   if(this.checked == true){
+						   flagT = true;
+					   }
+				});		
+                //是否选择预约项目
+                if(flagT){
+        			setFalse();this.checked= true;
+        			$("#chartOptionsFlowTrend_01 input").each(function(){
+        				this.checked=false;
+        			});
+        			var price=this.value;
+        			var arrs=price.split("|");
+        			//alert(arrs[1]);return false;
+        			$('#sumPrice').val(parseInt(arrs[1]).toFixed(2));
+        			$('#sumP').text(parseInt(arrs[1]).toFixed(2));
+                }else{
+                	this.checked = false;
+                	alert("请先选择预约项目！");
+                }
+		}else{
+			var yuyuePrice = 0;
+			$("#chartOptionsFlowTrend_00 input").each(function(index,docEle){
+				   if(this.checked == true){
+					     var sPrice = this.value.split("|");
+					     yuyuePrice += parseInt(sPrice[1]);
+				   }
+			});
+			$("#chartOptionsFlowTrend_01 input").each(function(){
+				   if(this.checked == true){
+					     var sPrice = this.value.split("|");
+					     yuyuePrice += parseInt(sPrice[1]);
+				   }				
+			});			
+			$('#sumPrice').val(yuyuePrice.toFixed(2));
+			$('#sumP').text(yuyuePrice.toFixed(2));
+		}
+
+	});
+	
+	$("#chartOptionsFlowTrend_00 input").click(function(){
+		 var price=this.value;
+		 var arrs=price.split("|");
+		 setPrice(this,arrs[1]);
+	});
+	
+	$("#chartOptionsFlowTrend_01 input").click(function(){
+		var flag = true;
+		$("#chartOptionsFlowTrend_02 input").each(function(){
+			if(this.checked == true){
+				flag = false;
+			}
+		});
+		if(flag){
+			 var price=this.value;
+			 var arrs=price.split("|");
+			 setPrice(this,arrs[1]);
+		}else{
+			return false;
+		}
+
+	});
+	
+	function setFalse(){
+		$("#chartOptionsFlowTrend_02 input:checked").each(function(){
+			  this.checked = false;
+		});		
+	}
+	//设置总价格
+	function setPrice(obj,price){
+		if(obj.checked==true){
+			 /*alert(arrs[1]);*/
+			 var sumPrice=(parseInt($("#sumPrice").val()) +parseInt(price)).toFixed(2);
+			 $("#sumPrice").val(sumPrice);
+			 $('#sumP').text(sumPrice);
+		}else{
+			    //至少选择一项预约项目
+			    var isSel = false;
+			    $("#chartOptionsFlowTrend_00 input").each(function(){
+			    	   if(this.checked == true){
+			    		    isSel = true;
+			    	   }
+			    });
+			    if(isSel){
+					 var sumPrice=(parseInt($("#sumPrice").val())-parseInt(price)).toFixed(2);
+					 $("#sumPrice").val(sumPrice);
+					 $('#sumP').text(sumPrice);
+			    }else{
+			    	  alert("您至少得选择一项预约项目！");
+			    	  obj.checked = true;
+			    }	 
+			}		
+	}
+	});
+	
+</script>
+<script type="text/javascript">
+//只允许输入数字,左右移动键,删除键,回车键
+//author:larger
+function intOnly(){
+var codeNum=event.keyCode;
+if(codeNum==8||codeNum==37||codeNum==39||(codeNum>=48&&codeNum<=57)){
+  event.returnValue=codeNum;
+}else{
+  event.returnValue=false;
+}
+}
+</script>
+</body>
+</html>
