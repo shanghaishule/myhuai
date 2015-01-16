@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
 <include file="public:headtop" />
@@ -20,7 +20,7 @@
         <li  id="a_1">
     						<div style="">
 
-										<p style="font-size: 16px">体检项目预约</p>
+										<p style="font-size: 16px">PET-CT预约 </p>
 				              </div>
         </li>
     </ul>
@@ -39,21 +39,28 @@
 		function sub(){
 			var name = $("#rebook_name").val();
 			var phone = $('#phone').val();
-		    var reg = /^0?1[358]\d{9}$/;
+			 var reg = /^0?1[358]\d{9}$/;
 
+			var pic = $('#img_name').val();
+			var info = $("#reinfo").val();
 			var fuzhengDate = $("#fuzhengTime").val();
+			var comeDate = $("#comeTime").val();
 			var checkProject = false;
-			$("input[name='checkP[]']").each(function(){
+			$("input[name='checkProject[]']").each(function(){
 				   if(this.checked){
 					    checkProject = true;
 				   }
 			});
-			if(name != '' && phone != '' && fuzhengDate != ''  && checkProject){
+			if(name != '' && phone != '' && fuzhengDate != '' && comeDate != '' && checkProject){
+				  if(pic != '' || info != '' ){
 						 if (!reg.test(phone)){
 						        alert('手机号码格式不正确');
 						        return false;
 						 }
 					    this.form1.submit();
+				  }else{
+					  alert("带*号必填");
+				  }
 			}else{
 				alert("带*号必填");
 			}
@@ -61,18 +68,17 @@
 	</script>
 
 <div id="content1">
-	
-       <form method="post" id="form1" name="form1" class="rebook_form_1" action="">
+       <form method="post" id="form1" name="form1" class="rebook_form_1" action="{:U('Item/rebook')}" enctype="multipart/form-data">
 			   <div class="rebook_block">
-				   <p class="biaoti">个人信息</p>
-				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+				    <p class="biaoti">个人信息</p>
+				    <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
 	                   <td class="td_1">姓　　名<span class="red">*</span>:</td>
-	                   <td class="td_80"><input  name="name" id="rebook_name" class="text width5" placeholder="体检人员真实姓名" type="text"></td>
+	                   <td class="td_80"><input  name="name" id="rebook_name" class="text width5" placeholder="病人真实姓名" type="text"></td>
 	                 </tr>
 	                 </table>
 	                  <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
-	                 <tr>
+	                 <tr style="line-height: 33px;">
 	                   <td class="td_1">性　　别<span class="red">*</span>:</td>
 	                   <td class="td_sex">男: 
 						</td>
@@ -89,92 +95,91 @@
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
 	                   <td class="td_1">手　　机<span class="red">*</span>:</td>
-	                   <td class="td_80"><input  onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" name="rebook_phone" id="phone" maxlength="11" class="text width5" placeholder="本人或家属手机" type="tel"></td>
+	                   <td class="td_80"><input onkeypress="intOnly()" onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}"  name="phone" maxlength="11"  id="phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
 	                 </tr>
 	                </table>
 			   </div>
 			   
-			   <div class="rebook_block">
-				   <p class="biaoti">体检项目选择<span class="biaoti_span">（可电话咨询）</span> </p>
-				     
-	                 <div class="select_checkBox"> 
-																
-																<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_01"> 
-																		<ul> 
-																		<li class=""><input name="checkP[]" type="checkbox" value="磁共振"><span>磁共振</span> 
-																		</li> 
-																		<li class=""><input name="checkP[]" type="checkbox" value="CT"><span>CT</span> 
-																		</li> 
-																		<li class=""><input name="checkP[]" type="checkbox" value="PET-CT"><span>PET-CT</span> 
-																		</li> 
-																		<li class=""><input name="checkP[]" type="checkbox" value="胃镜"><span>胃镜</span> 
-																		</li> 
-																		<li class=""><input name="checkP[]" type="checkbox" value="肠镜"><span>肠镜</span> 
-																		</li> 
-																		<li class=""><input name="checkP[]" type="checkbox" value="心脏彩超"><span>心脏彩超</span> 
-																		</li> 
-																		<li class=""><input name="checkP[]" type="checkbox" value="24h动态心电"><span>24h动态心电</span> 
-																		</li> 
-																		<li class=""><input name="checkP[]" type="checkbox" value="24h动态血压"><span>24h动态血压</span> 
-																		</li> 
-																		</ul> 
-																
-																</div> 
-																</div>
-	                <table id="rebook_table"  border="0" cellspacing="0" cellpadding="0" style="margin-top: 8px;">
-	                  <tr>
-	                   <td class="td_1"><p class="td_p">文字描述：</p></td>
-	                   <td><textarea name="detail" class="retextarea" style="height:70px;width:100%;border:1px solid #ccc" id="reinfo" placeholder="请填写需要检查的项目……"></textarea>
-	                   </td>
-	                 </tr>
-	                 
-	                </table>
-			   </div>
+			   
 			   <div class="rebook_block">
 				   <p class="biaoti">预约信息</p>
 				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
-	                   <td class="td_33">要求体检时间<span class="red">*</span>:</td>
+	                   <td class="td_33">计划检查时间<span class="red">*</span>:</td>
 	                   <td class="td_65">
 	                       <div class="book_online">
 		                       <div id="book_online">
 					                 <div class="demo">
-									   <div class="lie"><input id="fuzhengTime" style="border: 1px solid #ccc" name="advanceDate" class="kbtn" /></div>
+									   <div class="lie"><input id="fuzhengTime" style="border: 1px solid #ccc" name="fuzhengDate" class="kbtn" /></div>
 								     </div>
 					             </div>
 					           </div>
 						 <div id="datePlugin"></div>
 						</td>
 	                 </tr>
+	                 <tr>
+	                  </tr>
 	                 </table>
-	                 </div>
+	               <div class="rebook_block">
+	                  <p class="biaoti" style="padding-bottom:5px">贴心服务:<span class="fuzhentishi">(免费)</span></p>
+	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                 <tr>
+						<td class="td_sex_1">  <label>预订往返票务<input type="checkbox"  id="rebook_ser" name="loveServer[]" value="预订往返票务 " /></label>
+						</td> 
+
+						<td class="td_sex_1">
+						<label>安排周边住宿<input type="checkbox" name="loveServer[]" id="rebook_ser" value="安排周边住宿" /></label>
+
+						<td class="td_sex_1">
+						<label>交通指引服务<input type="checkbox" name="loveServer[]"  id="rebook_ser" value="交通接站服务" /></label>
+						</td>
+						
+	                 </tr>
+	                  </table>
+	                  </div>
+	                
+					         <!--   <div style="text-align:center;margin-top:10px;color:red">
+					          <p>(出院病人我们会在复诊前六至七天以短信方式提醒您)</p>
+					          </div>-->
+
+	         
 			   <div>
-			   </div>	
+				   
+			   </div>
+			   <input type="hidden" name="sumPrice" id="sumPrice" value="0.00"/>	
 			     </form>	 
     </div>
     
-		  <div class="space"></div>
+            
+
+			<div class="space"></div>
+			<div class="space"></div>
+           <div class="shop_bottom" id="rebook_btm_02" >
+	            <p style="color:rgb(242, 80, 80);padding-top: 15px;text-align: right;width: 93%;">总服务费：<span id="sumP">0.00</span></p>
+	        </div>
 	       <div class="shop_bottom" id="rebook_btm">
-	            <ul class="rebook_btn" style="padding:5px 0;z-index:99999">
+		             
+	            <ul class="rebook_btn" style="padding:5px 0">
 			            <li class="pic_rebook"><div style=" margin: 0 auto;width:50px;height:34px;background:url(__STATIC__/weixin/images/home/littlelogo.png);background-size:100% 100%";></div></li>
 			            <li class="phone_rebook"><a <if condition="$item['status'] neq 0">href="tel:4006555899"<else />href="javascirpt:void(0)" id="grey"</if> class="reserveP"></a></li>
 			            <li class="intime_submit"><a href="javascript:sub()" id="rebook_sub"></a></li>                
+			                	
 	            </ul>
 	        </div>
           
-            <style type="text/css">
+         <style type="text/css">
             #rebook_btm ul li.phone_rebook a#rebook_sub{background: url(/weTall/static/weixin/images/home/intimesub.png) no-repeat 0 0;
 			background-size:100% 100%;width: 125px;
 			height: 36px;}
-			</style>
+		</style>
 <script type="text/javascript">
 window.shareData = {
 		"moduleName" : "Index",
 		"moduleID" : '0',
 		"imgUrl" : "http://m.hajk.com.cn/weTall/static/weixin/images/home/mlogo.png",
-		"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
-		"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
-		"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+		"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=indexnew",
+		"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=indexnew",
+		"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=indexnew",
 		"tTitle" : "欢迎关注沪爱健康",
 		"tContent" : "专业让健康更简单 沪爱健康   "
 	};
@@ -242,8 +247,119 @@ window.shareData = {
 			effect : "fadeIn"
 		});
 		$('#fuzhengTime').date({theme:"datetime"});
-		$('#comeTime').date({theme:"datetime"});	
+		$('#comeTime').date({theme:"datetime"});
+		
+	$("#chartOptionsFlowTrend_02 input").click(function(){
+		//setFalse();
+		if(this.checked==true){
+			  var flagT = false;
+				$("#chartOptionsFlowTrend_00 input").each(function(index,docEle){
+					   if(this.checked == true){
+						   flagT = true;
+					   }
+				});		
+                //是否选择预约项目
+                if(flagT){
+        			setFalse();this.checked= true;
+        			$("#chartOptionsFlowTrend_01 input").each(function(){
+        				this.checked=false;
+        			});
+        			var price=this.value;
+        			var arrs=price.split("|");
+        			//alert(arrs[1]);return false;
+        			$('#sumPrice').val(parseInt(arrs[1]).toFixed(2));
+        			$('#sumP').text(parseInt(arrs[1]).toFixed(2));
+                }else{
+                	this.checked = false;
+                	alert("请先选择预约项目！");
+                }
+		}else{
+			var yuyuePrice = 0;
+			$("#chartOptionsFlowTrend_00 input").each(function(index,docEle){
+				   if(this.checked == true){
+					     var sPrice = this.value.split("|");
+					     yuyuePrice += parseInt(sPrice[1]);
+				   }
+			});
+			$("#chartOptionsFlowTrend_01 input").each(function(){
+				   if(this.checked == true){
+					     var sPrice = this.value.split("|");
+					     yuyuePrice += parseInt(sPrice[1]);
+				   }				
+			});			
+			$('#sumPrice').val(yuyuePrice.toFixed(2));
+			$('#sumP').text(yuyuePrice.toFixed(2));
+		}
+
 	});
+	
+	$("#chartOptionsFlowTrend_00 input").click(function(){
+		 var price=this.value;
+		 var arrs=price.split("|");
+		 setPrice(this,arrs[1]);
+	});
+	
+	$("#chartOptionsFlowTrend_01 input").click(function(){
+		var flag = true;
+		$("#chartOptionsFlowTrend_02 input").each(function(){
+			if(this.checked == true){
+				flag = false;
+			}
+		});
+		if(flag){
+			 var price=this.value;
+			 var arrs=price.split("|");
+			 setPrice(this,arrs[1]);
+		}else{
+			return false;
+		}
+
+	});
+	
+	function setFalse(){
+		$("#chartOptionsFlowTrend_02 input:checked").each(function(){
+			  this.checked = false;
+		});		
+	}
+	//设置总价格
+	function setPrice(obj,price){
+		if(obj.checked==true){
+			 /*alert(arrs[1]);*/
+			 var sumPrice=(parseInt($("#sumPrice").val()) +parseInt(price)).toFixed(2);
+			 $("#sumPrice").val(sumPrice);
+			 $('#sumP').text(sumPrice);
+		}else{
+			    //至少选择一项预约项目
+			    var isSel = false;
+			    $("#chartOptionsFlowTrend_00 input").each(function(){
+			    	   if(this.checked == true){
+			    		    isSel = true;
+			    	   }
+			    });
+			    if(isSel){
+					 var sumPrice=(parseInt($("#sumPrice").val())-parseInt(price)).toFixed(2);
+					 $("#sumPrice").val(sumPrice);
+					 $('#sumP').text(sumPrice);
+			    }else{
+			    	  alert("您至少得选择一项预约项目！");
+			    	  obj.checked = true;
+			    }	 
+			}		
+	}
+	});
+	
+</script>
+<script type="text/javascript">
+//只允许输入数字,左右移动键,删除键,回车键
+//author:larger
+function intOnly(){
+var codeNum=event.keyCode;
+if(codeNum==8||codeNum==37||codeNum==39||(codeNum>=48&&codeNum<=57)){
+  event.returnValue=codeNum;
+}else{
+  event.returnValue=false;
+}
+}
 </script>
 </body>
 </html>
