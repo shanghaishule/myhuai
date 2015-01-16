@@ -47,7 +47,7 @@
 	                        资历
 	                       <img src="__STATIC__/weixin/images/home/xiala.png" width="8%"/>
 	                       </td>
-	                       <td class="td_exper" id="td_exper_04" data-id="4">
+	                       <td class="td_exper" id="td_exper_05" data-id="5">
 	                        专家
 	                       <img src="__STATIC__/weixin/images/home/xiala.png" width="8%"/>
 	                       </td>
@@ -170,7 +170,7 @@
 		                       <img data-original="" width="100%" height="100%" src="__STATIC__/weixin/images/home/expercomment.png" />
 	                       </td>
 	                       <td class="exper_comnum" id="">
-	                           <p> <a href="{:U('Item/zhuanjiaComments',array('zId'=>$val['id']))}">（20）</a></p>
+	                           <p> <a href="{:U('Item/zhuanjiaComments',array('zId'=>$val['id']))}">{$val.commentsNum}</a></p>
 	                        </td>
 	                        <td class="exper_like" id="">
 	                            <img data-original="" width="100%" height="100%" src="__STATIC__/weixin/images/home/experlike.png" />
@@ -186,10 +186,10 @@
 	                  <table style="height:45px;border-top:1px solid #f1f1f1" >
 	                     <tr>
 	                       <td class="exper_phone" id="">
-				                          <a href="tel:4006555899" style="display:block;width:100%;height:35px"> <img data-original="" width="35" height="35" src="__STATIC__/weixin/images/home/guahao.png" /><span style="color:red;font-size:12px">&nbsp;预约挂号</span></a>
+				                          <a href="{:U('Item/rebooknum',array('zid'=>$val['id']))}" style="display:block;width:100%;height:35px"> <img data-original="" width="35" height="35" src="__STATIC__/weixin/images/home/guahao.png" /><span style="color:red;font-size:12px">&nbsp;预约挂号</span></a>
 				           </td>
 	                       <td class="exper_phone" id="">
-				                          <a href="tel:4006555899" style="display:block;width:100%;height:35px"> <img data-original="" width="35" height="35" src="__STATIC__/weixin/images/home/huizhen.png" /><span style="color:red;font-size:12px">&nbsp;邀他会诊</span></a>
+				                          <a href="{:U('Item/rebookinvite',array('zid'=>$val['id']))}" style="display:block;width:100%;height:35px"> <img data-original="" width="35" height="35" src="__STATIC__/weixin/images/home/huizhen.png" /><span style="color:red;font-size:12px">&nbsp;邀他会诊</span></a>
 				           </td>
 	                       <td class="exper_phone" id="">
 				                          <a href="tel:4006555899" style="display:block;width:100%;height:35px"> <img data-original="" width="35" height="35" src="__STATIC__/weixin/images/home/experphone.png" /><span style="color:red;font-size:12px">&nbsp;电话咨询</span></a>

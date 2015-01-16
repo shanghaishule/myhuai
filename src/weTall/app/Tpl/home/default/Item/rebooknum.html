@@ -73,14 +73,14 @@
 	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0" style="width:95%;margin-top: 3px;">
 		                      <tr>
 					                   <td class="exper_name" id="">
-					                      <p>张谦<span class="exper_level">主任医师</span></p>
+					                      <p>{$info['name']}<span class="exper_level">{$info['zhicheng']}</span></p>
 				                       </td>
 				             </tr>
 	                    </table>
 	                    <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
 		                      <tr>
 					                   <td class="exper_apart" id="">
-					                      <p><span>长海医院骨科</span></p>
+					                      <p><span>{$info['hos']}{$info['keshi']}</span></p>
 				                       </td>
 				                       <!--  <td class="exper_money" id="">
 				                           <p>会诊费：{$val.cost}元 </p>
@@ -96,18 +96,18 @@
 		                      <p>  门诊时间：</p>
 	                       </td>
 	                       <td class="exper_timedetail" id="">
-	                           <p> 礼拜一</p>
-	                           <p> 礼拜二</p>
-	                           <if condition="$val.menzhenDate3 neq ''"><p> {$val.menzhenDate3}</p></if>
-	                           <if condition="$val.menzhenDate4 neq ''"><p> {$val.menzhenDate4}</p></if>
-	                           <if condition="$val.menzhenDate5 neq ''"><p> {$val.menzhenDate5}</p></if>
+	                           <if condition="$info['menzhenDate1'] neq ''"><p>{$info['menzhenDate1']}</p></if>
+	                           <if condition="$info['menzhenDate2'] neq ''"><p>{$info['menzhenDate2']}</p></if>
+	                           <if condition="$info['menzhenDate3'] neq ''"><p>{$info['menzhenDate3']}</p></if>
+	                           <if condition="$info['menzhenDate4'] neq ''"><p>{$info['menzhenDate4']}</p></if>
+	                           <if condition="$info['menzhenDate5'] neq ''"><p>{$info['menzhenDate5']}</p></if>
 	                       </td>
 	                       
 	                  </tr>
 	                 </table>
 	                 
 	                 <div id="advan">
-	                 	<p> 擅长： <span>xxxxxx</span></p>	
+	                 	<p> 擅长： <span>{$info['shanchang']}</span></p>	
 	                 	
 	                 </div>	
 	                 
@@ -178,34 +178,25 @@
 	                  <tr>
 	                   <td class="td_33">门诊时间<span class="red">*</span>:</td>
 	                   <td class="td_65" id="menzhentime">
-	                   <label><p><input name="checkProject[]" type="checkbox" value="礼拜一"><span class="choosemhead_01">礼拜一</span> </label></p>
-	                   <label><p><input name="checkProject[]" type="checkbox" value="礼拜一"><span class="choosemhead_01">礼拜一</span> </label></p>
+	                  <if condition="$info['menzhenDate1'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate1']}"><span class="choosemhead_01">{$info['menzhenDate1']}</span></p> </label></if>
+	                  <if condition="$info['menzhenDate2'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate2']}"><span class="choosemhead_01">{$info['menzhenDate2']}</span></p> </label></if>
+	                  <if condition="$info['menzhenDate3'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate3']}"><span class="choosemhead_01">{$info['menzhenDate3']}</span></p> </label></if>
+	                  <if condition="$info['menzhenDate4'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate4']}"><span class="choosemhead_01">{$info['menzhenDate4']}</span></p> </label></if>
+	                  <if condition="$info['menzhenDate5'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate5']}"><span class="choosemhead_01">{$info['menzhenDate5']}</span></p> </label></if> 
 	                   </td>
 	                 </tr>
-	                 
-	                 
 	                 </table>
-	                 
-	                 
-	                 
-	                  
 	                 </div>
-	                 
-	                 
-					         <!--   <div style="text-align:center;margin-top:10px;color:red">
-					          <p>(出院病人我们会在复诊前六至七天以短信方式提醒您)</p>
-					          </div>-->
+			         <!--   <div style="text-align:center;margin-top:10px;color:red">
+			          <p>(出院病人我们会在复诊前六至七天以短信方式提醒您)</p>
+			          </div>-->
 
-	         
 			   <div>
 				   
 			   </div>	
 			     </form>	 
     </div>
-    
-            
 
-			
 			<div class="space"></div>
           
 	       <div class="shop_bottom" id="rebook_btm">
