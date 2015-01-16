@@ -20,7 +20,7 @@
         <li  id="a_1">
     						<div style="">
 
-										<p style="font-size: 16px">陪诊  </p>
+										<p style="font-size: 16px">检查报告速取 </p>
 				              </div>
         </li>
     </ul>
@@ -77,22 +77,8 @@
 	                   <td class="td_80"><input  name="name" id="rebook_name" class="text width5" placeholder="病人真实姓名" type="text"></td>
 	                 </tr>
 	                 </table>
-	                  <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
-	                 <tr style="line-height: 33px;">
-	                   <td class="td_1">性　　别<span class="red">*</span>:</td>
-	                   <td class="td_sex">男: 
-						</td>
-						<td class="td_sex_1"> <input type="radio" name="sex" value="0" id="rebook_sex"checked="checked">
-						</td>
-						<td class="td_sex">女: 
-						</td>
-
-						<td class="td_sex_1">
-						<input type="radio" id="rebook_sex" name="sex" value="1">
-						</td>
-	                 </tr>
-	                  </table>
-	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+	                  
+	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px">
 	                 <tr>
 	                   <td class="td_1">手　　机<span class="red">*</span>:</td>
 	                   <td class="td_80"><input onkeypress="intOnly()" onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}"  name="phone" maxlength="11"  id="phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
@@ -100,119 +86,52 @@
 	                </table>
 			   </div>
 			   
-			   <div class="rebook_block">
-				   <p class="biaoti">简要病史<span class="biaoti_span">（可电话咨询）</span> <span class="red">*至少填其一</span></p>
-				   <table id="rebook_table"  border="0" cellspacing="0" cellpadding="0">
+			   
+			  <div class="rebook_block">
+				    <p class="biaoti"></p>
+				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
-	                   <td class="td_1">上传图片：</td>
-	                   <td width="40px">
-			                   <div class="shark-review" style="width:100%;height:30px;border:1px;position:relative;float:left;margin-left:5%;">
-						            <img src="__STATIC__/weixin/images/home/camera.png" style="position:relative;z-index:1;marign-left:30%" width="30px" height="30px"/>
-							        <input  name="my_img" id="my_img" onchange="valtext(this)" type="file" style="position:absolute;top:0px;left:0px;z-index:2;opacity: 0;text-indent:-100px" /><br/>
-						        </div>
-				        </td>
-				        <td class="td">
-				        <input type="text" name="img_name" id="img_name" style="background:transparent;border:0px solid white;color:#757373;height:20px;font-size:14px;font-family:'宋体'" 
-							        placeholder="请上传出院小结图片" autofocus x-webkit-speech value="{$math_data.my_img}"  readonly=true/>
-							        </td>
-	                 </tr>
-	                 </table>
-	                <table id="rebook_table"  border="0" cellspacing="0" cellpadding="0" style="margin-top: 8px;">
-	                  <tr>
-	                   <td class="td_1"><p class="td_p">文字描述：</p></td>
-	                   <td><textarea name="info" class="retextarea" style="height:70px;width:100%;border:1px solid #ccc" id="reinfo" placeholder="请填写需要检查的项目……"></textarea>
+	                   <td class="td_1"><p class="td_p" style="margin-top:0">预约号码：</p></td>
+	                   <td><input name="detail" class="retextarea" style="height:30px;width:100%;border:1px solid #ccc" id="reinfo" placeholder="取报告的小票查询号码……"></textarea>
 	                   </td>
 	                 </tr>
 	                 
-	                </table>
-			   </div>
-			   <div class="rebook_block"> 
-	                  <p class="biaoti">套餐服务<span class="fuzhentishi">(以下数字为服务费用/元)</span></p>
+	                 </table>
+	                </div>
+	                 <div class="rebook_block"> 
+	                  <p class="biaoti">项目选择<span class="fuzhentishi">(以下数字为服务费用/元)</span></p>
 						        </tr>
 						   </table>
 	                 <div class="select_checkBox"> 
 																
-																		<script>
-																			$(function(){	
-																				$(".acontent").hide();
-																				//On Click Event
-																				$(".flip").click(function() {
-																					$(this).next('.acontent').slideDown("fast");
-																				});
-																				//上拉
-																				$(".accup").click(function() {
-																					$(this).parent('.acontent').slideUp("fast");
-																				});
-																			});
-																			</script>
+																 
 																<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_02"> 
 																		<ul> 
 																		<li class="tuijan">
-																			 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐一：标准套餐|980" />
-																					   <span class="choosemhead">套餐一：标准套餐</span><span class="choosemoney">&nbsp;980</span> </label>
-																					  <div style="background:white;width:100%">
-																					   <p  class="flip" style="">点击查看套餐详情</p>
-																					   <div class="acontent" >
-																						   <p  class="" style="">1）	A类专家门诊预约安排</p>
-																						   <p  class="" style="">2）	就诊当天全程陪同，协助办理取号、缴费，协助就诊、检查、取药等服务</p>
-																						   <p  class="" style="">3）	一个月内取药、拿报告等后续服务</p>
-																						  <p  class="accup" style="color:#006835">点击上拉</p>
-																					   </div>
-																					   </div>
+																			
+																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="一：速取本人拿|150" />
+																					   <span class="choosemhead">一：速取本人拿</span><span class="choosemoney">&nbsp;150</span> </label>
+																					   <p>交费后享受更优惠价格</p>
+																					
 																		</li> 
 																		<li class="tuijan">
 																			
-																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐二：高端套餐|980" />
-																					   <span class="choosemhead">套餐二：高端套餐</span><span class="choosemoney">&nbsp;980</span> </label>
-																					   <div style="background:white;width:100%">
-																					   <p  class="flip" style="">点击查看套餐详情</p>
-																					   <div class="acontent" >
-																						   <p  class="" style="">1）	专家门诊预约安排</p>
-																						   <p  class="" style="">2）	诊前注意事项提示</p>
-																						   <p  class="" style="">3）	私人医学助理整理就医资料</p>
-																						   <p  class="" style="">4）	专人机场车站接送</p>
-																						   <p  class="" style="">5）	就诊当天全程陪同，协助办理取号、缴费，协助就诊、检查、取药等服务</p>
-																						   <p  class="" style="">6）	两个月内取药、拿报告等后续服务</p>
-																						   <p  class="" style="">7）	半年私人医生助理后续治疗跟踪指导</p>
-																					     <p  class="accup" style="color:#006835;">点击上拉</p>
-																					   </div>
-																					   </div>
+																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="二：速取并邮寄给本人|200" />
+																					   <span class="choosemhead">二：速取并邮寄给本人</span><span class="choosemoney">&nbsp;200</span> </label>
+																					  <p>交费后享受更优惠价格</p>
 																					
 																		</li> 
-																		
 																		</ul> 
 																
 																</div> 
 																
 																</div>
 								</div>
-	                 
-								
-	                  <div class="rebook_block">
-	                  <p class="biaoti" style="padding-bottom:5px">贴心服务:<span class="fuzhentishi">(免费)</span></p>
-	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
-	                 <tr>
-						<td class="td_sex_1">  <label>预订往返票务<input type="checkbox"  id="rebook_ser" name="loveServer[]" value="预订往返票务 " /></label>
-						</td> 
-
-						<td class="td_sex_1">
-						<label>安排周边住宿<input type="checkbox" name="loveServer[]" id="rebook_ser" value="安排周边住宿" /></label>
-
-						<td class="td_sex_1">
-						<label>交通指引服务<input type="checkbox" name="loveServer[]"  id="rebook_ser" value="交通接站服务" /></label>
-						</td>
-						
-	                 </tr>
-	                  </table>
-	                  </div>
+	               
 	                
-					         <!--   <div style="text-align:center;margin-top:10px;color:red">
-					          <p>(出院病人我们会在复诊前六至七天以短信方式提醒您)</p>
-					          </div>-->
-
-	         
+					                
 			   <div>
-				   
+				 <img src="__STATIC__/weixin/images/home/getintime.jpg"  width="100%"/> 
 			   </div>
 			   <input type="hidden" name="sumPrice" id="sumPrice" value="0.00"/>	
 			     </form>	 
@@ -235,11 +154,11 @@
 	            </ul>
 	        </div>
           
-            <style type="text/css">
+         <style type="text/css">
             #rebook_btm ul li.phone_rebook a#rebook_sub{background: url(/weTall/static/weixin/images/home/intimesub.png) no-repeat 0 0;
 			background-size:100% 100%;width: 125px;
 			height: 36px;}
-			</style>
+		</style>
 <script type="text/javascript">
 window.shareData = {
 		"moduleName" : "Index",
@@ -337,7 +256,9 @@ window.shareData = {
         			//alert(arrs[1]);return false;
         			$('#sumPrice').val(parseInt(arrs[1]).toFixed(2));
         			$('#sumP').text(parseInt(arrs[1]).toFixed(2));
-                }
+                }else{
+                	this.checked = false;
+                	alert("请先选择预约项目！");
                 }
 		}else{
 			var yuyuePrice = 0;

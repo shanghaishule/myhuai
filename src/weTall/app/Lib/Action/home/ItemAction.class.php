@@ -175,6 +175,9 @@ class itemAction extends frontendAction {
     public function accompanyinfo(){
     	$this->display();
     }
+    public function quickget(){
+    	$this->display();
+    }
     public function accompany(){
     	$this->display();
     }
