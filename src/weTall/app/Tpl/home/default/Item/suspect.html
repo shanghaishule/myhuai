@@ -305,78 +305,21 @@ window.shareData = {
 		$('#fuzhengTime').date({theme:"datetime"});
 		$('#comeTime').date({theme:"datetime"});
 		
-	$("#chartOptionsFlowTrend_02 input").click(function(){
-		//setFalse();
-		if(this.checked==true){
-			  var flagT = false;
-				$("#chartOptionsFlowTrend_00 input").each(function(index,docEle){
-					   if(this.checked == true){
-						   flagT = true;
-					   }
-				});		
-                //是否选择预约项目
-                if(flagT){
-        			setFalse();this.checked= true;
-        			$("#chartOptionsFlowTrend_01 input").each(function(){
-        				this.checked=false;
-        			});
-        			var price=this.value;
-        			var arrs=price.split("|");
-        			//alert(arrs[1]);return false;
-        			$('#sumPrice').val(parseInt(arrs[1]).toFixed(2));
-        			$('#sumP').text(parseInt(arrs[1]).toFixed(2));
-                }else{
-                	this.checked = false;
-                	alert("请先选择预约项目！");
-                }
-		}else{
-			var yuyuePrice = 0;
-			$("#chartOptionsFlowTrend_00 input").each(function(index,docEle){
-				   if(this.checked == true){
-					     var sPrice = this.value.split("|");
-					     yuyuePrice += parseInt(sPrice[1]);
-				   }
-			});
-			$("#chartOptionsFlowTrend_01 input").each(function(){
-				   if(this.checked == true){
-					     var sPrice = this.value.split("|");
-					     yuyuePrice += parseInt(sPrice[1]);
-				   }				
-			});			
-			$('#sumPrice').val(yuyuePrice.toFixed(2));
-			$('#sumP').text(yuyuePrice.toFixed(2));
-		}
-
-	});
 	
-	$("#chartOptionsFlowTrend_00 input").click(function(){
+	
+	$("#chartOptionsFlowTrend_02 input").click(function(){
 		 var price=this.value;
 		 var arrs=price.split("|");
 		 setPrice(this,arrs[1]);
 	});
 	
-	$("#chartOptionsFlowTrend_01 input").click(function(){
-		var flag = true;
-		$("#chartOptionsFlowTrend_02 input").each(function(){
-			if(this.checked == true){
-				flag = false;
-			}
-		});
-		if(flag){
-			 var price=this.value;
-			 var arrs=price.split("|");
-			 setPrice(this,arrs[1]);
-		}else{
-			return false;
-		}
+	
+		
 
 	});
 	
-	function setFalse(){
-		$("#chartOptionsFlowTrend_02 input:checked").each(function(){
-			  this.checked = false;
-		});		
-	}
+	
+
 	//设置总价格
 	function setPrice(obj,price){
 		if(obj.checked==true){
@@ -384,22 +327,9 @@ window.shareData = {
 			 var sumPrice=(parseInt($("#sumPrice").val()) +parseInt(price)).toFixed(2);
 			 $("#sumPrice").val(sumPrice);
 			 $('#sumP').text(sumPrice);
-		}else{
-			    //至少选择一项预约项目
-			    var isSel = false;
-			    $("#chartOptionsFlowTrend_00 input").each(function(){
-			    	   if(this.checked == true){
-			    		    isSel = true;
-			    	   }
+		}
 			    });
-			    if(isSel){
-					 var sumPrice=(parseInt($("#sumPrice").val())-parseInt(price)).toFixed(2);
-					 $("#sumPrice").val(sumPrice);
-					 $('#sumP').text(sumPrice);
-			    }else{
-			    	  alert("您至少得选择一项预约项目！");
-			    	  obj.checked = true;
-			    }	 
+			     
 			}		
 	}
 	});
