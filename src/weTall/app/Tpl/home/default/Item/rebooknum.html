@@ -73,14 +73,14 @@
 	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0" style="width:95%;margin-top: 3px;">
 		                      <tr>
 					                   <td class="exper_name" id="">
-					                      <p>张谦<span class="exper_level">主任医师</span></p>
+					                      <p>{$info['name']}<span class="exper_level">{$info['zhicheng']}</span></p>
 				                       </td>
 				             </tr>
 	                    </table>
 	                    <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
 		                      <tr>
 					                   <td class="exper_apart" id="">
-					                      <p><span>长海医院骨科</span></p>
+					                      <p><span>{$info['hos']}{$info['keshi']}</span></p>
 				                       </td>
 				                       <!--  <td class="exper_money" id="">
 				                           <p>会诊费：{$val.cost}元 </p>
@@ -89,25 +89,24 @@
 				             </tr>
 	                    </table>
 	                     
-						
 	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
 		                   <td class="exper_time" id="">
 		                      <p>  门诊时间：</p>
 	                       </td>
 	                       <td class="exper_timedetail" id="">
-	                           <p> 礼拜一</p>
-	                           <p> 礼拜二</p>
-	                           <if condition="$val.menzhenDate3 neq ''"><p> {$val.menzhenDate3}</p></if>
-	                           <if condition="$val.menzhenDate4 neq ''"><p> {$val.menzhenDate4}</p></if>
-	                           <if condition="$val.menzhenDate5 neq ''"><p> {$val.menzhenDate5}</p></if>
+	                           <if condition="$info['menzhenDate1'] neq ''"><p>{$info['menzhenDate1']}</p></if>
+	                           <if condition="$info['menzhenDate2'] neq ''"><p>{$info['menzhenDate2']}</p></if>
+	                           <if condition="$info['menzhenDate3'] neq ''"><p>{$info['menzhenDate3']}</p></if>
+	                           <if condition="$info['menzhenDate4'] neq ''"><p>{$info['menzhenDate4']}</p></if>
+	                           <if condition="$info['menzhenDate5'] neq ''"><p>{$info['menzhenDate5']}</p></if>
 	                       </td>
 	                       
 	                  </tr>
 	                 </table>
 	                 
 	                 <div id="advan">
-	                 	<p> 擅长： <span>xxxxxx</span></p>	
+	                 	<p> 擅长： <span>{$info['shanchang']}</span></p>	
 	                 	
 	                 </div>	
 	                 
@@ -178,76 +177,33 @@
 	                  <tr>
 	                   <td class="td_33">门诊时间<span class="red">*</span>:</td>
 	                   <td class="td_65" id="menzhentime">
-	                   <label><p><input name="checkProject[]" type="checkbox" value="礼拜一"><span class="choosemhead_01">礼拜一</span> </label></p>
-	                   <label><p><input name="checkProject[]" type="checkbox" value="礼拜一"><span class="choosemhead_01">礼拜一</span> </label></p>
+	                  <if condition="$info['menzhenDate1'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate1']}"><span class="choosemhead_01">{$info['menzhenDate1']}</span></p> </label></if>
+	                  <if condition="$info['menzhenDate2'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate2']}"><span class="choosemhead_01">{$info['menzhenDate2']}</span></p> </label></if>
+	                  <if condition="$info['menzhenDate3'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate3']}"><span class="choosemhead_01">{$info['menzhenDate3']}</span></p> </label></if>
+	                  <if condition="$info['menzhenDate4'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate4']}"><span class="choosemhead_01">{$info['menzhenDate4']}</span></p> </label></if>
+	                  <if condition="$info['menzhenDate5'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate5']}"><span class="choosemhead_01">{$info['menzhenDate5']}</span></p> </label></if> 
 	                   </td>
 	                 </tr>
+<<<<<<< HEAD
 	           </table>
 	                 
 	                 
 	                 
 	                  
+=======
+	                 </table>
+>>>>>>> branch 'master' of https://github.com/shanghaishule/myhuai.git
 	                 </div>
-	                 
-	                 
-					         <!--   <div style="text-align:center;margin-top:10px;color:red">
-					          <p>(出院病人我们会在复诊前六至七天以短信方式提醒您)</p>
-					          </div>-->
+			         <!--   <div style="text-align:center;margin-top:10px;color:red">
+			          <p>(出院病人我们会在复诊前六至七天以短信方式提醒您)</p>
+			          </div>-->
 
-	         
 			   <div>
 				   
 			   </div>	
 			     </form>	 
     </div>
-    
-            <div class="rebook_block"> 
-	                  <p class="biaoti">套餐服务<span class="fuzhentishi">(以下数字为服务费用/元)</span></p>
-						        </tr>
-						   </table>
-	                 <div class="select_checkBox"> 
-																
-																 
-																<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_02"> 
-																		<ul> 
-																		<li class="tuijan">
-																			
-																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐一：预约检查项目（一项）|300" />
-																					   <span class="choosemhead">套餐一：预约检查项目（一项）</span><span class="choosemoney">&nbsp;300</span> </label>
-																					   <p>提前预约各类检查项目，注：不提供人员陪同</p>
-																					
-																		</li> 
-																		<li class="tuijan">
-																			
-																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐二：预约检查项目（两项及以上|500" />
-																					   <span class="choosemhead">套餐二：预约检查项目（两项及以上）</span><span class="choosemoney">&nbsp;500</span> </label>
-																					  <p>提前预约各类检查项目，注：不提供人员陪同</p>
-																					
-																		</li> 
-																		<li class="tuijan">
-																			
-																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐三：预约+陪诊+速取检查报告|800" />
-																					   <span class="choosemhead">套餐三：预约+陪诊+速取检查报告</span><span class="choosemoney">&nbsp;800</span> </label>
-																					   <p>提前预约全程陪同及提前取报告</p>
-																					
-																		</li>  
-																		<li class="tuijan">
-																			
-																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐四：预约+陪诊+速取检查报告+及时会诊|1100" />
-																					   <span class="choosemhead">套餐四：预约+陪诊+速取检查报告+及时会诊</span><span class="choosemoney">&nbsp;1100</span> </label>
-																					   <p>提前预约全程陪同及提前取报告及时专家会诊</p>
-																					
-																		</li> 
-																		
-																		
-																		</ul> 
-																
-																</div> 
-																
-																</div>
-								</div>
 
-			
 			<div class="space"></div>
           
 	       <div class="shop_bottom" id="rebook_btm">

@@ -158,6 +158,15 @@ class itemAction extends frontendAction {
     	$this->display();
     }
     public function rebooknum(){
+    	$zid = $this->_get('zid','trim,intval');
+    	$zInfo = M('zhuanjia')->where(array('id'=>$zid))->find();
+    	$hos = M('order_address')->field("id,name")->where(array('id'=>$zInfo['address_id']))->find();
+        $keshi = M('keshi')->field("id,name")->where(array('id'=>$zInfo['keshi_id']))->find();
+    	$zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$zInfo['zhicheng_id']))->find();
+    	$zInfo['hos']=$hos['name'];
+    	$zInfo['keshi']=$keshi['name'];
+    	$zInfo['zhicheng']=$zhicheng['name'];
+    	$this->assign('info',$zInfo);
     	$this->display();
     }
     public function exambookinfo(){
@@ -185,14 +194,8 @@ class itemAction extends frontendAction {
     	$this->searchInfo();
     	$mod = M('zhuanjia');
     	$list = $mod->select();
-    	foreach ($list as $key => $val){
-			   $hos = M('order_address')->field("id,name")->where(array('id'=>$val['address_id']))->find();
-			   $keshi = M('keshi')->field("id,name")->where(array('id'=>$val['keshi_id']))->find();
-			   $zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$val['zhicheng_id']))->find();
-			   $list[$key]['hospital'] = $hos['name'];
-			   $list[$key]['keshi'] = $keshi['name'];
-			   $list[$key]['title'] = $zhicheng['name'];
-    	}
+    	$list = $this->getList($list);
+    	
     	$this->assign('list',$list);
     	$this->display();
     
@@ -221,18 +224,25 @@ class itemAction extends frontendAction {
     	  $this->searchInfo();
     	  $mod = M('zhuanjia');
     	  $list = $mod->where($where)->select();
-    	  foreach ($list as $key => $val){
-    	  	$hos = M('order_address')->field("id,name")->where(array('id'=>$val['address_id']))->find();
-    	  	$keshi = M('keshi')->field("id,name")->where(array('id'=>$val['keshi_id']))->find();
-    	  	$zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$val['zhicheng_id']))->find();
-    	  	$list[$key]['hospital'] = $hos['name'];
-    	  	$list[$key]['keshi'] = $keshi['name'];
-    	  	$list[$key]['title'] = $zhicheng['name'];
-    	  }
+          $list = $this->getList($list);
     	  
     	  $this->assign('list',$list);
     	  
     	  $this->display("expert");
+    }
+
+    public function getList($list = array()){
+    	foreach ($list as $key => $val){
+    		$hos = M('order_address')->field("id,name")->where(array('id'=>$val['address_id']))->find();
+    		$keshi = M('keshi')->field("id,name")->where(array('id'=>$val['keshi_id']))->find();
+    		$zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$val['zhicheng_id']))->find();
+    		$comments = M('zhuanjia_comments')->where(array('zhuanjia_id'=>$val['id']))->count();
+    		$list[$key]['hospital'] = $hos['name'];
+    		$list[$key]['keshi'] = $keshi['name'];
+    		$list[$key]['title'] = $zhicheng['name'];
+    		$list[$key]['commentsNum'] = $comments;
+    	}
+    	return $list;   	
     }
     
     public function searchlist(){
@@ -242,17 +252,12 @@ class itemAction extends frontendAction {
         	exit;
         }
         $where['name'] = array("like","%".$keywords."%");
+        $where['shanchang'] = array('like',"%".$keywords."%");
+        $where['_logic'] = 'OR';
         $this->searchInfo();
         $mod = M('zhuanjia');
         $list = $mod->where($where)->select();
-        foreach ($list as $key => $val){
-        	$hos = M('order_address')->field("id,name")->where(array('id'=>$val['address_id']))->find();
-        	$keshi = M('keshi')->field("id,name")->where(array('id'=>$val['keshi_id']))->find();
-        	$zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$val['zhicheng_id']))->find();
-        	$list[$key]['hospital'] = $hos['name'];
-        	$list[$key]['keshi'] = $keshi['name'];
-        	$list[$key]['title'] = $zhicheng['name'];
-        }
+        $list = $this->getList($list);
         
         $this->assign('list',$list);
         $this->display("expert");
