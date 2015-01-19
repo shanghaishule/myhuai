@@ -41,26 +41,14 @@
 			var phone = $('#phone').val();
 			 var reg = /^0?1[358]\d{9}$/;
 
-			var pic = $('#img_name').val();
-			var info = $("#reinfo").val();
 			var fuzhengDate = $("#fuzhengTime").val();
-			var comeDate = $("#comeTime").val();
-			var checkProject = false;
-			$("input[name='checkProject[]']").each(function(){
-				   if(this.checked){
-					    checkProject = true;
-				   }
-			});
-			if(name != '' && phone != '' && fuzhengDate != '' && comeDate != '' && checkProject){
-				  if(pic != '' || info != '' ){
+
+			if(name != '' && phone != '' && fuzhengDate != ''){
 						 if (!reg.test(phone)){
 						        alert('手机号码格式不正确');
 						        return false;
 						 }
 					    this.form1.submit();
-				  }else{
-					  alert("带*号必填");
-				  }
 			}else{
 				alert("带*号必填");
 			}
@@ -68,7 +56,7 @@
 	</script>
 
 <div id="content1">
-       <form method="post" id="form1" name="form1" class="rebook_form_1" action="{:U('Item/rebook')}" enctype="multipart/form-data">
+       <form method="post" id="form1" name="form1" class="rebook_form_1" enctype="multipart/form-data">
 			   <div class="rebook_block">
 				    <p class="biaoti">个人信息</p>
 				    <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
@@ -100,7 +88,6 @@
 	                </table>
 			   </div>
 			   
-			   
 			   <div class="rebook_block">
 				   <p class="biaoti">预约信息</p>
 				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
@@ -110,7 +97,7 @@
 	                       <div class="book_online">
 		                       <div id="book_online">
 					                 <div class="demo">
-									   <div class="lie"><input id="fuzhengTime" style="border: 1px solid #ccc" name="fuzhengDate" class="kbtn" /></div>
+									   <div class="lie"><input id="fuzhengTime" style="border: 1px solid #ccc" name="checkDate" class="kbtn" /></div>
 								     </div>
 					             </div>
 					           </div>
@@ -123,11 +110,6 @@
 	                </div>
 	                 <div class="rebook_block"> 
 	                  <p class="biaoti">付款方式<span class="fuzhentishi">(以下数字为服务费用/元)</span></p>
-						        </tr>
-						   </table>
-						   
-						    
-	                
 	                 <div class="select_checkBox"> 
 																
 																 
@@ -135,17 +117,15 @@
 																		<ul> 
 																		<li class="tuijan">
 																			
-																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="一：医院付款|7000" />
+																					 <label><input name="payType" type="radio" checked id ="taocan" value="一：医院付款|7000" />
 																					   <span class="choosemhead">一：医院付款</span><span class="choosemoney">&nbsp;7000</span> </label>
 																					   <p>交费后享受更优惠价格</p>
-																					
 																		</li> 
 																		<li class="tuijan">
 																			
-																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="二：沪爱付款|7000" />
+																					 <label><input name="payType" type="radio" id ="taocan" value="二：沪爱付款|7000" />
 																					   <span class="choosemhead">二：沪爱付款</span><span class="choosemoney">&nbsp;7000</span> </label>
 																					  <p>交费后享受更优惠价格</p>
-																					
 																		</li> 
 																		</ul> 
 																
@@ -174,16 +154,11 @@
 					         <!--   <div style="text-align:center;margin-top:10px;color:red">
 					          <p>(出院病人我们会在复诊前六至七天以短信方式提醒您)</p>
 					          </div>-->
-
-	         
 			   <div>
 				   
 			   </div>
-			   <input type="hidden" name="sumPrice" id="sumPrice" value="0.00"/>	
 			     </form>	 
     </div>
-    
-            
 
 			<div class="space"></div>
 			<div class="space"></div>
@@ -281,104 +256,6 @@ window.shareData = {
 		});
 		$('#fuzhengTime').date({theme:"datetime"});
 		$('#comeTime').date({theme:"datetime"});
-		
-	$("#chartOptionsFlowTrend_02 input").click(function(){
-		//setFalse();
-		if(this.checked==true){
-			  var flagT = false;
-				$("#chartOptionsFlowTrend_00 input").each(function(index,docEle){
-					   if(this.checked == true){
-						   flagT = true;
-					   }
-				});		
-                //是否选择预约项目
-                if(flagT){
-        			setFalse();this.checked= true;
-        			$("#chartOptionsFlowTrend_01 input").each(function(){
-        				this.checked=false;
-        			});
-        			var price=this.value;
-        			var arrs=price.split("|");
-        			//alert(arrs[1]);return false;
-        			$('#sumPrice').val(parseInt(arrs[1]).toFixed(2));
-        			$('#sumP').text(parseInt(arrs[1]).toFixed(2));
-                }else{
-                	this.checked = false;
-                	alert("请先选择预约项目！");
-                }
-		}else{
-			var yuyuePrice = 0;
-			$("#chartOptionsFlowTrend_00 input").each(function(index,docEle){
-				   if(this.checked == true){
-					     var sPrice = this.value.split("|");
-					     yuyuePrice += parseInt(sPrice[1]);
-				   }
-			});
-			$("#chartOptionsFlowTrend_01 input").each(function(){
-				   if(this.checked == true){
-					     var sPrice = this.value.split("|");
-					     yuyuePrice += parseInt(sPrice[1]);
-				   }				
-			});			
-			$('#sumPrice').val(yuyuePrice.toFixed(2));
-			$('#sumP').text(yuyuePrice.toFixed(2));
-		}
-
-	});
-	
-	$("#chartOptionsFlowTrend_00 input").click(function(){
-		 var price=this.value;
-		 var arrs=price.split("|");
-		 setPrice(this,arrs[1]);
-	});
-	
-	$("#chartOptionsFlowTrend_01 input").click(function(){
-		var flag = true;
-		$("#chartOptionsFlowTrend_02 input").each(function(){
-			if(this.checked == true){
-				flag = false;
-			}
-		});
-		if(flag){
-			 var price=this.value;
-			 var arrs=price.split("|");
-			 setPrice(this,arrs[1]);
-		}else{
-			return false;
-		}
-
-	});
-	
-	function setFalse(){
-		$("#chartOptionsFlowTrend_02 input:checked").each(function(){
-			  this.checked = false;
-		});		
-	}
-	//设置总价格
-	function setPrice(obj,price){
-		if(obj.checked==true){
-			 /*alert(arrs[1]);*/
-			 var sumPrice=(parseInt($("#sumPrice").val()) +parseInt(price)).toFixed(2);
-			 $("#sumPrice").val(sumPrice);
-			 $('#sumP').text(sumPrice);
-		}else{
-			    //至少选择一项预约项目
-			    var isSel = false;
-			    $("#chartOptionsFlowTrend_00 input").each(function(){
-			    	   if(this.checked == true){
-			    		    isSel = true;
-			    	   }
-			    });
-			    if(isSel){
-					 var sumPrice=(parseInt($("#sumPrice").val())-parseInt(price)).toFixed(2);
-					 $("#sumPrice").val(sumPrice);
-					 $('#sumP').text(sumPrice);
-			    }else{
-			    	  alert("您至少得选择一项预约项目！");
-			    	  obj.checked = true;
-			    }	 
-			}		
-	}
 	});
 	
 </script>
