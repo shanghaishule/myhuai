@@ -43,24 +43,13 @@
 
 			var pic = $('#img_name').val();
 			var info = $("#reinfo").val();
-			var fuzhengDate = $("#fuzhengTime").val();
-			var comeDate = $("#comeTime").val();
-			var checkProject = false;
-			$("input[name='checkProject[]']").each(function(){
-				   if(this.checked){
-					    checkProject = true;
-				   }
-			});
-			if(name != '' && phone != '' && fuzhengDate != '' && comeDate != '' && checkProject){
-				  if(pic != '' || info != '' ){
-						 if (!reg.test(phone)){
-						        alert('手机号码格式不正确');
-						        return false;
-						 }
-					    this.form1.submit();
-				  }else{
-					  alert("带*号必填");
-				  }
+			var num = $("#reinfo").val();
+			if(name != '' && phone != ''  && num != ''){
+					 if (!reg.test(phone)){
+					        alert('手机号码格式不正确');
+					        return false;
+					 }
+					 this.form1.submit();
 			}else{
 				alert("带*号必填");
 			}
@@ -68,7 +57,7 @@
 	</script>
 
 <div id="content1">
-       <form method="post" id="form1" name="form1" class="rebook_form_1" action="{:U('Item/rebook')}" enctype="multipart/form-data">
+       <form method="post" id="form1" name="form1" class="rebook_form_1" enctype="multipart/form-data">
 			   <div class="rebook_block">
 				    <p class="biaoti">个人信息</p>
 				    <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
@@ -81,7 +70,7 @@
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px">
 	                 <tr>
 	                   <td class="td_1">手　　机<span class="red">*</span>:</td>
-	                   <td class="td_80"><input onkeypress="intOnly()" onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}"  name="phone" maxlength="11"  id="phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
+	                   <td class="td_80"><input onkeypress="intOnly()" onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}"  name="phone" maxlength="11"  id="phone" class="text width5" placeholder="病人或家属手机" type="tel" /></td>
 	                 </tr>
 	                </table>
 			   </div>
@@ -92,7 +81,7 @@
 				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
 	                   <td class="td_1"><p class="td_p" style="margin-top:0">预约号码：</p></td>
-	                   <td><input name="detail" class="retextarea" style="height:30px;width:100%;border:1px solid #ccc" id="reinfo" placeholder="取报告的小票查询号码……"></textarea>
+	                   <td><input name="advanceNum" class="retextarea" type="text" style="height:30px;width:100%;border:1px solid #ccc" id="reinfo" placeholder="取报告的小票查询号码……" />
 	                   </td>
 	                 </tr>
 	                 
@@ -100,8 +89,6 @@
 	                </div>
 	                 <div class="rebook_block"> 
 	                  <p class="biaoti">项目选择<span class="fuzhentishi">(以下数字为服务费用/元)</span></p>
-						        </tr>
-						   </table>
 	                 <div class="select_checkBox"> 
 																
 																 
@@ -109,14 +96,14 @@
 																		<ul> 
 																		<li class="tuijan">
 																			
-																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="一：速取本人拿|150" />
+																					 <label><input name="project" type="radio" checked  id="taocan" value="一：速取本人拿|150" />
 																					   <span class="choosemhead">一：速取本人拿</span><span class="choosemoney">&nbsp;150</span> </label>
 																					   <p>交费后享受更优惠价格</p>
 																					
 																		</li> 
 																		<li class="tuijan">
 																			
-																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="二：速取并邮寄给本人|200" />
+																					 <label><input name="project" type="radio" id="taocan" value="二：速取并邮寄给本人|200" />
 																					   <span class="choosemhead">二：速取并邮寄给本人</span><span class="choosemoney">&nbsp;200</span> </label>
 																					  <p>交费后享受更优惠价格</p>
 																					
@@ -127,13 +114,10 @@
 																
 																</div>
 								</div>
-	               
-	                
 					                
 			   <div>
 				 <img src="__STATIC__/weixin/images/home/getintime.jpg"  width="100%"/> 
 			   </div>
-			   <input type="hidden" name="sumPrice" id="sumPrice" value="0.00"/>	
 			     </form>	 
     </div>
     
@@ -234,105 +218,6 @@ window.shareData = {
 			effect : "fadeIn"
 		});
 		$('#fuzhengTime').date({theme:"datetime"});
-		$('#comeTime').date({theme:"datetime"});
-		
-	$("#chartOptionsFlowTrend_02 input").click(function(){
-		//setFalse();
-		if(this.checked==true){
-			  var flagT = false;
-				$("#chartOptionsFlowTrend_00 input").each(function(index,docEle){
-					   if(this.checked == true){
-						   flagT = true;
-					   }
-				});		
-                //是否选择预约项目
-                if(flagT){
-        			setFalse();this.checked= true;
-        			$("#chartOptionsFlowTrend_01 input").each(function(){
-        				this.checked=false;
-        			});
-        			var price=this.value;
-        			var arrs=price.split("|");
-        			//alert(arrs[1]);return false;
-        			$('#sumPrice').val(parseInt(arrs[1]).toFixed(2));
-        			$('#sumP').text(parseInt(arrs[1]).toFixed(2));
-                }else{
-                	this.checked = false;
-                	alert("请先选择预约项目！");
-                }
-		}else{
-			var yuyuePrice = 0;
-			$("#chartOptionsFlowTrend_00 input").each(function(index,docEle){
-				   if(this.checked == true){
-					     var sPrice = this.value.split("|");
-					     yuyuePrice += parseInt(sPrice[1]);
-				   }
-			});
-			$("#chartOptionsFlowTrend_01 input").each(function(){
-				   if(this.checked == true){
-					     var sPrice = this.value.split("|");
-					     yuyuePrice += parseInt(sPrice[1]);
-				   }				
-			});			
-			$('#sumPrice').val(yuyuePrice.toFixed(2));
-			$('#sumP').text(yuyuePrice.toFixed(2));
-		}
-
-	});
-	
-	$("#chartOptionsFlowTrend_00 input").click(function(){
-		 var price=this.value;
-		 var arrs=price.split("|");
-		 setPrice(this,arrs[1]);
-	});
-	
-	$("#chartOptionsFlowTrend_01 input").click(function(){
-		var flag = true;
-		$("#chartOptionsFlowTrend_02 input").each(function(){
-			if(this.checked == true){
-				flag = false;
-			}
-		});
-		if(flag){
-			 var price=this.value;
-			 var arrs=price.split("|");
-			 setPrice(this,arrs[1]);
-		}else{
-			return false;
-		}
-
-	});
-	
-	function setFalse(){
-		$("#chartOptionsFlowTrend_02 input:checked").each(function(){
-			  this.checked = false;
-		});		
-	}
-	//设置总价格
-	function setPrice(obj,price){
-		if(obj.checked==true){
-			 /*alert(arrs[1]);*/
-			 var sumPrice=(parseInt($("#sumPrice").val()) +parseInt(price)).toFixed(2);
-			 $("#sumPrice").val(sumPrice);
-			 $('#sumP').text(sumPrice);
-		}else{
-			    //至少选择一项预约项目
-			    var isSel = false;
-			    $("#chartOptionsFlowTrend_00 input").each(function(){
-			    	   if(this.checked == true){
-			    		    isSel = true;
-			    	   }
-			    });
-			    if(isSel){
-					 var sumPrice=(parseInt($("#sumPrice").val())-parseInt(price)).toFixed(2);
-					 $("#sumPrice").val(sumPrice);
-					 $('#sumP').text(sumPrice);
-			    }else{
-			    	  alert("您至少得选择一项预约项目！");
-			    	  obj.checked = true;
-			    }	 
-			}		
-	}
 	});
 	
 </script>

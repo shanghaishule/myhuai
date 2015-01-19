@@ -44,14 +44,7 @@
 			var pic = $('#img_name').val();
 			var info = $("#reinfo").val();
 			var fuzhengDate = $("#fuzhengTime").val();
-			var comeDate = $("#comeTime").val();
-			var checkProject = false;
-			$("input[name='checkProject[]']").each(function(){
-				   if(this.checked){
-					    checkProject = true;
-				   }
-			});
-			if(name != '' && phone != '' && fuzhengDate != '' && comeDate != '' && checkProject){
+			if(name != '' && phone != '' && fuzhengDate != ''){
 				  if(pic != '' || info != '' ){
 						 if (!reg.test(phone)){
 						        alert('手机号码格式不正确');
@@ -68,7 +61,7 @@
 	</script>
 
 <div id="content1">
-       <form method="post" id="form1" name="form1" class="rebook_form_1" action="{:U('Item/rebook')}" enctype="multipart/form-data">
+       <form method="post" id="form1" name="form1" class="rebook_form_1" enctype="multipart/form-data">
 			   <div class="rebook_block">
 				    <p class="biaoti">个人信息</p>
 				    <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
@@ -128,8 +121,7 @@
 			   </div>
 			   <div class="rebook_block"> 
 	                  <p class="biaoti">套餐服务<span class="fuzhentishi">(以下数字为服务费用/元)</span></p>
-						        </tr>
-						   </table>
+
 	                 <div class="select_checkBox"> 
 																
 																		<script>
@@ -148,7 +140,7 @@
 																<div class="chartOptionsFlowTrend" id="chartOptionsFlowTrend_02"> 
 																		<ul> 
 																		<li class="tuijan">
-																			 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐一：标准套餐|980" />
+																			 <label><input name="serverPro" type="radio" checked  id ="taocan" value="套餐一：标准套餐|980" />
 																					   <span class="choosemhead">套餐一：标准套餐</span><span class="choosemoney">&nbsp;980</span> </label>
 																					  <div style="background:white;width:100%">
 																					   <p  class="flip" style="">点击查看套餐详情</p>
@@ -162,7 +154,7 @@
 																		</li> 
 																		<li class="tuijan">
 																			
-																					 <label><input name="taocanProject" type="checkbox" id ="taocan" value="套餐二：高端套餐|980" />
+																					 <label><input name="serverPro" type="radio" id ="taocan" value="套餐二：高端套餐|980" />
 																					   <span class="choosemhead">套餐二：高端套餐</span><span class="choosemoney">&nbsp;980</span> </label>
 																					   <div style="background:white;width:100%">
 																					   <p  class="flip" style="">点击查看套餐详情</p>
@@ -214,7 +206,6 @@
 			   <div>
 				   
 			   </div>
-			   <input type="hidden" name="sumPrice" id="sumPrice" value="0.00"/>	
 			     </form>	 
     </div>
     
@@ -316,102 +307,6 @@ window.shareData = {
 		});
 		$('#fuzhengTime').date({theme:"datetime"});
 		$('#comeTime').date({theme:"datetime"});
-		
-	$("#chartOptionsFlowTrend_02 input").click(function(){
-		//setFalse();
-		if(this.checked==true){
-			  var flagT = false;
-				$("#chartOptionsFlowTrend_00 input").each(function(index,docEle){
-					   if(this.checked == true){
-						   flagT = true;
-					   }
-				});		
-                //是否选择预约项目
-                if(flagT){
-        			setFalse();this.checked= true;
-        			$("#chartOptionsFlowTrend_01 input").each(function(){
-        				this.checked=false;
-        			});
-        			var price=this.value;
-        			var arrs=price.split("|");
-        			//alert(arrs[1]);return false;
-        			$('#sumPrice').val(parseInt(arrs[1]).toFixed(2));
-        			$('#sumP').text(parseInt(arrs[1]).toFixed(2));
-                }
-                }
-		}else{
-			var yuyuePrice = 0;
-			$("#chartOptionsFlowTrend_00 input").each(function(index,docEle){
-				   if(this.checked == true){
-					     var sPrice = this.value.split("|");
-					     yuyuePrice += parseInt(sPrice[1]);
-				   }
-			});
-			$("#chartOptionsFlowTrend_01 input").each(function(){
-				   if(this.checked == true){
-					     var sPrice = this.value.split("|");
-					     yuyuePrice += parseInt(sPrice[1]);
-				   }				
-			});			
-			$('#sumPrice').val(yuyuePrice.toFixed(2));
-			$('#sumP').text(yuyuePrice.toFixed(2));
-		}
-
-	});
-	
-	$("#chartOptionsFlowTrend_00 input").click(function(){
-		 var price=this.value;
-		 var arrs=price.split("|");
-		 setPrice(this,arrs[1]);
-	});
-	
-	$("#chartOptionsFlowTrend_01 input").click(function(){
-		var flag = true;
-		$("#chartOptionsFlowTrend_02 input").each(function(){
-			if(this.checked == true){
-				flag = false;
-			}
-		});
-		if(flag){
-			 var price=this.value;
-			 var arrs=price.split("|");
-			 setPrice(this,arrs[1]);
-		}else{
-			return false;
-		}
-
-	});
-	
-	function setFalse(){
-		$("#chartOptionsFlowTrend_02 input:checked").each(function(){
-			  this.checked = false;
-		});		
-	}
-	//设置总价格
-	function setPrice(obj,price){
-		if(obj.checked==true){
-			 /*alert(arrs[1]);*/
-			 var sumPrice=(parseInt($("#sumPrice").val()) +parseInt(price)).toFixed(2);
-			 $("#sumPrice").val(sumPrice);
-			 $('#sumP').text(sumPrice);
-		}else{
-			    //至少选择一项预约项目
-			    var isSel = false;
-			    $("#chartOptionsFlowTrend_00 input").each(function(){
-			    	   if(this.checked == true){
-			    		    isSel = true;
-			    	   }
-			    });
-			    if(isSel){
-					 var sumPrice=(parseInt($("#sumPrice").val())-parseInt(price)).toFixed(2);
-					 $("#sumPrice").val(sumPrice);
-					 $('#sumP').text(sumPrice);
-			    }else{
-			    	  alert("您至少得选择一项预约项目！");
-			    	  obj.checked = true;
-			    }	 
-			}		
-	}
 	});
 	
 </script>
