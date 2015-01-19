@@ -43,15 +43,9 @@
 
 			var pic = $('#img_name').val();
 			var info = $("#reinfo").val();
-			var fuzhengDate = $("#fuzhengTime").val();
 			var comeDate = $("#comeTime").val();
-			var checkProject = false;
-			$("input[name='checkProject[]']").each(function(){
-				   if(this.checked){
-					    checkProject = true;
-				   }
-			});
-			if(name != '' && phone != '' && fuzhengDate != '' && comeDate != '' && checkProject){
+
+			if(name != '' && phone != '' && comeDate != ''){
 				  if(pic != '' || info != '' ){
 						 if (!reg.test(phone)){
 						        alert('手机号码格式不正确');
@@ -68,6 +62,7 @@
 	</script>
 
 <div id="content1">
+       <form method="post" id="form1" name="form1" class="rebook_form_1" enctype="multipart/form-data">
 	<div class="inviteexpert" style="width:100%;margin-top: 3px;background:white">
 		<div class="good_content" id="good_content_2" style="width:90%;padding:10px ;">
 	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0" style="width:95%;margin-top: 3px;">
@@ -77,6 +72,7 @@
 				                       </td>
 				             </tr>
 	                    </table>
+	                    
 	                    <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
 		                      <tr>
 					                   <td class="exper_apart" id="">
@@ -85,10 +81,13 @@
 				                       <!--  <td class="exper_money" id="">
 				                           <p>会诊费：{$val.cost}元 </p>
 				                      </td>-->
-				                       
 				             </tr>
 	                    </table>
-	                     
+	                    
+	                     <input type="hidden" name="docName" value="{$info['name']}" />
+	                     <input type="hidden" name="zhicheng" value="{$info['zhicheng']}" />
+	                     <input type="hidden" name="keshi" value="{$info['hos']}{$info['keshi']}" />
+	                     <input type="hidden" name="type" value="0" />
 	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
 		                   <td class="exper_time" id="">
@@ -112,8 +111,7 @@
 	                 
 	               </div>
 	             </div>
-    
-       <form method="post" id="form1" name="form1" class="rebook_form_1" action="{:U('Item/rebook')}" enctype="multipart/form-data">
+   
 			   <div class="rebook_block">
 				   <p class="biaoti">个人信息</p>
 				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
@@ -140,7 +138,7 @@
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
 	                   <td class="td_1">手　　机<span class="red">*</span>:</td>
-	                   <td class="td_80"><input  onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" name="rebook_phone" id="phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
+	                   <td class="td_80"><input onkeypress="intOnly()"  onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" maxlength="11" name="phone" id="phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
 	                 </tr>
 	                </table>
 			   </div>
@@ -177,29 +175,25 @@
 	                  <tr>
 	                   <td class="td_33">门诊时间<span class="red">*</span>:</td>
 	                   <td class="td_65" id="menzhentime">
-	                  <if condition="$info['menzhenDate1'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate1']}"><span class="choosemhead_01">{$info['menzhenDate1']}</span></p> </label></if>
-	                  <if condition="$info['menzhenDate2'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate2']}"><span class="choosemhead_01">{$info['menzhenDate2']}</span></p> </label></if>
-	                  <if condition="$info['menzhenDate3'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate3']}"><span class="choosemhead_01">{$info['menzhenDate3']}</span></p> </label></if>
-	                  <if condition="$info['menzhenDate4'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate4']}"><span class="choosemhead_01">{$info['menzhenDate4']}</span></p> </label></if>
-	                  <if condition="$info['menzhenDate5'] neq ''"> <label><p><input name="checkProject[]" type="radio" value=" {$info['menzhenDate5']}"><span class="choosemhead_01">{$info['menzhenDate5']}</span></p> </label></if> 
+	                  <if condition="$info['menzhenDate1'] neq ''"> <label><p><input name="comeDate" type="radio" checked="checked" value=" {$info['menzhenDate1']}"><span class="choosemhead_01">{$info['menzhenDate1']}</span></p> </label></if>
+	                  <if condition="$info['menzhenDate2'] neq ''"> <label><p><input name="comeDate" type="radio" value="{$info['menzhenDate2']}"><span class="choosemhead_01">{$info['menzhenDate2']}</span></p> </label></if>
+	                  <if condition="$info['menzhenDate3'] neq ''"> <label><p><input name="comeDate" type="radio" value="{$info['menzhenDate3']}"><span class="choosemhead_01">{$info['menzhenDate3']}</span></p> </label></if>
+	                  <if condition="$info['menzhenDate4'] neq ''"> <label><p><input name="comeDate" type="radio" value="{$info['menzhenDate4']}"><span class="choosemhead_01">{$info['menzhenDate4']}</span></p> </label></if>
+	                  <if condition="$info['menzhenDate5'] neq ''"> <label><p><input name="comeDate" type="radio" value="{$info['menzhenDate5']}"><span class="choosemhead_01">{$info['menzhenDate5']}</span></p> </label></if> 
 	                   </td>
 	                 </tr>
                  </table>
-	          <div>
 				   
-		 </div>	
+		            </div>	
 		</form>	 
   
-
+      </div>
 			<div class="space"></div>
-          
 	       <div class="shop_bottom" id="rebook_btm">
-		             
 	            <ul class="rebook_btn" style="padding:5px 0">
 			            <li class="pic_rebook"><div style=" margin: 0 auto;width:50px;height:34px;background:url(__STATIC__/weixin/images/home/littlelogo.png);background-size:100% 100%";></div></li>
 			            <li class="phone_rebook"><a <if condition="$item['status'] neq 0">href="tel:4006555899"<else />href="javascirpt:void(0)" id="grey"</if> class="reserveP"></a></li>
 			            <li class="intime_submit"><a href="javascript:sub()" id="rebook_sub"></a></li>                
-			                	
 	            </ul>
 	        </div>
           
@@ -334,6 +328,18 @@ window.shareData = {
 	
 	});
 	
+</script>
+<script type="text/javascript">
+//只允许输入数字,左右移动键,删除键,回车键
+//author:larger
+function intOnly(){
+var codeNum=event.keyCode;
+if(codeNum==8||codeNum==37||codeNum==39||(codeNum>=48&&codeNum<=57)){
+  event.returnValue=codeNum;
+}else{
+  event.returnValue=false;
+}
+}
 </script>
 </body>
 </html>

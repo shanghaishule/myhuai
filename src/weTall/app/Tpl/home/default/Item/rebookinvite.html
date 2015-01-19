@@ -43,15 +43,9 @@
 
 			var pic = $('#img_name').val();
 			var info = $("#reinfo").val();
-			var fuzhengDate = $("#fuzhengTime").val();
-			var comeDate = $("#comeTime").val();
-			var checkProject = false;
-			$("input[name='checkProject[]']").each(function(){
-				   if(this.checked){
-					    checkProject = true;
-				   }
-			});
-			if(name != '' && phone != '' && fuzhengDate != '' && comeDate != '' && checkProject){
+			var comeDate = $("#fuzhengTime").val();
+
+			if(name != '' && phone != ''  && comeDate != ''){
 				  if(pic != '' || info != '' ){
 						 if (!reg.test(phone)){
 						        alert('手机号码格式不正确');
@@ -68,53 +62,57 @@
 	</script>
 
 <div id="content1">
+    <form method="post" id="form1" name="form1" class="rebook_form_1" action="{:U('Item/rebooknum')}" enctype="multipart/form-data">
+    
 	<div class="inviteexpert" style="width:100%;margin-top: 3px;background:white">
 		<div class="good_content" id="good_content_2" style="width:90%;padding:10px ;">
 	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0" style="width:95%;margin-top: 3px;">
 		                      <tr>
 					                   <td class="exper_name" id="">
-					                      <p>张谦<span class="exper_level">主任医师</span></p>
+					                      <p>{$info['name']}<span class="exper_level">{$info['zhicheng']}</span></p>
 				                       </td>
 				             </tr>
 	                    </table>
+	                    
 	                    <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
 		                      <tr>
 					                   <td class="exper_apart" id="">
-					                      <p><span>长海医院骨科</span></p>
+					                      <p><span>{$info['hos']}{$info['keshi']}</span></p>
 				                       </td>
 				                       <!--  <td class="exper_money" id="">
 				                           <p>会诊费：{$val.cost}元 </p>
 				                      </td>-->
-				                       
 				             </tr>
 	                    </table>
-	                     
-						
+	                    
+	                     <input type="hidden" name="docName" value="{$info['name']}" />
+	                     <input type="hidden" name="zhicheng" value="{$info['zhicheng']}" />
+	                     <input type="hidden" name="keshi" value="{$info['hos']}{$info['keshi']}" />
+	                     <input type="hidden" name="type" value="1" />
 	                     <table id="exper_table" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>
 		                   <td class="exper_time" id="">
 		                      <p>  门诊时间：</p>
 	                       </td>
 	                       <td class="exper_timedetail" id="">
-	                           <p> 礼拜一</p>
-	                           <p> 礼拜二</p>
-	                           <if condition="$val.menzhenDate3 neq ''"><p> {$val.menzhenDate3}</p></if>
-	                           <if condition="$val.menzhenDate4 neq ''"><p> {$val.menzhenDate4}</p></if>
-	                           <if condition="$val.menzhenDate5 neq ''"><p> {$val.menzhenDate5}</p></if>
+	                           <if condition="$info['menzhenDate1'] neq ''"><p>{$info['menzhenDate1']}</p></if>
+	                           <if condition="$info['menzhenDate2'] neq ''"><p>{$info['menzhenDate2']}</p></if>
+	                           <if condition="$info['menzhenDate3'] neq ''"><p>{$info['menzhenDate3']}</p></if>
+	                           <if condition="$info['menzhenDate4'] neq ''"><p>{$info['menzhenDate4']}</p></if>
+	                           <if condition="$info['menzhenDate5'] neq ''"><p>{$info['menzhenDate5']}</p></if>
 	                       </td>
 	                       
 	                  </tr>
 	                 </table>
 	                 
 	                 <div id="advan">
-	                 	<p> 擅长： <span>xxxxxx</span></p>	
+	                 	<p> 擅长： <span>{$info['shanchang']}</span></p>	
 	                 	
 	                 </div>	
 	                 
 	               </div>
 	             </div>
-    
-       <form method="post" id="form1" name="form1" class="rebook_form_1" action="{:U('Item/rebook')}" enctype="multipart/form-data">
+
 			   <div class="rebook_block">
 				   <p class="biaoti">个人信息</p>
 				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
@@ -141,7 +139,7 @@
 	                 <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 	                 <tr>
 	                   <td class="td_1">手　　机<span class="red">*</span>:</td>
-	                   <td class="td_80"><input  onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" name="rebook_phone" id="phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
+	                   <td class="td_80"><input onkeypress="intOnly()"  onblur="if(/\d{11}/gi.test(this.value)?true:false){return ture;}else{alert('请输入正确的手机号');}" maxlength="11" name="phone" id="phone" class="text width5" placeholder="病人或家属手机" type="tel"></td>
 	                 </tr>
 	                </table>
 			   </div>
@@ -172,29 +170,25 @@
 	                 
 	                </table>
 			   </div>
+			  
 			   <div class="rebook_block">
 				   <p class="biaoti">预约信息</p>
-				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
-	                  <tr>
-	                   <td class="td_33">要求会诊时间<span class="red">*</span>:</td>
-	                   <td class="td_65">
-	                       <div class="book_online">
-		                       <div id="book_online">
-					                 <div class="demo">
-									   <div class="lie"><input id="fuzhengTime" style="border: 1px solid #ccc" name="fuzhengDate" class="kbtn" /></div>
-								     </div>
-					             </div>
-					           </div>
-						 <div id="datePlugin"></div>
-						</td>
-	                 </tr>
-	                 
-	                 </table>
-	                 
-	                 
-	                 
-	                  
-	                 </div>
+					   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
+		                  <tr>
+		                   <td class="td_33">要求会诊时间<span class="red">*</span>:</td>
+		                   <td class="td_65">
+		                       <div class="book_online">
+			                       <div id="book_online">
+						                 <div class="demo">
+										   <div class="lie"><input id="fuzhengTime" type="text" style="border: 1px solid #ccc" name="comeDate" class="kbtn" /></div>
+									     </div>
+						             </div>
+						       </div>
+							 <div id="datePlugin"></div>
+							</td>
+		                 </tr>
+		                 </table>
+	            </div>
 	                 
 	                 
 					         <!--   <div style="text-align:center;margin-top:10px;color:red">
@@ -353,7 +347,18 @@ window.shareData = {
 	}
 	
 	});
-	
+</script>
+<script type="text/javascript">
+//只允许输入数字,左右移动键,删除键,回车键
+//author:larger
+function intOnly(){
+var codeNum=event.keyCode;
+if(codeNum==8||codeNum==37||codeNum==39||(codeNum>=48&&codeNum<=57)){
+  event.returnValue=codeNum;
+}else{
+  event.returnValue=false;
+}
+}
 </script>
 </body>
 </html>

@@ -98,7 +98,7 @@ class itemAction extends frontendAction {
     		//添加时间
     		$data['addTime'] = time();
     		if(false !== $advance->add($data)){
-    			$this->success("您的体检项目预约已提交成功！<br />请等待审核！",U('index/index'));
+    			$this->success("您的体检项目预约已提交成功！<br />请等待电话通知！",U('index/index'));
     		}else{
     			$this->error("您的体检项目预约提交失败！");
     		}
@@ -139,7 +139,7 @@ class itemAction extends frontendAction {
     		$data['addTime'] = time();
     		//dump($data);die;
     		if(false !== $advance->add($data)){
-    			   $this->success("您的预约已提交成功！",U('user/index'));
+    			   $this->success("预约成功,请等待电话通知！",U('index/index'));
     		}else{
     			   $this->error("您的预约提交失败！");
     		}
@@ -155,19 +155,59 @@ class itemAction extends frontendAction {
     	$this->display();
     }
     public function rebookinvite(){
-    	$this->display();
+    	    $zid = $this->_get('zid','trim,intval');
+    		$zInfo = M('zhuanjia')->where(array('id'=>$zid))->find();
+    		$hos = M('order_address')->field("id,name")->where(array('id'=>$zInfo['address_id']))->find();
+    		$keshi = M('keshi')->field("id,name")->where(array('id'=>$zInfo['keshi_id']))->find();
+    		$zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$zInfo['zhicheng_id']))->find();
+    		$zInfo['hos']=$hos['name'];
+    		$zInfo['keshi']=$keshi['name'];
+    		$zInfo['zhicheng']=$zhicheng['name'];
+    		$this->assign('info',$zInfo);
+    		$this->display();
     }
     public function rebooknum(){
-    	$zid = $this->_get('zid','trim,intval');
-    	$zInfo = M('zhuanjia')->where(array('id'=>$zid))->find();
-    	$hos = M('order_address')->field("id,name")->where(array('id'=>$zInfo['address_id']))->find();
-        $keshi = M('keshi')->field("id,name")->where(array('id'=>$zInfo['keshi_id']))->find();
-    	$zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$zInfo['zhicheng_id']))->find();
-    	$zInfo['hos']=$hos['name'];
-    	$zInfo['keshi']=$keshi['name'];
-    	$zInfo['zhicheng']=$zhicheng['name'];
-    	$this->assign('info',$zInfo);
-    	$this->display();
+    	if(IS_POST){
+    		$yuyue = M('advance');
+    		if(false == $data = $yuyue->create()){
+    			  $this->error($yuyue->getError());
+    		}
+    		
+    		if($_POST['img_name'] != ''){
+    			//图片
+    			$Uninum = time();
+    			$filepath = $_SERVER['DOCUMENT_ROOT']."/Uploads/items/images/";//图片保存的路径目录
+    			if(!is_dir($filepath)){
+    				mkdir($filepath,0777, true);
+    			}
+    			$file_type = explode(".",$_POST['img_name']);
+    			//dump($file_type);die;
+    			$filename = $Uninum.'.'.$file_type[1]; //生成文件名
+    			move_uploaded_file($_FILES["my_img"]["tmp_name"],$filepath.$filename);
+    			$data['pic'] = '/Uploads/items/images/'.$filename;
+    		}
+    		
+    		$data['addTime'] = time();
+    		
+    		if($yuyue->add($data)){
+    			$this->success("预约成功,请等待电话通知！",U('index/index'));
+    		}else{
+    			$this->error("参数错误");
+    		}
+    		
+    	}else{
+    		$zid = $this->_get('zid','trim,intval');
+    		$zInfo = M('zhuanjia')->where(array('id'=>$zid))->find();
+    		$hos = M('order_address')->field("id,name")->where(array('id'=>$zInfo['address_id']))->find();
+    		$keshi = M('keshi')->field("id,name")->where(array('id'=>$zInfo['keshi_id']))->find();
+    		$zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$zInfo['zhicheng_id']))->find();
+    		$zInfo['hos']=$hos['name'];
+    		$zInfo['keshi']=$keshi['name'];
+    		$zInfo['zhicheng']=$zhicheng['name'];
+    		$this->assign('info',$zInfo);
+    		$this->display();
+    	}
+
     }
     public function exambookinfo(){
     	$this->display();
