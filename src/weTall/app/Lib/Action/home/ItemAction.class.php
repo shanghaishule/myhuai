@@ -212,6 +212,9 @@ class itemAction extends frontendAction {
     public function exambookinfo(){
     	$this->display();
     }
+    public function rebookhos(){
+    	$this->display();
+    }
     public function accompanyinfo(){
     	$this->display();
     }
