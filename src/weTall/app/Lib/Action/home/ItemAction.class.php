@@ -216,22 +216,113 @@ class itemAction extends frontendAction {
     	$this->display();
     }
     public function quickget(){
-    	$this->display();
+    	if(IS_POST){
+    		 $yuyue = M('qubaogao');
+    		 if(false === $data = $yuyue->create()){
+    		 	 $this->error($yuyue->getError());
+    		 }
+    		 $data['addTime'] = time();
+    		 
+    		 if($yuyue->add($data)){
+    		 		$this->success("提交成功,请等待电话通知！",U('index/index'));
+    		 }else{
+    		 		$this->error("参数错误");
+    		 }
+    	}else{
+    		$this->display();
+    	}
+
     }
     public function accompany(){
-    	$this->display();
+        	if(IS_POST){
+    		$yuyue = M('huizhen_advance');
+    		if(false == $data = $yuyue->create()){
+    			$this->error($yuyue->getError());
+    		}
+    		
+    		if($_POST['img_name'] != ''){
+    			//图片
+    			$Uninum = time();
+    			$filepath = $_SERVER['DOCUMENT_ROOT']."/Uploads/items/images/";//图片保存的路径目录
+    			if(!is_dir($filepath)){
+    				mkdir($filepath,0777, true);
+    			}
+    			$file_type = explode(".",$_POST['img_name']);
+    			//dump($file_type);die;
+    			$filename = $Uninum.'.'.$file_type[1]; //生成文件名
+    			move_uploaded_file($_FILES["my_img"]["tmp_name"],$filepath.$filename);
+    			$data['pic'] = '/Uploads/items/images/'.$filename;
+    		}
+    		$data['pageType'] = 'peizhen';
+    		$data['loveServer'] =  implode('|',$_POST['loveServer']);
+    		$data['addTime'] = time();
+    		
+    		if($yuyue->add($data)){
+    			$this->success("预约成功,请等待电话通知！",U('index/index'));
+    		}else{
+    			$this->error("参数错误");
+    		}   
+    				
+    	}else{
+    		$this->display();
+    	}
     }
     public function suspectinfo(){
     	$this->display();
     }
     public function suspect(){
-    	$this->display();
+    	if(IS_POST){
+    		$yuyue = M('huizhenAdvance');
+    		if(false == $data = $yuyue->create()){
+    			$this->error($yuyue->getError());
+    		}
+    		
+    		if($_POST['img_name'] != ''){
+    			//图片
+    			$Uninum = time();
+    			$filepath = $_SERVER['DOCUMENT_ROOT']."/Uploads/items/images/";//图片保存的路径目录
+    			if(!is_dir($filepath)){
+    				mkdir($filepath,0777, true);
+    			}
+    			$file_type = explode(".",$_POST['img_name']);
+    			//dump($file_type);die;
+    			$filename = $Uninum.'.'.$file_type[1]; //生成文件名
+    			move_uploaded_file($_FILES["my_img"]["tmp_name"],$filepath.$filename);
+    			$data['pic'] = '/Uploads/items/images/'.$filename;
+    		}
+    		$data['loveServer'] =  implode('|',$_POST['loveServer']);
+    		$data['pageType'] = 'huizhen';
+    		$data['addTime'] = time();
+    		
+    		if($yuyue->add($data)){
+    			$this->success("预约成功,请等待电话通知！",U('index/index'));
+    		}else{
+    			$this->error("参数错误");
+    		}   
+    				
+    	}else{
+    		$this->display();
+    	}
     }
     public function petctinfo(){
     	$this->display();
     }
     public function petct(){
-    	$this->display();
+    	if(IS_POST){
+    		$yuyue = M('petct_advance');
+    		if(false === $data = $yuyue->create()){
+    			$this->error($yuyue->getError());
+    		}
+    		$data['loveServer'] =  implode('|',$_POST['loveServer']);
+    		$data['addTime'] = time(); 
+    		if($yuyue->add($data)){
+    			$this->success("提交成功,请等待电话通知！",U('index/index'));
+    		}else{
+    			$this->error("参数错误");
+    		}  		
+    	}else{
+    		$this->display();
+    	}
     }
     public function expert(){
     	$this->searchInfo();
