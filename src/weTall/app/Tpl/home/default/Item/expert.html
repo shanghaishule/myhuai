@@ -71,9 +71,9 @@
 						          <a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'zc'))}"> <li>{$val.name}</li></a>
 						      </volist> 
 						    </ul>
-						    <ul id="listUl4" class="listUl" style="height:200px;overflow:auto">
-						      <volist name="Zhicheng_list" id="val">
-						          <a href="{:U('Item/search',array('id'=>$val['id'],'type'=>'zc'))}"> <li>{$val.name}</li></a>
+						    <ul id="listUl5" class="listUl" style="height:200px;overflow:auto">
+						      <volist name="Fenlei_list" id="val">
+						          <a href="{:U('Item/search',array('keys'=>$val['zhuanjiaType'],'type'=>'zt'))}"> <li>{$val.zhuanjiaType}</li></a>
 						      </volist> 
 						    </ul>
 				 </div>

@@ -98,7 +98,7 @@ class itemAction extends frontendAction {
     		//添加时间
     		$data['addTime'] = time();
     		if(false !== $advance->add($data)){
-    			$this->success("您的体检项目预约已提交成功！<br />请等待电话通知！",U('index/index'));
+    			$this->success("您的体检项目预约已提交成功！<br />请等待电话通知！",U('index/indexnew'));
     		}else{
     			$this->error("您的体检项目预约提交失败！");
     		}
@@ -139,7 +139,7 @@ class itemAction extends frontendAction {
     		$data['addTime'] = time();
     		//dump($data);die;
     		if(false !== $advance->add($data)){
-    			   $this->success("预约成功,请等待电话通知！",U('index/index'));
+    			   $this->success("预约成功,请等待电话通知！",U('index/indexnew'));
     		}else{
     			   $this->error("您的预约提交失败！");
     		}
@@ -190,7 +190,7 @@ class itemAction extends frontendAction {
     		$data['addTime'] = time();
     		
     		if($yuyue->add($data)){
-    			$this->success("预约成功,请等待电话通知！",U('index/index'));
+    			$this->success("预约成功,请等待电话通知！",U('index/indexnew'));
     		}else{
     			$this->error("参数错误");
     		}
@@ -224,7 +224,7 @@ class itemAction extends frontendAction {
     		 $data['addTime'] = time();
     		 
     		 if($yuyue->add($data)){
-    		 		$this->success("提交成功,请等待电话通知！",U('index/index'));
+    		 		$this->success("提交成功,请等待电话通知！",U('index/indexnew'));
     		 }else{
     		 		$this->error("参数错误");
     		 }
@@ -258,7 +258,7 @@ class itemAction extends frontendAction {
     		$data['addTime'] = time();
     		
     		if($yuyue->add($data)){
-    			$this->success("预约成功,请等待电话通知！",U('index/index'));
+    			$this->success("预约成功,请等待电话通知！",U('index/indexnew'));
     		}else{
     			$this->error("参数错误");
     		}   
@@ -295,7 +295,7 @@ class itemAction extends frontendAction {
     		$data['addTime'] = time();
     		
     		if($yuyue->add($data)){
-    			$this->success("预约成功,请等待电话通知！",U('index/index'));
+    			$this->success("预约成功,请等待电话通知！",U('index/indexnew'));
     		}else{
     			$this->error("参数错误");
     		}   
@@ -316,7 +316,7 @@ class itemAction extends frontendAction {
     		$data['loveServer'] =  implode('|',$_POST['loveServer']);
     		$data['addTime'] = time(); 
     		if($yuyue->add($data)){
-    			$this->success("提交成功,请等待电话通知！",U('index/index'));
+    			$this->success("提交成功,请等待电话通知！",U('index/indexnew'));
     		}else{
     			$this->error("参数错误");
     		}  		
@@ -339,12 +339,15 @@ class itemAction extends frontendAction {
     	$this->assign('Hos_list',M('order_address')->select());
     	$this->assign('Keshi_list',M('keshi')->select());
     	$this->assign('Zhicheng_list',M('zhicheng')->select());
+    	$this->assign('Fenlei_list',M('zhuanjia')->group('zhuanjiaType')->select());
     }
     
     public function search(){
     	  $id = $this->_get('id','trim,intval');
     	  $type = $this->_get('type','trim');
-    	  if(!id || !$type)$this->redirect("index/index");
+    	  $keys = $this->_get('keys','trim');
+    	  $huizhen = $this->_get('huizhen','trim');
+    	  if(!id || !$type)$this->redirect("index/indexnew");
     	  
     	  if($type == 'hos'){
     	  	  $where['address_id'] = $id;
@@ -352,6 +355,10 @@ class itemAction extends frontendAction {
     	  	  $where['keshi_id'] = $id;
     	  }else if($type == 'zc'){
     	  	  $where['zhicheng_id'] = $id;
+    	  }elseif($type == 'zt'){
+    	  	 $where['zhuanjiaType'] = $keys;
+    	  }else if($type == 'hz'){
+    	  	$where['huizhenType'] = $huizhen;
     	  }else{
     	  	  $where = "1 = 1";
     	  }
