@@ -95,6 +95,20 @@
 			<td class="all_category"><input type="number" onblur="if($(this).val()<1){$(this).val('1');}if(isNaN($(this).val())){$(this).val('1');}" required class="px" name="cost" value="{lanrain:$info.cost}" style="width:100px">元</td>
 		</tr>
 		<tr>
+			<th>专家分类：</th>
+			<td><input class="px" name="zhuanjiaType" class="px" value="{lanrain:$info.zhuanjiaType}" /></td>
+		</tr>		
+		<tr>
+			<th>会诊分类：</th>
+			<td>
+				<select name="huizhenType">
+					<option value="影像会诊专家" <if condition="$info['huizhenType'] eq '影像会诊专家'">selected</if>>影像会诊专家</option>
+					<option value="病理会诊专家" <if condition="$info['huizhenType'] eq '病理会诊专家'">selected</if>>病理会诊专家</option>
+					<option value="临床会诊专家" <if condition="$info['huizhenType'] eq '临床会诊专家'">selected</if>>临床会诊专家</option>
+				</select>
+			</td>
+		</tr>			
+		<tr>
 			<th>擅长：</th>
 			<td><textarea class="px" name="shanchang" id="info" style="width:90%;height:200px;">{lanrain:$info.shanchang}</textarea></td>
 		</tr>
