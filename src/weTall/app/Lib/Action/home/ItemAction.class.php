@@ -215,6 +215,30 @@ class itemAction extends frontendAction {
     public function rebookhos(){
     	$this->display();
     }
+    public function examhos(){
+    	$this->display();
+    }
+    public function examstep(){
+    	$this->display();
+    }
+    public function examcase(){
+    	$this->display();
+    }
+    public function examdoubt(){
+    	$this->display();
+    }
+    public function accomstep(){
+    	$this->display();
+    }
+	public function accomchoose(){
+	    	$this->display();
+	    }
+	public function accomnote(){
+	    	$this->display();
+	}
+	public function accomspecial(){
+		$this->display();
+	}
     public function accompanyinfo(){
     	$this->display();
     }
