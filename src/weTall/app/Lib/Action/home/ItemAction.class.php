@@ -224,6 +224,12 @@ class itemAction extends frontendAction {
     public function examcase(){
     	$this->display();
     }
+    public function petctwhat(){
+    	$this->display();
+    }
+    public function petctdo(){
+    	$this->display();
+    }
     public function examdoubt(){
     	$this->display();
     }
