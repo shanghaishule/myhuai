@@ -142,7 +142,7 @@
 	        <volist name='address_list' id='vo' >
 	        <ul class="receive_add address_item selected_address">
 	            <li class="radio"><input id="address_{$vo.id}" checked="checked"  name="address_options" value="{$vo.id}" type="radio"></li>
-	            <li class="particular">{$vo.hosAddress}&nbsp;{$vo.address}</li>
+	            <li class="particular">{$vo.sheng}&nbsp;{$vo.shi}&nbsp;{$vo.qu}&nbsp;{$vo.address}</li>
 	            <li class="name">收货人姓名: {$vo.consignee}</li>
 	            <li class="mobile">手机号码:{$vo.mobile}</li>
 	        </ul>
@@ -158,26 +158,19 @@
                 
                 <p><input value="" name="consignee" id="consignee" class="text" type="text" placeholder="请填写您的真实姓名" ></p>
             </li>
-           <li style="height:45px">
-               
-               <p></p>
-               <div id="region">
-               <!-- <select name="sheng" id="s1" style="background:white"></select>
-               <select name="shi" id="s2" style="background:white"></select>
-               <select name="qu" id="s3" style="background:white"></select> -->
-                <select name="hosAddress">
-	                <volist name="hosA" id="hos">
-	                	<option value="{$hos.name}">{$hos.name}</option>
-	                </volist>
-                </select>
+            <li style="height:45px">
+                
+                <div id="region">
+                <select name="sheng" id="s1"></select>
+                <select name="shi" id="s2"></select>
+                <select name="qu" id="s3"></select>
                 </div>
-              <!-- -
                 <script language="javascript">
 					new PCAS("sheng","shi","qu","","","");
 			    </script>
-			   -->  
                 <p></p>
             </li>
+           
             <li>
                 <p><input value="" name="address" id="address"  placeholder="详细地址不必重复填写医院名称" class="text width1" type="text"></p>
             </li>

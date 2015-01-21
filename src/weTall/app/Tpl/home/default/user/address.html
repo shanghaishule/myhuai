@@ -46,7 +46,7 @@
         <volist name='address_list' id='vo' >
             <li>
                 <p>{$vo.consignee}({$vo.mobile})</p>
-                <p>{$vo.hosAddress}&nbsp;{$vo.address}</p>
+                <p>{$vo.sheng}&nbsp;{$vo.shi}&nbsp;{$vo.qu}&nbsp;{$vo.address}</p>
                 <p class="new_line"><br /></p>
                 <p class="address_action">
                     <span class="edit"><a href="{:U('user/edit_address',array('id'=>$vo['id'],'tokenTall'=>$tokenTall))}"><i class="edit_icon"></i>编辑</a></span>
