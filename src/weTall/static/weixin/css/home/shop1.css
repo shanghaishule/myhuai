@@ -112,9 +112,9 @@ margin-left:5%}
 border-bottom: 1px solid #f1f1f1;
 width: 90%;
 margin: auto;}
-.select_exper ul{border: 1px solid #006835;-webkit-box-shadow: #666 0px 0px 10px;
--moz-box-shadow: #666 0px 0px 10px;
-box-shadow: #666 0px 0px 10px}
+.select_exper ul{border: 1px solid #006835;-webkit-box-shadow: #666 0px 0px 1000px;
+-moz-box-shadow: #666 0px 0px 1000px;
+box-shadow: #666 0px 0px 1000px}
 .rebookinfo_block{border-bottom: 1px solid #f1f1f1;border-top: 1px solid #f1f1f1}
 p.td_p{margin-top:-55px}
 .rebook_block{background:white;padding:10px ;margin-top:10px}
