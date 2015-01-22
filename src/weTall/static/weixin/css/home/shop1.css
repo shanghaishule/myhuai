@@ -81,7 +81,7 @@ td.exper_phone{height: 35px;width: 35px;
 td.exper_comment{height: 20px;
 width: 20px;
 }
-.rebookhos{padding: 0 15px;display:block}
+.rebookhos{padding: 0 15px;display:block;line-height: 24px;}
 td.exper_like{height: 20px;
 width: 20px;}
 td.exper_name{width:100%}
@@ -95,7 +95,8 @@ td.exper_time{width: 28%;color:#ccc}
 td.exper_time p{;color:#262626}
 #advan p {color:#262626}
 #advan{width:95%}
-.select_exper{background:white}
+.select_exper{background:white;}
+/*.select_exper_01{height:1136px;background:#ccc;opacity:0.6}*/
 .saixuan{z-index:1000;position:fixed;width:100%;left:0}
 #advan p span{color:#ccc}
 #exper_table{margin-bottom:5px}
@@ -103,12 +104,17 @@ td.exper_timedetail{width: 45%;}
 td.exper_timedetail p{color:#ccc}
 td.exper_comnum
 td.exper_likenum
-.select_exper{background:white;}
+.select_exper .listUl{display:none}
+.select_exper{background:white;width: 90%;
+margin-top: 10px;
+margin-left:5%}
 .select_exper ul li{height:35px;line-height: 35px;
 border-bottom: 1px solid #f1f1f1;
 width: 90%;
 margin: auto;}
-.select_exper ul{border-bottom: 1px solid #006835;}
+.select_exper ul{border: 1px solid #006835;-webkit-box-shadow: #666 0px 0px 10px;
+-moz-box-shadow: #666 0px 0px 10px;
+box-shadow: #666 0px 0px 10px}
 .rebookinfo_block{border-bottom: 1px solid #f1f1f1;border-top: 1px solid #f1f1f1}
 p.td_p{margin-top:-55px}
 .rebook_block{background:white;padding:10px ;margin-top:10px}
@@ -1434,7 +1440,7 @@ z-index: 890;
 /*详情新增*/
 #thdpic {margin: 0 auto;
 width: 100px;
-height: 100px;}
+height: 110px;}
 #thdpic img{padding-top:5px}
 #thdpic_1 {margin: 0 auto;
 width: 120px;
