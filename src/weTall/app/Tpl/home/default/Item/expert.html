@@ -84,11 +84,14 @@
 								$(function(){	
 									$(".listUl").hide();
 									//On Click Event
-									$(".td_exper").click(function() {
+									$(".td_exper").hover(function() {
 										$(".listUl").hide();
 										var activeTab = $(this).attr("data-id");
 										$("#listUl"+activeTab).slideDown(150);
 										return false;
+									});
+									$(".select_exper").mouseout(function() {
+										$(".listUl").hide();
 									});
 								});
 								</script>
