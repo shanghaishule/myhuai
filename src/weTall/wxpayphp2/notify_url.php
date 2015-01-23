@@ -44,6 +44,7 @@
 		$notify->setReturnParameter("return_code","SUCCESS");//设置返回码
 	}
 	$returnXml = $notify->returnXml();
+	
 	echo $returnXml;
 	
 	//==商户根据实际情况设置相应的处理流程，此处仅作举例=======
