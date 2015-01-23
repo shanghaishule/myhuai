@@ -325,9 +325,9 @@ class orderAction extends userbaseAction {
 			foreach ($result as $key => $value){
 				$data = array();
 				//生成订单号
-				$dingdanhao = date("Y-m-dH-i-s");
-				$dingdanhao = str_replace("-","",$dingdanhao);
-				$dingdanhao .= rand(1000,2000);
+				$orderId = date("Y-m-dH-i-s");
+				$orderId = str_replace("-","",$orderId);
+				$orderId .= rand(1000,2000);
 				$time = time();//订单添加时间
 			  
 				$goods_sum = 0;
@@ -346,7 +346,7 @@ class orderAction extends userbaseAction {
 				$postscript = '';//卖家留言
 				$postscript = $this->_post('mymsg_'.$key,'trim');//卖家留言
 	
-				$data['orderId']=$dingdanhao;//订单号
+				$data['orderId']=$orderId;//订单号
 				$data['add_time']=$time;//添加时间
 				$data['goods_sumPrice']=$goods_sum;//商品总额
 				$data['order_sumPrice']=$goods_sum+$free_sum;//订单总额
@@ -363,13 +363,13 @@ class orderAction extends userbaseAction {
 				if($reserveDate !=''){
 					$data['reserveDate'] = $reserveDate;
 				}
-				$all_order_arr[] = $dingdanhao;
+				$all_order_arr[] = $orderId;
 				$all_order_price = $all_order_price + $goods_sum + $free_sum;
 			  
 				if($orderid=$item_order->add($data))//添加订单汇总
 				{
 					$orders = array();
-					$orders['orderId']=$dingdanhao;
+					$orders['orderId']=$orderId;
 					foreach ($value['item'] as $item)
 					{
 						if(count($_SESSION['cart'])>0  && $reserveDate==''){
@@ -508,49 +508,7 @@ class orderAction extends userbaseAction {
 				//exit;
 				$this->assign('order_zhifu',$orders['supportmetho']);
 			}
-			
-			//微信支付
-			$all_order_price_100 = $ordersumPrice*100;  //支付用，精确到分
-			
-			include_once("WxPayphp2/WxPayPubHelper.php");
-			$unifiedOrder = new UnifiedOrder_pub();
-			//使用jsapi接口
-			$jsApi = new JsApi_pub();
-			//设置统一支付接口参数
-			//设置必填参数
-			//appid已填,商户无需重复填写
-			//mch_id已填,商户无需重复填写
-			//noncestr已填,商户无需重复填写
-			//spbill_create_ip已填,商户无需重复填写
-			//sign已填,商户无需重复填写
-			
-			$unifiedOrder->setParameter("openid",$_SESSION['openid']);//商品描述
-			$unifiedOrder->setParameter("body","BILL(NO:".$orderId.")");//商品描述
-			//自定义订单号，此处仅作举例
-			$timeStamp = time();
-			//$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
-			$unifiedOrder->setParameter("out_trade_no","$orderId");//商户订单号
-			$unifiedOrder->setParameter("total_fee","$all_order_price_100");//总金额
-			$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址
-			$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
-			//非必填参数，商户可根据实际情况选填
-			//$unifiedOrder->setParameter("sub_mch_id","XXXX");//子商户号
-			//$unifiedOrder->setParameter("device_info","XXXX");//设备号
-			//$unifiedOrder->setParameter("attach","XXXX");//附加数据
-			//$unifiedOrder->setParameter("time_start","XXXX");//交易起始时间
-			//$unifiedOrder->setParameter("time_expire","XXXX");//交易结束时间
-			//$unifiedOrder->setParameter("goods_tag","XXXX");//商品标记
-			//$unifiedOrder->setParameter("openid","XXXX");//用户标识
-			//$unifiedOrder->setParameter("product_id","XXXX");//商品ID
-			
-			$prepay_id = $unifiedOrder->getPrepayId();
-			//=========步骤3：使用jsapi调起支付============
-			$jsApi->setPrepayId($prepay_id);
-			
-			$jsApiParameters = $jsApi->getParameters();
-			//var_dump($jsApiParameters);die;
-			
-			$this->assign('biz_package', $jsApiParameters);
+
 			
 		}else{
 			
@@ -576,6 +534,50 @@ class orderAction extends userbaseAction {
 		$this->assign('wxpay', $wxpay);
 			
 		$this->assign('current_user',$_SESSION['user_info']['username']);
+
+
+		//微信支付
+		$all_order_price_100 = $ordersumPrice*100;  //支付用，精确到分
+			
+		include_once("WxPayphp2/WxPayPubHelper.php");
+		$unifiedOrder = new UnifiedOrder_pub();
+		//使用jsapi接口
+		$jsApi = new JsApi_pub();
+		//设置统一支付接口参数
+		//设置必填参数
+		//appid已填,商户无需重复填写
+		//mch_id已填,商户无需重复填写
+		//noncestr已填,商户无需重复填写
+		//spbill_create_ip已填,商户无需重复填写
+		//sign已填,商户无需重复填写
+			
+		$unifiedOrder->setParameter("openid",$_SESSION['openid']);//商品描述
+		$unifiedOrder->setParameter("body","BILL(NO:".$orderId.")");//商品描述
+		//自定义订单号，此处仅作举例
+		$timeStamp = time();
+		//$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
+		$unifiedOrder->setParameter("out_trade_no","$orderId");//商户订单号
+		$unifiedOrder->setParameter("total_fee","$all_order_price_100");//总金额
+		$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址
+		$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
+		//非必填参数，商户可根据实际情况选填
+		//$unifiedOrder->setParameter("sub_mch_id","XXXX");//子商户号
+		//$unifiedOrder->setParameter("device_info","XXXX");//设备号
+		//$unifiedOrder->setParameter("attach","XXXX");//附加数据
+		//$unifiedOrder->setParameter("time_start","XXXX");//交易起始时间
+		//$unifiedOrder->setParameter("time_expire","XXXX");//交易结束时间
+		//$unifiedOrder->setParameter("goods_tag","XXXX");//商品标记
+		//$unifiedOrder->setParameter("openid","XXXX");//用户标识
+		//$unifiedOrder->setParameter("product_id","XXXX");//商品ID
+			
+		$prepay_id = $unifiedOrder->getPrepayId();
+		//=========步骤3：使用jsapi调起支付============
+		$jsApi->setPrepayId($prepay_id);
+			
+		$jsApiParameters = $jsApi->getParameters();
+		//var_dump($jsApiParameters);die;
+			
+		$this->assign('biz_package', $jsApiParameters);
 		
 		$this->display();
 	}
