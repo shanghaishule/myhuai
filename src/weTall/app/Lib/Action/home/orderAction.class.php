@@ -548,11 +548,11 @@ class orderAction extends userbaseAction {
 		//sign已填,商户无需重复填写
 		
 		$unifiedOrder->setParameter("openid",$_SESSION['openid']);//商品描述
-		$unifiedOrder->setParameter("body","BILL(NO:".$alldingdanhao.")");//商品描述
+		$unifiedOrder->setParameter("body","BILL(NO:".$orderId.")");//商品描述
 		//自定义订单号，此处仅作举例
 		$timeStamp = time();
 		//$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
-		$unifiedOrder->setParameter("out_trade_no","$alldingdanhao");//商户订单号 
+		$unifiedOrder->setParameter("out_trade_no","$orderId");//商户订单号 
 		$unifiedOrder->setParameter("total_fee","$all_order_price_100");//总金额
 		$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址 
 		$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
