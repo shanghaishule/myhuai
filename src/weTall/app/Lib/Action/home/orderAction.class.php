@@ -569,6 +569,7 @@ class orderAction extends userbaseAction {
 			
 			$jsApiParameters = $jsApi->getParameters();
 			//var_dump($jsApiParameters);die;
+			
 			$this->assign('biz_package', $jsApiParameters);
 			
 		}else{
