@@ -12,7 +12,7 @@
 	require_once("data/config/db.php");
 	//var_dump($arr);exit;
 	$mysqli = new mysqli($arr["DB_HOST"], $arr["DB_USER"], $arr["DB_PWD"], $arr["DB_NAME"], $arr["DB_PORT"]);
-	
+
     //使用通用通知接口
 	$notify = new Notify_pub();
 
