@@ -560,6 +560,7 @@ class orderAction extends userbaseAction {
 		$unifiedOrder->setParameter("total_fee","$all_order_price_100");//总金额
 		$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址
 		$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
+		
 		//非必填参数，商户可根据实际情况选填
 		//$unifiedOrder->setParameter("sub_mch_id","XXXX");//子商户号
 		//$unifiedOrder->setParameter("device_info","XXXX");//设备号
