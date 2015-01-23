@@ -465,8 +465,7 @@ class orderAction extends userbaseAction {
 				$this->PHPSMS();
 			}
 			
-		}
-		else if(isset($_GET['orderId']))
+		}else if(isset($_GET['orderId']))
 		{
 			$item_order = M('item_order');
 			$orderId=$_GET['orderId'];//订单号

@@ -7,8 +7,8 @@
  * 
  * 这里举例使用log文件形式记录回调信息。
 */
-	include_once("./log_.php");
-	include_once("../WxPayPubHelper/WxPayPubHelper.php");
+	include_once("log_.php");
+	include_once("WxPayPubHelper.php");
 
     //使用通用通知接口
 	$notify = new Notify_pub();
@@ -34,7 +34,7 @@
 	
 	//以log文件形式记录回调信息
 	$log_ = new Log_();
-	$log_name="./notify_url.log";//log文件路径
+	$log_name="notify_url.log";//log文件路径
 	$log_->log_result($log_name,"【接收到的notify通知】:\n".$xml."\n");
 
 	if($notify->checkSign() == TRUE)
@@ -49,12 +49,9 @@
 		}
 		else{
 			//此处应该更新一下订单状态，商户自行增删操作
+			echo '1111111';
 			$log_->log_result($log_name,"【支付成功】:\n".$xml."\n");
 		}
-		
-		//商户自行增加处理流程,
-		//例如：更新订单状态
-		//例如：数据库操作
-		//例如：推送支付完成信息
+	
 	}
 ?>
