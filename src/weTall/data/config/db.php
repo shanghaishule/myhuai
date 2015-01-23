@@ -4,7 +4,5 @@ $wetallroute = dirname(dirname(dirname(dirname(__FILE__))));
 
 $arr = include($wetallroute."/data/conf/db.php");
 
-//dump($arr);exit;
-
 return $arr;
 ?>

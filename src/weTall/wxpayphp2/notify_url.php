@@ -7,9 +7,25 @@
  * 
  * 这里举例使用log文件形式记录回调信息。
 */
-	include_once("./log_.php");
-	include_once("../WxPayPubHelper/WxPayPubHelper.php");
 
+	include_once("log_.php");
+	include_once("WxPayPubHelper.php");
+	require_once("../data/config/db.php");
+	
+    $dbname ="shouzhangmall";//这里填写你BAE数据库的名称称
+    $host = $arr['DB_HOST'];
+    $port =$arr['DB_PORT'];
+    $user = $arr["DB_USER"];
+    $pwd =$arr["DB_PWD"];
+	$link = @mysql_connect("{$host}:{$port}",$user,$pwd,true);
+	if(!$link) {
+		die("Connect Server Failed: " . mysql_error($link));
+	}
+	/*连接成功后立即调用mysql_select_db()选中需要连接的数据库*/
+	if(!mysql_select_db($arr["DB_NAME"],$link)) {
+		die("Select Database Failed: " . mysql_error($link));
+	}
+	mysql_query("SET NAMES UTF8");
     //使用通用通知接口
 	$notify = new Notify_pub();
 
@@ -34,7 +50,7 @@
 	
 	//以log文件形式记录回调信息
 	$log_ = new Log_();
-	$log_name="./notify_url.log";//log文件路径
+	$log_name="notify_url.log";//log文件路径
 	$log_->log_result($log_name,"【接收到的notify通知】:\n".$xml."\n");
 
 	if($notify->checkSign() == TRUE)
@@ -49,12 +65,10 @@
 		}
 		else{
 			//此处应该更新一下订单状态，商户自行增删操作
+			$sql = "update tp_item_order set status = 2,supportmetho = 1 where orderId='".$notify->data["out_trade_no"]."'";
+			mysql_query($sql);
 			$log_->log_result($log_name,"【支付成功】:\n".$xml."\n");
 		}
-		
-		//商户自行增加处理流程,
-		//例如：更新订单状态
-		//例如：数据库操作
-		//例如：推送支付完成信息
+	
 	}
 ?>
