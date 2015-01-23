@@ -508,26 +508,6 @@ class orderAction extends userbaseAction {
 				//exit;
 				$this->assign('order_zhifu',$orders['supportmetho']);
 			}
-
-
-			$alipay_person = "";
-			$alipay_biz = "";
-			$wxpay = "";
-			if (M('alipay_person')->where(array('tokenTall'=>$tokenTall))->find()){
-				$alipay_person = "ok";
-			}
-			if (M('alipay_biz')->where(array('tokenTall'=>$tokenTall))->find()){
-				$alipay_biz = "ok";
-			}
-			//if (M('wxpay')->where(array('tokenTall'=>$tokenTall))->find()){
-			if (M('wxpay')->find()){
-				$wxpay = "ok";
-			}
-			$this->assign('alipay_person', $alipay_person);
-			$this->assign('alipay_biz', $alipay_biz);
-			$this->assign('wxpay', $wxpay);
-			
-			$this->assign('current_user',$_SESSION['user_info']['username']);
 			
 			//微信支付
 			$all_order_price_100 = $ordersumPrice*100;  //支付用，精确到分
@@ -576,7 +556,26 @@ class orderAction extends userbaseAction {
 			
 			$this->redirect('user/index',array('tokenTall'=>$tokenTall));
 		}
-
+		
+		$alipay_person = "";
+		$alipay_biz = "";
+		$wxpay = "";
+		if (M('alipay_person')->where(array('tokenTall'=>$tokenTall))->find()){
+			$alipay_person = "ok";
+		}
+		if (M('alipay_biz')->where(array('tokenTall'=>$tokenTall))->find()){
+			$alipay_biz = "ok";
+		}
+		//if (M('wxpay')->where(array('tokenTall'=>$tokenTall))->find()){
+		if (M('wxpay')->find()){
+			$wxpay = "ok";
+		}
+		$this->assign('alipay_person', $alipay_person);
+		$this->assign('alipay_biz', $alipay_biz);
+		$this->assign('wxpay', $wxpay);
+			
+		$this->assign('current_user',$_SESSION['user_info']['username']);
+		
 		$this->display();
 	}
 	
