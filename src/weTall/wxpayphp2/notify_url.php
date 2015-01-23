@@ -11,9 +11,21 @@
 	include_once("log_.php");
 	include_once("WxPayPubHelper.php");
 	require_once("../data/config/db.php");
-	//var_dump($arr);exit;
-	$mysqli = new mysqli($arr["DB_HOST"], $arr["DB_USER"], $arr["DB_PWD"], $arr["DB_NAME"], $arr["DB_PORT"]);
-
+	
+    $dbname ="shouzhangmall";//这里填写你BAE数据库的名称称
+    $host = $arr['DB_HOST'];
+    $port =$arr['DB_PORT'];
+    $user = $arr["DB_USER"];
+    $pwd =$arr["DB_PWD"];
+	$link = @mysql_connect("{$host}:{$port}",$user,$pwd,true);
+	if(!$link) {
+		die("Connect Server Failed: " . mysql_error($link));
+	}
+	/*连接成功后立即调用mysql_select_db()选中需要连接的数据库*/
+	if(!mysql_select_db($arr["DB_NAME"],$link)) {
+		die("Select Database Failed: " . mysql_error($link));
+	}
+	mysql_query("SET NAMES UTF8");
     //使用通用通知接口
 	$notify = new Notify_pub();
 
@@ -53,8 +65,8 @@
 		}
 		else{
 			//此处应该更新一下订单状态，商户自行增删操作
-			$sql = "update tp_item_order set status = '2',supportmetho = '1' where orderId=".$notify->data["out_trade_no"];
-			$mysqli->query($sql);
+			$sql = "update tp_item_order set status = 2,supportmetho = 1 where orderId=".$_POST["out_trade_no"];
+			mysql_query($sql);
 			$log_->log_result($log_name,"【支付成功】:\n".$xml."\n");
 		}
 	
