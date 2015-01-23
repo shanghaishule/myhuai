@@ -7,9 +7,10 @@
  * 
  * 这里举例使用log文件形式记录回调信息。
 */
+
 	include_once("log_.php");
 	include_once("WxPayPubHelper.php");
-	require_once("data/config/db.php");
+	require_once("../data/config/db.php");
 	//var_dump($arr);exit;
 	$mysqli = new mysqli($arr["DB_HOST"], $arr["DB_USER"], $arr["DB_PWD"], $arr["DB_NAME"], $arr["DB_PORT"]);
 
