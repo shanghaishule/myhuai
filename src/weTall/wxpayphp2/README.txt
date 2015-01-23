@@ -10,7 +10,7 @@
 ===========================================
 
 1.【基本信息设置】
-商户向微信提交企业以及银行账户资料，商户功能审核通过后，可以获得帐户基本信息，找到本例程的配置文件「WxPay.pub.config.php」，配置好如下信息：
+商户向微信提交企业以及银行账户资料，商户功能审核通过后，可以获得帐户基本信息，找到本例程的配置文件「WxPay.config.php」，配置好如下信息：
 	appId：微信公众号身份的唯一标识。审核通过后，在微信发送的邮件中查看。
 	Mchid：受理商ID，身份标识
 	Key:商户支付密钥Key。审核通过后，在微信发送的邮件中查看。
@@ -21,19 +21,17 @@ native支付中，用户扫码后调微信会将productid和用户openid发送�
 
 3.【JSAPI路径设置】
 通过JSAPI发起支付的代码应该放置在商户设置的「支付授权目录」中。
-并找到本例程的配置文件「WxPay.pub.config.php」，配置正确的路径。
+并找到本例程的配置文件「WxPay.config.php」，配置正确的路径。
 
 4.【证书路径设置】
-找到本例程的配置文件「WxPay.pub.config.php」，配置证书路径。
+找到本例程的配置文件「WxPay.config.php」，配置证书路径。
 
 5.【异步通知url设置】
-找到本例程的配置文件「WxPay.pub.config.php」，配置异步通知url。
+找到本例程的配置文件「WxPay.config.php」，配置异步通知url。
 
 6.【必须开启curl服务】
 使用Crul需要修改服务器中php.ini文件的设置，找到php_curl.dll去掉前面的";"即可。
 
-7.【设置curl超时时间】
-本例程通过curl使用HTTP POST方法，此处可修改其超时时间，默认为30秒。找到本例程的配置文件「WxPay.pub.config.php」，配置curl超时时间。
 
 ============
 代码文件结构
@@ -42,8 +40,8 @@ wxpay_php
 |-- README.txt---------------------使用说明文本
 |-- WxPayHelper--------------------微信支付类库及常用文件
 |   |-- SDKRuntimeException.php----异常处理类
-|   |-- WxPay.pub.config.php-----------商户配置文件
-|   `-- WxPayPubHelper.php------------微信支付类库
+|   |-- WxPay.config.php-----------商户配置文件
+|   `-- WxPayHelper.php------------微信支付类库
 |-- demo---------------------------例程
 |   |-- js_api_call.php------------JSAPI支付例程
 |   |-- native_call_qrcode.php-----native支付静态链接二维码例程

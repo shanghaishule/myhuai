@@ -536,24 +536,45 @@ class orderAction extends userbaseAction {
 		//微信支付
 		$all_order_price_100 = $ordersumPrice*100;  //支付用，精确到分
 		
-		//header('Content-Type:text/html;charset=utf-8');
-		include_once("WxPayphp/WxPayHelper.php");
-		$commonUtil = new CommonUtil();
-		$wxPayHelper = new WxPayHelper();
+		include_once("WxPayphp2/WxPayPubHelper.php");
+		$unifiedOrder = new UnifiedOrder_pub();
+				//使用jsapi接口
+		$jsApi = new JsApi_pub();
+		//设置统一支付接口参数
+		//设置必填参数
+		//appid已填,商户无需重复填写
+		//mch_id已填,商户无需重复填写
+		//noncestr已填,商户无需重复填写
+		//spbill_create_ip已填,商户无需重复填写
+		//sign已填,商户无需重复填写
 		
-		$wxPayHelper->setParameter("bank_type", "WX");
-		$wxPayHelper->setParameter("body", "BILL(NO:".$alldingdanhao.")");
-		$wxPayHelper->setParameter("partner", "1225508101");
-		$wxPayHelper->setParameter("out_trade_no", $alldingdanhao);
-		$wxPayHelper->setParameter("total_fee", "$all_order_price_100");
-		$wxPayHelper->setParameter("fee_type", "1");
-		$wxPayHelper->setParameter("notify_url", "http://m.hajk.com.cn/weTall/wxpay/notify_url.php");
+		$unifiedOrder->setParameter("openid",$_SESSION['openid']);//商品描述
+		$unifiedOrder->setParameter("body","BILL(NO:".$alldingdanhao.")");//商品描述
+		//自定义订单号，此处仅作举例
+		$timeStamp = time();
+		$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
+		$unifiedOrder->setParameter("out_trade_no","$out_trade_no");//商户订单号 
+		$unifiedOrder->setParameter("total_fee","$all_order_price_100");//总金额
+		$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址 
+		$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
+		//非必填参数，商户可根据实际情况选填
+		//$unifiedOrder->setParameter("sub_mch_id","XXXX");//子商户号  
+		//$unifiedOrder->setParameter("device_info","XXXX");//设备号 
+		//$unifiedOrder->setParameter("attach","XXXX");//附加数据 
+		//$unifiedOrder->setParameter("time_start","XXXX");//交易起始时间
+		//$unifiedOrder->setParameter("time_expire","XXXX");//交易结束时间 
+		//$unifiedOrder->setParameter("goods_tag","XXXX");//商品标记 
+		//$unifiedOrder->setParameter("openid","XXXX");//用户标识
+		//$unifiedOrder->setParameter("product_id","XXXX");//商品ID
 		
-		$wxPayHelper->setParameter("spbill_create_ip", "127.0.0.1");
-		$wxPayHelper->setParameter("input_charset", "GBK");
-		
-		$biz_package = $wxPayHelper->create_biz_package();
-		$this->assign('biz_package', $biz_package);
+		$prepay_id = $unifiedOrder->getPrepayId();
+		//=========步骤3：使用jsapi调起支付============
+		$jsApi->setPrepayId($prepay_id);
+
+		$jsApiParameters = $jsApi->getParameters();
+		//var_dump($jsApiParameters);die;
+
+		$this->assign('biz_package', $jsApiParameters); 
 
 		$this->display();
 	}

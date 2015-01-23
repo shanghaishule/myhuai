@@ -17,7 +17,6 @@ if ($result = $mysqli->query($query)) {
 		$config['successUrl'] = $row[6]; // 微信支付完成跳转到的页面，也可以在传递之前自定义
 		$config['failUrl'] = $row[7];
 		$config['cancelUrl'] = $row[8];
-		
 		//var_dump($config);exit;
 	}
 	$result->close();

@@ -71,6 +71,23 @@ class frontendAction extends baseAction {
     private function _init_visitor() {
         $this->visitor = new user_visitor();
         $this->assign('visitor', $this->visitor->info);
+        $config['appId'] = "wxbda9322fde0a0d69";
+        $config['appSecret'] = "8748bc78ab27e06e7695dbb54c063f2b";
+        if(empty($_SESSION['openid'])){
+        	if (isset($_GET['code'])){
+        		import('Think.ORG.Oauth2');
+        		$Oauth = new Oauth2();
+        		$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
+        		$_SESSION['openid']=$userinfo['openid'];
+        
+        	}else{
+        		$myurl = "http://m.hajk.com.cn".__SELF__;
+        		$redirecturl = urlencode($myurl);
+        		$url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$config['appId']."&redirect_uri=".$redirecturl."&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
+        		//dump($myurl);exit;
+        		header("Location: ".$url);
+        	}
+        }
     }
 
     /**
