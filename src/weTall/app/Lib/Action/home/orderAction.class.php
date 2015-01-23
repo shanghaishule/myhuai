@@ -570,6 +570,7 @@ class orderAction extends userbaseAction {
 		if (M('wxpay')->find()){
 			$wxpay = "ok";
 		}
+		
 		$this->assign('alipay_person', $alipay_person);
 		$this->assign('alipay_biz', $alipay_biz);
 		$this->assign('wxpay', $wxpay);
