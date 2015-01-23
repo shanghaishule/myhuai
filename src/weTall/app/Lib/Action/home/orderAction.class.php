@@ -551,8 +551,8 @@ class orderAction extends userbaseAction {
 		$unifiedOrder->setParameter("body","BILL(NO:".$alldingdanhao.")");//商品描述
 		//自定义订单号，此处仅作举例
 		$timeStamp = time();
-		$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
-		$unifiedOrder->setParameter("out_trade_no","$out_trade_no");//商户订单号 
+		//$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
+		$unifiedOrder->setParameter("out_trade_no","$alldingdanhao");//商户订单号 
 		$unifiedOrder->setParameter("total_fee","$all_order_price_100");//总金额
 		$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址 
 		$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型

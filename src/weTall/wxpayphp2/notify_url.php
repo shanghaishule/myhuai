@@ -9,7 +9,17 @@
 */
 	include_once("log_.php");
 	include_once("WxPayPubHelper.php");
-
+	$wetallroute = dirname(dirname(__FILE__));
+	$arr = include $wetallroute."/data/config/db.php";
+	$link = @mysql_connect("{$arr['DB_HOST']}:{$arr['DB_PORT']}",$arr['DB_USER'],$arr['DB_PWD'],true);
+	if(!$link) {
+		die("Connect Server Failed: " . mysql_error($link));
+	}
+	/*连接成功后立即调用mysql_select_db()选中需要连接的数据库*/
+	if(!mysql_select_db($arr['DB_NAME'],$link)) {
+		die("Select Database Failed: " . mysql_error($link));
+	}
+	mysql_query("SET NAMES UTF8");
     //使用通用通知接口
 	$notify = new Notify_pub();
 
@@ -49,7 +59,8 @@
 		}
 		else{
 			//此处应该更新一下订单状态，商户自行增删操作
-			echo '1111111';
+			$sql = "update tp_item_order set status = '2',supportmetho = '1' where orderId=".$notify->data["out_trade_no"];
+			mysql_query($sql,$link);
 			$log_->log_result($log_name,"【支付成功】:\n".$xml."\n");
 		}
 	
