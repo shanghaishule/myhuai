@@ -44,6 +44,7 @@
 		$notify->setReturnParameter("return_code","SUCCESS");//设置返回码
 	}
 	$returnXml = $notify->returnXml();
+	
 	echo $returnXml;
 	
 	//==商户根据实际情况设置相应的处理流程，此处仅作举例=======
@@ -65,8 +66,9 @@
 		}
 		else{
 			//此处应该更新一下订单状态，商户自行增删操作
-			$sql = "update tp_item_order set status = 2,supportmetho = 1 where orderId='".$notify->data["out_trade_no"]."'";
+			$sql = "update tp_item_order set status = 2,supportmetho = 1,support_time = '".time()."' where orderId='".$notify->data["out_trade_no"]."'";
 			mysql_query($sql);
+			
 			$log_->log_result($log_name,"【支付成功】:\n".$xml."\n");
 		}
 	
