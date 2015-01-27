@@ -47,7 +47,8 @@
 			var pic = $('#img_name').val();
 			var info = $("#reinfo").val();
 			var num = $("#reinfo").val();
-			if(name != '' && phone != ''  && num != ''){
+			var checkHos = $("#checkHos").val();
+			if(name != '' && phone != ''  && num != '' && checkHos != ''){
 					 if (!reg.test(phone)){
 					        alert('手机号码格式不正确');
 					        return false;
@@ -84,7 +85,7 @@
 				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 				    <tr>
 	                   <td class="td_1"><p class="td_p" style="margin-top:0">检查医院：</p></td>
-	                   <td><input name="checkHos" class="retextarea" type="text" style="height:30px;width:100%;border:1px solid #ccc" id="reinfo" placeholder="您所在的检查医院" />
+	                   <td><input name="checkHos" class="retextarea" type="text" style="height:30px;width:100%;border:1px solid #ccc" id="checkHos" placeholder="您所在的检查医院" />
 	                   </td>
 	                 </tr>
 	                 </table>
