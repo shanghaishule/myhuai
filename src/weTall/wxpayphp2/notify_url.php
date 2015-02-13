@@ -54,8 +54,7 @@
 	$log_name="notify_url.log";//log文件路径
 	$log_->log_result($log_name,"【接收到的notify通知】:\n".$xml."\n");
 
-	if($notify->checkSign() == TRUE)
-	{
+	if($notify->checkSign() == TRUE){
 		if ($notify->data["return_code"] == "FAIL") {
 			//此处应该更新一下订单状态，商户自行增删操作
 			$log_->log_result($log_name,"【通信出错】:\n".$xml."\n");

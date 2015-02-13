@@ -47,7 +47,8 @@
 			var pic = $('#img_name').val();
 			var info = $("#reinfo").val();
 			var num = $("#reinfo").val();
-			if(name != '' && phone != ''  && num != ''){
+			var checkHos = $("#checkHos").val();
+			if(name != '' && phone != ''  && num != '' && checkHos != ''){
 					 if (!reg.test(phone)){
 					        alert('手机号码格式不正确');
 					        return false;
@@ -84,7 +85,7 @@
 				   <table id="rebook_table" border="0" cellspacing="0" cellpadding="0">
 				    <tr>
 	                   <td class="td_1"><p class="td_p" style="margin-top:0">检查医院：</p></td>
-	                   <td><input name="advanceNum" class="retextarea" type="text" style="height:30px;width:100%;border:1px solid #ccc" id="reinfo" placeholder="您所在的检查医院" />
+	                   <td><input name="checkHos" class="retextarea" type="text" style="height:30px;width:100%;border:1px solid #ccc" id="checkHos" placeholder="您所在的检查医院" />
 	                   </td>
 	                 </tr>
 	                 </table>
@@ -106,16 +107,16 @@
 																		<ul> 
 																		<li class="tuijan">
 																			
-																					 <label><input name="project" type="radio" checked  id="taocan" value="一：速取本人拿|150" />
-																					   <span class="choosemhead">一：速取后本人拿</span><span class="choosemoney">&nbsp;150</span> </label>
-																					   <p>我们帮您速取报告后联系您，您亲自来取报告 </p>
+																					 <label><input name="project" type="radio" checked  id="taocan" value="一：速取本人拿|200" />
+																					   <span class="choosemhead">一：速取报告</span><span class="choosemoney">&nbsp;200元</span> </label>
+																					   <p>我们帮您于24小时之内速取报告，帮你省去等待若干天的焦急和住宿费的浪费 </p>
 																					
 																		</li> 
 																		<li class="tuijan">
 																			
-																					 <label><input name="project" type="radio" id="taocan" value="二：速取并邮寄给本人|200" />
-																					   <span class="choosemhead">二：速取并邮寄给本人</span><span class="choosemoney">&nbsp;200</span> </label>
-																					  <p>我们帮您速取后，您提供邮寄地址，我们帮您呢 寄回报告</p>
+																					 <label><input name="project" type="radio" id="taocan" value="二：速取并邮寄给本人|50" />
+																					   <span class="choosemhead">二：代取报告并邮寄</span><span class="choosemoney">&nbsp;50元</span> </label>
+																					  <p>我们按照预约单上取报告日期帮您取报告后，然后快递给您，快递费用到付</p>
 																					
 																		</li> 
 																		</ul> 

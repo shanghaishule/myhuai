@@ -254,6 +254,7 @@ class itemAction extends frontendAction {
     		 if(false === $data = $yuyue->create()){
     		 	 $this->error($yuyue->getError());
     		 }
+    		 $data['checkHos'] = htmlspecialchars(strip_tags($_POST['checkHos']));
     		 $data['addTime'] = time();
     		 
     		 if($yuyue->add($data)){
