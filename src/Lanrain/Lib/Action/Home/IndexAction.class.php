@@ -50,7 +50,7 @@ class IndexAction extends BaseAction{
 	public function message(){
 		 $newsId = $this->_post('newid','intval');
 		 $content = $this->_post('content','content');
-         $uid = $this->getUserInfo();echo $uid;
+         $uid = $this->getUserInfo();echo $_SESSION['uid'];
          //M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$uid,'content'=>$content));
          //$this->redirect(U('Index/book'));
 	}
@@ -64,11 +64,10 @@ class IndexAction extends BaseAction{
 		}
 	}
 	public function getUserInfo(){
-		//	if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
+		if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
 		$config['appId'] = "wxbda9322fde0a0d69";
 		$config['appSecret'] = "8748bc78ab27e06e7695dbb54c063f2b";
 		$data = array();
-		$uid = '';
 		if (isset($_GET['code'])){
 			$Oauth = new Oauth2();
 			$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
@@ -81,20 +80,20 @@ class IndexAction extends BaseAction{
 			$data['openid']= $userinfo['openid'];
 			//dump($Userarr);die;
 			if(!empty($Userarr) && $Userarr!=''){
-				$uid = $Userarr['id'];
+				
 				M('user')->where(array('openid'=>$userinfo['openid']))->save($data);
-				//$_SESSION['uid']=$Userarr['id'];
+				$_SESSION['uid']=$Userarr['id'];
 				//$_SESSION['nickname']=$Userarr['nickname'];
 				//$_SESSION['headimgurl']=$Userarr['headimgurl'];
 				//$_SESSION['openid']=$userinfo['openid'];
 			}else{
-				$uid = M('user')->add($data);
- 				/*
+			//	$uid = M('user')->add($data);
+ 				
 				$_SESSION['uid']=M('user')->add($data);
-				$_SESSION['nickname']=$userinfo['nickname'];
-				$_SESSION['headimgurl']=$Userarr['headimgurl'];
-				$_SESSION['openid']=$userinfo['openid'];
-				*/
+			//	$_SESSION['nickname']=$userinfo['nickname'];
+			//	$_SESSION['headimgurl']=$Userarr['headimgurl'];
+			//	$_SESSION['openid']=$userinfo['openid'];
+				
 			}
 			//dump($_SESSION['uid'].'-1-'.$_SESSION['name']);exit;
 		}else{
@@ -104,8 +103,7 @@ class IndexAction extends BaseAction{
 			//dump($url);exit;
 			header("Location: ".$url);
 		}	
-		//	}
-		return $uid;	
+    }
 	}
 	
 	public function indexnew(){
