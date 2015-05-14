@@ -29,7 +29,7 @@ class IndexAction extends BaseAction{
 	    dump($_SESSION);
 		//if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
 	    //    echo '1';
-			if (isset($_GET['code'])){echo '2';exit;
+			if (isset($_GET['code'])){
 				$Oauth = new Oauth2();
 				$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
 				dump($userinfo);echo $_GET['code'];exit;
