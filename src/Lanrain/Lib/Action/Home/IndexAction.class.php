@@ -50,7 +50,7 @@ class IndexAction extends BaseAction{
 				}
 				dump($_SESSION['uid'].'-1-'.$_SESSION['name']);exit;
 			}else{
-				$myurl = C('site_url').__SELF__;echo $myurl;die;
+				$myurl = C('site_url').__SELF__;
 				$redirecturl = urlencode($myurl);
 				$url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$config['appId']."&redirect_uri=".$redirecturl."&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
 				//dump($url);exit;
