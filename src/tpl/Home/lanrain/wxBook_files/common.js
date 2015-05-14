@@ -72,8 +72,8 @@ function txtit(num){
 document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
     window.shareData = { 
         "sendFriendLink": window.location.href,
-        "fTitle": "万达微信书",
-        "fContent": "这是中国第一本基于微信平台阅读和发行的微信书！",
+        "fTitle": "海亮微信书",
+        "fContent": "这是一本基于微信平台阅读和发行的微信书！",
         };
         
         WeixinJSBridge.on('menu:share:appmessage', function (argv) {

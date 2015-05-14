@@ -52,7 +52,7 @@ class IndexAction extends BaseAction{
 		 $content = $this->_post('content','content');
          $uid = $this->getUserInfo();//echo $_SESSION['uid'];
          M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$_SESSION['uid'],'content'=>$content));
-         $this->redirect(U('Index/book'));
+         $this->redirect(U('Index/content/id/'.$newsId));
 	}
 	
 	//浏览量
