@@ -24,49 +24,11 @@ class IndexAction extends BaseAction{
 	
 	//微信书
 	public function book(){
-		$config['appId'] = "wxbda9322fde0a0d69";
-		$config['appSecret'] = "8748bc78ab27e06e7695dbb54c063f2b";
-		
-	//	if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
-	    //    echo '1';
-	         $data = array();
-			if (isset($_GET['code'])){
-				$Oauth = new Oauth2();
-				$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
-				//dump($userinfo);echo $_GET['code'];exit;
-				$data['last_login_time']=time();
-				$data['last_login_ip']=get_client_ip();
-				$data['nickname'] = $userinfo['nickname'];
-				$data['headimgurl'] = $userinfo['headimgurl'];
-				$data['openid']= $userinfo['openid'];
-				$Userarr= M('user')->where(array('openid'=>$userinfo['openid']))->find();
-				if(!empty($Userarr) && $Userarr!=''){
-					M('user')->where(array('openid'=>$userinfo['openid']))->save($data);
-					$_SESSION['uid']=$Userarr['id'];
-					$_SESSION['nickname']=$Userarr['nickname'];
-					$_SESSION['headimgurl']=$Userarr['headimgurl'];
-					$_SESSION['openid']=$userinfo['openid'];
-				}else{
-					$_SESSION['uid']=M('user')->add($data);
-					$_SESSION['nickname']=$userinfo['nickname'];
-					$_SESSION['headimgurl']=$Userarr['headimgurl'];
-					$_SESSION['openid']=$userinfo['openid'];
-				}
-				//dump($_SESSION['uid'].'-1-'.$_SESSION['name']);exit;
-			}else{
-				$myurl = C('site_url').__SELF__;
-				$redirecturl = urlencode($myurl);
-				$url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$config['appId']."&redirect_uri=".$redirecturl."&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
-				//dump($url);exit;
-				header("Location: ".$url);
-			}
-	//	}
 	    $wxBook = M('img')->where(array('classname'=>'微信书'))->select();
 	    $this->assign('bookList',$wxBook);
-		$this->assign('userinfo',$data);
 		$this->display();
 	}
-	
+	//详情
 	public function content(){
 		$db=M('Img');
 		//$where['token']=$this->_get('token','trim');
@@ -74,6 +36,52 @@ class IndexAction extends BaseAction{
 		$imgDetail =  M('img')->where(array('id'=>$contentid))->find();
 		$this->assign('imgDetail',$imgDetail);
 		$this->display();
+	}
+	//留言
+	public function message(){
+		 $newsId = $this->_post('newsid','intval');
+		 $content = $this->_post('','content');
+         $data = $this->getUserInfo();
+         dump($data);
+	}
+	public function getUserInfo(){
+		//	if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
+		//    echo '1';
+		$config['appId'] = "wxbda9322fde0a0d69";
+		$config['appSecret'] = "8748bc78ab27e06e7695dbb54c063f2b";
+		$data = array();
+		if (isset($_GET['code'])){
+			$Oauth = new Oauth2();
+			$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
+			//dump($userinfo);echo $_GET['code'];exit;
+			$data['last_login_time']=time();
+			$data['last_login_ip']=get_client_ip();
+			$data['nickname'] = $userinfo['nickname'];
+			$data['headimgurl'] = $userinfo['headimgurl'];
+			$data['openid']= $userinfo['openid'];
+			$Userarr= M('user')->where(array('openid'=>$userinfo['openid']))->find();
+			if(!empty($Userarr) && $Userarr!=''){
+				M('user')->where(array('openid'=>$userinfo['openid']))->save($data);
+				$_SESSION['uid']=$Userarr['id'];
+				$_SESSION['nickname']=$Userarr['nickname'];
+				$_SESSION['headimgurl']=$Userarr['headimgurl'];
+				$_SESSION['openid']=$userinfo['openid'];
+			}else{
+				$_SESSION['uid']=M('user')->add($data);
+				$_SESSION['nickname']=$userinfo['nickname'];
+				$_SESSION['headimgurl']=$Userarr['headimgurl'];
+				$_SESSION['openid']=$userinfo['openid'];
+			}
+			//dump($_SESSION['uid'].'-1-'.$_SESSION['name']);exit;
+		}else{
+			$myurl = C('site_url').__SELF__;
+			$redirecturl = urlencode($myurl);
+			$url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$config['appId']."&redirect_uri=".$redirecturl."&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
+			//dump($url);exit;
+			header("Location: ".$url);
+		}	
+		//	}
+		return $data;	
 	}
 	
 	public function indexnew(){
