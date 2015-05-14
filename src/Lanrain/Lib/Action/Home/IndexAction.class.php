@@ -28,8 +28,8 @@ class IndexAction extends BaseAction{
 		$config['appSecret'] = "8748bc78ab27e06e7695dbb54c063f2b";
 	
 		if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
-	       echo '1';
-			if (isset($_GET['code'])){echo '2';
+	        echo '1';
+			if (isset($_GET['code'])){echo '2';exit;
 				$Oauth = new Oauth2();
 				$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
 				dump($userinfo);echo $_GET['code'];exit;
@@ -49,7 +49,7 @@ class IndexAction extends BaseAction{
 					$_SESSION['openid']=$userinfo['openid'];
 				}
 				dump($_SESSION['uid'].'-1-'.$_SESSION['name']);exit;
-			}else{echo '3';
+			}else{echo '3';exit;
 				$myurl = C('site_url').__SELF__;
 				$redirecturl = urlencode($myurl);
 				$url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$config['appId']."&redirect_uri=".$redirecturl."&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
