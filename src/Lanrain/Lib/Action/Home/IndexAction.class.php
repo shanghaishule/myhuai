@@ -26,29 +26,32 @@ class IndexAction extends BaseAction{
 	public function book(){
 		$config['appId'] = "wxbda9322fde0a0d69";
 		$config['appSecret'] = "8748bc78ab27e06e7695dbb54c063f2b";
-	    dump($_SESSION);
-		//if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
+		
+		if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
 	    //    echo '1';
 			if (isset($_GET['code'])){
 				$Oauth = new Oauth2();
 				$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
-				dump($userinfo);echo $_GET['code'];exit;
-				$userinfo['last_login_time']=time();
-				$userinfo['last_login_ip']=get_client_ip();
+				//dump($userinfo);echo $_GET['code'];exit;
+				$data['last_login_time']=time();
+				$data['last_login_ip']=get_client_ip();
+				$data['nickname'] = $userinfo['nickname'];
+				$data['headimgurl'] = $userinfo['headimgurl'];
+				$data['openid']= $userinfo['openid'];
 				$Userarr= M('user')->where(array('openid'=>$userinfo['openid']))->find();
 				if(!empty($Userarr) && $Userarr!=''){
-					M('user')->where(array('id'=>$Userarr['id']))->save($userinfo);
+					M('user')->where(array('openid'=>$userinfo['openid']))->save($data);
 					$_SESSION['uid']=$Userarr['id'];
-					$_SESSION['name']=$Userarr['nickname'];
+					$_SESSION['nickname']=$Userarr['nickname'];
 					$_SESSION['headimgurl']=$Userarr['headimgurl'];
 					$_SESSION['openid']=$userinfo['openid'];
 				}else{
-					$_SESSION['uid']=M('user')->add($userinfo);
-					$_SESSION['name']=$userinfo['nickname'];
+					$_SESSION['uid']=M('user')->add($data);
+					$_SESSION['nickname']=$userinfo['nickname'];
 					$_SESSION['headimgurl']=$Userarr['headimgurl'];
 					$_SESSION['openid']=$userinfo['openid'];
 				}
-				dump($_SESSION['uid'].'-1-'.$_SESSION['name']);exit;
+				//dump($_SESSION['uid'].'-1-'.$_SESSION['name']);exit;
 			}else{
 				$myurl = C('site_url').__SELF__;
 				$redirecturl = urlencode($myurl);
@@ -56,10 +59,13 @@ class IndexAction extends BaseAction{
 				//dump($url);exit;
 				header("Location: ".$url);
 			}
-	//	}
-		//$this->display();
+		}
+		$this->display();
 	}
 	
+	public function content(){
+		
+	}
 	
 	public function indexnew(){
 		$this->display();
