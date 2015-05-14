@@ -49,8 +49,8 @@ class IndexAction extends BaseAction{
 	public function message(){
 		 $newsId = $this->_post('newid','intval');
 		 $content = $this->_post('content','content');
-         $uid = $this->getUserInfo();
-         M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$uid,'content'=>$content));
+        $this->getUserInfo();exit;
+        // M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$uid,'content'=>$content));
          $this->redirect(U('Index/book'));
 	}
 	
@@ -105,7 +105,7 @@ class IndexAction extends BaseAction{
 			header("Location: ".$url);
 		}	
 		//	}
-		return $uid;	
+	//	return $uid;	
 	}
 	
 	public function indexnew(){
