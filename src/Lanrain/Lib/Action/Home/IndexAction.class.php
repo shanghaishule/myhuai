@@ -42,6 +42,7 @@ class IndexAction extends BaseAction{
 		 $newsId = $this->_post('newsid','intval');
 		 $content = $this->_post('','content');
          $data = $this->getUserInfo();
+         echo $newsId.$content;
          dump($data);
 	}
 	public function getUserInfo(){
