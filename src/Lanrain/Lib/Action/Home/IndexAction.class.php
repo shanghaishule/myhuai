@@ -73,12 +73,12 @@ class IndexAction extends BaseAction{
 			$Oauth = new Oauth2();
 			$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
 			dump($userinfo);
+			$Userarr= M('user')->where(array('openid'=>$userinfo['openid']))->find();
 			$data['last_login_time']=time();
 			$data['last_login_ip']=get_client_ip();
 			$data['nickname'] = $userinfo['nickname'];
 			$data['headimgurl'] = $userinfo['headimgurl'];
 			$data['openid']= $userinfo['openid'];
-			$Userarr= M('user')->where(array('openid'=>$userinfo['openid']))->find();
 			dump($Userarr);die;
 			if(!empty($Userarr) && $Userarr!=''){
 				$uid = $Userarr['id'];
