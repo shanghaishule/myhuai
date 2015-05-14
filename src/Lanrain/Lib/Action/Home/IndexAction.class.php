@@ -36,7 +36,7 @@ class IndexAction extends BaseAction{
 		$imgDetail =  M('img')->where(array('id'=>$contentid))->find();
 		$this->assign('imgDetail',$imgDetail);
 		$commentsNum = M('img_comments')->where(array('imgid'=>$contentid))->count();
-		$commentsPer = M('img_comments')->where(array('imgid'=>$contentid))->select();
+		$commentsPer = M('img_comments')->where(array('imgid'=>$contentid))->order('id DESC')->select();
 		foreach($commentsPer as $key => $val){
 			  $uInfo = M('user')->where(array('id'=>$val['uid']))->find();
 			  $commentsPer[$key]['headimgurl'] = $uInfo['headimgurl'];
@@ -52,7 +52,7 @@ class IndexAction extends BaseAction{
 		 $content = $this->_post('content','content');
          $uid = $this->getUserInfo();//echo $_SESSION['uid'];
          M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$_SESSION['uid'],'content'=>$content));
-         $this->redirect(U('Index/content/id/'.$newsId));
+         $this->redirect(U('Index/content/',array('id'=>$newsId)));
 	}
 	
 	//浏览量
