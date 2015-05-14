@@ -29,6 +29,7 @@ class IndexAction extends BaseAction{
 		
 		if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
 	    //    echo '1';
+	        $data = array();
 			if (isset($_GET['code'])){
 				$Oauth = new Oauth2();
 				$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
@@ -60,6 +61,7 @@ class IndexAction extends BaseAction{
 				header("Location: ".$url);
 			}
 		}
+		$this->assign('userinfo',$data);
 		$this->display();
 	}
 	
