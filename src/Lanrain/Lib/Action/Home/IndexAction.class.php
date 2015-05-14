@@ -65,7 +65,6 @@ class IndexAction extends BaseAction{
 	}
 	public function getUserInfo(){
 		//	if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
-		//    echo '1';
 		$config['appId'] = "wxbda9322fde0a0d69";
 		$config['appSecret'] = "8748bc78ab27e06e7695dbb54c063f2b";
 		$data = array();
