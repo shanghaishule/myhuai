@@ -61,12 +61,17 @@ class IndexAction extends BaseAction{
 				header("Location: ".$url);
 			}
 	//	}
+	    $wxBook = M('img')->where(array('classname'=>'微信书'))->select();
+	    $this->assign('bookList',$wxBook);
 		$this->assign('userinfo',$data);
 		$this->display();
 	}
 	
 	public function content(){
-		
+		$db=M('Img');
+		//$where['token']=$this->_get('token','trim');
+		$contentid=intval($_GET['id']);	
+		echo $contentid;
 	}
 	
 	public function indexnew(){

@@ -98,41 +98,21 @@ function showDes(el){
 	<h2 class="tit2">目 录</h2>
 	<div class="jscroll"><div class="jscroll-inner">
 		<ul class="dir">
+		   <volist name="bookList" id="val" key="key">
 			<li class="cf">
-				<div class="num">01{lanrain:$userinfo['nickname']}<img src="{lanrain:$userinfo['headimgurl']}" /></div>
+				<div class="num">0{lanrain:$key}</div>
 				<div class="titAll">
-					<a href="http://vbook.wanda.cn/index.php?s=/news/detail/id/23.html" class="imgtit"></a>
-					<a href="javascript:;" onclick="showDes(this)" class="txtit">内部绝密“兵法”：万达高效开会就靠这七招</a>
-					<p><span>阅读人数：196311</span>万达工作法 • 开会</p>
+					<a href="{lanrain::U('Index/content',array('id'=>$val['id']))}" class="imgtit"></a>
+					<a href="javascript:;" onclick="showDes(this)" class="txtit">{lanrain:$val.title}</a>
+					<p><span>阅读人数：{lanrain:$val.click}</span>{lanrain:$val.keyword}</p>
 				</div>
 				<div class="txtmore">
-					<a href="http://vbook.wanda.cn/index.php?s=/news/detail/id/23.html">面对中国的“文山会海”，有没有一个可以借鉴的开会模式来拯救中国的会议呢？这个还真可以有！ 
+					<a href="{lanrain::U('Index/content',array('id'=>$val['id']))}">{lanrain:$val.text} 
 					<span>&gt;&gt;阅读全文</span></a>
 					<b></b>
 				</div>
-			</li><li class="cf">
-				<div class="num">02</div>
-				<div class="titAll">
-					<a href="http://vbook.wanda.cn/index.php?s=/news/detail/id/24.html" class="imgtit"></a>
-					<a href="javascript:;" onclick="showDes(this)" class="txtit">一张登记表里暗藏的那些玄机</a>
-					<p><span>阅读人数：52826</span>万达工作法 • 识人</p>
-				</div>
-				<div class="txtmore">
-					<a href="http://vbook.wanda.cn/index.php?s=/news/detail/id/24.html">你去任何企业面试，都会被要求填一张《人才信息登记表》，但是你知道企业为什么让你填这个吗？你知道为什么很多时候，面试得很好，却没被录用吗？...<span>&gt;&gt;阅读全文</span></a>
-					<b></b>
-				</div>
-			</li><li class="cf">
-				<div class="num">03</div>
-				<div class="titAll">
-					<a href="http://vbook.wanda.cn/index.php?s=/news/detail/id/25.html" class="imgtit"></a>
-					<a href="javascript:;" onclick="showDes(this)" class="txtit">内部培训绝密资料：万达这样培养人才 </a>
-					<p><span>阅读人数：46405</span>万达工作法 • 培训 </p>
-				</div>
-				<div class="txtmore">
-					<a href="{lanrain::U('Index/content')}">难道万达真的是传说中军事化管理，员工全部都是用小鞭子抽着往前走才有这么强的执行力？为何万达的人才很抢手但又很难挖？万达的培训体系是怎样的？万达培训人有哪些高招？万达在这方面确实有自己的法宝。...<span>&gt;&gt;阅读全文</span></a>
-					<b></b>
-				</div>
 			</li>
+			</volist>
 			</ul>
 		</div>
 	</div>
