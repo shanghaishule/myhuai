@@ -27,8 +27,8 @@ class IndexAction extends BaseAction{
 		$config['appId'] = "wxbda9322fde0a0d69";
 		$config['appSecret'] = "8748bc78ab27e06e7695dbb54c063f2b";
 	    dump($_SESSION);
-		if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
-	        echo '1';
+		//if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
+	    //    echo '1';
 			if (isset($_GET['code'])){echo '2';exit;
 				$Oauth = new Oauth2();
 				$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
@@ -49,14 +49,14 @@ class IndexAction extends BaseAction{
 					$_SESSION['openid']=$userinfo['openid'];
 				}
 				dump($_SESSION['uid'].'-1-'.$_SESSION['name']);exit;
-			}else{echo '3';exit;
+			}else{
 				$myurl = C('site_url').__SELF__;
 				$redirecturl = urlencode($myurl);
 				$url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$config['appId']."&redirect_uri=".$redirecturl."&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
 				//dump($url);exit;
 				header("Location: ".$url);
 			}
-		}
+	//	}
 		//$this->display();
 	}
 	
