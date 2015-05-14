@@ -71,7 +71,9 @@ class IndexAction extends BaseAction{
 		$db=M('Img');
 		//$where['token']=$this->_get('token','trim');
 		$contentid=intval($_GET['id']);	
-		echo $contentid;
+		$imgDetail =  M('img')->where(array('id'=>$contentid))->find();
+		$this->assign('imgDetail',$imgDetail);
+		$this->display();
 	}
 	
 	public function indexnew(){

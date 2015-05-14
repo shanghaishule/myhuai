@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://vbook.wanda.cn/index.php?s=/news/detail/id/26.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>海亮工作法 • 模块化</title>
+<meta name="keywords" content="海亮微信书">
+<meta name="description" content="海亮超强执行力从何而来，秘密在此 ">
+
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="full-screen" content="no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="address=no">
+<link rel="icon" href="http://vbook.wanda.cn/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://vbook.wanda.cn/Public/index/img/startup/apple-touch-icon-57x57-pr.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://vbook.wanda.cn/Public/index/img/startup/apple-touch-icon-72x72-pr.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://vbook.wanda.cn/Public/index/img/startup/apple-touch-icon-114x114-pr.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://vbook.wanda.cn/Public/index/img/startup/apple-touch-icon-144x144-pr.png">
+<link rel="apple-touch-icon-precomposed" sizes="192x192" href="http://vbook.wanda.cn/Public/index/img/startup/apple-touch-icon-192x192-pr.png">
+<link rel="apple-touch-startup-image" href="http://vbook.wanda.cn/Public/index/img/startup/startup5.png" media="(device-height:568px)">
+<link rel="apple-touch-startup-image" size="640x920" href="http://vbook.wanda.cn/Public/index/img/startup/startup.png" media="(device-height:480px)">
+<link href="/tpl/Home/lanrain/wxBook_files/base5.css" rel="stylesheet" type="text/css">
+<link href="/tpl/Home/lanrain/wxBook_files/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+	var Fromurl = "/index.php?s=/index/message.html";
+	var Zanurl = "/index.php?s=/index/zan.html";
+</script>
+<script type="text/javascript" src="/tpl/Home/lanrain/wxBook_files/touchwipe.js"></script>
+<script type="text/javascript" src="/tpl/Home/lanrain/wxBook_files/jquery.jscroll.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.jscroll').jscroll({
+		loadingHtml: '<span>再来几条</span>',
+		//autoTriggerUntil: 5,
+		nextSelector:'a.next:last'
+	});
+});
+</script>
+<style type="text/css">
+.jscroll-loading { text-align: center;  margin-bottom: 10px; padding: 20px 0; }
+.jscroll-loading span { padding: 5px 0; background: url(/Public/index/loading.gif) no-repeat left center; padding-left: 25px; color: #999; }
+</style>
+</head>
+
+<body>
+<div id="qianyan">
+	<!--h2 class="tit">
+		<a href="/index.php?s=/index.html"><img src="/Public/index/img/logo.png" alt=""></a>
+		<a href="/index.php?s=/index/index.html#mulu"><span></span><span></span><span></span></a>
+	</h2-->
+	<div class="header">
+		<h2 class="tit js-tit"><a href="http://vbook.wanda.cn/index.php?s=/index.html"><img src="/tpl/Home/lanrain/wxBook_files/logo.png" alt=""></a></h2>
+		<a class="line3" href="http://vbook.wanda.cn/index.php?s=/index/index.html#mulu"><span></span><span></span><span></span></a>
+			</div>
+	<div class="p10">
+		<h2 class="blueTit">{lanrain:$imgDetail['title']}</h2>
+		<h2 class="mormalTit">{lanrain:$imgDetail['text']}</h2>
+		<ul class="otherTxt cf">
+		<li class="br1s">作者：企业文化中心</li>
+		<li>阅读人数：{lanrain:$imgDetail['click']}</li>
+		</ul>
+		<div class="editbody f16">
+						{lanrain:$imgDetail['info']}
+		</div>
+				<div class="zan cf zannum">
+			<p><span>34</span></p>
+		</div>		<div class="box-shuping bt1s_c9cdcc pt20">
+			<h2>一句话书评(35)</h2>
+			<form id="FromID" method="post" action="{lanrain::U('Index/message')}">
+				<input type="hidden" id="newid" name="newid" value="{lanrain:$imgDetail['id']}">
+				<textarea name="content" id="content" cols="30" rows="10" placeholder="写点什么吧~"></textarea>
+				<input type="button" class="btn subFrom" value="提交">
+			</form>
+
+			<h3>最新书评</h3>
+			<div class="jscroll"><div class="jscroll-inner">
+				<ul class="cf">
+					<li>
+						<img src="/tpl/Home/lanrain/wxBook_files/0(5)" alt="" width="60">
+						<div>
+							<h4>刘晓浪东方素养&nbsp;</h4>
+							<p>改变源于</p>
+						</div>
+					</li>
+				</ul>
+				<div class="jscroll-next-parent" style="display: none;"><a href="http://vbook.wanda.cn/index.php?s=/news/getreview/newid/26/page/2.html" class="next">next page</a></div>
+			</div></div>
+		</div>
+	</div>
+</div>
+
+
+<script> 
+WeixinApi.ready(function(Api) {
+  var imgList = new Array();
+  $(".editbody img").each(function(){
+    var imgSrc=$(this).attr("src");
+    imgList.push(imgSrc);
+  })
+  $(".editbody img").click(function(){
+    var index = $('img').index(this)-1;
+    Api.imagePreview(imgList[index], imgList);
+  })
+});
+/*$(document).ready(function(){
+	var wh=$(window).width()-20;
+	$("#iframeV").css({
+		"width":wh,
+		"height":wh/4*3
+	})*/
+  $(function() {
+			//导航菜单 滚动显示/隐藏效果
+			var disScroll;
+			var lastScrollTop = 0;
+			var delat = 5;
+			var navHight = $('.header').outerHeight();
+			$(window).scroll(function(event) {
+				disScroll = true;
+			});
+			setInterval(function() {
+				if (disScroll) {
+					hasScrolled();
+					disScroll = false;
+				}
+			}, 250);
+
+			function hasScrolled() {
+				var st = $(this).scrollTop();
+				if (Math.abs(st - lastScrollTop) <= delat) {
+					return;
+				};
+				// st滚动距离大于导航高度并且大于上次高度
+				if (st > navHight + 40 && st > lastScrollTop) {
+					$('.js-tit').removeClass('header-show').addClass('header-hide');
+				} else {
+					if (st + $(window).height() < $(document).height()) {
+						$('.js-tit').removeClass('header-hide').addClass('header-show');
+					}
+				}
+				lastScrollTop = st;
+			};
+})
+</script></body></html>
