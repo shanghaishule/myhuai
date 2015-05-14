@@ -65,7 +65,7 @@ $(document).ready(function() {
 			- -->
 		</div>		
 		<div class="box-shuping bt1s_c9cdcc pt20">
-			<h2>一句话书评(35)</h2>
+			<h2>一句话书评(<if condition="$commesNum ==''">0<else />{lanrain:$commesNum}</if>)</h2>
 			<form id="FromID" method="post" action="{lanrain::U('Index/message')}">
 				<input type="hidden" id="newid" name="newid" value="{lanrain:$imgDetail['id']}">
 				<textarea name="content" id="content" cols="30" rows="10" placeholder="写点什么吧~"></textarea>

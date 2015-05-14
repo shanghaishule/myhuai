@@ -42,6 +42,7 @@ class IndexAction extends BaseAction{
 			  $commentsPer[$key]['headimgurl'] = $uInfo['headimgurl'];
 			  $commentsPer[$key]['nickname'] = $uInfo['nickname'];
 		}
+		$this->assign('commesNum',$commentsNum);
 		$this->assign('comments',$commentsPer);
 		$this->display();
 	}
@@ -49,8 +50,8 @@ class IndexAction extends BaseAction{
 	public function message(){
 		 $newsId = $this->_post('newid','intval');
 		 $content = $this->_post('content','content');
-        echo  $this->getUserInfo();exit;
-        // M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$uid,'content'=>$content));
+         $uid = $this->getUserInfo();exit;
+         M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$uid,'content'=>$content));
          $this->redirect(U('Index/book'));
 	}
 	

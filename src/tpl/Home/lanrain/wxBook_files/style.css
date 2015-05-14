@@ -64,7 +64,7 @@ right:0px
 .dir li { border-bottom: 1px solid #dfdfdf; padding: 10px 0; }
 .dir .num { width: 65px; height: 65px; border: 1px solid #888381; border-radius: 50%; line-height: 65px; font-size: 30px; color: #F00; text-align: center; display: block; float: left; margin-right: 10px; }
 .dir .txtit, .dir .txtit:link, .dir .txtit:visited, .dir .txtit:hover, .dir .txtit:active { color: #595757; text-decoration: none; font-size: 14px; line-height: 22px; height: 44px; overflow: hidden; margin-right: 44px; display: block;  word-wrap:break-word;word-break:break-all; -webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
-.dir .imgtit { background: url(../img/more.png) no-repeat center right; width: 30px; height: 40px; display: block; background-size: contain; float: right; }
+.dir .imgtit { background: url(/tpl/Home/lanrain/wxBook_files/more.png) no-repeat center right; width: 30px; height: 40px; display: block; background-size: contain; float: right; }
 .dir .titAll p { margin-left: 75px; color: #466199; font-size: 12px; padding-top: 8px; }
 .dir .titAll p span { float: right; }
 .dir .txtmore { background-color: #fff; padding: 8px; margin-top: 10px; position: relative; display: none; font-size: 14px; }
