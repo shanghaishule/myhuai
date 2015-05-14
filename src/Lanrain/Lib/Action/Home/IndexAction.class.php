@@ -49,7 +49,7 @@ class IndexAction extends BaseAction{
 	public function message(){
 		 $newsId = $this->_post('newid','intval');
 		 $content = $this->_post('content','content');
-        $this->getUserInfo();exit;
+        echo  $this->getUserInfo();exit;
         // M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$uid,'content'=>$content));
          $this->redirect(U('Index/book'));
 	}
@@ -72,14 +72,14 @@ class IndexAction extends BaseAction{
 		if (isset($_GET['code'])){
 			$Oauth = new Oauth2();
 			$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
-			dump($userinfo);
+			//dump($userinfo);
 			$Userarr= M('user')->where(array('openid'=>$userinfo['openid']))->find();
 			$data['last_login_time']=time();
 			$data['last_login_ip']=get_client_ip();
 			$data['nickname'] = $userinfo['nickname'];
 			$data['headimgurl'] = $userinfo['headimgurl'];
 			$data['openid']= $userinfo['openid'];
-			dump($Userarr);die;
+			//dump($Userarr);die;
 			if(!empty($Userarr) && $Userarr!=''){
 				$uid = $Userarr['id'];
 				M('user')->where(array('openid'=>$userinfo['openid']))->save($data);
@@ -105,7 +105,7 @@ class IndexAction extends BaseAction{
 			header("Location: ".$url);
 		}	
 		//	}
-	//	return $uid;	
+		return $uid;	
 	}
 	
 	public function indexnew(){
