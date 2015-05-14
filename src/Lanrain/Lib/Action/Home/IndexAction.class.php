@@ -57,7 +57,7 @@ class IndexAction extends BaseAction{
 				header("Location: ".$url);
 			}
 		}
-		$this->display();
+		//$this->display();
 	}
 	
 	
