@@ -60,9 +60,11 @@ $(document).ready(function() {
 		<div class="editbody f16">
 						{lanrain:$imgDetail['info']}
 		</div>
-				<div class="zan cf zannum">
+				<!-- -<div class="zan cf zannum">
 			<p><span>34</span></p>
-		</div>		<div class="box-shuping bt1s_c9cdcc pt20">
+			- -->
+		</div>		
+		<div class="box-shuping bt1s_c9cdcc pt20">
 			<h2>一句话书评(35)</h2>
 			<form id="FromID" method="post" action="{lanrain::U('Index/message')}">
 				<input type="hidden" id="newid" name="newid" value="{lanrain:$imgDetail['id']}">
@@ -73,15 +75,17 @@ $(document).ready(function() {
 			<h3>最新书评</h3>
 			<div class="jscroll"><div class="jscroll-inner">
 				<ul class="cf">
+					<volist name="comments" id="val">
 					<li>
-						<img src="/tpl/Home/lanrain/wxBook_files/0(5)" alt="" width="60">
+						<img src="{lanrain:$val.headimgurl}" alt="" width="60">
 						<div>
-							<h4>刘晓浪东方素养&nbsp;</h4>
-							<p>改变源于</p>
+							<h4>{lanrain:$val.nickname}&nbsp;</h4>
+							<p>{lanrain:$val.content}</p>
 						</div>
 					</li>
+					</volist>
 				</ul>
-				<div class="jscroll-next-parent" style="display: none;"><a href="http://vbook.wanda.cn/index.php?s=/news/getreview/newid/26/page/2.html" class="next">next page</a></div>
+				<!-- -<div class="jscroll-next-parent" style="display: none;"><a href="http://vbook.wanda.cn/index.php?s=/news/getreview/newid/26/page/2.html" class="next">next page</a></div>- -->
 			</div></div>
 		</div>
 	</div>

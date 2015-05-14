@@ -35,11 +35,19 @@ class IndexAction extends BaseAction{
 		$contentid=intval($_GET['id']);	
 		$imgDetail =  M('img')->where(array('id'=>$contentid))->find();
 		$this->assign('imgDetail',$imgDetail);
+		$commentsNum = M('img_comments')->where(array('imgid'=>$contentid))->count();
+		$commentsPer = M('img_comments')->where(array('imgid'=>$contentid))->select();
+		foreach($commentsPer as $key => $val){
+			  $uInfo = M('user')->where(array('id'=>$val['uid']))->find();
+			  $commentsPer[$key]['headimgurl'] = $uInfo['headimgurl'];
+			  $commentsPer[$key]['nickname'] = $uInfo['nickname'];
+		}
+		$this->assign('comments',$commentsPer);
 		$this->display();
 	}
 	//留言
 	public function message(){
-		 $newsId = $this->_post('newsid','intval');
+		 $newsId = $this->_post('newid','intval');
 		 $content = $this->_post('content','content');
          $uid = $this->getUserInfo();
          M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$uid,'content'=>$content));
