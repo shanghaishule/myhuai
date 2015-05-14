@@ -25,7 +25,6 @@
 <link href="/tpl/Home/lanrain/wxBook_files/style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="/tpl/Home/lanrain/wxBook_files/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="/tpl/Home/lanrain/wxBook_files/common.js"></script>
-<script type="text/javascript" src="/tpl/Home/lanrain/wxBook_files/jquery.jscroll.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.jscroll').jscroll({
@@ -139,4 +138,6 @@ WeixinApi.ready(function(Api) {
 				lastScrollTop = st;
 			};
 })
-</script></body></html>
+</script>
+<script src="{lanrain::U('Index/clickNum',array('id'=>$imgDetail['id']))}"></script>
+</body></html>
