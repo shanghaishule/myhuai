@@ -26,7 +26,7 @@ class IndexAction extends BaseAction{
 	public function book(){
 		$config['appId'] = "wxbda9322fde0a0d69";
 		$config['appSecret'] = "8748bc78ab27e06e7695dbb54c063f2b";
-	
+	    dump($_SESSION);
 		if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
 	        echo '1';
 			if (isset($_GET['code'])){echo '2';exit;
@@ -57,7 +57,7 @@ class IndexAction extends BaseAction{
 				header("Location: ".$url);
 			}
 		}
-		//$this->display();
+		$this->display();
 	}
 	
 	
