@@ -50,9 +50,9 @@ class IndexAction extends BaseAction{
 	public function message(){
 		 $newsId = $this->_post('newid','intval');
 		 $content = $this->_post('content','content');
-         $uid = $this->getUserInfo();
-         M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$uid,'content'=>$content));
-         $this->redirect(U('Index/book'));
+         $uid = $this->getUserInfo();echo $uid;
+         //M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$uid,'content'=>$content));
+         //$this->redirect(U('Index/book'));
 	}
 	
 	//浏览量
