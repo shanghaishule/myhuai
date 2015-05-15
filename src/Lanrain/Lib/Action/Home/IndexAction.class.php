@@ -8,7 +8,7 @@ class IndexAction extends BaseAction{
 			if (isset($_GET['code'])){
 				$Oauth = new Oauth2();
 				$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
-				//dump($userinfo);
+				dump($userinfo);die;
 				$Userarr= M('user')->where(array('openid'=>$userinfo['openid']))->find();
 				$data['last_login_time']=time();
 				$data['last_login_ip']=get_client_ip();
