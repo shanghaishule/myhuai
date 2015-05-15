@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://vbook.wanda.cn/index.php?s=/review/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>海亮微信书</title>
+<meta name="keywords" content="海亮微信书">
+<meta name="description" content="">
+
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="full-screen" content="no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="address=no">
+<link rel="icon" href="http://vbook.wanda.cn/favicon.ico" type="image/x-icon">
+<link href="/tpl/Home/lanrain/wxBook_files/base5.css" rel="stylesheet" type="text/css">
+<link href="/tpl/Home/lanrain/wxBook_files/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/tpl/Home/lanrain/wxBook_files/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/tpl/Home/lanrain/wxBook_files/common.js"></script>
+<script type="text/javascript" src="/tpl/Home/lanrain/wxBook_file/WeixinApi.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.jscroll').jscroll({
+		loadingHtml: '<span>再来几条</span>',
+		nextSelector:'a.next:last'
+	});
+});
+</script>
+<style type="text/css">
+.jscroll-loading { text-align: center;  margin-bottom: 10px; padding: 20px 0; }
+.jscroll-loading span { padding: 5px 0; background: url(/Public/index/loading.gif) no-repeat left center; padding-left: 25px; color: #999; }
+</style>
+
+<body>
+<div id="qianyan">
+	<!--h2 class="tit">
+		<a href="/index.php?s=/index.html"><img src="/Public/index/img/logo.png" alt=""></a>
+		<a href="/index.php?s=/news/index.html"><span></span><span></span><span></span></a>
+	</h2-->
+	<div class="header">
+		<h2 class="tit js-tit header-show"><a href="{lanrain::U('Index/book')}"><img src="/tpl/Home/lanrain/wxBook_files/logo.png" alt=""></a></h2>
+		<a class="line3" href="{lanrain::U('Index/book')}"><span></span><span></span><span></span></a>
+	</div>
+	<div class="p10">
+		<h2 class="tit2">书 评</h2>
+		<div class="box-shuping pt20">
+			<h2>一句话书评(<if condition="$commesNum ==''">0<else />{lanrain:$commesNum}</if>)</h2>
+			<form id="FromID" method="post" action="{lanrain::U('Index/message')}">
+			    <input type="hidden" id="newid" name="newid" value="0">
+				<textarea name="content" id="content" cols="30" rows="10" placeholder="写点什么吧~"></textarea>
+				<input type="button" class="btn subFrom" value="提交">
+			</form>
+			<h3>置顶书评</h3>
+			<ul class="cf">
+			   <volist name="comments" id="val">
+				<li>
+					<img src="{lanrain:$val.headimgurl}" alt="" width="60">
+					<div>
+						<h4>{lanrain:$val.nickname}</h4>
+						<p>{lanrain:$val.content}</p>
+					</div>
+				</li>
+				</volist>
+			</ul>
+	</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+				$(function() {
+			//导航菜单 滚动显示/隐藏效果
+			var disScroll;
+			var lastScrollTop = 0;
+			var delat = 5;
+			var navHight = $('.header').outerHeight();
+			$(window).scroll(function(event) {
+				disScroll = true;
+			});
+			setInterval(function() {
+				if (disScroll) {
+					hasScrolled();
+					disScroll = false;
+				}
+			}, 250);
+
+			function hasScrolled() {
+				var st = $(this).scrollTop();
+				if (Math.abs(st - lastScrollTop) <= delat) {
+					return;
+				};
+				// st滚动距离大于导航高度并且大于上次高度
+				if (st > navHight + 40 && st > lastScrollTop) {
+					$('.js-tit').removeClass('header-show').addClass('header-hide');
+				} else {
+					if (st + $(window).height() < $(document).height()) {
+						$('.js-tit').removeClass('header-hide').addClass('header-show');
+					}
+				}
+				lastScrollTop = st;
+			};
+		})
+	</script>
+</body>
+</html>
