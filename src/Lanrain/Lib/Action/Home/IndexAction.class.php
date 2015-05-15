@@ -1,45 +1,5 @@
 <?php
 class IndexAction extends BaseAction{
-	public function _initialize(){
-		//if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
-			$config['appId'] = "wxbda9322fde0a0d69";
-			$config['appSecret'] = "8748bc78ab27e06e7695dbb54c063f2b";
-			$data = array();
-			if (isset($_GET['code'])){
-				$Oauth = new Oauth2();
-				$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
-				dump($userinfo);die;
-				$Userarr= M('user')->where(array('openid'=>$userinfo['openid']))->find();
-				$data['last_login_time']=time();
-				$data['last_login_ip']=get_client_ip();
-				$data['nickname'] = $userinfo['nickname'];
-				$data['headimgurl'] = $userinfo['headimgurl'];
-				$data['openid']= $userinfo['openid'];
-				//dump($Userarr);die;
-				if(!empty($Userarr) && $Userarr!=''){
-		
-					M('user')->where(array('openid'=>$userinfo['openid']))->save($data);
-					$_SESSION['uid']=$Userarr['id'];
-					//$_SESSION['nickname']=$Userarr['nickname'];
-					//$_SESSION['headimgurl']=$Userarr['headimgurl'];
-					//$_SESSION['openid']=$userinfo['openid'];
-				}else{
-					//	$uid = M('user')->add($data);
-					$_SESSION['uid']=M('user')->add($data);
-					//	$_SESSION['nickname']=$userinfo['nickname'];
-					//	$_SESSION['headimgurl']=$Userarr['headimgurl'];
-					//	$_SESSION['openid']=$userinfo['openid'];
-				}
-				//dump($_SESSION['uid'].'-1-'.$_SESSION['name']);exit;
-			}else{
-				$myurl = C('site_url').__SELF__;
-				$redirecturl = urlencode($myurl);
-				$url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$config['appId']."&redirect_uri=".$redirecturl."&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
-				//dump($url);exit;
-				header("Location: ".$url);
-			}	
-	//	}
-	}
 	//关注回复
 	public function index(){
 		if(isset($_SESSION['uid']) && $_SESSION['uid'] != ''){
@@ -89,6 +49,7 @@ class IndexAction extends BaseAction{
 	public function message(){
 		 $newsId = $this->_post('newid','intval');
 		 $content = $this->_post('content','content');
+		 $this->getUserInfo();
          M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$_SESSION['uid'],'content'=>$content));
          if($newsId == 0){
          	$this->redirect(U('Index/comments'));
@@ -96,6 +57,45 @@ class IndexAction extends BaseAction{
          	$this->redirect(U('Index/content/',array('id'=>$newsId)));
          }
         
+	}
+	
+	public function getUserInfo(){
+		//if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
+		$config['appId'] = "wxbda9322fde0a0d69";
+		$config['appSecret'] = "8748bc78ab27e06e7695dbb54c063f2b";
+		$data = array();
+		if (isset($_GET['code'])){
+			$Oauth = new Oauth2();
+			$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
+			$Userarr= M('user')->where(array('openid'=>$userinfo['openid']))->find();
+			$data['last_login_time']=time();
+			$data['last_login_ip']=get_client_ip();
+			$data['nickname'] = $userinfo['nickname'];
+			$data['headimgurl'] = $userinfo['headimgurl'];
+			$data['openid']= $userinfo['openid'];
+			//dump($Userarr);die;
+			if(!empty($Userarr) && $Userarr!=''){
+				M('user')->where(array('openid'=>$userinfo['openid']))->save($data);
+				$_SESSION['uid']=$Userarr['id'];
+				//$_SESSION['nickname']=$Userarr['nickname'];
+				//$_SESSION['headimgurl']=$Userarr['headimgurl'];
+				//$_SESSION['openid']=$userinfo['openid'];
+			}else{
+				//	$uid = M('user')->add($data);
+				$_SESSION['uid']=M('user')->add($data);
+				//	$_SESSION['nickname']=$userinfo['nickname'];
+				//	$_SESSION['headimgurl']=$Userarr['headimgurl'];
+				//	$_SESSION['openid']=$userinfo['openid'];
+			}
+			//dump($_SESSION['uid'].'-1-'.$_SESSION['name']);exit;
+		}else{
+			$myurl = C('site_url').'/index.php?g=Home&m=Index&a=getUserInfo';
+			$redirecturl = urlencode($myurl);
+			$url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$config['appId']."&redirect_uri=".$redirecturl."&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";
+			//dump($url);exit;
+			header("Location: ".$url);
+		}
+		//	}		
 	}
 	
 	public function comments(){
