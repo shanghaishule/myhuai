@@ -30,7 +30,6 @@ class IndexAction extends BaseAction{
 	}
 	//详情
 	public function content(){
-		$db=M('Img');
 		//$where['token']=$this->_get('token','trim');
 		$contentid=intval($_GET['id']);	
 		$imgDetail =  M('img')->where(array('id'=>$contentid))->find();
@@ -52,7 +51,25 @@ class IndexAction extends BaseAction{
 		 $content = $this->_post('content','content');
          $uid = $this->getUserInfo();//echo $_SESSION['uid'];
          M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$_SESSION['uid'],'content'=>$content));
-         $this->redirect(U('Index/content/',array('id'=>$newsId)));
+         if($newsId == 0){
+         	$this->redirect(U('Index/comments'));
+         }else{
+         	$this->redirect(U('Index/content/',array('id'=>$newsId)));
+         }
+        
+	}
+	
+	public function comments(){
+		$commentsNum = M('img_comments')->where(array('imgid'=>0))->count();
+		$commentsPer = M('img_comments')->where(array('imgid'=>0))->order('id DESC')->select();
+		foreach($commentsPer as $key => $val){
+			  $uInfo = M('user')->where(array('id'=>$val['uid']))->find();
+			  $commentsPer[$key]['headimgurl'] = $uInfo['headimgurl'];
+			  $commentsPer[$key]['nickname'] = $uInfo['nickname'];
+		}
+		$this->assign('commesNum',$commentsNum);
+		$this->assign('comments',$commentsPer);
+		$this->display();
 	}
 	
 	//浏览量

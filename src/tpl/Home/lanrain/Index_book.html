@@ -34,7 +34,7 @@ $(document).ready(function() {
 	});
 	$(".btn").click(function(){
 		$("#dir").hide();
-		window.location="/index.php?s=/review/index.html";
+		window.location="{lanrain::U('Index/comments')}";
 	});
 });
 function showDes(el){
@@ -79,7 +79,7 @@ function showDes(el){
 
 <div id="qianyan" class="wh" style="transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -0.00066, 0, 0, 0, 1);">
 	<h2 class="tit">
-		<a href="http://vbook.wanda.cn/index.php?s=/index.html"><img src="/tpl/Home/lanrain/wxBook_files/logo.png" alt=""></a>
+		<a href="{lanrain::U('Index/book')}"><img src="/tpl/Home/lanrain/wxBook_files/logo.png" alt=""></a>
 		<!--<a href="/index.php?s=/news/index.html"><span></span><span></span><span></span></a>-->
 	</h2>
 	<h2 class="tit2">自 吹</h2>
