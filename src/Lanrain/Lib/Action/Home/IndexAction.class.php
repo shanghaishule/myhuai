@@ -73,7 +73,7 @@ class IndexAction extends BaseAction{
 			$data['nickname'] = $userinfo['nickname'];
 			$data['headimgurl'] = $userinfo['headimgurl'];
 			$data['openid']= $userinfo['openid'];
-			//dump($Userarr);die;
+			dump($Userarr);die;
 			if(!empty($Userarr) && $Userarr!=''){
 				M('user')->where(array('openid'=>$userinfo['openid']))->save($data);
 				$_SESSION['uid']=$Userarr['id'];
