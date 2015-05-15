@@ -49,7 +49,7 @@ class IndexAction extends BaseAction{
 	public function message(){
 		 $newsId = $this->_post('newid','intval');
 		 $content = $this->_post('content','content');
-		 $this->getUserInfo();
+		 $this->getUserInfo();die;
          M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$_SESSION['uid'],'content'=>$content));
          if($newsId == 0){
          	$this->redirect(U('Index/comments'));
@@ -73,7 +73,7 @@ class IndexAction extends BaseAction{
 			$data['nickname'] = $userinfo['nickname'];
 			$data['headimgurl'] = $userinfo['headimgurl'];
 			$data['openid']= $userinfo['openid'];
-			dump($Userarr);die;
+			dump($Userarr);exit;
 			if(!empty($Userarr) && $Userarr!=''){
 				M('user')->where(array('openid'=>$userinfo['openid']))->save($data);
 				$_SESSION['uid']=$Userarr['id'];
