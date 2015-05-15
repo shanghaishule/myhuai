@@ -48,7 +48,7 @@ class IndexAction extends BaseAction{
 	}
 	//留言
 	public function message(){
-		if(isset($_SESSION['newid']) && $_SESSION['newid'] != ''){
+		if(!isset($_SESSION['newid']) && $_SESSION['newid'] == ''){
 			 $_SESSION['newid'] = $this->_post('newid','intval');
 			 $_SESSION['content'] = $this->_post('content','content');
 		}
