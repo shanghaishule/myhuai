@@ -38,6 +38,7 @@ class IndexAction extends BaseAction{
 				//dump($url);exit;
 				header("Location: ".$url);
 			}	
+		}
 	}
 	//关注回复
 	public function index(){
@@ -119,7 +120,6 @@ class IndexAction extends BaseAction{
 		}
 	}
 
-	}
 	
 	public function indexnew(){
 		$this->display();
