@@ -48,14 +48,16 @@ class IndexAction extends BaseAction{
 	}
 	//留言
 	public function message(){
-		 $newsId = $this->_post('newid','intval');
-		 $content = $this->_post('content','content');
+		if(isset($_SESSION['newid']) && $_SESSION['newid'] != ''){
+			 $_SESSION['newid'] = $this->_post('newid','intval');
+			 $_SESSION['content'] = $this->_post('content','content');
+		}
 		 $this->getUserInfo();
-         M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$_SESSION['uid'],'content'=>$content));
-         if($newsId == 0){
+         M('img_comments')->add(array('imgid'=>$_SESSION['newid'],'uid'=>$_SESSION['uid'],'content'=>$_SESSION['content']));
+         if($_SESSION['newid'] == 0){
          	$this->redirect(U('Index/comments'));
          }else{
-         	$this->redirect(U('Index/content/',array('id'=>$newsId)));
+         	$this->redirect(U('Index/content/',array('id'=>$_SESSION['newid'])));
          }
         
 	}
