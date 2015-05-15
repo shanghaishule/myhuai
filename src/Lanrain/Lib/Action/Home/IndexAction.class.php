@@ -1,8 +1,6 @@
 <?php
 class IndexAction extends BaseAction{
-	public function _initialize(){
-		$this->getUserInfo();
-	}
+
 	//关注回复
 	public function index(){
 		if(isset($_SESSION['uid']) && $_SESSION['uid'] != ''){
@@ -52,7 +50,7 @@ class IndexAction extends BaseAction{
 	public function message(){
 		 $newsId = $this->_post('newid','intval');
 		 $content = $this->_post('content','content');
-		// $flag = $this->getUserInfo();
+		 $this->getUserInfo();
          M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$_SESSION['uid'],'content'=>$content));
          if($newsId == 0){
          	$this->redirect(U('Index/comments'));
