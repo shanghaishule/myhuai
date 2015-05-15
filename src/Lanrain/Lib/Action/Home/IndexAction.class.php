@@ -49,7 +49,7 @@ class IndexAction extends BaseAction{
 	public function message(){
 		 $newsId = $this->_post('newid','intval');
 		 $content = $this->_post('content','content');
-         $uid = $this->getUserInfo();//echo $_SESSION['uid'];
+         $this->getUserInfo();//echo $_SESSION['uid'];
          M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$_SESSION['uid'],'content'=>$content));
          if($newsId == 0){
          	$this->redirect(U('Index/comments'));
