@@ -9,7 +9,7 @@ class Oauth2{
 		$requestArray = json_decode($request, true);
 		//$accessToken = $this->getAccessToken($config);
 		//$url2 = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$accessToken."&openid=".$requestArray['openid'];
-		$url2 = "https://api.weixin.qq.com/sns/userinfo?access_token=".$requestArray['access_token'];
+		$url2 = "https://api.weixin.qq.com/sns/userinfo?access_token=".$requestArray['access_token']."&openid=".$requestArray['openid'];
 		$request2 = $this->curlGet($url2);
 		$requestArray2 = json_decode($request2, true);
 		header('Content-Type:text/html;charset=utf-8');
