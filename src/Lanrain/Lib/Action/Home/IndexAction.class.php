@@ -100,13 +100,14 @@ class IndexAction extends BaseAction{
 				
 				M('user')->where(array('openid'=>$userinfo['openid']))->save($data);
 				$_SESSION['uid']=$Userarr['id'];
+				return true;
 				//$_SESSION['nickname']=$Userarr['nickname'];
 				//$_SESSION['headimgurl']=$Userarr['headimgurl'];
 				//$_SESSION['openid']=$userinfo['openid'];
 			}else{
 			//	$uid = M('user')->add($data);
  				
-				$_SESSION['uid']=M('user')->add($data);
+				$_SESSION['uid']=M('user')->add($data);return true;
 			//	$_SESSION['nickname']=$userinfo['nickname'];
 			//	$_SESSION['headimgurl']=$Userarr['headimgurl'];
 			//	$_SESSION['openid']=$userinfo['openid'];
