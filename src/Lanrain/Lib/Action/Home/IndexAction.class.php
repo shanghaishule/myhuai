@@ -1,7 +1,7 @@
 <?php
 class IndexAction extends BaseAction{
 	public function _initialize(){
-		if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
+		//if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
 			$config['appId'] = "wxbda9322fde0a0d69";
 			$config['appSecret'] = "8748bc78ab27e06e7695dbb54c063f2b";
 			$data = array();
@@ -38,7 +38,7 @@ class IndexAction extends BaseAction{
 				//dump($url);exit;
 				header("Location: ".$url);
 			}	
-		}
+	//	}
 	}
 	//关注回复
 	public function index(){
