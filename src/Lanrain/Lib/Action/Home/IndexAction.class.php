@@ -1,5 +1,8 @@
 <?php
 class IndexAction extends BaseAction{
+	public function _initialize(){
+		$this->getUserInfo();
+	}
 	//关注回复
 	public function index(){
 		if(isset($_SESSION['uid']) && $_SESSION['uid'] != ''){
@@ -49,7 +52,7 @@ class IndexAction extends BaseAction{
 	public function message(){
 		 $newsId = $this->_post('newid','intval');
 		 $content = $this->_post('content','content');
-		 $flag = $this->getUserInfo();
+		// $flag = $this->getUserInfo();
          M('img_comments')->add(array('imgid'=>$newsId,'uid'=>$_SESSION['uid'],'content'=>$content));
          if($newsId == 0){
          	$this->redirect(U('Index/comments'));
@@ -60,7 +63,7 @@ class IndexAction extends BaseAction{
 	}
 	
 	public function getUserInfo(){
-		if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
+		//if(!isset($_SESSION['uid']) || empty($_SESSION['uid']) || !isset($_SESSION['openid']) || empty($_SESSION['openid'])){
 		$config['appId'] = "wxbda9322fde0a0d69";
 		$config['appSecret'] = "8748bc78ab27e06e7695dbb54c063f2b";
 		$data = array();
@@ -89,14 +92,14 @@ class IndexAction extends BaseAction{
 			}
 			//dump($_SESSION['uid'].'-1-'.$_SESSION['name']);exit;
 		}else{
-			$myurl = C('site_url').'/index.php?g=Home&m=Index&a=getUserInfo';
+			$myurl = C('site_url').__SELF__;
 			$redirecturl = urlencode($myurl);
 			$url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$config['appId']."&redirect_uri=".$redirecturl."&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";
 			//dump($url);exit;
 			header("Location: ".$url);
 		}
-			}		
-			return true;
+	//		}		
+
 	}
 	
 	public function comments(){
