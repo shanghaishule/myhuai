@@ -1,6 +1,6 @@
 <?php
 
-class itemAction extends frontendAction {
+class itemAction extends baseAction {//frontendAction
 	public static $wordArr = array();
 	public static $content = "";
     public function _initialize() {
@@ -150,6 +150,9 @@ class itemAction extends frontendAction {
     }
     public function rebookinfo(){
     	$this->display(); 
+    }
+    public function familydoc(){
+    	$this->display();
     }
     public function rebookitem(){
     	$this->display();
