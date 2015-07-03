@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)http://vbook.wanda.cn/?from=singlemessage&isappinstalled=0#rd -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>海亮微信书</title>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="full-screen" content="no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="address=no">
+<link rel="icon" href="http://vbook.wanda.cn/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://vbook.wanda.cn/Public/index/img/startup/apple-touch-icon-57x57-pr.png">
+<link rel="apple-touch-startup-image" href="http://vbook.wanda.cn/Public/index/img/startup/startup5.png" media="(device-height:568px)">
+<link rel="apple-touch-startup-image" size="640x920" href="http://vbook.wanda.cn/Public/index/img/startup/startup.png" media="(device-height:480px)">
+<link href="/tpl/Home/lanrain/wxBook_files/base5.css" rel="stylesheet" type="text/css">
+<link href="/tpl/Home/lanrain/wxBook_files/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/tpl/Home/lanrain/wxBook_files/jquery-1.9.1.min.js"></script>
+<script src="/tpl/Home/lanrainwxBook_files/common.js"></script>
+<script type="text/javascript">
+	var Fromurl = "/index.php?s=/index/message.html";
+</script>
+<script type="text/javascript" src="/tpl/Home/lanrain/wxBook_files/touchwipe.js"></script>
+<script type="text/javascript" src="/tpl/Home/lanrain/wxBook_files/jquery.jscroll.min.js"></script>
+<script type="text/javascript" src="/tpl/Home/lanrain/wxBook_files/TweenMax.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.jscroll').jscroll({
+		loadingHtml: '<span>再来几条</span>',
+		autoTrigger: true,
+		//autoTriggerUntil: 2,
+		nextSelector:'a.next:last'
+	});
+	$(".btn").click(function(){
+		$("#dir").hide();
+		window.location="{lanrain::U('Index/comments')}";
+	});
+});
+function showDes(el){
+    var subcon = $(el).parent().next();
+    var status = $(el).parent().next().css("display");
+	
+	if ($(document).scrollTop() >= ($(document).height() - $(window).height())) {
+		//alert("最后一个")
+		var subconH = subcon.height();
+		//$(document).scrollTop($(document).height() - $(window).height() + subconH);
+		var st = $(document).scrollTop();
+		//alert(st);
+		$('html, body').animate({
+		  scrollTop: st + subconH+30
+		}, 500);
+	}
+	
+    if (status == "block") {
+      subcon.fadeOut();
+    } else {
+      subcon.fadeIn();
+    }
+}
+</script>
+<style type="text/css">
+.jscroll-loading { text-align: center;  margin-bottom: 10px; padding: 20px 0; }
+.jscroll-loading span { padding: 5px 0; background: url(/Public/index/loading.gif) no-repeat left center; padding-left: 25px; color: #999; }
+</style>
+</head>
+
+<body>
+<div id="index" class="wh" style="transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -0.00066, 0, 0, 0, 1);">
+	<h2 class="tit"><img src="/tpl/Home/lanrain/wxBook_files/logo.png"></h2>
+	<div class="book"><img src="/tpl/Home/lanrain/wxBook_files/cover.jpg"></div>
+	<div class="bot tc"> <a href="javascript:;" class="btn"><img src="/tpl/Home/lanrain/wxBook_files/btn.png"></a><br>
+		<p>与大师一起联袂推荐<br>
+		<!-- -你是第<span>926223</span>位读者</p> -->
+		<p style="color:#004b8e; margin-top:3px;">海亮集团企业文化中心 出品</p>
+	</div>
+	<div class="next"><img src="/tpl/Home/lanrain/wxBook_files/arrow2.png"></div>
+</div>
+
+<div id="qianyan" class="wh" style="transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -0.00066, 0, 0, 0, 1);">
+	<h2 class="tit">
+		<a href="{lanrain::U('Index/book')}"><img src="/tpl/Home/lanrain/wxBook_files/logo.png" alt=""></a>
+		<!--<a href="/index.php?s=/news/index.html"><span></span><span></span><span></span></a>-->
+	</h2>
+	<h2 class="tit2">自 吹</h2>
+	<p><img src="/tpl/Home/lanrain/wxBook_files/qianyan.png" alt=""></p>
+	<div class="next"><img src="/tpl/Home/lanrain/wxBook_files/arrow2.png"></div>
+</div>
+
+<div id="dir">
+	<!--h2 class="tit">
+		<a href="/index.php?s=/index.html"><img src="/Public/index/img/logo.png" alt=""></a>
+		<a href="javascript:;"><span></span><span></span><span></span></a>
+	</h2-->
+	<div class="header">
+		<h2 class="tit js-tit"><a href="{lanrain::U('Index/book')}"><img src="/tpl/Home/lanrain/wxBook_files/logo.png" alt=""></a></h2>
+	</div>
+	<h2 class="tit2">目 录</h2>
+	<div class="jscroll"><div class="jscroll-inner">
+		<ul class="dir">
+		   <volist name="bookList" id="val" key="key">
+			<li class="cf">
+				<div class="num">0{lanrain:$key}</div>
+				<div class="titAll">
+					<a href="{lanrain::U('Index/content',array('id'=>$val['id']))}" class="imgtit"></a>
+					<a href="javascript:;" onclick="showDes(this)" class="txtit">{lanrain:$val.title}</a>
+					<p><span>阅读人数：{lanrain:$val.click}</span>{lanrain:$val.keyword}</p>
+				</div>
+				<div class="txtmore">
+					<a href="{lanrain::U('Index/content',array('id'=>$val['id']))}">{lanrain:$val.text} 
+					<span>&gt;&gt;阅读全文</span></a>
+					<b></b>
+				</div>
+			</li>
+			</volist>
+			</ul>
+		</div>
+	</div>
+</div>
+<script src="/tpl/Home/lanrain/wxBook_files/common_home.js"></script>
+<script type="text/javascript">
+			$(function() {
+				//导航菜单 滚动显示/隐藏效果
+				var disScroll;
+				var lastScrollTop = 0;
+				var delat = 5;
+				var navHight = $('.header').outerHeight();
+				$(window).scroll(function(event) {
+					disScroll = true;
+				});
+				setInterval(function() {
+					if (disScroll) {
+						hasScrolled();
+						disScroll = false;
+					}
+				}, 250);
+
+			function hasScrolled() {
+				var st = $(this).scrollTop();
+				if (Math.abs(st - lastScrollTop) <= delat) {
+					return;
+				};
+				// st滚动距离大于导航高度并且大于上次高度
+				if (st > navHight + 40 && st > lastScrollTop) {
+					$('.js-tit').removeClass('header-show').addClass('header-hide');
+				} else {
+					if (st + $(window).height() < $(document).height()) {
+					$('.js-tit').removeClass('header-hide').addClass('header-show');
+				}
+			}
+		lastScrollTop = st;
+		};
+	})
+</script>
+
+</body></html>
