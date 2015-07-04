@@ -151,6 +151,9 @@ class itemAction extends baseAction {//frontendAction
     public function rebookinfo(){
     	$this->display(); 
     }
+    public function doc(){
+    	$this->display();
+    }
     public function familydoc(){
     	$this->display();
     }

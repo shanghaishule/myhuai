@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<include file="public:headtop" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<script charset="utf-8" src="__STATIC__/weixin/js/colorbox.js" type="text/javascript"></script>
+<link href="__STATIC__/weixin/css/home/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__STATIC__/weixin/js/home/jquery-1.9.1.js" ></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/date1.js" ></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/home/iscroll.js" ></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/shop1.css" media="all">
+</head>
+<body style="background:#fff;-webkit-appearance: none">
+<div class="saixuan">
+	<div class="index_head1">
+<div id="nav">
+	<ul class="navlist1">
+		<li id="a_0">
+		   <a href="javascript:history.go(-1)"><div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div></a>
+         </li>
+        <li  id="a_1">
+    						<div style="">
+
+										<p style="font-size: 20px">家庭医生</p>
+				              </div>
+        </li>
+        <li id="a_0">
+		   <a href="{:U('index/indexnew', array('tokenTall'=>$tokenTall))}"><div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/home.png);background-size:100% 100%;"></div></a>
+         </li>
+    </ul>
+ </div>
+</div>
+	
+			   
+			  
+
+	
+
+<div id="content1" style="">
+  <div style="margin:0 auto;padding-top:10px;width:100%"
+	<div class="pic" id="pic_1" style="width:90px;height:90px">
+	                     	<div id="thdpic" style="width:90px;height:90px"> 
+	                     	   <img data-original="__STATIC__/LazyLoad/js/doc.jpg" width="100%" height="100%" src="__STATIC__/LazyLoad/js/grey.gif" />
+	                     	</div>
+	                     </div>
+		
+ </div>
+ 
+ <p style="width:90%;height:45px;border:1px solid #666;margin:0 auto;text-align:center;line-height:45px;font-size:16px">习近平（主任医师）</p>
+		 <table style="height:;border-top:1px solid #f1f1f1;background: white;width:90%;margin:0 auto" >
+			                     <tr style="width:90%;height:45px;border-bottom:1px solid #666;">
+			                       <td style="width:20%">
+						                    <p >擅长：</p>    
+						           </td>
+						           <td class="" id="" style="width:80%">
+						                      <p style="width:80%">xxxxxxxxxxxxxx</p> 
+						           </td>
+			                       
+			                     </tr>
+		</table>   
+		<table style="height:;border-top:1px solid #f1f1f1;background: white;width:90%;margin:0 auto" >
+			                     <tr style="width:90%;height:45px;border-bottom:1px solid #666;">
+			                       <td class="" id="" style="width:20%">
+						                    <p style="">简介：</p>    
+						           </td>
+						           <td class="" id=""style="width:80%">
+						                      <p style="">心内科以救治冠心病和急性心肌梗死、心律失常介入治疗以及中西医结合防治心血管疾病为特色。目前心内科病房配备了先进的监护和检查仪器。CCU病房具有国内一流的抢救治疗设备。所属的心电图室、动态心电和动态血压检查室、运动平板检查室、超声心动图检查室、心导管室均具有先进的检查设备和高水平的医技人员。年门诊量超13万人次。年介入手术逾2000例，救治水平居全国领先水平，除上海地区外，就诊患者来自美国、日本、德国、埃及、也门、台湾以及全国各地。是国内最早开展冠脉介入、永久起搏器植入、心律失常射频消融和先天性心脏病介入治疗的单位之一，并成为培训以上技术的中心，开设了国家级继续教育学习项目《现代介入心脏病学》，为全国30个省市数百家医院培训了数百名介入治疗方面的人才。</p> 
+						           </td>
+			                       
+			                     </tr>
+		</table>   
+ <div style="width: 90%;height: 45px;text-align: center;background: #20a65b;line-height: 45px;margin-left:5%;border-radius: 8px;position:fixed;bottom: 8px;">
+    <p style="line-heiht:45px;font-size:14px;color:white">确认咨询</p>
+    </div>
+<script type="text/javascript">
+window.shareData = {
+		"moduleName" : "Index",
+		"moduleID" : '0',
+		"imgUrl" : "http://m.hajk.com.cn/weTall/static/weixin/images/home/mlogo.png",
+		"timeLineLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+		"sendFriendLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+		"weiboLink" : "http://m.hajk.com.cn/index.php?g=home&m=index&a=index",
+		"tTitle" : "欢迎关注沪爱健康",
+		"tContent" : "专业让健康更简单 沪爱健康   "
+	};
+	</script>
+	<script>
+		document.addEventListener('WeixinJSBridgeReady',
+				function onBridgeReady() {
+					WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+						shareHandle('friend');
+						WeixinJSBridge.invoke('sendAppMessage', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('send_msg', res.err_msg);
+						})
+					});
+
+					WeixinJSBridge.on('menu:share:timeline', function(argv) {
+						shareHandle('frineds');
+						WeixinJSBridge.invoke('shareTimeline', {
+							"img_url" : window.shareData.imgUrl,
+							"img_width" : "640",
+							"img_height" : "640",
+							"link" : window.shareData.sendFriendLink,
+							"desc" : window.shareData.tContent,
+							"title" : window.shareData.tTitle
+						}, function(res) {
+							_report('timeline', res.err_msg);
+						});
+					});
+
+					WeixinJSBridge.on('menu:share:weibo', function(argv) {
+						shareHandle('weibo');
+						WeixinJSBridge.invoke('shareWeibo', {
+							"content" : window.shareData.tContent,
+							"url" : window.shareData.sendFriendLink,
+						}, function(res) {
+							_report('weibo', res.err_msg);
+						});
+					});
+				}, false)
+
+		function shareHandle(to) {
+			var submitData = {
+				module : window.shareData.moduleName,
+				moduleid : window.shareData.moduleID,
+				token : 'ipwhoy1414718223',
+				wecha_id : 'ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+				url : window.shareData.sendFriendLink,
+				to : to
+			};
+			$.post('/index.php?g=Wap&m=Share&a=shareData&token=ipwhoy1414718223&wecha_id=ogsVXuL8yWmchzbD_jYCesE9Y2Bw',
+							submitData, function(data) {
+							}, 'json')
+		}
+	</script>
+<script src="__STATIC__/LazyLoad/js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>	
+<script>
+	$(function() {
+		$("img").lazyload({
+			effect : "fadeIn"
+		});
+		$('#endTime').date({theme:"datetime"});
+		
+		$(".zan").click(function(e){
+			var zId = $(this).attr('data-id');
+			$.post("{:U('Item/add_love')}",{type:zId},function(data){
+				//alert(data);
+				if(data==-2){
+					alert('页面已失效，请重新进入该页面！');
+				}else if(data==-1){
+					//alert();//已赞
+				}else{
+					$('#zan_'+zId).text(data);
+					anp(e);
+				}
+			});
+			
+		});		
+		
+		function anp(e){
+			var $i=$("<b>").text("+1");
+			var x=e.pageX,y=e.pageY;
+			$i.css({top:y-20,left:x,position:"absolute",color:"#E94F06"});
+			$("body").append($i);
+			$i.animate({top:y-180,opacity:0,"font-size":"2em"},1500,function(){
+				$i.remove();
+			});
+			e.stopPropagation();
+		}	
+		
+	});
+</script>
+</body>
+</html>
