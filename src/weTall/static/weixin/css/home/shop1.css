@@ -783,7 +783,7 @@ padding-left: 5px;}
 .online_p{text-align: center;
 background: rgb(221, 221, 221);
 padding: 5px;
-width: 50%;
+width: 40%;
 margin: 0 auto;
 border-radius: 2px;
 color: rgb(73, 73, 73);}
@@ -798,8 +798,8 @@ background: #B1E55C;
 padding: 5px;
 margin-right: 0%;
 border-radius: 5px;}
-.mine_chat ul li.img{width:20%;float:right;}
-.doctor_chat ul li.letter01{width:20%;
+.mine_chat ul li.img{width:15%;float:right;}
+.doctor_chat ul li.letter01{width:15%;
 float: left;
 ;}
 .doctor_chat ul li.img01{width:57%;float:left;background: white;
