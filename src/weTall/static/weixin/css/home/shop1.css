@@ -800,7 +800,7 @@ margin-right: 0%;
 border-radius: 5px;}
 .mine_chat ul li.img{width:15%;float:right;}
 .doctor_chat ul li.letter01{width:15%;
-float: left;
+float: left;margin-right: 2%;
 ;}
 .doctor_chat ul li.img01{width:57%;float:left;background: white;
 padding: 5px;
