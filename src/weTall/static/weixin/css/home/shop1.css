@@ -780,7 +780,35 @@ padding-left: 5px;}
 .fml .major_1 .more { font-family: "宋体"; text-align: right; padding-right: 30px; margin-bottom: 20px; }
 .fml .major_1 .more a { color: #fff; background: #000; padding: 0 2px; }
 .fml .major_1 .more a:hover { background: #777; }
-
+.online_p{text-align: center;
+background: rgb(221, 221, 221);
+padding: 5px;
+width: 50%;
+margin: 0 auto;
+border-radius: 3px;
+color: rgb(73, 73, 73);}
+.chat_online{width:95%;margin:0 auto;margin-top: 15px;}
+.chat_content{margin-top: 5px;
+width: 50%;
+color: rgb(73, 73, 73);}
+.chat_content ul{width:100%;overflow:hidden}
+.mine_chat ul li.letter{width: 57%;
+float: right;
+background: #B1E55C;
+padding: 5px;
+margin-right: 2%;
+border-radius: 9px;}
+.mine_chat ul li.img{width:20%;float:right;}
+.doctor_chat ul li.letter01{width:20%;
+float: left;
+;}
+.doctor_chat ul li.img01{width:57%;float:left;background: white;
+padding: 5px;
+margin-right: 2%;
+border-radius: 9px;
+color:rgb(73, 73, 73)}
+.doctor_chat{width:100%}
+.mine_chat{width:100%}
 
 /*shouye*/
 .major_1 .list {overflow: hidden; display:block; }

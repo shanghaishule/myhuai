@@ -154,6 +154,9 @@ class itemAction extends baseAction {//frontendAction
     public function doc(){
     	$this->display();
     }
+    public function ask(){
+    	$this->display();
+    }
     public function familydoc(){
     	$this->display();
     }
