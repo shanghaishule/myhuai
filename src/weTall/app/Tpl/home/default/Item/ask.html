@@ -11,12 +11,34 @@
 <link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/shop1.css" media="all">
 </head>
 <body style="background:#f1f1f1;-webkit-appearance: none">
+<div class="index_head1">
+		<div id="nav">
+			<ul class="navlist1">
+				<li id="a_0">
+				   <a href="javascript:history.go(-1)"><div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div></a>
+		         </li>
+		        <li  id="a_1">
+		    						<div style="">
+		
+												<p style="font-size: 20px">医生咨询</p>
+						              </div>
+		        </li>
+		        <li id="a_0">
+				   <a href="{:U('index/indexnew', array('tokenTall'=>$tokenTall))}"><div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/home.png);background-size:100% 100%;"></div></a>
+		         </li>
+		    </ul>
+		 </div>
+  </div>
+	
 		<div class="chat_online mine">
 		   <p class="online_p">2015-07-03 &nbsp;&nbsp; 09:34</p>
 		   <div class="chat_content mine_chat">
 		      <ul>
 		      <li class="img">
 		            <img  width="50px" height="50px" src="__STATIC__/LazyLoad/js/doc.jpg" />
+	              </li>
+	              <li class="arrow01" style="float:right;margin-right: 2%;">
+		            <img  width="10" height="10px" src="__STATIC__/LazyLoad/js/green.png" />
 	              </li>
 		         <li class="letter">你好我的症状是卡拉斯加对方可垃圾速度快了飞机啊流口水将对方考虑到</li>
 		          
@@ -30,6 +52,9 @@
 		      <ul>
 		      <li class="letter01">
 		            <img  width="50px" height="50px" src="__STATIC__/LazyLoad/js/doc.jpg" />
+	              </li>
+	              <li class="arrow01" style="float:left;;">
+		            <img  width="10" height="10px" src="__STATIC__/LazyLoad/js/white.png" />
 	              </li>
 		         <li class="img01">你好我的症状是卡拉斯加对方可垃圾速度快了飞机啊流口水将对方考虑到</li>
 		          
@@ -48,10 +73,10 @@
 		<form name="form1" id="form1" action="" method="post">
 		    <input type="hidden" name="zId" value="{$zid}" />
 			<textarea type="text" id="user-comments" 
-						    cols="50"  id="textarea" onKeyDown="textdown(event)"
-			                onKeyUp="textup()" onfocus="if(value=='咨询时请描述症状、发病时间、用药情况等信息。。。'){value=''}"
-			                onblur="if (value ==''){value='咨询时请描述症状、发病时间、用药情况等信息。。。'}"
-						    style="padding:5px;width:70%;;border:1px solid #20a65b;border-radius:6px;color:#989898"name="userComments"> 咨询时请描述症状、发病时间、用药情况等信息。。。</textarea>
+			    cols="50"  id="textarea" onKeyDown="textdown(event)"
+                onKeyUp="textup()" onfocus="if(value=='咨询时请描述症状、发病时间、用药情况等信息。。。'){value=''}"
+                onblur="if (value ==''){value='咨询时请描述症状、发病时间、用药情况等信息。。。'}"
+			style="padding:5px;width:70%;color:#666;border:1px solid #20a65b;border-radius:6px"name="userComments">咨询时请描述症状、发病时间、用药情况等信息。。。</textarea>
 			<input type="submit" id="btn" style="background: #20a65b;width:20%;margin-left:2%;color: #fff;padding: 3px;border-radius: 5px;font-size: 16px;"onclick="if($('#user-comments').val() == ''){return false;}"  name="btn" value="发送 " />
 		</form>
 	</div>	
