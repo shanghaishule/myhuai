@@ -1,5 +1,5 @@
 <?php
-class indexAction extends baseAction {//frontendAction
+class indexAction extends frontendAction {
     public function _initialize(){
     	parent::_initialize();
     	$this->_cat = M('category');

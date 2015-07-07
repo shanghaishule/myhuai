@@ -1,6 +1,6 @@
 <?php
 
-class itemAction extends baseAction {//frontendAction
+class itemAction extends frontendAction { 
 	public static $wordArr = array();
 	public static $content = "";
     public function _initialize() {
