@@ -158,6 +158,14 @@ class itemAction extends frontendAction {
     	$this->display();
     }
     public function familydoc(){
+    	//获取家庭医生列表
+    	$mod = M('familydoc');
+    	$list = $mod->select();
+    	foreach ($list as $key => $key){
+			$zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$val['zcid']))->find();
+			$list[$key]['zc'] = $zhicheng['name'];
+    	}
+    	$this->assign('list',$list);
     	$this->display();
     }
     public function rebookitem(){
