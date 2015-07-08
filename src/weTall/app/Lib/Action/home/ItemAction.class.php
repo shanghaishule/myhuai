@@ -152,6 +152,15 @@ class itemAction extends frontendAction {
     	$this->display(); 
     }
     public function doc(){
+    	$fid = $this->_get('fid','trim,intval');
+    	if(!$fid){
+    		 $this->error('页面错误！');
+    	}
+    	$where['id']=$fid;
+    	$familyDocInfo = M('familydoc')->where($where)->find();
+    	$zcInfo = M('zhicheng')->field('id,name')->where(array('id'=>$familyDocInfo['zcid']))->find();
+    	$this->assign('familyDocInfo',$familyDocInfo);
+    	$this->assign('zcname',$zcInfo);
     	$this->display();
     }
     public function ask(){
