@@ -74,7 +74,8 @@ right:0px
 .blueTit { color: #466199; font-size: 16px; line-height: 2 }
 .mormalTit { color: #595757; font-size: 18px; line-height: 1.2; }
 .otherTxt { margin-top: 15px; }
-.otherTxt li { width: 50%; float: left; border: 1px solid #a0a0a0; border-left: none; border-right: none; padding-left: 20px; color: #466199; box-sizing: border-box; font-size: 14px; line-height: 30px; }
+.otherTxt li:first-child{width:60%}
+.otherTxt li { width: 40%; float: left; border: 1px solid #a0a0a0; border-left: none; border-right: none; /*padding-left: 20px;*/text-align:center; color: #466199; box-sizing: border-box; font-size: 14px; line-height: 30px; }
 .otherTxt li.br1s { border-right: 1px solid #a0a0a0; box-sizing: border-box; }
 .editbody { margin-top: 15px; padding-bottom: 30px; }
 .editbody img { width: 100%; height: auto; }

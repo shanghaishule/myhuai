@@ -25,7 +25,12 @@ class IndexAction extends BaseAction{
 	
 	//微信书
 	public function book(){
-	    $wxBook = M('img')->where(array('classname'=>'微信书'))->select();
+	    $wxBook = M('img')->where(array('classname'=>'微信书'))->order('statdate DESC')->select();
+		$count=0;
+		foreach($wxBook as $key =>$val){
+			$count+= $val['click'];
+		}
+		$this->assign('count',$count);
 	    $this->assign('bookList',$wxBook);
 		$this->display();
 	}
@@ -53,11 +58,15 @@ class IndexAction extends BaseAction{
 			 $_SESSION['content'] = $this->_post('content','content');
 		}
 		 $this->getUserInfo();
-         M('img_comments')->add(array('imgid'=>$_SESSION['newid'],'uid'=>$_SESSION['uid'],'content'=>$_SESSION['content']));
-         if($_SESSION['newid'] == 0){
+		 $newid = $_SESSION['newid'];
+		 $content = $_SESSION['content'];
+		 	unset($_SESSION['newid']);$_SESSION['newid'] = null;
+			unset($_SESSION['content']);$_SESSION['content'] = null;		 
+         M('img_comments')->add(array('imgid'=>$newid,'uid'=>$_SESSION['uid'],'content'=>$content));
+         if($newid == 0){
          	$this->redirect(U('Index/comments'));
          }else{
-         	$this->redirect(U('Index/content/',array('id'=>$_SESSION['newid'])));
+         	$this->redirect(U('Index/content/',array('id'=>$newid)));
          }
         
 	}
