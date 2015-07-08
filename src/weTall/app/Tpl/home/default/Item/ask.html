@@ -51,23 +51,16 @@
 	              <li class="arrow01" style="float:left;;">
 		            <img  width="10" height="10px" src="__STATIC__/LazyLoad/js/white.png" />
 	              </li>
-		         <li class="img01">你好我的症状是卡拉斯加对方可垃圾速度快了飞机啊流口水将对方考虑到</li>
-		          
+		         <li class="img01">你好我的症状是卡拉斯加对方可垃圾速度快了飞机啊流口水将对方考虑到</li>	          
 		      </ul>
-		    </div>
-		    
+		    </div>		    
 		</div>
-			   
-			  
-
-	
-
 
      <div style="width:100%;;text-align: center;background: white;;position:fixed;bottom:0">
         <div class="comments-form" style="padding:5px;width: 90%;margin: 0 auto;">
 		<form name="form1" id="form1" action="" method="post">
 		    <input type="hidden" name="zId" value="{$zid}" />
-			<textarea id="user-comments" cols="50"  id="textarea" 
+			<textarea id="user-comments" cols="50"
 			style="padding:5px;width:70%;color:#666;border:1px solid #20a65b;border-radius:6px"name="userComments">咨询时请描述症状、发病时间、用药情况等信息。。。</textarea>
 			<input type="submit" id="btn" style="background: #20a65b;width:20%;margin-left:2%;color: #fff;margin-top: -37px;padding: 3px;border-radius: 5px;font-size: 16px;"onclick="if($('#user-comments').val() == ''){return false;}"  name="btn" value="发送 " />
 		</form>
@@ -152,7 +145,7 @@ window.shareData = {
 		});
 		$('#endTime').date({theme:"datetime"});
 		//咨询时请描述症状、发病时间、用药情况等信息。。。
-		$('#textarea').focus(function(){
+		$('#user-comments').focus(function(){
 			  if($(this).val()=="咨询时请描述症状、发病时间、用药情况等信息。。。"){
 				  $(this).val("");
 			  }	
