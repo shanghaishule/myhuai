@@ -161,7 +161,7 @@ class itemAction extends frontendAction {
     	//获取家庭医生列表
     	$mod = M('familydoc');
     	$list = $mod->select();
-    	foreach ($list as $key => $key){
+    	foreach ($list as $key => $val){
 			$zhicheng = M('zhicheng')->field('id,name')->where(array('id'=>$val['zcid']))->find();
 			$list[$key]['zc'] = $zhicheng['name'];
     	}
