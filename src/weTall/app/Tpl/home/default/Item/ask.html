@@ -17,12 +17,7 @@
 				<li id="a_0">
 				   <a href="javascript:history.go(-1)"><div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/back.png);background-size:100% 100%;"></div></a>
 		         </li>
-		        <li  id="a_1">
-		    						<div style="">
-		
-												<p style="font-size: 20px">医生咨询</p>
-						              </div>
-		        </li>
+		        <li  id="a_1"><div style=""><p style="font-size: 20px">医生咨询</p></div></li>
 		        <li id="a_0">
 				   <a href="{:U('index/indexnew', array('tokenTall'=>$tokenTall))}"><div class="headtop2" style="background-image:url(__STATIC__/weixin/images/home/home.png);background-size:100% 100%;"></div></a>
 		         </li>
@@ -30,7 +25,7 @@
 		 </div>
   </div>
 	
-		<div class="chat_online mine">
+	<div class="chat_online mine">
 		   <p class="online_p">2015-07-03  09:34</p>
 		   <div class="chat_content mine_chat">
 		      <ul>
@@ -44,8 +39,8 @@
 		          
 		       </ul>
 		    </div>
-		    
 		</div>
+		
 		<div class="chat_online doctor">
 		  <p class="online_p">2015-07-03  09:34</p>
 		   <div class="chat_content doctor_chat">
@@ -72,10 +67,7 @@
         <div class="comments-form" style="padding:5px;width: 90%;margin: 0 auto;">
 		<form name="form1" id="form1" action="" method="post">
 		    <input type="hidden" name="zId" value="{$zid}" />
-			<textarea type="text" id="user-comments" 
-			    cols="50"  id="textarea" onKeyDown="textdown(event)"
-                onKeyUp="textup()" onfocus="if(value=='咨询时请描述症状、发病时间、用药情况等信息。。。'){value=''}"
-                onblur="if (value ==''){value='咨询时请描述症状、发病时间、用药情况等信息。。。'}"
+			<textarea id="user-comments" cols="50"  id="textarea" 
 			style="padding:5px;width:70%;color:#666;border:1px solid #20a65b;border-radius:6px"name="userComments">咨询时请描述症状、发病时间、用药情况等信息。。。</textarea>
 			<input type="submit" id="btn" style="background: #20a65b;width:20%;margin-left:2%;color: #fff;margin-top: -37px;padding: 3px;border-radius: 5px;font-size: 16px;"onclick="if($('#user-comments').val() == ''){return false;}"  name="btn" value="发送 " />
 		</form>
@@ -159,7 +151,18 @@ window.shareData = {
 			effect : "fadeIn"
 		});
 		$('#endTime').date({theme:"datetime"});
-				
+		//咨询时请描述症状、发病时间、用药情况等信息。。。
+		$('#textarea').focus(function(){
+			  if($(this).val()=="咨询时请描述症状、发病时间、用药情况等信息。。。"){
+				  $(this).val("");
+			  }	
+			  $("html,body").animate({scrollTop:$("body").height()},1000);
+		}).blur(function(){
+			  if($(this).val()==''){
+				  $(this).val("咨询时请描述症状、发病时间、用药情况等信息。。。");
+			  }
+		});
+	}):			
 </script>
 </body>
 </html>
