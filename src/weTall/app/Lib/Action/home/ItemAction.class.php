@@ -199,6 +199,23 @@ class itemAction extends frontendAction {
     	  }
     }
     
+    //获取医生回复
+    public function getDocReply(){
+    	$uid = $this->_post('uid','trim,intval');
+    	$did = $this->_post('docid','trim,intval');
+    	if($uid =='' || $did == ''){
+    		echo '0';
+    	}  
+    	$mod = M('familydocchat');
+    	$docReply = $mod->where(array('uid'=>$uid,'docid'=>$did,'issend'=>0))->select();
+    	foreach($docReply as $key =>$val){
+    		$docReply[$key]['addtime'] = date('Y-m-d H:i:s',$val['addtime']);
+    	}
+    	$set['issend'] = 1;
+    	$mod->where(array('uid'=>$uid,'docid'=>$did,'issend'=>0))->save($set);
+    	echo json_encode($docReply);
+    }
+    
     public function familydoc(){
     	//获取家庭医生列表
     	$mod = M('familydoc');
