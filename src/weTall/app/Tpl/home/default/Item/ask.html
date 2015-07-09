@@ -26,9 +26,10 @@ $(function(){
 			  $(this).val("咨询时请描述症状、发病时间、用药情况等信息。。。");
 		  }
 	});
-	var uid = {$Think.session.uid};
-	var docid = {$familyDocInfo['id']};
+
 	$("#btn").click(function(){
+		    var uid = {$Think.session.uid};
+		    var docid = {$familyDocInfo['id']};
 		    var content = $('#user-comments').val();
 		    if(content !='' && content !="咨询时请描述症状、发病时间、用药情况等信息。。。"){
 		    	var post={uid:uid,docid:docid,content:content};
