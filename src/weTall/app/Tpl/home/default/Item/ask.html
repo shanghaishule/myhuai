@@ -17,7 +17,7 @@ $(function(){
 			   $(this).val("");
 		   }
 		  $("html,body").animate({scrollTop:$("body").height()},1000);
-	}).blur(function(){
+	});$('#user-comments').blur(function(){
 		var bVal = $(this).val();
 		  if(bVal==''){
 			  $(this).val("咨询时请描述症状、发病时间、用药情况等信息。。。");
