@@ -66,6 +66,7 @@ function getDocReply(){
     var uid = {$Think.session.uid};
     var docid = {$familyDocInfo['id']};
 	$.post('{:U("Item/getDocReply")}',{uid:uid,did:docid},function(data){
+		       alert(data+":"+data[0]['addtime']);return false;
 			    if(data != 0){
 		    		 for(var i=0;i<data.length;i++){
 		    			    var str = '<div class="chat_online doctor">'+
