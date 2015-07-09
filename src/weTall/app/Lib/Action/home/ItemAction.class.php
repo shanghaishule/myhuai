@@ -207,7 +207,7 @@ class itemAction extends frontendAction {
     		echo '0';
     	}  
     	$mod = M('familydocchat');
-    	$docReply = $mod->where(array('uid'=>$uid,'docid'=>$did,'issend'=>0))->select();
+    	$docReply = $mod->where(array('uid'=>$uid,'docid'=>$did,'issend'=>0,'spokenman'=>1))->select();
     	if(!empty($docReply)){
     		foreach($docReply as $key =>$val){
     			$docReply[$key]['addtime'] = date('Y-m-d H:i:s',$val['addtime']);
