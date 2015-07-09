@@ -63,9 +63,11 @@ $(function(){
 });
 
 //获取医生回复
-/*var getDocReply = function(){
+function getDocReply(){
+    var uid = {$Think.session.uid};
+    var docid = {$familyDocInfo['id']};
 	$.post('{:U("Item/getDocReply")}',{uid:uid,did:docid},function(data){
-			if(data != 0 && data!=null){
+			    if(data != 0 && data!=null){
 	    		 //$obj = eval("("+data+")");
 	    		 for(var i=0;i<data.length;i++){
 	    			    var str = '<div class="chat_online doctor">'+
@@ -87,7 +89,7 @@ $(function(){
 	    		 }					
 			}
 	}
-}*/
+}
 //window.setInterval(getDocReply,5000);
 </script>
 </head>

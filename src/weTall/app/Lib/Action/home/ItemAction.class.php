@@ -202,7 +202,7 @@ class itemAction extends frontendAction {
     //获取医生回复
     public function getDocReply(){
     	$uid = $this->_post('uid','trim,intval');
-    	$did = $this->_post('docid','trim,intval');
+    	$did = $this->_post('did','trim,intval');
     	if($uid =='' || $did == ''){
     		echo '0';
     	}  
