@@ -77,7 +77,7 @@ $(function(){
 	<volist name="chatInfo" id="chatInfo">
 	<if condition="$chatInfo['spokenman'] ==0">
 	 <div class="chat_online mine">
-		   <p class="online_p">2015-07-03  09:34</p>
+		   <p class="online_p">{$chatInfo.addtime|date='Y-m-d H:i:s',###}</p>
 		   <div class="chat_content mine_chat">
 		      <ul>
 		      <li class="img">
@@ -86,7 +86,7 @@ $(function(){
 	              <li class="arrow01" style="float:right;margin-right: 2%;">
 		            <img  width="10" height="10px" src="__STATIC__/LazyLoad/js/green.png" />
 	              </li>
-		         <li class="letter">你好我的症状是卡拉斯加对方可垃圾速度快了飞机啊流口水将对方考虑到</li>
+		         <li class="letter">{$chatInfo.addtime|date='Y-m-d H:i:s',###}</li>
 		       </ul>
 		    </div>
 	  </div>
@@ -101,7 +101,7 @@ $(function(){
 	              <li class="arrow01" style="float:left;;">
 		            <img  width="10" height="10px" src="__STATIC__/LazyLoad/js/white.png" />
 	              </li>
-		         <li class="img01">你好我的症状是卡拉斯加对方可垃圾速度快了飞机啊流口水将对方考虑到</li>	          
+		         <li class="img01">{$chatInfo.content}</li>	          
 		      </ul>
 		    </div>		    
 		</div>
