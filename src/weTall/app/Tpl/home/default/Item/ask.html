@@ -23,6 +23,23 @@ $(function(){
 			  $(this).val("咨询时请描述症状、发病时间、用药情况等信息。。。");
 		  }
 	});
+	$("#btn").click(function(){
+		    var content = $('#user-comments').val();
+		    if(content !='' || content !="咨询时请描述症状、发病时间、用药情况等信息。。。"){
+		    	var uid = {$Think.session.uid};
+		    	var docid = {$familyDocInfo['id']};
+		    	var post={uid:uid,docid:docid,content:content};
+		    	$.post('{:U("Item/sendAsk")}',post,function(data){
+		    			$obj = eval("("+data+")");
+		    			if($obj.status == 0){
+		    				alert("发送失败，请稍后再试！");
+		    			}else{
+		    				 alert($obj.data);
+		    			}
+		    	});
+		    }
+			
+	});
 });
 </script>
 </head>
@@ -51,13 +68,13 @@ $(function(){
 	              <li class="arrow01" style="float:right;margin-right: 2%;">
 		            <img  width="10" height="10px" src="__STATIC__/LazyLoad/js/green.png" />
 	              </li>
-		         <li class="letter">{$Think.session.openid}你好我的症状是卡拉斯加对方可垃圾速度快了飞机啊流口水将对方考虑到</li>
+		         <li class="letter">你好我的症状是卡拉斯加对方可垃圾速度快了飞机啊流口水将对方考虑到</li>
 		       </ul>
 		    </div>
 		</div>
 		
 		<div class="chat_online doctor">
-		  <p class="online_p">2015-07-03  09:34</p>
+		   <p class="online_p">2015-07-03  09:34</p>
 		   <div class="chat_content doctor_chat">
 		      <ul>
 		      <li class="letter01">
@@ -77,7 +94,7 @@ $(function(){
 		    <input type="hidden" name="zId" value="{$zid}" />
 			<textarea id="user-comments" cols="50"
 			style="padding:5px;width:70%;color:#666;border:1px solid #20a65b;border-radius:6px" name="userComments">咨询时请描述症状、发病时间、用药情况等信息。。。</textarea>
-			<input type="submit" id="btn" style="background: #20a65b;width:20%;margin-left:2%;color: #fff;margin-top: -37px;padding: 3px;border-radius: 5px;font-size: 16px;"onclick="if($('#user-comments').val() == ''){return false;}"  name="btn" value="发送 " />
+			<input type="submit" id="btn" style="background: #20a65b;width:20%;margin-left:2%;color: #fff;margin-top: -37px;padding: 3px;border-radius: 5px;font-size: 16px;"  name="btn" value="发送 " />
 		</form>
 	    </div>	
 	  </div>

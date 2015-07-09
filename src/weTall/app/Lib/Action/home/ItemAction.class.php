@@ -164,8 +164,40 @@ class itemAction extends frontendAction {
     	$this->display();
     }
     public function ask(){
+    	if($_SESSION['uid'] == ''||empty($_SESSION['headimgurl'])){
+    		$this->error("请先关注微信公众号“沪爱健康”");exit;
+    	}
+    	$fid = $this->_get('fid','trim,intval');
+    	if(!$fid){
+    		$this->error('页面错误！');
+    	}
+    	$where['id']=$fid;
+    	$familyDocInfo = M('familydoc')->where($where)->find();
+    	$chatInfo = M('familydocchat')->where(array('uid'=>$_SESSION['uid'],"docid"=>$fid))->order('addtime ASC')->select();
+    	$this->assign('chatInfo',$chatInfo);
+    	$this->assign('familyDocInfo',$familyDocInfo);
     	$this->display();
     }
+    
+    public function sendAsk(){
+    	  $uid = $this->_post('uid','trim,intval');
+    	  $did = $this->_post('docid','trim,intval');
+    	  $content = $this->_post('content');
+    	  if($uid =='' || $did == '' || $content==''){
+    	  		$this->ajaxReturn(0,'发送失败',0);eixt;
+    	  }
+    	  $mod = M('familydocchat');
+    	  $data['uid'] = $uid;
+    	  $data['did'] =$did;
+    	  $data['content'] = $content;
+    	  $data['addtime'] = $_SERVER['REQUEST_TIME'];
+    	  if($mod->add($data)){
+    	  		$this->ajaxReturn($data,'发送成功',1);
+    	  }else{
+    	  	 	$this->ajaxReturn(0,'发送失败',0);eixt;
+    	  }
+    }
+    
     public function familydoc(){
     	//获取家庭医生列表
     	$mod = M('familydoc');
