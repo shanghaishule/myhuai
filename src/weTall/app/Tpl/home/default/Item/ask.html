@@ -19,7 +19,7 @@ $(function(){
 		   if(fVal == "咨询时请描述症状、发病时间、用药情况等信息。。。"){
 			   $(this).val("");
 		   }
-		  $("html,body").animate({scrollTop:$("body").height()},1000);
+		  $("html,body").animate({scrollTop:$("body").height()},500);
 	});$('#user-comments').blur(function(){
 		  var bVal = $(this).val();
 		  if(bVal==''){
@@ -38,9 +38,8 @@ $(function(){
 		    				 alert("发送失败，请稍后再试！");
 		    			}else{
 		    				$("#user-comments").val("咨询时请描述症状、发病时间、用药情况等信息。。。"); 
-		    				var date = $obj.addtime;
 		    				 var chatInfo = '<div class="chat_online mine">'+
-								    				   '<p class="online_p">'+formatDate(date)+'</p>'+
+								    				   '<p class="online_p">'+$obj.addtime+'</p>'+
 								    				   '<div class="chat_content mine_chat">'+
 								    				     ' <ul>'+
 								    				     ' <li class="img">'+

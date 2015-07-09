@@ -192,6 +192,7 @@ class itemAction extends frontendAction {
     	  $data['content'] = $content;
     	  $data['addtime'] = $_SERVER['REQUEST_TIME'];
     	  if($mod->add($data)){
+    	  		$data['addtime'] = date('Y-m-d H:i:s',$data['addtime']);
     	  		echo json_encode($data);
     	  }else{
     	  	 	echo '0';
