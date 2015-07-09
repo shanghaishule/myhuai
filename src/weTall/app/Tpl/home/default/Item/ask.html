@@ -12,19 +12,17 @@
 <script>
 $(function(){
 	$('#user-comments').focus(function(){
-		   var tVal = $(this).val();
-		   if(tVal == "咨询时请描述症状、发病时间、用药情况等信息。。。"){
+		   var fVal = $(this).val();
+		   if(fVal == "咨询时请描述症状、发病时间、用药情况等信息。。。"){
 			   $(this).val("");
 		   }
 		  $("html,body").animate({scrollTop:$("body").height()},1000);
-	});
-	/*
-	.blur(function(){
-		  if($(this).val()==''){
+	}).blur(function(){
+		var bVal = $(this).val();
+		  if(bVal==''){
 			  $(this).val("咨询时请描述症状、发病时间、用药情况等信息。。。");
 		  }
-	})
-	*/
+	});
 });
 </script>
 </head>
