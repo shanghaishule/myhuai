@@ -208,12 +208,17 @@ class itemAction extends frontendAction {
     	}  
     	$mod = M('familydocchat');
     	$docReply = $mod->where(array('uid'=>$uid,'docid'=>$did,'issend'=>0))->select();
-    	foreach($docReply as $key =>$val){
-    		$docReply[$key]['addtime'] = date('Y-m-d H:i:s',$val['addtime']);
+    	if(!empty($docReply)){
+    		foreach($docReply as $key =>$val){
+    			$docReply[$key]['addtime'] = date('Y-m-d H:i:s',$val['addtime']);
+    		}   
+    		$set['issend'] = 1;
+    		$mod->where(array('uid'=>$uid,'docid'=>$did,'issend'=>0))->save($set);
+    		echo json_encode($docReply);
+    	}else{
+    		echo '0';
     	}
-    	$set['issend'] = 1;
-    	$mod->where(array('uid'=>$uid,'docid'=>$did,'issend'=>0))->save($set);
-    	echo json_encode($docReply);
+    	
     }
     
     public function familydoc(){
