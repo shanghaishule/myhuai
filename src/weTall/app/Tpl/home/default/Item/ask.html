@@ -49,7 +49,7 @@ $(function(){
 								    				      ' </ul>'+
 								    				   ' </div>'+
 								    			  '</div>';
-						    		    $("#chat-content").prepend(chatInfo);			  
+						    		    $("#chat-content").append(chatInfo);			  
 		    				$("#user-comments").val("咨询时请描述症状、发病时间、用药情况等信息。。。");    			  
 		    			}
 		    	});
@@ -74,6 +74,8 @@ $(function(){
 		 </div>
   </div>
 	<div id="chat-content">
+	<volist name="chatInfo" id="chatInfo">
+	<if condition="$chatInfo['spokenman'] ==0">
 	 <div class="chat_online mine">
 		   <p class="online_p">2015-07-03  09:34</p>
 		   <div class="chat_content mine_chat">
@@ -88,7 +90,7 @@ $(function(){
 		       </ul>
 		    </div>
 	  </div>
-		
+		<else />
 		<div class="chat_online doctor">
 		   <p class="online_p">2015-07-03  09:34</p>
 		   <div class="chat_content doctor_chat">
@@ -103,6 +105,8 @@ $(function(){
 		      </ul>
 		    </div>		    
 		</div>
+		</if>
+		</volist>
      </div><!--content end-->
      <div style="width:100%;;text-align: center;background: white;;position:fixed;bottom:0">
         <div class="comments-form" style="padding:5px;width: 90%;margin: 0 auto;">
