@@ -10,7 +10,7 @@
 <script type="text/javascript" src="__STATIC__/weixin/js/home/iscroll.js" ></script>
 <link rel="stylesheet" type="text/css" href="__STATIC__/weixin/css/home/shop1.css" media="all">
 <style>
-#chat-content{margin-bottom:50px;}
+#chat-content{margin-bottom:60px;}
 </style>
 <script>
 $(function(){
@@ -28,7 +28,7 @@ $(function(){
 	});
 	$("#btn").click(function(){
 		    var content = $('#user-comments').val();
-		    if(content !='' || content !="咨询时请描述症状、发病时间、用药情况等信息。。。"){
+		    if(content !='' && content !="咨询时请描述症状、发病时间、用药情况等信息。。。"){
 		    	var uid = {$Think.session.uid};
 		    	var docid = {$familyDocInfo['id']};
 		    	var post={uid:uid,docid:docid,content:content};
@@ -53,7 +53,8 @@ $(function(){
 								    				   ' </div>'+
 								    			  '</div>';
 						    		    $("#chat-content").append(chatInfo);			  
-		    				$("#user-comments").val("咨询时请描述症状、发病时间、用药情况等信息。。。");    			  
+		    				$("#user-comments").val("咨询时请描述症状、发病时间、用药情况等信息。。。");  
+		    				$("html,body").animate({scrollTop:$("body").height()},500);
 		    			}
 		    	});
 		    }
