@@ -61,17 +61,8 @@ $(function(){
 	});
 
 });
-function   formatDate(now)   {     
-    var   year=now.getYear();     
-    var   month=now.getMonth()+1;     
-    var   date=now.getDate();     
-    var   hour=now.getHours();     
-    var   minute=now.getMinutes();     
-    var   second=now.getSeconds();     
-    return   year+"-"+month+"-"+date+"   "+hour+":"+minute+":"+second;     
-    }
 //获取医生回复
-var getDocReply = function(){
+/*var getDocReply = function(){
 	$.post('{:U("Item/getDocReply")}',{uid:uid,did:docid},function(data){
 			if(data != 0 && data!=null){
 	    		 //$obj = eval("("+data+")");
@@ -95,7 +86,7 @@ var getDocReply = function(){
 	    		 }					
 			}
 	}
-}
+}*/
 //window.setInterval(getDocReply,5000);
 </script>
 </head>
