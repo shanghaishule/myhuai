@@ -59,6 +59,7 @@ $(function(){
 		    	});
 		    }
 	});
+	
 	function getDocReply(){
 		$.post('{:U("Item/getDocReply")}',{uid:uid,did:docid},function(data){
 				    if(data != 0 && data!=null){
