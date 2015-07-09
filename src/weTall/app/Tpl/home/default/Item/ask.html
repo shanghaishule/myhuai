@@ -12,13 +12,13 @@
 <script>
 $(function(){
 	$('#user-comments').focus(function(){
-		   alert('11');
-		 // $("html,body").animate({scrollTop:$("body").height()},1000);
+		   var tVal = $(this).val();
+		   if(tVal == "咨询时请描述症状、发病时间、用药情况等信息。。。"){
+			   $(this).val("");
+		   }
+		  $("html,body").animate({scrollTop:$("body").height()},1000);
 	});
 	/*
-	  if($(this).val()=="咨询时请描述症状、发病时间、用药情况等信息。。。"){
-	  $(this).val("");
-		}	
 	.blur(function(){
 		  if($(this).val()==''){
 			  $(this).val("咨询时请描述症状、发病时间、用药情况等信息。。。");
