@@ -213,7 +213,7 @@ class itemAction extends frontendAction {
     			$docReply[$key]['addtime'] = date('Y-m-d H:i:s',$val['addtime']);
     		}   
     		$set['issend'] = 1;
-    		$mod->where(array('uid'=>$uid,'docid'=>$did,'issend'=>0))->save($set);
+    		$mod->where(array('uid'=>$uid,'docid'=>$did,'issend'=>0,'spokenman'=>1))->save($set);
     		echo json_encode($docReply);
     	}else{
     		echo '0';
