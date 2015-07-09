@@ -37,9 +37,10 @@ $(function(){
 		    			if(data == 0){
 		    				 alert("发送失败，请稍后再试！");
 		    			}else{
+		    				$("#user-comments").val("咨询时请描述症状、发病时间、用药情况等信息。。。"); 
 		    				var date = $obj.addtime;
 		    				 var chatInfo = '<div class="chat_online mine">'+
-								    				   '<p class="online_p">'+date+'</p>'+
+								    				   '<p class="online_p">'+formatDate(date)+'</p>'+
 								    				   '<div class="chat_content mine_chat">'+
 								    				     ' <ul>'+
 								    				     ' <li class="img">'+
@@ -52,13 +53,21 @@ $(function(){
 								    				      ' </ul>'+
 								    				   ' </div>'+
 								    			  '</div>';
-						    		    $("#chat-content").append(chatInfo);			  
-		    				$("#user-comments").val("咨询时请描述症状、发病时间、用药情况等信息。。。");  
+						    		    $("#chat-content").append(chatInfo);
 		    				$("html,body").animate({scrollTop:$("body").height()},500);
 		    			}
 		    	});
 		    }
 	});
+	function   formatDate(now)   {     
+        var   year=now.getYear();     
+        var   month=now.getMonth()+1;     
+        var   date=now.getDate();     
+        var   hour=now.getHours();     
+        var   minute=now.getMinutes();     
+        var   second=now.getSeconds();     
+        return   year+"-"+month+"-"+date+"   "+hour+":"+minute+":"+second;     
+        }
 });
 </script>
 </head>
