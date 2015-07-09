@@ -58,33 +58,7 @@ $(function(){
 		    	});
 		    }
 	});
-	//获取医生回复
-    var getDocReply = function(){
-    	$.post('{:U("Item/getDocReply")}',{uid:uid,did:docid},function(data){
-				if(data != 0 && data!=null){
-		    		 //$obj = eval("("+data+")");
-		    		 for(var i=0;i<data.length;i++){
-		    			    var str = '<div class="chat_online doctor">'+
-		    					   '<p class="online_p">'+data[i]['addtime']+'</p>'+
-		    					   '<div class="chat_content doctor_chat">'+
-		    					      '<ul>'+
-		    					     ' <li class="letter01">'+
-		    					            '<img  width="50px" height="50px" src="{$familyDocInfo["headimgurl"]}" />'+
-		    				              '</li>'+
-		    				             ' <li class="arrow01" style="float:left;">'+
-		    					           ' <img  width="10" height="10px" src="__STATIC__/LazyLoad/js/white.png" />'+
-		    				             ' </li>'+
-		    					         '<li class="img01">'+data[i]['content']+'</li>'+
-		    					     ' </ul>'+
-		    					    '</div>'+		    
-		    					'</div>';
-			    		    $("#chat-content").append(str);
-		    				$("html,body").animate({scrollTop:$("body").height()},500);			
-		    		 }					
-				}
-    	}
-    }
-    window.setInterval(getDocReply,5000);
+
 });
 function   formatDate(now)   {     
     var   year=now.getYear();     
@@ -95,7 +69,33 @@ function   formatDate(now)   {
     var   second=now.getSeconds();     
     return   year+"-"+month+"-"+date+"   "+hour+":"+minute+":"+second;     
     }
-
+//获取医生回复
+var getDocReply = function(){
+	$.post('{:U("Item/getDocReply")}',{uid:uid,did:docid},function(data){
+			if(data != 0 && data!=null){
+	    		 //$obj = eval("("+data+")");
+	    		 for(var i=0;i<data.length;i++){
+	    			    var str = '<div class="chat_online doctor">'+
+	    					   '<p class="online_p">'+data[i]['addtime']+'</p>'+
+	    					   '<div class="chat_content doctor_chat">'+
+	    					      '<ul>'+
+	    					     ' <li class="letter01">'+
+	    					            '<img  width="50px" height="50px" src="{$familyDocInfo["headimgurl"]}" />'+
+	    				              '</li>'+
+	    				             ' <li class="arrow01" style="float:left;">'+
+	    					           ' <img  width="10" height="10px" src="__STATIC__/LazyLoad/js/white.png" />'+
+	    				             ' </li>'+
+	    					         '<li class="img01">'+data[i]['content']+'</li>'+
+	    					     ' </ul>'+
+	    					    '</div>'+		    
+	    					'</div>';
+		    		    $("#chat-content").append(str);
+	    				$("html,body").animate({scrollTop:$("body").height()},500);			
+	    		 }					
+			}
+	}
+}
+//window.setInterval(getDocReply,5000);
 </script>
 </head>
 <body style="background:#f1f1f1;-webkit-appearance: none">
