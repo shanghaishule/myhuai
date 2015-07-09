@@ -78,8 +78,26 @@ class frontendAction extends baseAction {
         		import('Think.ORG.Oauth2');
         		$Oauth = new Oauth2();
         		$userinfo=$Oauth->getUserinfo($_GET['code'],$config);
-        		$_SESSION['openid']=$userinfo['openid'];
-        
+        		$Userarr= M('user')->where(array('openid'=>$userinfo['openid']))->find();
+        		$data['last_login_time']=$_SERVER['REQUEST_TIME'];
+        		$data['last_login_ip']=get_client_ip();
+        		$data['nickname'] = $userinfo['nickname'];
+        		$data['headimgurl'] = $userinfo['headimgurl'];
+        		$data['openid']= $userinfo['openid'];
+        		//dump($userinfo);exit;
+        		if(!empty($Userarr) && $Userarr!=''){
+        			M('user')->where(array('openid'=>$userinfo['openid']))->save($data);
+        			$_SESSION['uid']=$Userarr['id'];
+        			$_SESSION['nickname']=$Userarr['nickname'];
+        			$_SESSION['headimgurl']=$Userarr['headimgurl'];
+        			$_SESSION['openid']=$Userarr['openid'];
+        		}else{
+        			//	$uid = M('user')->add($data);
+        			$_SESSION['uid']=M('user')->add($data);
+        			$_SESSION['nickname']=$userinfo['nickname'];
+        			$_SESSION['headimgurl']=$userinfo['headimgurl'];
+        			$_SESSION['openid']=$userinfo['openid'];
+        		}       
         	}else{
         		$myurl = "http://m.hajk.com.cn".__SELF__;
         		$redirecturl = urlencode($myurl);
