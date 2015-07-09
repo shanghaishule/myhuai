@@ -60,7 +60,7 @@ $(function(){
 	});
 	//获取医生回复
     var getDocReply = function(){
-    	$.post('{:U("Item/getDocReply")}',{uid:uid,did:did},function(data){
+    	$.post('{:U("Item/getDocReply")}',{uid:uid,did:docid},function(data){
 				if(data != 0 && data!=null){
 		    		 //$obj = eval("("+data+")");
 		    		 for(var i=0;i<data.length;i++){
