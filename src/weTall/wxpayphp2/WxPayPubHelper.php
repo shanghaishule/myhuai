@@ -55,8 +55,7 @@ class Common_util_pub
 	/**
 	 * 	作用：产生随机字符串，不长于32位
 	 */
-	public function createNoncestr( $length = 32 ) 
-	{
+	public function createNoncestr( $length = 32 ) {
 		$chars = "abcdefghijklmnopqrstuvwxyz0123456789";  
 		$str ="";
 		for ( $i = 0; $i < $length; $i++ )  {  
@@ -128,7 +127,7 @@ class Common_util_pub
 
         	 }
         	 else
-        	 	$xml.="<".$key."><![CDATA[".$val."]]></".$key.">";  
+        	 	$xml.="<".$key."><![CDATA[".$val."]]></".$key.">";
         }
         $xml.="</xml>";
         return $xml; 
