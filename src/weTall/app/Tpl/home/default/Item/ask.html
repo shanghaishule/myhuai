@@ -78,7 +78,7 @@ $(function(){
 		   <div class="chat_content doctor_chat">
 		      <ul>
 		      <li class="letter01">
-		            <img  width="50px" height="50px" src="__STATIC__/LazyLoad/js/doc.jpg" />
+		            <img  width="50px" height="50px" src="{$familyDocInfo['headimgurl']}" />
 	              </li>
 	              <li class="arrow01" style="float:left;;">
 		            <img  width="10" height="10px" src="__STATIC__/LazyLoad/js/white.png" />
@@ -94,7 +94,7 @@ $(function(){
 		    <input type="hidden" name="zId" value="{$zid}" />
 			<textarea id="user-comments" cols="50"
 			style="padding:5px;width:70%;color:#666;border:1px solid #20a65b;border-radius:6px" name="userComments">咨询时请描述症状、发病时间、用药情况等信息。。。</textarea>
-			<input type="submit" id="btn" style="background: #20a65b;width:20%;margin-left:2%;color: #fff;margin-top: -37px;padding: 3px;border-radius: 5px;font-size: 16px;"  name="btn" value="发送 " />
+			<input type="button" id="btn" style="background: #20a65b;width:20%;margin-left:2%;color: #fff;margin-top: -37px;padding: 3px;border-radius: 5px;font-size: 16px;"  name="btn" value="发送 " />
 		</form>
 	    </div>	
 	  </div>

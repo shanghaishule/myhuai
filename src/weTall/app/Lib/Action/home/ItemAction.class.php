@@ -172,7 +172,7 @@ class itemAction extends frontendAction {
     		$this->error('页面错误！');
     	}
     	$where['id']=$fid;
-    	$familyDocInfo = M('familydoc')->where($where)->find();
+    	$familyDocInfo = M('familydoc')->field('id,headimgurl')->where($where)->find();
     	$chatInfo = M('familydocchat')->where(array('uid'=>$_SESSION['uid'],"docid"=>$fid))->order('addtime ASC')->select();
     	$this->assign('chatInfo',$chatInfo);
     	$this->assign('familyDocInfo',$familyDocInfo);
