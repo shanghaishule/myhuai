@@ -184,17 +184,17 @@ class itemAction extends frontendAction {
     	  $did = $this->_post('docid','trim,intval');
     	  $content = $this->_post('content');
     	  if($uid =='' || $did == '' || $content==''){
-    	  		$this->ajaxReturn('','JSON');eixt;
+    	  		echo '0';
     	  }
     	  $mod = M('familydocchat');
     	  $data['uid'] = $uid;
-    	  $data['did'] =$did;
+    	  $data['docid'] =$did;
     	  $data['content'] = $content;
     	  $data['addtime'] = $_SERVER['REQUEST_TIME'];
     	  if($mod->add($data)){
-    	  		$this->ajaxReturn($data,'JSON');
+    	  		echo json_encode($data);
     	  }else{
-    	  	 	$this->ajaxReturn('','JSON');eixt;
+    	  	 	echo '0';
     	  }
     }
     
