@@ -30,11 +30,10 @@ $(function(){
 		    	var docid = {$familyDocInfo['id']};
 		    	var post={uid:uid,docid:docid,content:content};
 		    	$.post('{:U("Item/sendAsk")}',post,function(data){
-		    			$obj = eval("("+data+")");
-		    			if($obj.status == 0){
+		    			if(data.status == 0){
 		    				 alert("发送失败，请稍后再试！");
 		    			}else{
-		    				 alert($obj.data['content']);
+		    				 alert(data.content);
 		    			}
 		    	});
 		    }
