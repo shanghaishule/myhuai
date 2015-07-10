@@ -13,7 +13,6 @@ function btnDespose(type){
 <table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
 <thead>
 <tr>
-<th style="width:21px"><input type="checkbox" name="selAll" id="selAll" />全选</th>
 <th>ID</th>
 <th>昵称</th>
 <th>头像</th>
@@ -23,10 +22,18 @@ function btnDespose(type){
 </thead>
 <volist name="list" id="val" key="k">
 <tr>
-<td align="center">{lanrain:$key}</td>
+<td align="center">{lanrain:$key+1}</td>
 <td align="center">{lanrain:$val.nickname}</td>
 <td align="center"><div class="cateimg"><img src="{lanrain:$val.headimgurl}" class="cateimg_small" /><img src="{lanrain:$val.headimgurl}" class="cateimg_big"  /></div></td>
-<td align="center">{lanrain:$val.content}</td>
+<td align="center">
+	<div class="chathistory">
+		<ul>
+			<volist name="$val.chatInfo" id="info">
+			<li>{lanrain:$info.content}</li>
+			</volist>
+		</ul>
+	</div>
+</td>
 <td align="center" >
 </td>
 </tr>
