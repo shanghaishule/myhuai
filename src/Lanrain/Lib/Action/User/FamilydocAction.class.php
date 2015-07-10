@@ -103,6 +103,12 @@ class FamilydocAction extends UserAction{
 			$list[$key]['nickname'] = $userInfo['nickname'];
 			$list[$key]['headimgurl'] =$userInfo['headimgurl'];
 		}
+		
+		foreach($list as $key => $val){
+			$chatInfo = $mod->where(array('docid'=>$did,'uid'=>$val['uid']))->order('addtime ASC')->select();
+			$list[$key]['chatInfo'] = $chatInfo;
+		}	
+		dump($list);die;	
 		$this->assign('list', $list);
 		$this->display();
 	}
