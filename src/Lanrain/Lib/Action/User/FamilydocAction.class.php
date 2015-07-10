@@ -108,6 +108,7 @@ class FamilydocAction extends UserAction{
 			$chatInfo = $mod->where(array('docid'=>$did,'uid'=>$val['uid']))->order('addtime ASC')->select();
 			$list[$key]['chatInfo'] = $chatInfo;
 		}	
+		
 		dump($list);die;	
 		$this->assign('list', $list);
 		$this->display();
