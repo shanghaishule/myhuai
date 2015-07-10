@@ -6,9 +6,6 @@ function btnDespose(type){
 }
 </script>
 <div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
-<div class="cLineC" style="line-height: 32px;">
-	<a href="{lanrain::U('Familydoc/edit')}" class="btnGrayS vm bigbtn fl" >添加专家</a>
-</div>
 <div class="msgWrap form">
 <div class="bdrcontent">
 <div id="div_ptype">
@@ -17,24 +14,20 @@ function btnDespose(type){
 <thead>
 <tr>
 <th style="width:21px"><input type="checkbox" name="selAll" id="selAll" />全选</th>
+<th>ID</th>
+<th>昵称</th>
 <th>头像</th>
-<th>姓名</th>
-<th>职称</th>
-<th>擅长</th>
+<th>询问记录</th>
 <th style=" width:100px;" class="norightborder">操作</th>
 </tr>
 </thead>
-<volist name="list" id="val">
+<volist name="list" id="val" key="k">
 <tr>
-<td align="center"><input type="checkbox" name="sel[]" id="sel_list_{lanrain:$val.id}" value="{lanrain:$val.id}"/></td>
+<td align="center">{lanrain:$key}</td>
+<td align="center">{lanrain:$val.nickname}</td>
 <td align="center"><div class="cateimg"><img src="{lanrain:$val.headimgurl}" class="cateimg_small" /><img src="{lanrain:$val.headimgurl}" class="cateimg_big"  /></div></td>
-<td align="center">{lanrain:$val.docname}</td>
-<td align="center">{lanrain:$val.zc}</td>
-<td align="center">{lanrain:$val.begoodat}</td>
+<td align="center">{lanrain:$val.content}</td>
 <td align="center" >
-	<a href="{lanrain::U('Familydoc/answerlist',array('id'=>$val['id']))}">查看提问</a>
-	<a href="{lanrain::U('Familydoc/edit',array('id'=>$val['id']))}">编辑</a>
-	<a href="javascript:drop_confirm('你确定要删除吗？', '{lanrain::U('Familydoc/del',array('id'=>$val['id']))}');">删除</a>
 </td>
 </tr>
 </volist>

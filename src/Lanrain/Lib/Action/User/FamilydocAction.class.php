@@ -77,6 +77,36 @@ class FamilydocAction extends UserAction{
 		}
 	}
     
+	/**
+	 * 家庭医生问答列表
+	 */
+	public function answerlist(){
+		$did = $this->_get('id','trim,intval');
+		if($did == ''){
+			 $this->error("没有该医生");
+		}
+		//$askList = M('familydocchat')->where(array("docid"=>$did))->group('uid')->order('addtime ASC')->select();
+		$map = array();
+		$mod = M('familydocchat');
+		$map['docid'] = $did;
+		//如果需要分页
+		$count = $mod->where($map)->group('uid')->count();
+		$pager = new Page($count, 20);
+		$select = $mod->where($map)->group('uid')->order('addtime ASC');
+		$this->list_relation && $select->relation(true);
+		$select->limit($pager->firstRow.','.$pager->listRows);
+		$page = $pager->show();
+		$this->assign("page", $page);
+		$list = $select->select();
+		foreach($list as $key => $val){
+			$userInfo = M('user')->field('id,nickname,headimgurl')->where(array('id'=>$val['uid']))->find();
+			$list[$key]['nickname'] = $userInfo['nickname'];
+			$list[$key]['headimgurl'] =$userInfo['headimgurl'];
+		}
+		$this->assign('list', $list);
+		$this->display();
+	}
+	
 	//删除
 	public function del()
 	{
