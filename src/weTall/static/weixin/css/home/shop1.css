@@ -788,7 +788,7 @@ margin: 0 auto;
 border-radius: 2px;
 color: rgb(73, 73, 73);}
 .chat_online{width:95%;margin:0 auto;margin-top: 15px;}
-.chat_content{margin-top: 5px;
+.chat_content{margin-top: 10px;
 width: 50%;
 color: rgb(73, 73, 73);}
 .chat_content ul{width:100%;overflow:hidden}
