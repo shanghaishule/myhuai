@@ -792,7 +792,7 @@ color: rgb(73, 73, 73);}
 width: 50%;
 color: rgb(73, 73, 73);}
 .chat_content ul{width:100%;overflow:hidden}
-.mine_chat ul li.letter{width: 57%;
+.mine_chat ul li.letter{max-width: 57%;
 float: right;
 background: #B1E55C;
 padding: 5px;
@@ -802,7 +802,7 @@ border-radius: 5px;}
 .doctor_chat ul li.letter01{width:15%;
 float: left;margin-right: 2%;
 ;}
-.doctor_chat ul li.img01{width:57%;float:left;background: white;
+.doctor_chat ul li.img01{max-width:57%;float:left;background: white;
 padding: 5px;
 margin-right: 2%;
 border-radius: 5px;
