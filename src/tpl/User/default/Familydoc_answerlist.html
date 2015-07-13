@@ -78,12 +78,13 @@ $(function(){
 	var temp_value="";
 	$(".docApply").blur(function(){
 		var temp_value = $(this).text();
+		var obj = $(this);
 		if(temp_value != ""){
 			var uid= $(this).attr('data-uid');
 			var did = $(this).attr('data-id');
 			$.post("{lanrain::U('Familydoc/sendDocApply')}",{uid:uid,did:did,content:temp_value},function(data){
 					if(data == 1){
-						alert('回复成功');$(this).text("");
+						alert('回复成功');obj.text("");
 					}else{
 						alert('回复失败');
 					}
