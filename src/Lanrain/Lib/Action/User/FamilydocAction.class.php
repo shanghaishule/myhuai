@@ -117,7 +117,24 @@ class FamilydocAction extends UserAction{
 	 * send doc apply
 	 */
 	public function sendDocApply(){
-		
+		$uid = $this->_post('uid','trim,intval');
+		$did = $this->_post('did','trim,intval');
+		$content = $this->_post('content','trim');
+		if($uid == "" || $did=="" || $content ==""){
+			 echo '0';
+		}else{
+			$data['uid'] = $uid;
+			$data['docid']= $did;
+			$data['content'] = $content;
+			$data['spokeman'] = 1;
+			$data['addtime'] = $_SERVER['REQUEST_TIME'];
+			$addFlag = M('familydocchat')->add($data);
+			if($addFlag){
+				echo '1';
+			}else{
+				echo '0';
+			}
+		}
 	}
 	
 	

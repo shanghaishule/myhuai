@@ -17,7 +17,7 @@ function btnDespose(type){
 <th>昵称</th>
 <th>头像</th>
 <th>询问记录</th>
-<th style=" width:100px;" class="norightborder">操作</th>
+<th style=" width:260px;" class="norightborder">操作</th>
 </tr>
 </thead>
 <volist name="list" id="val" key="k">
@@ -78,6 +78,17 @@ $(function(){
 	var temp_value="";
 	$(".docApply").blur(function(){
 		var temp_value = $(this).val();
+		if(temp_value != ""){
+			var uid= $(this).attr('data-uid');
+			var did = $(this).attr('data-id');
+			$.post("{lanrain::U('Familydoc/sendDocApply')}",{uid:uid,did:did,content:temp_value},function(data){
+					if(data == 1){
+						alert('回复成功');
+					}else{
+						alert('回复失败');
+					}
+			});
+		}
 	});
 });
 </script>

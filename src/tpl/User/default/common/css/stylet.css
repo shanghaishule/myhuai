@@ -594,13 +594,13 @@ cursor: pointer;background:url(../images/Self-188.png) -999em -999em no-repeat;b
 .list-box{padding: 0 3px;margin-top: 10px;}
 .treeitem_B{padding: 0 16px 0 14px;height: 20px;
 line-height: 20px;
-overflow: auto;
+overflow: hidden;
 cursor: pointer;}
 .cat-item-list ul li{height:20px;line-height:20px;padding: 0 16px 0 14px;cursor:pointer;}
 .cat-item-list p{font-size:16px;font-weight:bold;color:#000;}
 .note{color:grey;font-weight:normal;}
 .s-btn{text-align:center;padding-top:5px;}
-.chathistory{height:93px;overflow:hidden;}
+.chathistory{height:93px;overflow:auto;}
 .t-left{text-align:left;color:#00ff00}
 .t-right{text-align:right;color:#ff0000}
 .docApply{width:254px;height:90px;border:1px solid #ccc}
