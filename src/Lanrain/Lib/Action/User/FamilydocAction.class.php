@@ -113,6 +113,14 @@ class FamilydocAction extends UserAction{
 		$this->display();
 	}
 	
+	/**
+	 * send doc apply
+	 */
+	public function sendDocApply(){
+		
+	}
+	
+	
 	//删除
 	public function del()
 	{
