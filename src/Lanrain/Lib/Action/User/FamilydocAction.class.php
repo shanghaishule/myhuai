@@ -126,7 +126,7 @@ class FamilydocAction extends UserAction{
 			$data['uid'] = $uid;
 			$data['docid']= $did;
 			$data['content'] = $content;
-			$data['spokeman'] = 1;
+			$data['spokenman'] = 1;
 			$data['addtime'] = $_SERVER['REQUEST_TIME'];
 			$addFlag = M('familydocchat')->add($data);
 			if($addFlag){
