@@ -29,12 +29,17 @@ function btnDespose(type){
 	<div class="chathistory">
 		<ul>
 			<volist name="val['chatInfo']" id="info">
-			<li>{lanrain:$info.content}</li>
+				<if condition="$info['spokenman'] eq 1">
+				<li class="t-left">医生：{lanrain:$info.content}</li>
+				<else />
+				<li class="t-right">咨询：{lanrain:$info.content}</li>
+				</if>
 			</volist>
 		</ul>
 	</div>
 </td>
 <td align="center" >
+<div class="docApply" contenteditable="true"></div>
 </td>
 </tr>
 </volist>
