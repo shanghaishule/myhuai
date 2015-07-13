@@ -109,7 +109,7 @@ class FamilydocAction extends UserAction{
 			$list[$key]['chatInfo'] = $chatInfo;
 		}	
 		
-		dump($list);die;	
+		//dump($list);die;	
 		$this->assign('list', $list);
 		$this->display();
 	}
