@@ -30,9 +30,9 @@ function btnDespose(type){
 		<ul>
 			<volist name="val['chatInfo']" id="info">
 				<if condition="$info['spokenman'] eq 1">
-				<li class="t-right">{lanrain:$val.nickname}：{lanrain:$info.content}</li>
+				<li class="t-left">{lanrain:$val.nickname}：{lanrain:$info.content}</li>
 				<else />
-				<li class="t-left">回复：{lanrain:$info.content}</li>
+				<li class="t-right">回复：{lanrain:$info.content}</li>
 				</if>
 			</volist>
 		</ul>
@@ -83,7 +83,7 @@ $(function(){
 			var did = $(this).attr('data-id');
 			$.post("{lanrain::U('Familydoc/sendDocApply')}",{uid:uid,did:did,content:temp_value},function(data){
 					if(data == 1){
-						alert('回复成功');
+						alert('回复成功');$(this).val('');
 					}else{
 						alert('回复失败');
 					}
