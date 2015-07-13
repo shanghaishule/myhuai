@@ -29,7 +29,7 @@ function btnDespose(type){
 	<div class="chathistory">
 		<ul>
 			<volist name="val['chatInfo']" id="info">
-				<if condition="$info['spokenman'] eq 1">
+				<if condition="$info['spokenman'] eq 0">
 				<li class="t-left">{lanrain:$val.nickname}：{lanrain:$info.content}</li>
 				<else />
 				<li class="t-right">回复：{lanrain:$info.content}</li>
@@ -84,7 +84,7 @@ $(function(){
 			var did = $(this).attr('data-id');
 			$.post("{lanrain::U('Familydoc/sendDocApply')}",{uid:uid,did:did,content:temp_value},function(data){
 					if(data == 1){
-						alert('回复成功');$(this).text('');
+						alert('回复成功');$(this).text("");
 					}else{
 						alert('回复失败');
 					}
