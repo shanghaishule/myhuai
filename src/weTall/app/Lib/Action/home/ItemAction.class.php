@@ -1,6 +1,6 @@
 <?php
-
-class itemAction extends baseAction {//extends frontendAction
+//因为被99分销系统 所以去掉授权
+class itemAction extends baseAction {//extends frontendAction 
 	public static $wordArr = array();
 	public static $content = "";
     public function _initialize() {
@@ -645,10 +645,7 @@ class itemAction extends baseAction {//extends frontendAction
     	$this->assign("recommendRes",$recommendRes);
     	$this->assign('item', $res);
     	$this->assign('img_list', $img_list);
-    	$this->_config_seo(C('pin_seo_config.item'), array(
-    			'item_title' => $res['name'],
-    			'item_intro' => $res['into'],
-    	));    	 
+    	  	 
     	$this->display();
     }
     

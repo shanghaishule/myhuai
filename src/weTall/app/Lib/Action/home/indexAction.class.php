@@ -1,4 +1,5 @@
 <?php
+//因为被99分销系统 所以去掉授权
 class indexAction extends baseAction {//extends frontendAction
     public function _initialize(){
     	parent::_initialize();
